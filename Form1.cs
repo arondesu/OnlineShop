@@ -82,7 +82,7 @@ namespace OnlineShop
         private void shopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Check if ShopForm is already open
-            ShopForm shopForm = Application.OpenForms.OfType<ShopForm>().FirstOrDefault();
+            shopForm = Application.OpenForms.OfType<ShopForm>().FirstOrDefault();
 
             if (shopForm == null)
             {
@@ -172,7 +172,17 @@ namespace OnlineShop
                     "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
+            // Ensure the shop form is open and ready to handle the cart addition
+        EnsureShopFormOpen();
 
+    // Send the item to the cart in ShopForm
+        shopForm.AddToCart(itemName, quantity, itemPrice);
+        this.Hide();
+        }
+
+private void EnsureShopFormOpen()
+{
             // Ensure ShopForm is open and reuse it
             if (shopForm == null || shopForm.IsDisposed)
             {
@@ -186,11 +196,8 @@ namespace OnlineShop
                 shopForm.BringToFront(); // Bring it to the front
                 shopForm.Show();
             }
-
-            // Send the item to the cart in ShopForm
-            shopForm.AddToCart(itemName, quantity, itemPrice);
-            this.Hide();
         }
+        
 
 
         private void button1_Click_1(object sender, EventArgs e)
