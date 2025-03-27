@@ -1,7 +1,5 @@
 using System.Diagnostics;
-//ge kapoy nakoo
 
-//hello poo
 namespace OnlineShop
 {
     public partial class Main : Form
