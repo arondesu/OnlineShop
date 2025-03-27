@@ -1,5 +1,5 @@
 using System.Diagnostics;
-//ge kapoy nako
+//ge kapoy nakoo
 
 //hello po
 namespace OnlineShop
