@@ -5,5 +5,9 @@ public class DBFunc {
     
     //here e code ang function for database
     //try{}catch ato gamiton to check
+
     
+
+    
+
 }
