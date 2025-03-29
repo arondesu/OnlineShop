@@ -718,6 +718,7 @@
             // 
             // lblOrderSummary
             // fixxnani??
+            // 
             lblOrderSummary.AutoSize = true;
             lblOrderSummary.Location = new Point(230, 220);
             lblOrderSummary.Name = "lblOrderSummary";
