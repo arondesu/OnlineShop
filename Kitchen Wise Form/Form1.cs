@@ -42,47 +42,6 @@ namespace OnlineShop
             this.Controls.Add(scrollablePanel);
         }
 
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void filterToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void shopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Check if ShopForm is already open
@@ -90,7 +49,7 @@ namespace OnlineShop
 
             if (shopForm == null)
             {
-                
+
                 shopForm = new ShopForm();
                 shopForm.Show();
             }
@@ -102,12 +61,6 @@ namespace OnlineShop
             }
 
             this.Hide();  // Hide the current form
-        }
-
-
-        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void dealsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -130,41 +83,6 @@ namespace OnlineShop
             this.Hide();  // Hide the current form
         }
 
-
-        private void label1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void AddItemToCart(string itemName, double itemPrice)
         {
             string quantityInput = Microsoft.VisualBasic.Interaction.InputBox(
@@ -176,17 +94,17 @@ namespace OnlineShop
                     "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
-            // Ensure the shop form is open and ready to handle the cart addition
-        EnsureShopFormOpen();
 
-    // Send the item to the cart in ShopForm
-        shopForm.AddToCart(itemName, quantity, itemPrice);
-        this.Hide();
+            // Ensure the shop form is open and ready to handle the cart addition
+            EnsureShopFormOpen();
+
+            // Send the item to the cart in ShopForm
+            shopForm.AddToCart(itemName, quantity, itemPrice);
+            this.Hide();
         }
 
-private void EnsureShopFormOpen()
-{
+        private void EnsureShopFormOpen()
+        {
             // Ensure ShopForm is open and reuse it
             if (shopForm == null || shopForm.IsDisposed)
             {
@@ -201,10 +119,8 @@ private void EnsureShopFormOpen()
                 shopForm.Show();
             }
         }
-        
 
-
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             AddItemToCart("Glass Food Storage", 275);
         }
@@ -217,11 +133,6 @@ private void EnsureShopFormOpen()
         private void button3_Click(object sender, EventArgs e)
         {
             AddItemToCart("Mitts Potholders", 65);
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -253,5 +164,6 @@ private void EnsureShopFormOpen()
         {
             AddItemToCart("Table Cloth", 55.50);
         }
+
     }
 }

@@ -75,16 +75,16 @@
             saveFileDialog1 = new SaveFileDialog();
             panel2 = new Panel();
             pnlCart = new Panel();
-            lblShoppingCart = new Label();
-            pnlOrderSummary = new Label();
-            lstboxOrderList = new ListBox();
-            btnMinus = new Button();
-            btnPlus = new Button();
-            btnRemove = new Button();
-            btnCheckout = new Button();
-            lblSubtotal = new Label();
-            lblDiscount = new Label();
             lblTotal = new Label();
+            lblDiscount = new Label();
+            lblSubtotal = new Label();
+            btnCheckout = new Button();
+            btnRemove = new Button();
+            btnPlus = new Button();
+            btnMinus = new Button();
+            lstboxOrderList = new ListBox();
+            pnlOrderSummary = new Label();
+            lblShoppingCart = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -143,17 +143,16 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(0, 180);
-            panel1.Margin = new Padding(4, 4, 4, 4);
+            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
             panel1.Size = new Size(1109, 1189);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
             // 
             // button9
             // 
             button9.Cursor = Cursors.Hand;
             button9.Location = new Point(979, 1005);
-            button9.Margin = new Padding(4, 4, 4, 4);
+            button9.Margin = new Padding(4);
             button9.Name = "button9";
             button9.Size = new Size(52, 44);
             button9.TabIndex = 37;
@@ -188,7 +187,7 @@
             // 
             button8.Cursor = Cursors.Hand;
             button8.Location = new Point(631, 1002);
-            button8.Margin = new Padding(4, 4, 4, 4);
+            button8.Margin = new Padding(4);
             button8.Name = "button8";
             button8.Size = new Size(52, 44);
             button8.TabIndex = 34;
@@ -223,7 +222,7 @@
             // 
             button7.Cursor = Cursors.Hand;
             button7.Location = new Point(284, 995);
-            button7.Margin = new Padding(4, 4, 4, 4);
+            button7.Margin = new Padding(4);
             button7.Name = "button7";
             button7.Size = new Size(52, 44);
             button7.TabIndex = 31;
@@ -258,7 +257,7 @@
             // 
             pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
             pictureBox9.Location = new Point(422, 768);
-            pictureBox9.Margin = new Padding(4, 4, 4, 4);
+            pictureBox9.Margin = new Padding(4);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(260, 221);
             pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -269,7 +268,7 @@
             // 
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
             pictureBox8.Location = new Point(76, 768);
-            pictureBox8.Margin = new Padding(4, 4, 4, 4);
+            pictureBox8.Margin = new Padding(4);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(260, 221);
             pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -280,7 +279,7 @@
             // 
             pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
             pictureBox7.Location = new Point(771, 768);
-            pictureBox7.Margin = new Padding(4, 4, 4, 4);
+            pictureBox7.Margin = new Padding(4);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(260, 221);
             pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -291,7 +290,7 @@
             // 
             button6.Cursor = Cursors.Hand;
             button6.Location = new Point(979, 641);
-            button6.Margin = new Padding(4, 4, 4, 4);
+            button6.Margin = new Padding(4);
             button6.Name = "button6";
             button6.Size = new Size(52, 44);
             button6.TabIndex = 25;
@@ -303,7 +302,7 @@
             // 
             button5.Cursor = Cursors.Hand;
             button5.Location = new Point(634, 635);
-            button5.Margin = new Padding(4, 4, 4, 4);
+            button5.Margin = new Padding(4);
             button5.Name = "button5";
             button5.Size = new Size(52, 44);
             button5.TabIndex = 24;
@@ -315,7 +314,7 @@
             // 
             button4.Cursor = Cursors.Hand;
             button4.Location = new Point(284, 629);
-            button4.Margin = new Padding(4, 4, 4, 4);
+            button4.Margin = new Padding(4);
             button4.Name = "button4";
             button4.Size = new Size(52, 44);
             button4.TabIndex = 23;
@@ -327,7 +326,7 @@
             // 
             button3.Cursor = Cursors.Hand;
             button3.Location = new Point(979, 290);
-            button3.Margin = new Padding(4, 4, 4, 4);
+            button3.Margin = new Padding(4);
             button3.Name = "button3";
             button3.Size = new Size(52, 44);
             button3.TabIndex = 22;
@@ -339,7 +338,7 @@
             // 
             button2.Cursor = Cursors.Hand;
             button2.Location = new Point(634, 288);
-            button2.Margin = new Padding(4, 4, 4, 4);
+            button2.Margin = new Padding(4);
             button2.Name = "button2";
             button2.Size = new Size(52, 44);
             button2.TabIndex = 21;
@@ -351,13 +350,13 @@
             // 
             button1.Cursor = Cursors.Hand;
             button1.Location = new Point(280, 281);
-            button1.Margin = new Padding(4, 4, 4, 4);
+            button1.Margin = new Padding(4);
             button1.Name = "button1";
             button1.Size = new Size(52, 44);
             button1.TabIndex = 20;
             button1.Text = "+";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_1;
+            button1.Click += button1_Click;
             // 
             // label13
             // 
@@ -441,7 +440,6 @@
             label7.Size = new Size(188, 30);
             label7.TabIndex = 13;
             label7.Text = " Mitts & Potholders";
-            label7.Click += label7_Click;
             // 
             // label6
             // 
@@ -502,73 +500,67 @@
             // 
             pictureBox6.Image = Properties.Resources.b371e730d18082066616788cbafec851;
             pictureBox6.Location = new Point(772, 402);
-            pictureBox6.Margin = new Padding(4, 4, 4, 4);
+            pictureBox6.Margin = new Padding(4);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(259, 221);
             pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox6.TabIndex = 7;
             pictureBox6.TabStop = false;
-            pictureBox6.Click += pictureBox6_Click;
             // 
             // pictureBox5
             // 
             pictureBox5.Image = Properties.Resources._5b0a23344ae75e65ee45c6fd699de638;
             pictureBox5.Location = new Point(422, 402);
-            pictureBox5.Margin = new Padding(4, 4, 4, 4);
+            pictureBox5.Margin = new Padding(4);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(264, 221);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox5.TabIndex = 6;
             pictureBox5.TabStop = false;
-            pictureBox5.Click += pictureBox5_Click;
             // 
             // pictureBox4
             // 
             pictureBox4.Image = Properties.Resources.f815b8d765b8b36dbc31967c7fc0ce45;
             pictureBox4.Location = new Point(76, 402);
-            pictureBox4.Margin = new Padding(4, 4, 4, 4);
+            pictureBox4.Margin = new Padding(4);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(260, 221);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 5;
             pictureBox4.TabStop = false;
-            pictureBox4.Click += pictureBox4_Click;
             // 
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources._1e5447e1d7ac58b828aedd211d4d45be;
             pictureBox3.Location = new Point(772, 54);
-            pictureBox3.Margin = new Padding(4, 4, 4, 4);
+            pictureBox3.Margin = new Padding(4);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(259, 222);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 4;
             pictureBox3.TabStop = false;
-            pictureBox3.Click += pictureBox3_Click;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources._717352fb282b041a865e761437a3b311;
             pictureBox2.Location = new Point(422, 54);
-            pictureBox2.Margin = new Padding(4, 4, 4, 4);
+            pictureBox2.Margin = new Padding(4);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(264, 222);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources._43e19e3de4e66d368f488876d54d4fca;
             pictureBox1.Location = new Point(76, 54);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(260, 222);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // label1
             // 
@@ -579,7 +571,6 @@
             label1.Name = "label1";
             label1.Size = new Size(0, 44);
             label1.TabIndex = 0;
-            label1.Click += label1_Click_2;
             // 
             // label2
             // 
@@ -610,7 +601,6 @@
             homeToolStripMenuItem.Name = "homeToolStripMenuItem";
             homeToolStripMenuItem.Size = new Size(77, 29);
             homeToolStripMenuItem.Text = "Home";
-            homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
             // 
             // shopToolStripMenuItem
             // 
@@ -632,12 +622,11 @@
             panel2.Controls.Add(label2);
             panel2.ForeColor = SystemColors.ButtonHighlight;
             panel2.Location = new Point(0, 49);
-            panel2.Margin = new Padding(4, 4, 4, 4);
+            panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
             panel2.Size = new Size(1109, 131);
             panel2.TabIndex = 5;
             // 
-            //
             // pnlCart
             // 
             pnlCart.Controls.Add(lblTotal);
@@ -655,79 +644,14 @@
             pnlCart.Size = new Size(542, 999);
             pnlCart.TabIndex = 6;
             // 
-            // lblShoppingCart
+            // lblTotal
             // 
-            lblShoppingCart.AutoSize = true;
-            lblShoppingCart.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblShoppingCart.Location = new Point(172, 73);
-            lblShoppingCart.Margin = new Padding(4, 0, 4, 0);
-            lblShoppingCart.Name = "lblShoppingCart";
-            lblShoppingCart.Size = new Size(69, 25);
-            lblShoppingCart.TabIndex = 0;
-            lblShoppingCart.Text = "Shopping Cart";
-            // 
-            // pnlOrderSummary
-            // 
-            pnlOrderSummary.AutoSize = true;
-            pnlOrderSummary.Location = new Point(230, 220);
-            pnlOrderSummary.Name = "pnlOrderSummary";
-            pnlOrderSummary.Size = new Size(69, 25);
-            pnlOrderSummary.TabIndex = 1;
-            pnlOrderSummary.Text = "label20";
-            // 
-            // lstboxOrderList
-            // 
-            lstboxOrderList.FormattingEnabled = true;
-            lstboxOrderList.ItemHeight = 25;
-            lstboxOrderList.Location = new Point(119, 308);
-            lstboxOrderList.Name = "lstboxOrderList";
-            lstboxOrderList.Size = new Size(180, 129);
-            lstboxOrderList.TabIndex = 2;
-            // 
-            // btnMinus
-            // 
-            btnMinus.Location = new Point(134, 499);
-            btnMinus.Name = "btnMinus";
-            btnMinus.Size = new Size(112, 34);
-            btnMinus.TabIndex = 3;
-            btnMinus.Text = "button10";
-            btnMinus.UseVisualStyleBackColor = true;
-            // 
-            // btnPlus
-            // 
-            btnPlus.Location = new Point(288, 504);
-            btnPlus.Name = "btnPlus";
-            btnPlus.Size = new Size(112, 34);
-            btnPlus.TabIndex = 4;
-            btnPlus.Text = "button11";
-            btnPlus.UseVisualStyleBackColor = true;
-            // 
-            // btnRemove
-            // 
-            btnRemove.Location = new Point(211, 580);
-            btnRemove.Name = "btnRemove";
-            btnRemove.Size = new Size(112, 34);
-            btnRemove.TabIndex = 5;
-            btnRemove.Text = "button12";
-            btnRemove.UseVisualStyleBackColor = true;
-            // 
-            // btnCheckout
-            // 
-            btnCheckout.Location = new Point(211, 955);
-            btnCheckout.Name = "btnCheckout";
-            btnCheckout.Size = new Size(112, 34);
-            btnCheckout.TabIndex = 6;
-            btnCheckout.Text = "button10";
-            btnCheckout.UseVisualStyleBackColor = true;
-            // 
-            // lblSubtotal
-            // 
-            lblSubtotal.AutoSize = true;
-            lblSubtotal.Location = new Point(245, 683);
-            lblSubtotal.Name = "lblSubtotal";
-            lblSubtotal.Size = new Size(69, 25);
-            lblSubtotal.TabIndex = 8;
-            lblSubtotal.Text = "label21";
+            lblTotal.AutoSize = true;
+            lblTotal.Location = new Point(245, 785);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(69, 25);
+            lblTotal.TabIndex = 10;
+            lblTotal.Text = "label23";
             // 
             // lblDiscount
             // 
@@ -738,14 +662,79 @@
             lblDiscount.TabIndex = 9;
             lblDiscount.Text = "label22";
             // 
-            // lblTotal
+            // lblSubtotal
             // 
-            lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(245, 785);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(69, 25);
-            lblTotal.TabIndex = 10;
-            lblTotal.Text = "label23";
+            lblSubtotal.AutoSize = true;
+            lblSubtotal.Location = new Point(245, 683);
+            lblSubtotal.Name = "lblSubtotal";
+            lblSubtotal.Size = new Size(69, 25);
+            lblSubtotal.TabIndex = 8;
+            lblSubtotal.Text = "label21";
+            // 
+            // btnCheckout
+            // 
+            btnCheckout.Location = new Point(211, 955);
+            btnCheckout.Name = "btnCheckout";
+            btnCheckout.Size = new Size(112, 34);
+            btnCheckout.TabIndex = 6;
+            btnCheckout.Text = "button10";
+            btnCheckout.UseVisualStyleBackColor = true;
+            // 
+            // btnRemove
+            // 
+            btnRemove.Location = new Point(211, 580);
+            btnRemove.Name = "btnRemove";
+            btnRemove.Size = new Size(112, 34);
+            btnRemove.TabIndex = 5;
+            btnRemove.Text = "button12";
+            btnRemove.UseVisualStyleBackColor = true;
+            // 
+            // btnPlus
+            // 
+            btnPlus.Location = new Point(288, 504);
+            btnPlus.Name = "btnPlus";
+            btnPlus.Size = new Size(112, 34);
+            btnPlus.TabIndex = 4;
+            btnPlus.Text = "button11";
+            btnPlus.UseVisualStyleBackColor = true;
+            // 
+            // btnMinus
+            // 
+            btnMinus.Location = new Point(134, 499);
+            btnMinus.Name = "btnMinus";
+            btnMinus.Size = new Size(112, 34);
+            btnMinus.TabIndex = 3;
+            btnMinus.Text = "button10";
+            btnMinus.UseVisualStyleBackColor = true;
+            // 
+            // lstboxOrderList
+            // 
+            lstboxOrderList.FormattingEnabled = true;
+            lstboxOrderList.ItemHeight = 25;
+            lstboxOrderList.Location = new Point(119, 308);
+            lstboxOrderList.Name = "lstboxOrderList";
+            lstboxOrderList.Size = new Size(180, 129);
+            lstboxOrderList.TabIndex = 2;
+            // 
+            // pnlOrderSummary
+            // 
+            pnlOrderSummary.AutoSize = true;
+            pnlOrderSummary.Location = new Point(230, 220);
+            pnlOrderSummary.Name = "pnlOrderSummary";
+            pnlOrderSummary.Size = new Size(69, 25);
+            pnlOrderSummary.TabIndex = 1;
+            pnlOrderSummary.Text = "label20";
+            // 
+            // lblShoppingCart
+            // 
+            lblShoppingCart.AutoSize = true;
+            lblShoppingCart.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblShoppingCart.Location = new Point(172, 73);
+            lblShoppingCart.Margin = new Padding(4, 0, 4, 0);
+            lblShoppingCart.Name = "lblShoppingCart";
+            lblShoppingCart.Size = new Size(294, 54);
+            lblShoppingCart.TabIndex = 0;
+            lblShoppingCart.Text = "Shopping Cart";
             // 
             // Main
             // 
@@ -758,10 +747,9 @@
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "Main";
             Text = "KitchenWise";
-            Load += Main_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
