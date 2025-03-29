@@ -75,16 +75,17 @@
             saveFileDialog1 = new SaveFileDialog();
             panel2 = new Panel();
             pnlCart = new Panel();
-            lblTotal = new Label();
-            lblDiscount = new Label();
+            removeBt = new Button();
+            buttonCheckout = new Button();
+            picCartLogo = new PictureBox();
+            lblShopCart = new Label();
             lblSubtotal = new Label();
-            btnCheckout = new Button();
-            btnRemove = new Button();
+            lblDiscount = new Label();
+            lblTotal = new Label();
             btnPlus = new Button();
             btnMinus = new Button();
             lstboxOrderList = new ListBox();
             lblOrderSummary = new Label();
-            lblShoppingCart = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -98,6 +99,7 @@
             menuStrip1.SuspendLayout();
             panel2.SuspendLayout();
             pnlCart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picCartLogo).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -629,113 +631,150 @@
             // 
             // pnlCart
             // 
-            pnlCart.Controls.Add(lblTotal);
-            pnlCart.Controls.Add(lblDiscount);
+            pnlCart.Controls.Add(removeBt);
+            pnlCart.Controls.Add(buttonCheckout);
+            pnlCart.Controls.Add(picCartLogo);
+            pnlCart.Controls.Add(lblShopCart);
             pnlCart.Controls.Add(lblSubtotal);
-            pnlCart.Controls.Add(btnCheckout);
-            pnlCart.Controls.Add(btnRemove);
+            pnlCart.Controls.Add(lblDiscount);
+            pnlCart.Controls.Add(lblTotal);
             pnlCart.Controls.Add(btnPlus);
             pnlCart.Controls.Add(btnMinus);
             pnlCart.Controls.Add(lstboxOrderList);
             pnlCart.Controls.Add(lblOrderSummary);
-            pnlCart.Controls.Add(lblShoppingCart);
             pnlCart.Location = new Point(1112, 49);
             pnlCart.Name = "pnlCart";
             pnlCart.Size = new Size(542, 999);
             pnlCart.TabIndex = 6;
             // 
-            // lblTotal
+            // removeBt
             // 
-            lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(245, 785);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(69, 25);
-            lblTotal.TabIndex = 10;
-            lblTotal.Text = "label23";
+            removeBt.BackColor = Color.Maroon;
+            removeBt.Cursor = Cursors.Hand;
+            removeBt.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            removeBt.ForeColor = Color.White;
+            removeBt.Location = new Point(176, 562);
+            removeBt.Margin = new Padding(4);
+            removeBt.Name = "removeBt";
+            removeBt.Size = new Size(188, 48);
+            removeBt.TabIndex = 35;
+            removeBt.Text = "REMOVE";
+            removeBt.UseVisualStyleBackColor = false;
+            removeBt.Click += removeBt_Click;
             // 
-            // lblDiscount
+            // buttonCheckout
             // 
-            lblDiscount.AutoSize = true;
-            lblDiscount.Location = new Point(245, 729);
-            lblDiscount.Name = "lblDiscount";
-            lblDiscount.Size = new Size(69, 25);
-            lblDiscount.TabIndex = 9;
-            lblDiscount.Text = "label22";
+            buttonCheckout.BackColor = Color.FromArgb(28, 46, 74);
+            buttonCheckout.Cursor = Cursors.Hand;
+            buttonCheckout.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonCheckout.ForeColor = SystemColors.ButtonHighlight;
+            buttonCheckout.Location = new Point(100, 922);
+            buttonCheckout.Margin = new Padding(4);
+            buttonCheckout.Name = "buttonCheckout";
+            buttonCheckout.Size = new Size(330, 66);
+            buttonCheckout.TabIndex = 34;
+            buttonCheckout.Text = "CHECKOUT";
+            buttonCheckout.UseVisualStyleBackColor = false;
+            buttonCheckout.Click += buttonCheckout_Click;
+            // 
+            // picCartLogo
+            // 
+            picCartLogo.Cursor = Cursors.Hand;
+            picCartLogo.Image = (Image)resources.GetObject("picCartLogo.Image");
+            picCartLogo.Location = new Point(5, 15);
+            picCartLogo.Margin = new Padding(4);
+            picCartLogo.Name = "picCartLogo";
+            picCartLogo.Size = new Size(189, 182);
+            picCartLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+            picCartLogo.TabIndex = 36;
+            picCartLogo.TabStop = false;
+            // 
+            // lblShopCart
+            // 
+            lblShopCart.AutoSize = true;
+            lblShopCart.Font = new Font("Malgun Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblShopCart.ForeColor = Color.White;
+            lblShopCart.Location = new Point(201, 80);
+            lblShopCart.Margin = new Padding(4, 0, 4, 0);
+            lblShopCart.Name = "lblShopCart";
+            lblShopCart.Size = new Size(298, 54);
+            lblShopCart.TabIndex = 33;
+            lblShopCart.Text = "Shopping Cart";
             // 
             // lblSubtotal
             // 
             lblSubtotal.AutoSize = true;
-            lblSubtotal.Location = new Point(245, 683);
+            lblSubtotal.Font = new Font("Segoe UI Emoji", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSubtotal.ForeColor = Color.FromArgb(15, 26, 43);
+            lblSubtotal.Location = new Point(138, 672);
+            lblSubtotal.Margin = new Padding(4, 0, 4, 0);
             lblSubtotal.Name = "lblSubtotal";
-            lblSubtotal.Size = new Size(69, 25);
-            lblSubtotal.TabIndex = 8;
-            lblSubtotal.Text = "label21";
+            lblSubtotal.Size = new Size(132, 28);
+            lblSubtotal.TabIndex = 26;
+            lblSubtotal.Text = "SUBTOTAL :";
             // 
-            // btnCheckout
+            // lblDiscount
             // 
-            btnCheckout.Location = new Point(211, 955);
-            btnCheckout.Name = "btnCheckout";
-            btnCheckout.Size = new Size(112, 34);
-            btnCheckout.TabIndex = 6;
-            btnCheckout.Text = "button10";
-            btnCheckout.UseVisualStyleBackColor = true;
+            lblDiscount.AutoSize = true;
+            lblDiscount.Font = new Font("Segoe UI Emoji", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDiscount.ForeColor = Color.FromArgb(15, 26, 43);
+            lblDiscount.Location = new Point(138, 760);
+            lblDiscount.Margin = new Padding(4, 0, 4, 0);
+            lblDiscount.Name = "lblDiscount";
+            lblDiscount.Size = new Size(135, 28);
+            lblDiscount.TabIndex = 25;
+            lblDiscount.Text = "DISCOUNT: ";
             // 
-            // btnRemove
+            // lblTotal
             // 
-            btnRemove.Location = new Point(211, 580);
-            btnRemove.Name = "btnRemove";
-            btnRemove.Size = new Size(112, 34);
-            btnRemove.TabIndex = 5;
-            btnRemove.Text = "button12";
-            btnRemove.UseVisualStyleBackColor = true;
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI Emoji", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotal.ForeColor = Color.FromArgb(15, 26, 43);
+            lblTotal.Location = new Point(157, 838);
+            lblTotal.Margin = new Padding(4, 0, 4, 0);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(92, 28);
+            lblTotal.TabIndex = 24;
+            lblTotal.Text = "TOTAL :";
             // 
             // btnPlus
             // 
-            btnPlus.Location = new Point(288, 504);
+            btnPlus.Location = new Point(289, 505);
             btnPlus.Name = "btnPlus";
             btnPlus.Size = new Size(112, 34);
             btnPlus.TabIndex = 4;
-            btnPlus.Text = "button11";
+            btnPlus.Text = "+";
             btnPlus.UseVisualStyleBackColor = true;
+            btnPlus.Click += btnPlus_Click;
             // 
             // btnMinus
             // 
-            btnMinus.Location = new Point(134, 499);
+            btnMinus.Location = new Point(138, 505);
             btnMinus.Name = "btnMinus";
             btnMinus.Size = new Size(112, 34);
             btnMinus.TabIndex = 3;
-            btnMinus.Text = "button10";
+            btnMinus.Text = "-";
             btnMinus.UseVisualStyleBackColor = true;
+            btnMinus.Click += btnMinus_Click;
             // 
             // lstboxOrderList
             // 
             lstboxOrderList.FormattingEnabled = true;
             lstboxOrderList.ItemHeight = 25;
-            lstboxOrderList.Location = new Point(119, 308);
+            lstboxOrderList.Location = new Point(24, 258);
             lstboxOrderList.Name = "lstboxOrderList";
-            lstboxOrderList.Size = new Size(180, 129);
+            lstboxOrderList.Size = new Size(475, 229);
             lstboxOrderList.TabIndex = 2;
             // 
             // lblOrderSummary
-            // fixxnani??
             // 
             lblOrderSummary.AutoSize = true;
-            lblOrderSummary.Location = new Point(230, 220);
+            lblOrderSummary.Font = new Font("Segoe UI", 12F);
+            lblOrderSummary.Location = new Point(24, 223);
             lblOrderSummary.Name = "lblOrderSummary";
-            lblOrderSummary.Size = new Size(69, 25);
+            lblOrderSummary.Size = new Size(188, 32);
             lblOrderSummary.TabIndex = 1;
-            lblOrderSummary.Text = "label20";
-            // 
-            // lblShoppingCart
-            // 
-            lblShoppingCart.AutoSize = true;
-            lblShoppingCart.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblShoppingCart.Location = new Point(172, 73);
-            lblShoppingCart.Margin = new Padding(4, 0, 4, 0);
-            lblShoppingCart.Name = "lblShoppingCart";
-            lblShoppingCart.Size = new Size(294, 54);
-            lblShoppingCart.TabIndex = 0;
-            lblShoppingCart.Text = "Shopping Cart";
+            lblOrderSummary.Text = "Order Summary:";
             // 
             // Main
             // 
@@ -768,6 +807,7 @@
             panel2.PerformLayout();
             pnlCart.ResumeLayout(false);
             pnlCart.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picCartLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -820,15 +860,16 @@
         private PictureBox pictureBox8;
         private PictureBox pictureBox7;
         private Panel pnlCart;
-        private Label lblShoppingCart;
-        private Label lblTotal;
-        private Label lblDiscount;
-        private Label lblSubtotal;
-        private Button btnCheckout;
-        private Button btnRemove;
         private Button btnPlus;
         private Button btnMinus;
         private ListBox lstboxOrderList;
         private Label lblOrderSummary;
+        private Label lblSubtotal;
+        private Label lblDiscount;
+        private Label lblTotal;
+        private Button removeBt;
+        private Button buttonCheckout;
+        private PictureBox picCartLogo;
+        private Label lblShopCart;
     }
 }

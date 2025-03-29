@@ -142,9 +142,9 @@ namespace OnlineShop
             }
 
             // Add item details to lists (storing the correct price)
-            itemNames.Add(availableItems[itemIndex]);
-            quantities.Add(quantity);
-            prices.Add(correctPrice);  // Use the correct price
+            //itemNames.Add(availableItems[itemIndex]);
+            //quantities.Add(quantity);
+            //prices.Add(correctPrice);  // Use the correct price
 
             // Update Order Summary
             UpdateOrderSummary();
