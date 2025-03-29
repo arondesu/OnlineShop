@@ -718,21 +718,12 @@
             // 
             // lblOrderSummary
             // 
-<<<<<<< HEAD
-            pnlOrderSummary.AutoSize = true;
-            pnlOrderSummary.Location = new Point(908, 199);
-            pnlOrderSummary.Name = "pnlOrderSummary";
-            pnlOrderSummary.Size = new Size(393, 287);
-            pnlOrderSummary.TabIndex = 1;
-            pnlOrderSummary.Text = "label20";
-=======
             lblOrderSummary.AutoSize = true;
             lblOrderSummary.Location = new Point(230, 220);
             lblOrderSummary.Name = "lblOrderSummary";
             lblOrderSummary.Size = new Size(69, 25);
             lblOrderSummary.TabIndex = 1;
             lblOrderSummary.Text = "label20";
->>>>>>> ff87ae62184f26dbc9106dc07a3f95a048d9a0d6
             // 
             // lblShoppingCart
             // 
