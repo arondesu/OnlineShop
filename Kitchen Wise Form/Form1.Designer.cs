@@ -83,7 +83,7 @@
             btnPlus = new Button();
             btnMinus = new Button();
             lstboxOrderList = new ListBox();
-            pnlOrderSummary = new Label();
+            lblOrderSummary = new Label();
             lblShoppingCart = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
@@ -637,7 +637,7 @@
             pnlCart.Controls.Add(btnPlus);
             pnlCart.Controls.Add(btnMinus);
             pnlCart.Controls.Add(lstboxOrderList);
-            pnlCart.Controls.Add(pnlOrderSummary);
+            pnlCart.Controls.Add(lblOrderSummary);
             pnlCart.Controls.Add(lblShoppingCart);
             pnlCart.Location = new Point(1112, 49);
             pnlCart.Name = "pnlCart";
@@ -716,14 +716,14 @@
             lstboxOrderList.Size = new Size(180, 129);
             lstboxOrderList.TabIndex = 2;
             // 
-            // pnlOrderSummary
+            // lblOrderSummary
             // 
-            pnlOrderSummary.AutoSize = true;
-            pnlOrderSummary.Location = new Point(230, 220);
-            pnlOrderSummary.Name = "pnlOrderSummary";
-            pnlOrderSummary.Size = new Size(69, 25);
-            pnlOrderSummary.TabIndex = 1;
-            pnlOrderSummary.Text = "label20";
+            lblOrderSummary.AutoSize = true;
+            lblOrderSummary.Location = new Point(230, 220);
+            lblOrderSummary.Name = "lblOrderSummary";
+            lblOrderSummary.Size = new Size(69, 25);
+            lblOrderSummary.TabIndex = 1;
+            lblOrderSummary.Text = "label20";
             // 
             // lblShoppingCart
             // 
@@ -828,6 +828,6 @@
         private Button btnPlus;
         private Button btnMinus;
         private ListBox lstboxOrderList;
-        private Label pnlOrderSummary;
+        private Label lblOrderSummary;
     }
 }
