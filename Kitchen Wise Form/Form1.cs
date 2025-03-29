@@ -96,11 +96,11 @@ namespace OnlineShop
             }
 
             // Ensure the shop form is open and ready to handle the cart addition
-            EnsureShopFormOpen();
+            /*EnsureShopFormOpen();
 
             // Send the item to the cart in ShopForm
             shopForm.AddToCart(itemName, quantity, itemPrice);
-            this.Hide();
+            this.Hide();*/
         }
 
         private void EnsureShopFormOpen()

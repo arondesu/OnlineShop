@@ -719,9 +719,9 @@
             // pnlOrderSummary
             // 
             pnlOrderSummary.AutoSize = true;
-            pnlOrderSummary.Location = new Point(230, 220);
+            pnlOrderSummary.Location = new Point(908, 199);
             pnlOrderSummary.Name = "pnlOrderSummary";
-            pnlOrderSummary.Size = new Size(69, 25);
+            pnlOrderSummary.Size = new Size(393, 287);
             pnlOrderSummary.TabIndex = 1;
             pnlOrderSummary.Text = "label20";
             // 
