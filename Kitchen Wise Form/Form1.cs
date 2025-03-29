@@ -8,6 +8,8 @@ namespace OnlineShop
         //hiii
 
         //test commit
+
+        //hi nicole
         public Main()
         {
             InitializeComponent();
