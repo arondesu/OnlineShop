@@ -86,6 +86,8 @@
             btnMinus = new Button();
             lstboxOrderList = new ListBox();
             lblOrderSummary = new Label();
+            Deals = new Label();
+            pictureBox10 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -100,6 +102,7 @@
             panel2.SuspendLayout();
             pnlCart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picCartLogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -578,11 +581,11 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI Emoji", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 86);
+            label2.Font = new Font("Segoe UI Emoji", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(173, 49);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(990, 48);
+            label2.Size = new Size(787, 37);
             label2.TabIndex = 1;
             label2.Text = "\"Shop Smarter, Live Better – Exclusive Deals Just for You!\"";
             // 
@@ -620,17 +623,19 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(15, 26, 43);
-            panel2.Controls.Add(label2);
+            panel2.BackColor = Color.Red;
+            panel2.Controls.Add(Deals);
+            panel2.Controls.Add(pictureBox10);
             panel2.ForeColor = SystemColors.ButtonHighlight;
-            panel2.Location = new Point(0, 49);
+            panel2.Location = new Point(0, 90);
             panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1109, 131);
+            panel2.Size = new Size(1109, 93);
             panel2.TabIndex = 5;
             // 
             // pnlCart
             // 
+            pnlCart.BackColor = Color.FromArgb(15, 26, 43);
             pnlCart.Controls.Add(removeBt);
             pnlCart.Controls.Add(buttonCheckout);
             pnlCart.Controls.Add(picCartLogo);
@@ -653,7 +658,7 @@
             removeBt.Cursor = Cursors.Hand;
             removeBt.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             removeBt.ForeColor = Color.White;
-            removeBt.Location = new Point(176, 562);
+            removeBt.Location = new Point(174, 585);
             removeBt.Margin = new Padding(4);
             removeBt.Name = "removeBt";
             removeBt.Size = new Size(188, 48);
@@ -668,7 +673,7 @@
             buttonCheckout.Cursor = Cursors.Hand;
             buttonCheckout.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonCheckout.ForeColor = SystemColors.ButtonHighlight;
-            buttonCheckout.Location = new Point(100, 922);
+            buttonCheckout.Location = new Point(108, 944);
             buttonCheckout.Margin = new Padding(4);
             buttonCheckout.Name = "buttonCheckout";
             buttonCheckout.Size = new Size(330, 66);
@@ -681,7 +686,7 @@
             // 
             picCartLogo.Cursor = Cursors.Hand;
             picCartLogo.Image = (Image)resources.GetObject("picCartLogo.Image");
-            picCartLogo.Location = new Point(5, 15);
+            picCartLogo.Location = new Point(0, 4);
             picCartLogo.Margin = new Padding(4);
             picCartLogo.Name = "picCartLogo";
             picCartLogo.Size = new Size(189, 182);
@@ -694,7 +699,7 @@
             lblShopCart.AutoSize = true;
             lblShopCart.Font = new Font("Malgun Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblShopCart.ForeColor = Color.White;
-            lblShopCart.Location = new Point(201, 80);
+            lblShopCart.Location = new Point(197, 69);
             lblShopCart.Margin = new Padding(4, 0, 4, 0);
             lblShopCart.Name = "lblShopCart";
             lblShopCart.Size = new Size(298, 54);
@@ -705,8 +710,8 @@
             // 
             lblSubtotal.AutoSize = true;
             lblSubtotal.Font = new Font("Segoe UI Emoji", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSubtotal.ForeColor = Color.FromArgb(15, 26, 43);
-            lblSubtotal.Location = new Point(138, 672);
+            lblSubtotal.ForeColor = Color.White;
+            lblSubtotal.Location = new Point(129, 679);
             lblSubtotal.Margin = new Padding(4, 0, 4, 0);
             lblSubtotal.Name = "lblSubtotal";
             lblSubtotal.Size = new Size(132, 28);
@@ -717,8 +722,8 @@
             // 
             lblDiscount.AutoSize = true;
             lblDiscount.Font = new Font("Segoe UI Emoji", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDiscount.ForeColor = Color.FromArgb(15, 26, 43);
-            lblDiscount.Location = new Point(138, 760);
+            lblDiscount.ForeColor = Color.White;
+            lblDiscount.Location = new Point(129, 767);
             lblDiscount.Margin = new Padding(4, 0, 4, 0);
             lblDiscount.Name = "lblDiscount";
             lblDiscount.Size = new Size(135, 28);
@@ -729,8 +734,8 @@
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI Emoji", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotal.ForeColor = Color.FromArgb(15, 26, 43);
-            lblTotal.Location = new Point(157, 838);
+            lblTotal.ForeColor = Color.White;
+            lblTotal.Location = new Point(148, 845);
             lblTotal.Margin = new Padding(4, 0, 4, 0);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(92, 28);
@@ -739,9 +744,9 @@
             // 
             // btnPlus
             // 
-            btnPlus.Location = new Point(289, 505);
+            btnPlus.Location = new Point(317, 512);
             btnPlus.Name = "btnPlus";
-            btnPlus.Size = new Size(112, 34);
+            btnPlus.Size = new Size(45, 45);
             btnPlus.TabIndex = 4;
             btnPlus.Text = "+";
             btnPlus.UseVisualStyleBackColor = true;
@@ -749,9 +754,9 @@
             // 
             // btnMinus
             // 
-            btnMinus.Location = new Point(138, 505);
+            btnMinus.Location = new Point(174, 512);
             btnMinus.Name = "btnMinus";
-            btnMinus.Size = new Size(112, 34);
+            btnMinus.Size = new Size(45, 45);
             btnMinus.TabIndex = 3;
             btnMinus.Text = "-";
             btnMinus.UseVisualStyleBackColor = true;
@@ -761,9 +766,9 @@
             // 
             lstboxOrderList.FormattingEnabled = true;
             lstboxOrderList.ItemHeight = 25;
-            lstboxOrderList.Location = new Point(24, 258);
+            lstboxOrderList.Location = new Point(24, 208);
             lstboxOrderList.Name = "lstboxOrderList";
-            lstboxOrderList.Size = new Size(475, 229);
+            lstboxOrderList.Size = new Size(475, 279);
             lstboxOrderList.TabIndex = 2;
             // 
             // lblOrderSummary
@@ -776,11 +781,36 @@
             lblOrderSummary.TabIndex = 1;
             lblOrderSummary.Text = "Order Summary:";
             // 
+            // Deals
+            // 
+            Deals.AutoSize = true;
+            Deals.Font = new Font("Malgun Gothic", 19.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Deals.ForeColor = Color.White;
+            Deals.Location = new Point(224, 23);
+            Deals.Margin = new Padding(4, 0, 4, 0);
+            Deals.Name = "Deals";
+            Deals.Size = new Size(741, 52);
+            Deals.TabIndex = 32;
+            Deals.Text = "Exclusive Discounts on Your Purchase!";
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.Cursor = Cursors.Hand;
+            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
+            pictureBox10.Location = new Point(141, 12);
+            pictureBox10.Margin = new Padding(4);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(80, 72);
+            pictureBox10.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox10.TabIndex = 33;
+            pictureBox10.TabStop = false;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1654, 1050);
+            Controls.Add(label2);
             Controls.Add(pnlCart);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -808,6 +838,7 @@
             pnlCart.ResumeLayout(false);
             pnlCart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picCartLogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -871,5 +902,7 @@
         private Button buttonCheckout;
         private PictureBox picCartLogo;
         private Label lblShopCart;
+        private Label Deals;
+        private PictureBox pictureBox10;
     }
 }
