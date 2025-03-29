@@ -295,6 +295,7 @@ namespace OnlineShop
                 itemNames.Clear();
                 quantities.Clear();
                 prices.Clear();
+
                 UpdateOrderSummary();
             }
         }

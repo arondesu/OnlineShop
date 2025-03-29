@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\arondesu\\Desktop\\New folder\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|C:\\Users\\arondesu\\Desktop\\New folder\\kitchen wise form\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\arondesu\\desktop\\new folder\\database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\arondesu\\desktop\\new folder\\kitchen wise form\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|C:\\Users\\arondesu\\Desktop\\New folder\\kitchen wise form\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\arondesu\\desktop\\new folder\\kitchen wise form\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -38,15 +42,28 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DBConn.cs",
+              "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New folder\\DATABASE\\DBConn.cs",
+              "RelativeDocumentMoniker": "DATABASE\\DBConn.cs",
+              "ToolTip": "C:\\Users\\arondesu\\Desktop\\New folder\\DATABASE\\DBConn.cs",
+              "RelativeToolTip": "DATABASE\\DBConn.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T18:08:45.796Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Form3.cs [Design]",
               "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New folder\\Kitchen Wise Form\\Form3.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\Form3.cs",
@@ -58,7 +75,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Form2.Designer.cs",
               "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New folder\\Kitchen Wise Form\\Form2.Designer.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\Form2.Designer.cs",
@@ -71,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Form2.cs [Design]",
               "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New folder\\Kitchen Wise Form\\Form2.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\Form2.cs",
@@ -83,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Form2.cs",
               "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New folder\\Kitchen Wise Form\\Form2.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\Form2.cs",
@@ -96,7 +113,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New folder\\Kitchen Wise Form\\Form1.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\Form1.cs",
@@ -114,14 +131,14 @@
               "RelativeDocumentMoniker": "Kitchen Wise Form\\Form1.cs",
               "ToolTip": "C:\\Users\\arondesu\\Desktop\\New folder\\Kitchen Wise Form\\Form1.cs",
               "RelativeToolTip": "Kitchen Wise Form\\Form1.cs",
-              "ViewState": "AgIAAK0AAAAAAAAAAAAvwC8BAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAC4BAAAAAAAAAADgvykBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-29T14:25:47.177Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New folder\\Kitchen Wise Form\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\Form1.Designer.cs",

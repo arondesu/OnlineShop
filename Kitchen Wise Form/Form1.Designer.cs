@@ -673,7 +673,7 @@
             pnlCart.Controls.Add(lblOrderSummary);
             pnlCart.Location = new Point(1112, 49);
             pnlCart.Name = "pnlCart";
-            pnlCart.Size = new Size(542, 1187);
+            pnlCart.Size = new Size(542, 1320);
             pnlCart.TabIndex = 6;
             // 
             // removeBt
@@ -682,7 +682,7 @@
             removeBt.Cursor = Cursors.Hand;
             removeBt.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             removeBt.ForeColor = Color.White;
-            removeBt.Location = new Point(170, 679);
+            removeBt.Location = new Point(168, 641);
             removeBt.Margin = new Padding(4);
             removeBt.Name = "removeBt";
             removeBt.Size = new Size(188, 48);
@@ -697,7 +697,7 @@
             btnCheckout.Cursor = Cursors.Hand;
             btnCheckout.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCheckout.ForeColor = SystemColors.ButtonHighlight;
-            btnCheckout.Location = new Point(99, 751);
+            btnCheckout.Location = new Point(98, 956);
             btnCheckout.Margin = new Padding(4);
             btnCheckout.Name = "btnCheckout";
             btnCheckout.Size = new Size(330, 66);
@@ -710,7 +710,7 @@
             // 
             picCartLogo.Cursor = Cursors.Hand;
             picCartLogo.Image = (Image)resources.GetObject("picCartLogo.Image");
-            picCartLogo.Location = new Point(0, 4);
+            picCartLogo.Location = new Point(-1, 20);
             picCartLogo.Margin = new Padding(4);
             picCartLogo.Name = "picCartLogo";
             picCartLogo.Size = new Size(189, 182);
@@ -723,7 +723,7 @@
             lblShopCart.AutoSize = true;
             lblShopCart.Font = new Font("Malgun Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblShopCart.ForeColor = Color.White;
-            lblShopCart.Location = new Point(197, 69);
+            lblShopCart.Location = new Point(196, 85);
             lblShopCart.Margin = new Padding(4, 0, 4, 0);
             lblShopCart.Name = "lblShopCart";
             lblShopCart.Size = new Size(298, 54);
@@ -735,7 +735,7 @@
             lblSubtotal.AutoSize = true;
             lblSubtotal.Font = new Font("Segoe UI Emoji", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSubtotal.ForeColor = Color.White;
-            lblSubtotal.Location = new Point(140, 843);
+            lblSubtotal.Location = new Point(134, 722);
             lblSubtotal.Margin = new Padding(4, 0, 4, 0);
             lblSubtotal.Name = "lblSubtotal";
             lblSubtotal.Size = new Size(132, 28);
@@ -747,7 +747,7 @@
             lblDiscount.AutoSize = true;
             lblDiscount.Font = new Font("Segoe UI Emoji", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDiscount.ForeColor = Color.White;
-            lblDiscount.Location = new Point(140, 931);
+            lblDiscount.Location = new Point(134, 807);
             lblDiscount.Margin = new Padding(4, 0, 4, 0);
             lblDiscount.Name = "lblDiscount";
             lblDiscount.Size = new Size(135, 28);
@@ -759,7 +759,7 @@
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI Emoji", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTotal.ForeColor = Color.White;
-            lblTotal.Location = new Point(159, 1009);
+            lblTotal.Location = new Point(134, 893);
             lblTotal.Margin = new Padding(4, 0, 4, 0);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(92, 28);
@@ -768,7 +768,7 @@
             // 
             // btnPlus
             // 
-            btnPlus.Location = new Point(313, 606);
+            btnPlus.Location = new Point(311, 568);
             btnPlus.Name = "btnPlus";
             btnPlus.Size = new Size(45, 45);
             btnPlus.TabIndex = 4;
@@ -778,7 +778,7 @@
             // 
             // btnMinus
             // 
-            btnMinus.Location = new Point(170, 606);
+            btnMinus.Location = new Point(168, 568);
             btnMinus.Name = "btnMinus";
             btnMinus.Size = new Size(45, 45);
             btnMinus.TabIndex = 3;
@@ -790,9 +790,9 @@
             // 
             lstboxOrderList.FormattingEnabled = true;
             lstboxOrderList.ItemHeight = 25;
-            lstboxOrderList.Location = new Point(24, 208);
+            lstboxOrderList.Location = new Point(23, 224);
             lstboxOrderList.Name = "lstboxOrderList";
-            lstboxOrderList.Size = new Size(475, 379);
+            lstboxOrderList.Size = new Size(475, 329);
             lstboxOrderList.TabIndex = 2;
             // 
             // lblOrderSummary
