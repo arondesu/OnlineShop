@@ -717,7 +717,7 @@
             lstboxOrderList.TabIndex = 2;
             // 
             // lblOrderSummary
-            // l
+            // fixxnani??
             lblOrderSummary.AutoSize = true;
             lblOrderSummary.Location = new Point(230, 220);
             lblOrderSummary.Name = "lblOrderSummary";
