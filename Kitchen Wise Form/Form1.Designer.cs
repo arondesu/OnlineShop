@@ -658,7 +658,7 @@
             removeBt.Cursor = Cursors.Hand;
             removeBt.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             removeBt.ForeColor = Color.White;
-            removeBt.Location = new Point(174, 585);
+            removeBt.Location = new Point(170, 679);
             removeBt.Margin = new Padding(4);
             removeBt.Name = "removeBt";
             removeBt.Size = new Size(188, 48);
@@ -673,7 +673,7 @@
             buttonCheckout.Cursor = Cursors.Hand;
             buttonCheckout.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonCheckout.ForeColor = SystemColors.ButtonHighlight;
-            buttonCheckout.Location = new Point(108, 944);
+            buttonCheckout.Location = new Point(101, 1050);
             buttonCheckout.Margin = new Padding(4);
             buttonCheckout.Name = "buttonCheckout";
             buttonCheckout.Size = new Size(330, 66);
@@ -711,7 +711,7 @@
             lblSubtotal.AutoSize = true;
             lblSubtotal.Font = new Font("Segoe UI Emoji", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSubtotal.ForeColor = Color.White;
-            lblSubtotal.Location = new Point(129, 679);
+            lblSubtotal.Location = new Point(140, 843);
             lblSubtotal.Margin = new Padding(4, 0, 4, 0);
             lblSubtotal.Name = "lblSubtotal";
             lblSubtotal.Size = new Size(132, 28);
@@ -723,7 +723,7 @@
             lblDiscount.AutoSize = true;
             lblDiscount.Font = new Font("Segoe UI Emoji", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDiscount.ForeColor = Color.White;
-            lblDiscount.Location = new Point(129, 767);
+            lblDiscount.Location = new Point(140, 931);
             lblDiscount.Margin = new Padding(4, 0, 4, 0);
             lblDiscount.Name = "lblDiscount";
             lblDiscount.Size = new Size(135, 28);
@@ -735,7 +735,7 @@
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI Emoji", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTotal.ForeColor = Color.White;
-            lblTotal.Location = new Point(148, 845);
+            lblTotal.Location = new Point(159, 1009);
             lblTotal.Margin = new Padding(4, 0, 4, 0);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(92, 28);
@@ -744,7 +744,7 @@
             // 
             // btnPlus
             // 
-            btnPlus.Location = new Point(317, 512);
+            btnPlus.Location = new Point(313, 606);
             btnPlus.Name = "btnPlus";
             btnPlus.Size = new Size(45, 45);
             btnPlus.TabIndex = 4;
@@ -754,7 +754,7 @@
             // 
             // btnMinus
             // 
-            btnMinus.Location = new Point(174, 512);
+            btnMinus.Location = new Point(170, 606);
             btnMinus.Name = "btnMinus";
             btnMinus.Size = new Size(45, 45);
             btnMinus.TabIndex = 3;
@@ -768,7 +768,7 @@
             lstboxOrderList.ItemHeight = 25;
             lstboxOrderList.Location = new Point(24, 208);
             lstboxOrderList.Name = "lstboxOrderList";
-            lstboxOrderList.Size = new Size(475, 279);
+            lstboxOrderList.Size = new Size(475, 379);
             lstboxOrderList.TabIndex = 2;
             // 
             // lblOrderSummary
