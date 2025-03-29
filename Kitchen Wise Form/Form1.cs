@@ -6,6 +6,8 @@ namespace OnlineShop
     {
         private ShopForm shopForm; // Declare globally so it persists
         //hiii
+
+        //test commit
         public Main()
         {
             InitializeComponent();
