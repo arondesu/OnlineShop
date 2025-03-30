@@ -20,9 +20,6 @@ C:\Users\arondesu\Desktop\New folder\bin\Debug\net8.0-windows\runtimes\win-x64\n
 C:\Users\arondesu\Desktop\New folder\bin\Debug\net8.0-windows\runtimes\win-x64\native\krbcc64.dll
 C:\Users\arondesu\Desktop\New folder\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\arondesu\Desktop\New folder\obj\Debug\net8.0-windows\OnlineShop.csproj.AssemblyReference.cache
-C:\Users\arondesu\Desktop\New folder\obj\Debug\net8.0-windows\OnlineShop.Main.resources
-C:\Users\arondesu\Desktop\New folder\obj\Debug\net8.0-windows\OnlineShop.ShopForm.resources
-C:\Users\arondesu\Desktop\New folder\obj\Debug\net8.0-windows\OnlineShop.DealsForm.resources
 C:\Users\arondesu\Desktop\New folder\obj\Debug\net8.0-windows\OnlineShop.Properties.Resources.resources
 C:\Users\arondesu\Desktop\New folder\obj\Debug\net8.0-windows\OnlineShop.csproj.GenerateResource.cache
 C:\Users\arondesu\Desktop\New folder\obj\Debug\net8.0-windows\OnlineShop.GeneratedMSBuildEditorConfig.editorconfig
@@ -36,3 +33,6 @@ C:\Users\arondesu\Desktop\New folder\obj\Debug\net8.0-windows\refint\OnlineShop.
 C:\Users\arondesu\Desktop\New folder\obj\Debug\net8.0-windows\OnlineShop.pdb
 C:\Users\arondesu\Desktop\New folder\obj\Debug\net8.0-windows\OnlineShop.genruntimeconfig.cache
 C:\Users\arondesu\Desktop\New folder\obj\Debug\net8.0-windows\ref\OnlineShop.dll
+C:\Users\arondesu\Desktop\New Folder\obj\Debug\net8.0-windows\OnlineShop.LoginForm.resources
+C:\Users\arondesu\Desktop\New Folder\obj\Debug\net8.0-windows\OnlineShop.InventoryForm.resources
+C:\Users\arondesu\Desktop\New Folder\obj\Debug\net8.0-windows\OnlineShop.MainShop.resources
