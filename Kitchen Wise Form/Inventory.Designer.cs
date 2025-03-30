@@ -29,181 +29,167 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryForm));
-            menuStrip1 = new MenuStrip();
-            homeToolStripMenuItem = new ToolStripMenuItem();
-            label2 = new Label();
-            itemName = new Label();
-            label1 = new Label();
-            label3 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
-            pictureBox2 = new PictureBox();
-            Deals = new Label();
             panel3 = new Panel();
-            menuStrip1.SuspendLayout();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
+            button7 = new Button();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // menuStrip1
+            // panel1
             // 
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { homeToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(8, 2, 0, 2);
-            menuStrip1.Size = new Size(1098, 33);
-            menuStrip1.TabIndex = 26;
-            menuStrip1.Text = "menuStrip1";
+            panel1.Controls.Add(button7);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1434, 139);
+            panel1.TabIndex = 27;
             // 
-            // homeToolStripMenuItem
+            // panel2
             // 
-            homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            homeToolStripMenuItem.Size = new Size(77, 29);
-            homeToolStripMenuItem.Text = "Home";
-            homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(300, 139);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1134, 641);
+            panel2.TabIndex = 28;
             // 
-            // label2
+            // panel3
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Malgun Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(89, 132);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(0, 45);
-            label2.TabIndex = 27;
+            panel3.Controls.Add(button6);
+            panel3.Controls.Add(button5);
+            panel3.Controls.Add(button4);
+            panel3.Controls.Add(button3);
+            panel3.Controls.Add(button2);
+            panel3.Controls.Add(button1);
+            panel3.Dock = DockStyle.Left;
+            panel3.Location = new Point(0, 139);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(300, 641);
+            panel3.TabIndex = 28;
             // 
-            // itemName
+            // button1
             // 
-            itemName.AutoSize = true;
-            itemName.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            itemName.ForeColor = Color.FromArgb(15, 26, 43);
-            itemName.Location = new Point(55, 72);
-            itemName.Margin = new Padding(4, 0, 4, 0);
-            itemName.Name = "itemName";
-            itemName.Size = new Size(560, 40);
-            itemName.TabIndex = 27;
-            itemName.Text = "Orders over ₱100 ------------- 10% off";
+            button1.Location = new Point(93, 51);
+            button1.Name = "button1";
+            button1.Size = new Size(112, 34);
+            button1.TabIndex = 0;
+            button1.Text = "Home";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(93, 147);
+            button2.Name = "button2";
+            button2.Size = new Size(112, 34);
+            button2.TabIndex = 1;
+            button2.Text = "Category";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(93, 237);
+            button3.Name = "button3";
+            button3.Size = new Size(112, 34);
+            button3.TabIndex = 2;
+            button3.Text = "Products";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(93, 331);
+            button4.Name = "button4";
+            button4.Size = new Size(112, 34);
+            button4.TabIndex = 3;
+            button4.Text = "Purchases";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(93, 423);
+            button5.Name = "button5";
+            button5.Size = new Size(112, 34);
+            button5.TabIndex = 4;
+            button5.Text = "Customers";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(93, 541);
+            button6.Name = "button6";
+            button6.Size = new Size(112, 34);
+            button6.TabIndex = 5;
+            button6.Text = "Sales";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(78, 35);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(150, 75);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(15, 26, 43);
-            label1.Location = new Point(55, 180);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(286, 61);
             label1.Name = "label1";
-            label1.Size = new Size(560, 40);
-            label1.TabIndex = 28;
-            label1.Text = "Orders over ₱200 ------------- 15% off";
+            label1.Size = new Size(59, 25);
+            label1.TabIndex = 2;
+            label1.Text = "label1";
             // 
-            // label3
+            // button7
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Emoji", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.FromArgb(15, 26, 43);
-            label3.Location = new Point(55, 285);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(560, 40);
-            label3.TabIndex = 29;
-            label3.Text = "Orders over ₱500 ------------- 20% off";
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(224, 224, 224);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(itemName);
-            panel1.Controls.Add(label2);
-            panel1.Location = new Point(201, 65);
-            panel1.Margin = new Padding(4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(722, 416);
-            panel1.TabIndex = 14;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.FromArgb(189, 196, 212);
-            panel2.Controls.Add(panel1);
-            panel2.Location = new Point(0, 208);
-            panel2.Margin = new Padding(4);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1100, 572);
-            panel2.TabIndex = 27;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Cursor = Cursors.Hand;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(42, 31);
-            pictureBox2.Margin = new Padding(4);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(115, 104);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 31;
-            pictureBox2.TabStop = false;
-            // 
-            // Deals
-            // 
-            Deals.AutoSize = true;
-            Deals.Font = new Font("Malgun Gothic", 19.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Deals.ForeColor = Color.White;
-            Deals.Location = new Point(201, 51);
-            Deals.Margin = new Padding(4, 0, 4, 0);
-            Deals.Name = "Deals";
-            Deals.Size = new Size(741, 52);
-            Deals.TabIndex = 13;
-            Deals.Text = "Exclusive Discounts on Your Purchase!";
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.FromArgb(15, 26, 43);
-            panel3.Controls.Add(Deals);
-            panel3.Controls.Add(pictureBox2);
-            panel3.Location = new Point(0, 39);
-            panel3.Margin = new Padding(4);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1100, 169);
-            panel3.TabIndex = 28;
+            button7.Location = new Point(1286, 61);
+            button7.Name = "button7";
+            button7.Size = new Size(112, 34);
+            button7.TabIndex = 6;
+            button7.Text = "Sales";
+            button7.UseVisualStyleBackColor = true;
             // 
             // InventoryForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1098, 780);
-            Controls.Add(panel3);
+            ClientSize = new Size(1434, 780);
             Controls.Add(panel2);
-            Controls.Add(menuStrip1);
+            Controls.Add(panel3);
+            Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "InventoryForm";
             Text = " KitchenWise";
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem homeToolStripMenuItem;
-        private Label label2;
-        private Label itemName;
-        private Label label1;
-        private Label label3;
         private Panel panel1;
         private Panel panel2;
-        private PictureBox pictureBox2;
-        private Label Deals;
         private Panel panel3;
+        private Button button4;
+        private Button button3;
+        private Button button2;
+        private Button button1;
+        private Button button7;
+        private Label label1;
+        private PictureBox pictureBox1;
+        private Button button6;
+        private Button button5;
     }
 }

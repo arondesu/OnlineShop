@@ -53,6 +53,10 @@
             "MySql.Data": {
               "target": "Package",
               "version": "[9.2.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.9.0, )"
             }
           },
           "imports": [
