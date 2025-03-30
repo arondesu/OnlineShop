@@ -35,23 +35,26 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            homePanel = new Panel();
+            homeDataGrid = new DataGridView();
+            dBFuncBindingSource = new BindingSource(components);
+            salesDataGrid = new DataGridView();
+            label2 = new Label();
             panel3 = new Panel();
-            button6 = new Button();
+            salesBtn = new Button();
             button5 = new Button();
             button4 = new Button();
             button3 = new Button();
             button2 = new Button();
             homeBtn = new Button();
-            homePanel = new Panel();
-            dataGridView1 = new DataGridView();
-            dBFuncBindingSource = new BindingSource(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
-            panel3.SuspendLayout();
             homePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)homeDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dBFuncBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)salesDataGrid).BeginInit();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -105,9 +108,55 @@
             panel2.Size = new Size(689, 385);
             panel2.TabIndex = 28;
             // 
+            // homePanel
+            // 
+            homePanel.BackColor = SystemColors.ControlDarkDark;
+            homePanel.Controls.Add(homeDataGrid);
+            homePanel.Controls.Add(salesDataGrid);
+            homePanel.Controls.Add(label2);
+            homePanel.Location = new Point(16, 14);
+            homePanel.Name = "homePanel";
+            homePanel.Size = new Size(661, 359);
+            homePanel.TabIndex = 0;
+            // 
+            // homeDataGrid
+            // 
+            homeDataGrid.AutoGenerateColumns = true;  // Change from false to true
+            homeDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            homeDataGrid.Location = new Point(3, 3);
+            homeDataGrid.Name = "homeDataGrid";
+            homeDataGrid.Size = new Size(655, 353);
+            homeDataGrid.TabIndex = 0;
+            // Remove the DataSource binding here
+            // homeDataGrid.DataSource = dBFuncBindingSource;  <- Remove this line
+            // 
+            // dBFuncBindingSource
+            // 
+            dBFuncBindingSource.DataSource = typeof(DBFunc);
+            // 
+            // salesDataGrid
+            // 
+            salesDataGrid.AutoGenerateColumns = false;
+            salesDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            salesDataGrid.DataSource = dBFuncBindingSource;
+            salesDataGrid.Location = new Point(3, 3);
+            salesDataGrid.Name = "salesDataGrid";
+            salesDataGrid.Size = new Size(655, 353);
+            salesDataGrid.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Perpetua Titling MT", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label2.Location = new Point(177, 128);
+            label2.Name = "label2";
+            label2.Size = new Size(342, 58);
+            label2.TabIndex = 2;
+            label2.Text = "INVENTORY";
+            // 
             // panel3
             // 
-            panel3.Controls.Add(button6);
+            panel3.Controls.Add(salesBtn);
             panel3.Controls.Add(button5);
             panel3.Controls.Add(button4);
             panel3.Controls.Add(button3);
@@ -120,15 +169,16 @@
             panel3.Size = new Size(210, 385);
             panel3.TabIndex = 28;
             // 
-            // button6
+            // salesBtn
             // 
-            button6.Location = new Point(65, 325);
-            button6.Margin = new Padding(2);
-            button6.Name = "button6";
-            button6.Size = new Size(78, 20);
-            button6.TabIndex = 5;
-            button6.Text = "Sales";
-            button6.UseVisualStyleBackColor = true;
+            salesBtn.Location = new Point(65, 325);
+            salesBtn.Margin = new Padding(2);
+            salesBtn.Name = "salesBtn";
+            salesBtn.Size = new Size(78, 20);
+            salesBtn.TabIndex = 5;
+            salesBtn.Text = "Sales";
+            salesBtn.UseVisualStyleBackColor = true;
+            salesBtn.Click += salesBtn_Click;
             // 
             // button5
             // 
@@ -182,35 +232,6 @@
             homeBtn.UseVisualStyleBackColor = true;
             homeBtn.Click += homeBtn_Click;
             // 
-            // homePanel
-            // 
-            homePanel.BackColor = SystemColors.ControlDarkDark;
-            homePanel.Controls.Add(dataGridView1);
-            homePanel.Location = new Point(16, 14);
-            homePanel.Name = "homePanel";
-            homePanel.Size = new Size(661, 359);
-            homePanel.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            // dataGridView1
-            dataGridView1.AutoGenerateColumns = true;  // Change this to true
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(655, 353);
-            dataGridView1.TabIndex = 0;
-            // Remove the DataSource binding here as we'll set it in code
-            dataGridView1.DataSource = dBFuncBindingSource;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(655, 353);
-            dataGridView1.TabIndex = 0;
-            // 
-            // dBFuncBindingSource
-            // 
-            dBFuncBindingSource.DataSource = typeof(DBFunc);
-            // 
             // InventoryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -227,10 +248,12 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
-            panel3.ResumeLayout(false);
             homePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            homePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)homeDataGrid).EndInit();
             ((System.ComponentModel.ISupportInitialize)dBFuncBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)salesDataGrid).EndInit();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -245,10 +268,12 @@
         private Button button7;
         private Label label1;
         private PictureBox pictureBox1;
-        private Button button6;
+        private Button salesBtn;
         private Button button5;
         private Panel homePanel;
-        private DataGridView dataGridView1;
+        private DataGridView homeDataGrid;
         private BindingSource dBFuncBindingSource;
+        private DataGridView salesDataGrid;
+        private Label label2;
     }
 }
