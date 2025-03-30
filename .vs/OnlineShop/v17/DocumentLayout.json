@@ -7,8 +7,21 @@
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|e:\\vs repos\\kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+=======
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\arondesu\\desktop\\new folder\\kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\arondesu\\desktop\\new folder\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\arondesu\\desktop\\new folder\\kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+>>>>>>> b92c8a3a909643fd00ea9059fb1f0daa52129434
     }
   ],
   "DocumentGroupContainers": [
@@ -18,11 +31,38 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
+<<<<<<< HEAD
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+=======
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New Folder\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\arondesu\\Desktop\\New Folder\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHgSURBVEhLtZVdTsJAFIWroTyDK3ELJuCbsA1ZhQRFRETkV6yV8AAsgAI\u002BugW3wAr0RUop7Tj3dmagtLXFhJOc3mEynXu\u002BSWmlg4oQcsSGqOFwSKcIzAcY7rFZdeZkWf42DOMsl7v8ZNsEazAYEMuyXF5zr7nXWG3bJqPRiMznc6Kqb1\u002BtdueUbePSMasoSASiN0sW2AJbwrSRMKwBJZNJKZVOJeJx\u002BaPRbHma\u002BDbAqzOMpBPa5DydxiZsSijGKoo30MZjrH8pm81iVRQFKygmxxNs6K9\u002Bv4/nvlqZ1CticBuOl8IGWS4NogsviWmuSe2p7uH2EMAKTQsn2FUmkxUnEKher4dPjH9ymjogva47BNXHWhgBXCRpomnOxB6KRKCqKhJsznoneUD6BSOoPFSjEUwnByJQlFf8l7rTO6ndyalZcm7TNEn5vhJG4CD8h\u002BAikwkn6HZf8F3jSSu8OfNt/yx0sqIEpbtyOAGsmE4nzsQeikTQ7jwTkxKItCyxX2qenBsIirelcAJAmB2KoNlq4/Psl1Z4K/UuQeGmGIGA6n02xbqPgIBuwH4FqN5o4vMMKYOSBhkI8oVrTwfPBwdWxOQYWt7D/P5duT768D7HJhFtU9MBVj5XyF\u002B59jywJOkX7ucXnGOxDX8AAAAASUVORK5CYII=",
+              "WhenOpened": "2025-03-30T08:15:11.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Kitchen Wise Form\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\LoginForm.cs",
+              "RelativeToolTip": "Kitchen Wise Form\\LoginForm.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T07:56:58.453Z",
+              "EditorCaption": ""
+>>>>>>> b92c8a3a909643fd00ea9059fb1f0daa52129434
             },
             {
               "$type": "Document",
@@ -39,12 +79,21 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 1,
               "Title": "OnlineShop.cs [Design]",
               "DocumentMoniker": "E:\\VS Repos\\Kitchen Wise Form\\OnlineShop.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\OnlineShop.cs",
               "ToolTip": "E:\\VS Repos\\Kitchen Wise Form\\OnlineShop.cs [Design]",
               "RelativeToolTip": "Kitchen Wise Form\\OnlineShop.cs [Design]",
+=======
+              "DocumentIndex": 3,
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Kitchen Wise Form\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\LoginForm.cs [Design]",
+              "RelativeToolTip": "Kitchen Wise Form\\LoginForm.cs [Design]",
+>>>>>>> b92c8a3a909643fd00ea9059fb1f0daa52129434
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T08:51:50.097Z",
               "EditorCaption": " [Design]"
