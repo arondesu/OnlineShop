@@ -55,4 +55,6 @@ nunit-*.xml
 
 .vs/
 
-.database/
+.DATABASE/appliance_db.mdf
+
+.DATABASE/appliance_db_log.ldf
