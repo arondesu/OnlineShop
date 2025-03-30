@@ -18,43 +18,49 @@ namespace OnlineShop
         public LoginForm()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen; // Center the form on startup
+            this.StartPosition = FormStartPosition.CenterScreen;
+            txtPassword.UseSystemPasswordChar = true;    // This will use the system's default password character
         }
 
-        //string connectionString = @"DESKTOP-2FPFFH6\\SQLEXPRESS;Database=appliance_db;Integrated Security=True;";
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //String username = txtUsername.Text;
-            //String password = txtPassword.Text;
+            String username = txtUsername.Text;
+            String password = txtPassword.Text;
 
-            //try
-            //{
-            //    String query = "SELECT * FROM Login WHERE Username = @username AND Password = @password";
-            //    SqlDataAdapter sda = new SqlDataAdapter();
-            //    sda.SelectCommand.Parameters.AddWithValue("@username", username);
-            //    sda.SelectCommand.Parameters.AddWithValue("@password", password);
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""E:\VS Repos\DATABASE\appliance_db.mdf"";Integrated Security=True"))
+                {
+                    connection.Open();
+                    String query = "SELECT * FROM Login WHERE Username = @username AND Password = @password";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@username", username);
+                        command.Parameters.AddWithValue("@password", password);
 
-            //    DataTable dtbl = new DataTable();
-            //    sda.Fill(dtbl);
+                        using (SqlDataAdapter sda = new SqlDataAdapter(command))
+                        {
+                            DataTable dtbl = new DataTable();
+                            sda.Fill(dtbl);
 
-            //    if (dtbl.Rows.Count == 0)
-            //    {
-            //        username = txtUsername.Text;
-            //        password = txtPassword.Text;
-
-            //        this.Hide();  // Hide the current form
-            //        InventoryForm invenForm = new InventoryForm();
-            //        invenForm.Show();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+                            if (dtbl.Rows.Count > 0)
+                            {
+                                this.Hide();  // Hide the current form
+                                InventoryForm invenForm = new InventoryForm();
+                                invenForm.Show();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -86,6 +86,7 @@
             btnMinus = new Button();
             lstboxOrderList = new ListBox();
             lblOrderSummary = new Label();
+            loginBtn = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -575,7 +576,7 @@
             menuStrip1.Dock = DockStyle.None;
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { LoginMenu });
-            menuStrip1.Location = new Point(1098, 5);
+            menuStrip1.Location = new Point(1868, 5);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(6, 1, 0, 1);
             menuStrip1.Size = new Size(57, 24);
@@ -639,7 +640,7 @@
             pnlCart.Controls.Add(lstboxOrderList);
             pnlCart.Controls.Add(lblOrderSummary);
             pnlCart.Location = new Point(778, 29);
-            pnlCart.Margin = new Padding(2, 2, 2, 2);
+            pnlCart.Margin = new Padding(2);
             pnlCart.Name = "pnlCart";
             pnlCart.Size = new Size(379, 792);
             pnlCart.TabIndex = 6;
@@ -733,7 +734,7 @@
             // btnPlus
             // 
             btnPlus.Location = new Point(218, 341);
-            btnPlus.Margin = new Padding(2, 2, 2, 2);
+            btnPlus.Margin = new Padding(2);
             btnPlus.Name = "btnPlus";
             btnPlus.Size = new Size(32, 27);
             btnPlus.TabIndex = 4;
@@ -744,7 +745,7 @@
             // btnMinus
             // 
             btnMinus.Location = new Point(118, 341);
-            btnMinus.Margin = new Padding(2, 2, 2, 2);
+            btnMinus.Margin = new Padding(2);
             btnMinus.Name = "btnMinus";
             btnMinus.Size = new Size(32, 27);
             btnMinus.TabIndex = 3;
@@ -757,7 +758,7 @@
             lstboxOrderList.FormattingEnabled = true;
             lstboxOrderList.ItemHeight = 15;
             lstboxOrderList.Location = new Point(16, 134);
-            lstboxOrderList.Margin = new Padding(2, 2, 2, 2);
+            lstboxOrderList.Margin = new Padding(2);
             lstboxOrderList.Name = "lstboxOrderList";
             lstboxOrderList.Size = new Size(334, 199);
             lstboxOrderList.TabIndex = 2;
@@ -773,11 +774,22 @@
             lblOrderSummary.TabIndex = 1;
             lblOrderSummary.Text = "Order Summary:";
             // 
+            // loginBtn
+            // 
+            loginBtn.Location = new Point(1176, 10);
+            loginBtn.Name = "loginBtn";
+            loginBtn.Size = new Size(75, 23);
+            loginBtn.TabIndex = 7;
+            loginBtn.Text = "Login";
+            loginBtn.UseVisualStyleBackColor = true;
+            loginBtn.Click += loginBtn_Click;
+            // 
             // MainShop
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(899, 603);
+            ClientSize = new Size(1284, 790);
+            Controls.Add(loginBtn);
             Controls.Add(label2);
             Controls.Add(pnlCart);
             Controls.Add(panel2);
@@ -870,5 +882,6 @@
         private Label lblShopCart;
         private Label Deals;
         private PictureBox pictureBox10;
+        private Button loginBtn;
     }
 }

@@ -42,10 +42,9 @@
             itemName.AutoSize = true;
             itemName.Font = new Font("Segoe UI Emoji", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             itemName.ForeColor = Color.Black;
-            itemName.Location = new Point(284, 183);
-            itemName.Margin = new Padding(4, 0, 4, 0);
+            itemName.Location = new Point(199, 110);
             itemName.Name = "itemName";
-            itemName.Size = new Size(125, 30);
+            itemName.Size = new Size(87, 20);
             itemName.TabIndex = 14;
             itemName.Text = "Username:";
             // 
@@ -54,10 +53,9 @@
             itemNo.AutoSize = true;
             itemNo.Font = new Font("Segoe UI Emoji", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             itemNo.ForeColor = Color.Black;
-            itemNo.Location = new Point(284, 281);
-            itemNo.Margin = new Padding(4, 0, 4, 0);
+            itemNo.Location = new Point(199, 169);
             itemNo.Name = "itemNo";
-            itemNo.Size = new Size(118, 30);
+            itemNo.Size = new Size(83, 20);
             itemNo.TabIndex = 13;
             itemNo.Text = "Password:";
             // 
@@ -66,32 +64,34 @@
             price.AutoSize = true;
             price.Font = new Font("Segoe UI Emoji", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             price.ForeColor = Color.Black;
-            price.Location = new Point(293, 92);
-            price.Margin = new Padding(4, 0, 4, 0);
+            price.Location = new Point(205, 55);
             price.Name = "price";
-            price.Size = new Size(175, 30);
+            price.Size = new Size(124, 20);
             price.TabIndex = 15;
             price.Text = "Welcome Back!";
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(284, 229);
+            txtUsername.Location = new Point(199, 137);
+            txtUsername.Margin = new Padding(2, 2, 2, 2);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(150, 31);
+            txtUsername.Size = new Size(106, 23);
             txtUsername.TabIndex = 26;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(284, 314);
+            txtPassword.Location = new Point(199, 188);
+            txtPassword.Margin = new Padding(2, 2, 2, 2);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(150, 31);
+            txtPassword.Size = new Size(106, 23);
             txtPassword.TabIndex = 27;
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(297, 404);
+            btnLogin.Location = new Point(208, 242);
+            btnLogin.Margin = new Padding(2, 2, 2, 2);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(112, 34);
+            btnLogin.Size = new Size(78, 23);
             btnLogin.TabIndex = 28;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
@@ -99,10 +99,10 @@
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(726, 487);
+            ClientSize = new Size(508, 292);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
@@ -110,7 +110,7 @@
             Controls.Add(itemName);
             Controls.Add(price);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "LoginForm";
             Text = "KitchenWise";
             ResumeLayout(false);

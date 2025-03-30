@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Data.SqlClient;
 
 //testing the changes 5:32 PM
 
@@ -308,17 +309,27 @@ namespace OnlineShop
 
         private void LoginMenu_Click(object sender, EventArgs e)
         {
+            /*if (admin == null || admin.IsDisposed)
+            {
+                admin = new LoginForm();
+            }
+            admin.Show();
+            admin.BringToFront();*/
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
             if (admin == null || admin.IsDisposed)
             {
                 admin = new LoginForm();
             }
             admin.Show();
             admin.BringToFront();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
