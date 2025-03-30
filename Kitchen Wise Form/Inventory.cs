@@ -79,51 +79,23 @@ namespace OnlineShop
                 using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""E:\VS Repos\DATABASE\appliance_db.mdf"";Integrated Security=True"))
                 {
                     connection.Open();
-                    Console.WriteLine("Database connected successfully!");
-
-                    // Test if table exists
-                    string checkTable = "SELECT COUNT(*) FROM sys.tables WHERE name = 'Sales'";
-                    using (SqlCommand cmd = new SqlCommand(checkTable, connection))
-                    {
-                        int tableExists = (int)cmd.ExecuteScalar();
-                        if (tableExists == 0)
-                        {
-                            Console.WriteLine("Inventory table does not exist!");
-                            return;
-                        }
-                    }
-
-                    // Test if data exists
-                    string countQuery = "SELECT COUNT(*) FROM Sales";
-                    using (SqlCommand cmd = new SqlCommand(countQuery, connection))
-                    {
-                        int rowCount = (int)cmd.ExecuteScalar();
-                        Console.WriteLine($"Number of rows in Sales: {rowCount}");
-                    }
-
-                    // Original data loading code
                     string query = "SELECT * FROM Sales";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    if (dt.Rows.Count > 0)
-                    {
-                        salesDataGrid.DataSource = dt;
-                        salesDataGrid.AutoGenerateColumns = true;
-                        salesDataGrid.Visible = true;
-                        salesDataGrid.Refresh();
-                        salesDataGrid.AutoResizeColumns();
-                        salesDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
+                    salesDataGrid.DataSource = dt;
+                    salesDataGrid.AutoGenerateColumns = true;
+                    salesDataGrid.ReadOnly = true;
+                    salesDataGrid.AllowUserToAddRows = false;
+                    salesDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Connection Error: " + ex.Message + "\n\nStack Trace: " + ex.StackTrace, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading sales data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void homeBtn_Click(object sender, EventArgs e)
         {
             LoadInventoryData(); // Refresh data when home button is clicked
@@ -160,9 +132,9 @@ namespace OnlineShop
 
         private void salesBtn_Click(object sender, EventArgs e)
         {
+            LoadSalesData();
             homeDataGrid.Visible = false;
             salesDataGrid.Visible = true;
-            LoadSalesData();
         }
     }
 }
