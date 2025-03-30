@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
 
+//hi nikol ni
+
 namespace OnlineShop
 {
     public partial class MainShop : Form
@@ -312,6 +314,11 @@ namespace OnlineShop
             }
             admin.Show();
             admin.BringToFront();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
