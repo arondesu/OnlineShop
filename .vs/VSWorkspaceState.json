@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DATABASE",
+    "\\Kitchen Wise Form"
   ],
-<<<<<<< HEAD
   "SelectedNode": "\\OnlineShop.sln",
-=======
-  "SelectedNode": "\\DATABASE\\DBFunc.cs",
->>>>>>> b92c8a3a909643fd00ea9059fb1f0daa52129434
   "PreviewInSolutionExplorer": false
 }
