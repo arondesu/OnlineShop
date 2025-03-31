@@ -15,6 +15,7 @@ namespace OnlineShop
 {
     public partial class LoginForm : Form
     {
+        DBFunc func = new DBFunc();
         public LoginForm()
         {
             InitializeComponent();
@@ -24,42 +25,20 @@ namespace OnlineShop
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+
             String username = txtUsername.Text;
             String password = txtPassword.Text;
 
-            try
+            if (func.isLoginTrue(username, password))
             {
-                using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""E:\VS Repos\DATABASE\appliance_db.mdf"";Integrated Security=True"))
-                {
-                    connection.Open();
-                    String query = "SELECT * FROM Login WHERE Username = @username AND Password = @password";
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@username", username);
-                        command.Parameters.AddWithValue("@password", password);
-
-                        using (SqlDataAdapter sda = new SqlDataAdapter(command))
-                        {
-                            DataTable dtbl = new DataTable();
-                            sda.Fill(dtbl);
-
-                            if (dtbl.Rows.Count > 0)
-                            {
-                                this.Hide();  // Hide the current form
-                                InventoryForm invenForm = new InventoryForm();
-                                invenForm.Show();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                }
+                MessageBox.Show("Login Successful!");
+                this.Hide();
+                InventoryForm inventoryForm = new InventoryForm();
+                inventoryForm.Show();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
