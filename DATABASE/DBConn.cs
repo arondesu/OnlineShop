@@ -16,7 +16,7 @@ namespace OnlineShop.DATABASE
         public MySqlConnection GetConnection()
         {
             try
-            {
+            {//to be fixed
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     //conn = new MySqlConnection(connectionString);
