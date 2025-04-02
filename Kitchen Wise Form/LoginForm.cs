@@ -7,8 +7,12 @@ namespace OnlineShop
 {
     public partial class LoginForm : Form
     {
+<<<<<<< HEAD
         private DBConn dbConn;
 
+=======
+        DBFunc func = new DBFunc();
+>>>>>>> d6b6cfbfa4f9f904b26b76b11534999221329988
         public LoginForm()
         {
             InitializeComponent();
@@ -18,6 +22,7 @@ namespace OnlineShop
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             try
             {
                 using (SqlConnection connection = dbConn.GetConnection())
@@ -42,10 +47,26 @@ namespace OnlineShop
                         }
                     }
                 }
-            }
-            catch (Exception ex)
+=======
+
+            String username = txtUsername.Text;
+            String password = txtPassword.Text;
+
+            if (func.isLoginTrue(username, password))
             {
+                MessageBox.Show("Login Successful!");
+                this.Hide();
+                InventoryForm inventoryForm = new InventoryForm();
+                inventoryForm.Show();
+>>>>>>> d6b6cfbfa4f9f904b26b76b11534999221329988
+            }
+            else
+            {
+<<<<<<< HEAD
                 MessageBox.Show($"Error during login: {ex.Message}");
+=======
+                MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+>>>>>>> d6b6cfbfa4f9f904b26b76b11534999221329988
             }
         }
     }

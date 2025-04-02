@@ -1,14 +1,43 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\VS Repos\\",
+  "WorkspaceRootPath": "C:\\Users\\arondesu\\Desktop\\New Folder\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|e:\\vs repos\\kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|e:\\vs repos\\database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\arondesu\\desktop\\new folder\\database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\arondesu\\desktop\\new folder\\database\\dbfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\dbfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\arondesu\\desktop\\new folder\\kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\arondesu\\desktop\\new folder\\kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|C:\\Users\\arondesu\\Desktop\\New Folder\\kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\arondesu\\desktop\\new folder\\kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|C:\\Users\\arondesu\\Desktop\\New Folder\\kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+>>>>>>> d6b6cfbfa4f9f904b26b76b11534999221329988
     }
   ],
   "DocumentGroupContainers": [
@@ -29,16 +58,44 @@
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
+<<<<<<< HEAD
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+=======
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OnlineShop.cs",
+              "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\OnlineShop.cs",
+              "RelativeDocumentMoniker": "Kitchen Wise Form\\OnlineShop.cs",
+              "ToolTip": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\OnlineShop.cs",
+              "RelativeToolTip": "Kitchen Wise Form\\OnlineShop.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T10:17:52.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DBFunc.cs",
+              "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New Folder\\DATABASE\\DBFunc.cs",
+              "RelativeDocumentMoniker": "DATABASE\\DBFunc.cs",
+              "ToolTip": "C:\\Users\\arondesu\\Desktop\\New Folder\\DATABASE\\DBFunc.cs",
+              "RelativeToolTip": "DATABASE\\DBFunc.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T08:55:22.476Z",
+              "EditorCaption": ""
+>>>>>>> d6b6cfbfa4f9f904b26b76b11534999221329988
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+<<<<<<< HEAD
               "Title": "LoginForm.cs",
               "DocumentMoniker": "E:\\VS Repos\\Kitchen Wise Form\\LoginForm.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\LoginForm.cs",
@@ -47,10 +104,21 @@
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T08:12:37.214Z",
+=======
+              "Title": "DBConn.cs",
+              "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New Folder\\DATABASE\\DBConn.cs",
+              "RelativeDocumentMoniker": "DATABASE\\DBConn.cs",
+              "ToolTip": "C:\\Users\\arondesu\\Desktop\\New Folder\\DATABASE\\DBConn.cs*",
+              "RelativeToolTip": "DATABASE\\DBConn.cs*",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwBUAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T02:26:59.13Z",
+>>>>>>> d6b6cfbfa4f9f904b26b76b11534999221329988
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 1,
               "Title": "DBConn.cs",
               "DocumentMoniker": "E:\\VS Repos\\DATABASE\\DBConn.cs",
@@ -60,7 +128,53 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAACHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T07:54:46.554Z",
+=======
+              "DocumentIndex": 2,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Kitchen Wise Form\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\LoginForm.cs",
+              "RelativeToolTip": "Kitchen Wise Form\\LoginForm.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAwB0AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T02:07:28.383Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Inventory.cs",
+              "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\Inventory.cs",
+              "RelativeDocumentMoniker": "Kitchen Wise Form\\Inventory.cs",
+              "ToolTip": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\Inventory.cs",
+              "RelativeToolTip": "Kitchen Wise Form\\Inventory.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwB4AAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T11:34:29.056Z",
+>>>>>>> d6b6cfbfa4f9f904b26b76b11534999221329988
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Kitchen Wise Form\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\LoginForm.cs [Design]",
+              "RelativeToolTip": "Kitchen Wise Form\\LoginForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T02:07:20.789Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Inventory.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\Inventory.cs",
+              "RelativeDocumentMoniker": "Kitchen Wise Form\\Inventory.cs",
+              "ToolTip": "C:\\Users\\arondesu\\Desktop\\New Folder\\Kitchen Wise Form\\Inventory.cs [Design]",
+              "RelativeToolTip": "Kitchen Wise Form\\Inventory.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T02:06:58.151Z"
             }
           ]
         }

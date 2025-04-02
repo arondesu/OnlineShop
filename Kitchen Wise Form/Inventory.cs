@@ -25,7 +25,7 @@ namespace OnlineShop
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""E:\VS Repos\DATABASE\appliance_db.mdf"";Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\arondesu\Desktop\New Folder\DATABASE\appliance_db.mdf"";Integrated Security=True"))
                 {
                     connection.Open();
                     Console.WriteLine("Database connected successfully!");
@@ -76,7 +76,7 @@ namespace OnlineShop
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""E:\VS Repos\DATABASE\appliance_db.mdf"";Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\arondesu\Desktop\New Folder\DATABASE\appliance_db.mdf"";Integrated Security=True"))
                 {
                     connection.Open();
                     string query = "SELECT * FROM Sales";

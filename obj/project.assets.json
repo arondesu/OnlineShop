@@ -1769,23 +1769,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Nikkis\\.nuget\\packages\\": {},
-    "E:\\Microsoft Visual Studio\\NuGetPackages": {}
+    "C:\\Users\\arondesu\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\VS Repos\\OnlineShop.csproj",
+      "projectUniqueName": "C:\\Users\\arondesu\\Desktop\\New Folder\\OnlineShop.csproj",
       "projectName": "OnlineShop",
-      "projectPath": "E:\\VS Repos\\OnlineShop.csproj",
-      "packagesPath": "C:\\Users\\Nikkis\\.nuget\\packages\\",
-      "outputPath": "E:\\VS Repos\\obj\\",
+      "projectPath": "C:\\Users\\arondesu\\Desktop\\New Folder\\OnlineShop.csproj",
+      "packagesPath": "C:\\Users\\arondesu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\arondesu\\Desktop\\New Folder\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "E:\\Microsoft Visual Studio\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Nikkis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\arondesu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1846,7 +1846,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
