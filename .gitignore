@@ -53,5 +53,7 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 
+.vs/slnx.sqlite
+
 .vs/
 
