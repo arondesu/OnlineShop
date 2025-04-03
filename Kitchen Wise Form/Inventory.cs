@@ -8,64 +8,86 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using OnlineShop.DATABASE;
 
 namespace OnlineShop
 {
     public partial class InventoryForm : Form
     {
+        private DBConn dbConn;
+        private DBFunc dbFunc;
+
         public InventoryForm()
         {
             InitializeComponent();
+            dbConn = new DBConn();
+            dbFunc = new DBFunc();
             this.StartPosition = FormStartPosition.CenterScreen;
             homeDataGrid.Visible = false; 
             salesDataGrid.Visible = false;
         }
 
-        private void LoadInventoryData()
+        /*public void CheckInventory(string productID) //called from dbFunc.cs
+        {
+            // Call the checkInvTable method
+            DataTable inventoryTable = dbFunc.checkInvTable(productID);
+
+            // Check if the DataTable is not null and has rows
+            if (inventoryTable != null && inventoryTable.Rows.Count > 0)
+            {
+                Console.WriteLine("Inventory data retrieved successfully.");
+                // Process the DataTable as needed
+            }
+            else
+            {
+                Console.WriteLine("No inventory data found or an error occurred.");
+            }
+        }*/
+
+        private void LoadInventoryData() //plan to transfer this to dbFunc.cs
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""E:\VS Repos\DATABASE\appliance_db.mdf"";Integrated Security=True"))
+                using SqlConnection connection = dbConn.GetConnection();
+                connection.Open();
+                Console.WriteLine("Database connected successfully!");
+
+                // Test if table exists
+                string checkTable = "SELECT COUNT(*) FROM sys.tables WHERE name = 'Inventory'";
+                using SqlCommand cmdTable = new SqlCommand(checkTable, connection);
+
+                int tableExists = (int)cmdTable.ExecuteScalar();
+                if (tableExists == 0)
                 {
-                    connection.Open();
-                    Console.WriteLine("Database connected successfully!");
-
-                    // Test if table exists
-                    string checkTable = "SELECT COUNT(*) FROM sys.tables WHERE name = 'Inventory'";
-                    using (SqlCommand cmd = new SqlCommand(checkTable, connection))
-                    {
-                        int tableExists = (int)cmd.ExecuteScalar();
-                        if (tableExists == 0)
-                        {
-                            Console.WriteLine("Inventory table does not exist!");
-                            return;
-                        }
-                    }
-
-                    // Test if data exists
-                    string countQuery = "SELECT COUNT(*) FROM Inventory";
-                    using (SqlCommand cmd = new SqlCommand(countQuery, connection))
-                    {
-                        int rowCount = (int)cmd.ExecuteScalar();
-                        Console.WriteLine($"Number of rows in Inventory: {rowCount}");
-                    }
-
-                    // Original data loading code
-                    string query = "SELECT * FROM Inventory";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    
-                    if (dt.Rows.Count > 0)
-                    {
-                        homeDataGrid.DataSource = dt;
-                        homeDataGrid.AutoGenerateColumns = true;
-                        homeDataGrid.Visible = true;
-                        homeDataGrid.Refresh();
-                        homeDataGrid.AutoResizeColumns();
-                        homeDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
+                    MessageBox.Show("Inventory table does not exist!");
+                    return;
                 }
+
+
+                //Test if data exists
+                string countQuery = "SELECT COUNT(*) FROM Inventory";
+                using SqlCommand cmdData = new SqlCommand(countQuery, connection);
+
+                int rowCount = (int)cmdData.ExecuteScalar();
+                Console.WriteLine($"Number of rows in Inventory: {rowCount}");
+
+
+                // Original data loading code
+                string query = "SELECT * FROM Inventory";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    homeDataGrid.DataSource = dt;
+                    homeDataGrid.AutoGenerateColumns = true;
+                    homeDataGrid.Visible = true;
+                    homeDataGrid.Refresh();
+                    homeDataGrid.AutoResizeColumns();
+                    homeDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+
             }
             catch (Exception ex)
             {
@@ -76,20 +98,21 @@ namespace OnlineShop
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""E:\VS Repos\DATABASE\appliance_db.mdf"";Integrated Security=True"))
-                {
-                    connection.Open();
-                    string query = "SELECT * FROM Sales";
+                using SqlConnection connection = dbConn.GetConnection();
+                connection.Open();
+                Console.WriteLine("Database connected successfully!");
+
+                string query = "SELECT * FROM Sales";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
                     salesDataGrid.DataSource = dt;
                     salesDataGrid.AutoGenerateColumns = true;
-                    salesDataGrid.ReadOnly = true;
-                    salesDataGrid.AllowUserToAddRows = false;
+                salesDataGrid.Visible = true;
+                salesDataGrid.Refresh();
+                salesDataGrid.AutoResizeColumns();
                     salesDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                }
             }
             catch (Exception ex)
             {
@@ -98,7 +121,8 @@ namespace OnlineShop
         }
         private void homeBtn_Click(object sender, EventArgs e)
         {
-            LoadInventoryData(); // Refresh data when home button is clicked
+            LoadInventoryData();
+            //CheckInventory("someProductID"); //plan for calling from dbFunc // Replace "someProductID" with the actual product ID you want to check
             homeDataGrid.Visible = true;
             salesDataGrid.Visible = false;
         }

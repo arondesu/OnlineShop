@@ -9,37 +9,84 @@ public class DBFunc
 
     private DBConn dbConn = new DBConn();
 
-    /*    public bool isLoginTrue(string username, string password)
+    //use this file to improve readability
+
+    public bool isLoginTrue(string username, string password)//transfered from LoginForm.cs func for login btn
+    {
+        try
         {
-            try
-            {
-                using MySqlConnection conn = dbConn.GetConnection();
+            using SqlConnection conn = dbConn.GetConnection();
 
-                conn.Open();
+            conn.Open();
 
-                string query = "SELECT * FROM Login WHERE Username = @username AND Password = @password";
+            string query = "SELECT COUNT(*) FROM Login WHERE Username = @username AND Password = @password";
 
-                using MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@username", username);
-                command.Parameters.AddWithValue("@password", password);
+            using SqlCommand command = new SqlCommand(query, conn);
+            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@password", password);
 
-                int count = Convert.ToInt32(command.ExecuteScalar());
+            int userCount = Convert.ToInt32(command.ExecuteScalar());
 
-                if (count > 0)
-                {
-                    MessageBox.Show("Login Successful!");
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
+            if (userCount > 0)
+            {  
+                return true;
             }
-            catch (Exception e)
+            else
             {
-                MessageBox.Show("Error: " + e.Message);
                 return false;
             }
-        }*/
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show("Error: " + e.Message);
+            return false;
+        }
+    }
+
+    public DataTable checkInvTable(string ProductID) //to be check if working 
+    {
+        try
+        {
+            using SqlConnection connection = dbConn.GetConnection();
+            connection.Open();
+            Console.WriteLine("Database connected successfully!");
+
+            // Test if table exists
+            string checkTable = "SELECT COUNT(*) FROM sys.tables WHERE name = 'Inventory'";
+            using SqlCommand cmdTable = new SqlCommand(checkTable, connection);
+
+            int tableExists = (int)cmdTable.ExecuteScalar();
+            if (tableExists == 0)
+            {
+                MessageBox.Show("Inventory table does not exist!");
+            }
+
+
+            //Test if data exists
+            string countQuery = "SELECT COUNT(*) FROM Inventory";
+            using SqlCommand cmdData = new SqlCommand(countQuery, connection);
+
+            int rowCount = (int)cmdData.ExecuteScalar();
+            Console.WriteLine($"Number of rows in Inventory: {rowCount}");
+
+
+            // Original data loading code
+            string query = "SELECT * FROM Inventory";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                return dt;
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Connection Error: " + ex.Message + "\n\nStack Trace: " + ex.StackTrace, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+        }
+        return null;
+    }
+
 }

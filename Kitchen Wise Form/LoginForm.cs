@@ -8,11 +8,13 @@ namespace OnlineShop
     public partial class LoginForm : Form
     {
         private DBConn dbConn;
+        private DBFunc dbFunc;  
 
         public LoginForm()
         {
             InitializeComponent();
             dbConn = new DBConn();
+            dbFunc = new DBFunc();
             txtPassword.PasswordChar = '*'; // Set the password character
         }
 
@@ -20,33 +22,28 @@ namespace OnlineShop
         {
             try
             {
-                using (SqlConnection connection = dbConn.GetConnection())
-                {
-                    string query = "SELECT COUNT(*) FROM Login WHERE Username = @username AND Password = @password";
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
-                    {
-                        cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-                        cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                string user = txtUsername.Text;
+                string pass = txtPassword.Text;
 
-                        int userCount = (int)cmd.ExecuteScalar();
-                        if (userCount > 0)
-                        {
-                            MessageBox.Show("Login successful!");
-                            this.Hide(); // Hide the current login form
-                            InventoryForm inv = new InventoryForm();
-                            inv.Show();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid username or password.");
-                        }
-                    }
+                bool isLoginTrue = dbFunc.isLoginTrue(user, pass);
+
+                if (isLoginTrue)
+                {
+                    MessageBox.Show("Login Success.");
+                    this.Hide(); // Hide the current login form
+                    InventoryForm inv = new InventoryForm();
+                    inv.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Login Failed. Wrong Username or Password");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error during login: {ex.Message}");
             }
+            
         }
     }
 }

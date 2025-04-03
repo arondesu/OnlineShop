@@ -37,8 +37,8 @@
             panel2 = new Panel();
             homePanel = new Panel();
             homeDataGrid = new DataGridView();
-            dBFuncBindingSource = new BindingSource(components);
             salesDataGrid = new DataGridView();
+            dBFuncBindingSource = new BindingSource(components);
             label2 = new Label();
             panel3 = new Panel();
             salesBtn = new Button();
@@ -52,8 +52,8 @@
             panel2.SuspendLayout();
             homePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)homeDataGrid).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dBFuncBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)salesDataGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dBFuncBindingSource).BeginInit();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -66,7 +66,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(899, 83);
+            panel1.Size = new Size(1144, 83);
             panel1.TabIndex = 27;
             // 
             // button7
@@ -105,7 +105,7 @@
             panel2.Location = new Point(210, 83);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(689, 385);
+            panel2.Size = new Size(934, 572);
             panel2.TabIndex = 28;
             // 
             // homePanel
@@ -114,25 +114,18 @@
             homePanel.Controls.Add(homeDataGrid);
             homePanel.Controls.Add(salesDataGrid);
             homePanel.Controls.Add(label2);
-            homePanel.Location = new Point(16, 14);
+            homePanel.Location = new Point(5, 5);
             homePanel.Name = "homePanel";
-            homePanel.Size = new Size(661, 359);
+            homePanel.Size = new Size(926, 564);
             homePanel.TabIndex = 0;
             // 
             // homeDataGrid
             // 
-            homeDataGrid.AutoGenerateColumns = true;  // Change from false to true
             homeDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             homeDataGrid.Location = new Point(3, 3);
             homeDataGrid.Name = "homeDataGrid";
-            homeDataGrid.Size = new Size(655, 353);
+            homeDataGrid.Size = new Size(920, 558);
             homeDataGrid.TabIndex = 0;
-            // Remove the DataSource binding here
-            // homeDataGrid.DataSource = dBFuncBindingSource;  <- Remove this line
-            // 
-            // dBFuncBindingSource
-            // 
-            dBFuncBindingSource.DataSource = typeof(DBFunc);
             // 
             // salesDataGrid
             // 
@@ -143,6 +136,10 @@
             salesDataGrid.Name = "salesDataGrid";
             salesDataGrid.Size = new Size(655, 353);
             salesDataGrid.TabIndex = 1;
+            // 
+            // dBFuncBindingSource
+            // 
+            dBFuncBindingSource.DataSource = typeof(DBFunc);
             // 
             // label2
             // 
@@ -166,7 +163,7 @@
             panel3.Location = new Point(0, 83);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(210, 385);
+            panel3.Size = new Size(210, 572);
             panel3.TabIndex = 28;
             // 
             // salesBtn
@@ -236,7 +233,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(899, 468);
+            ClientSize = new Size(1144, 655);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);
@@ -251,8 +248,8 @@
             homePanel.ResumeLayout(false);
             homePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)homeDataGrid).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dBFuncBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)salesDataGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dBFuncBindingSource).EndInit();
             panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
