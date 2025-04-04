@@ -42,6 +42,42 @@ namespace OnlineShop
             {
                 Console.WriteLine("No inventory data found or an error occurred.");
             }
+
+        //another example of getting data from inv table
+        using SqlConnection connection = dbConn.GetConnection();
+                connection.Open();
+                Console.WriteLine("Database connected successfully!");
+
+        string query = "SELECT ProductId, QuantityInStock, Location FROM Inventory WHERE ProductId = @ProductId";
+            
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ProductId", productId);
+            
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Console.WriteLine($"Product ID: {reader["ProductId"]}");
+                        Console.WriteLine($"Quantity: {reader["QuantityInStock"]}");
+                        Console.WriteLine($"Location: {reader["Location"]}");
+                        Console.WriteLine("---------------------");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"No inventory found for Product ID: {productId}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error checking inventory: {ex.Message}");
+            }
+
         }*/
 
         private void LoadInventoryData() //plan to transfer this to dbFunc.cs

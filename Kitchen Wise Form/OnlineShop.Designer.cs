@@ -776,7 +776,7 @@
             // 
             // loginBtn
             // 
-            loginBtn.Location = new Point(1176, 10);
+            loginBtn.Location = new Point(0, 0);
             loginBtn.Name = "loginBtn";
             loginBtn.Size = new Size(75, 23);
             loginBtn.TabIndex = 7;
