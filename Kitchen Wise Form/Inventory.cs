@@ -23,7 +23,7 @@ namespace OnlineShop
             dbConn = new DBConn();
             dbFunc = new DBFunc();
             this.StartPosition = FormStartPosition.CenterScreen;
-            homeDataGrid.Visible = false; 
+            homeDataGrid.Visible = false;
             salesDataGrid.Visible = false;
         }
 
@@ -139,16 +139,16 @@ namespace OnlineShop
                 Console.WriteLine("Database connected successfully!");
 
                 string query = "SELECT * FROM Sales";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
-                    salesDataGrid.DataSource = dt;
-                    salesDataGrid.AutoGenerateColumns = true;
+                salesDataGrid.DataSource = dt;
+                salesDataGrid.AutoGenerateColumns = true;
                 salesDataGrid.Visible = true;
                 salesDataGrid.Refresh();
                 salesDataGrid.AutoResizeColumns();
-                    salesDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                salesDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {
@@ -195,6 +195,34 @@ namespace OnlineShop
             LoadSalesData();
             homeDataGrid.Visible = false;
             salesDataGrid.Visible = true;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //Call out the LoginForm
+            LoginForm logForm = new LoginForm();
+            logForm.Show();
+            this.Hide(); // Hide the current form
+        }
+
+        private void homePanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

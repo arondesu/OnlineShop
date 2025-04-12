@@ -331,5 +331,35 @@ namespace OnlineShop
             admin.Show();
             admin.BringToFront();
         }
+
+        private void pnlCart_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picCartLogo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
