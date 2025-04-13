@@ -1,21 +1,22 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Windows.Forms;
+// Removed: using System.Data.SqlClient;
+using Microsoft.Data.SqlClient; // Ensure only one SqlClient namespace is used
 
 namespace OnlineShop.DATABASE
 {
     internal class DBConn
     {
-        private SqlConnection conn; // Change MySqlConnection to SqlConnection
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ADMIN\source\repos\OnlineShop\DATABASE\appliance_db.mdf"";Integrated Security=True";
+        private SqlConnection conn; // Use Microsoft.Data.SqlClient.SqlConnection
+        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""E:\VS Repos\DATABASE\appliance_db.mdf"";Integrated Security=True";
 
-        public SqlConnection GetConnection() // Change return type to SqlConnection
+        public SqlConnection GetConnection()
         {
             try
             {
                 conn = new SqlConnection(connectionString); // Initialize SqlConnection
                 conn.Open();
-                Console.WriteLine("Database connected successfully!");//changed to write to console
+                Console.WriteLine("Database connected successfully!");
                 return conn; // Return the SqlConnection object
             }
             catch (Exception)
@@ -23,7 +24,7 @@ namespace OnlineShop.DATABASE
                 Console.WriteLine($"Database connection failed!");
                 throw;
             }
-            finally//added this to close the conenction after each connect
+            finally
             {
                 conn.Close();
             }
