@@ -41,13 +41,13 @@
             dBFuncBindingSource = new BindingSource(components);
             label2 = new Label();
             panel3 = new Panel();
-            button1 = new Button();
             salesBtn = new Button();
             button5 = new Button();
             button4 = new Button();
             button3 = new Button();
             button2 = new Button();
             homeBtn = new Button();
+            button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -183,19 +183,6 @@
             panel3.TabIndex = 28;
             panel3.Paint += panel3_Paint;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(158, 147, 114);
-            button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(49, 666);
-            button1.Name = "button1";
-            button1.Size = new Size(134, 45);
-            button1.TabIndex = 6;
-            button1.Text = "Back";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click_1;
-            // 
             // salesBtn
             // 
             salesBtn.BackColor = Color.FromArgb(189, 196, 212);
@@ -277,6 +264,17 @@
             homeBtn.Text = "Home";
             homeBtn.UseVisualStyleBackColor = false;
             homeBtn.Click += homeBtn_Click;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(158, 147, 114);
+            button1.Location = new Point(49, 611);
+            button1.Name = "button1";
+            button1.Size = new Size(134, 42);
+            button1.TabIndex = 6;
+            button1.Text = "Back";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_2;
             // 
             // InventoryForm
             // 

@@ -197,14 +197,6 @@ namespace OnlineShop
             salesDataGrid.Visible = true;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            //Call out the LoginForm
-            LoginForm logForm = new LoginForm();
-            logForm.Show();
-            this.Hide(); // Hide the current form
-        }
-
         private void homePanel_Paint(object sender, PaintEventArgs e)
         {
 
@@ -223,6 +215,14 @@ namespace OnlineShop
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            //Calling the MainShop form
+            MainShop mn = new MainShop();
+            mn.Show();
+            this.Hide();
         }
     }
 }
