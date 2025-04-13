@@ -15,8 +15,6 @@ namespace OnlineShop
         private List<int> quantities = new List<int>();
         private List<double> prices = new List<double>();
 
-        private LoginForm? admin; // Declare globally so it persists
-
         public MainShop()
         {
             InitializeComponent();
@@ -320,16 +318,6 @@ namespace OnlineShop
         private void label2_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void loginBtn_Click(object sender, EventArgs e)
-        {
-            if (admin == null || admin.IsDisposed)
-            {
-                admin = new LoginForm();
-            }
-            admin.Show();
-            admin.BringToFront();
         }
 
         private void pnlCart_Paint(object sender, PaintEventArgs e)

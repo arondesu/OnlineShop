@@ -71,7 +71,6 @@ E:\VS Repos\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClie
 E:\VS Repos\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 E:\VS Repos\obj\Debug\net8.0-windows\OnlineShop.csproj.AssemblyReference.cache
 E:\VS Repos\obj\Debug\net8.0-windows\OnlineShop.InventoryForm.resources
-E:\VS Repos\obj\Debug\net8.0-windows\OnlineShop.LoginForm.resources
 E:\VS Repos\obj\Debug\net8.0-windows\OnlineShop.MainShop.resources
 E:\VS Repos\obj\Debug\net8.0-windows\OnlineShop.Properties.Resources.resources
 E:\VS Repos\obj\Debug\net8.0-windows\OnlineShop.csproj.GenerateResource.cache
