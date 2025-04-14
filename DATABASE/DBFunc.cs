@@ -1,4 +1,4 @@
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient; // Ensure only one SqlClient namespace is used
 using System.Data;
 using MySql.Data.MySqlClient;
 using OnlineShop;

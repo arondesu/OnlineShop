@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient; // Ensure only one SqlClient namespace is used
 using OnlineShop.DATABASE;
 
 namespace OnlineShop

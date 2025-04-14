@@ -177,10 +177,9 @@
             button1.TabIndex = 6;
             button1.Text = "Back";
             button1.UseVisualStyleBackColor = false;
+
             button1.Click += button1_Click_2;
-            // 
-            // salesBtn
-            // 
+
             salesBtn.BackColor = Color.FromArgb(189, 196, 212);
             salesBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             salesBtn.ForeColor = Color.FromArgb(15, 26, 43);

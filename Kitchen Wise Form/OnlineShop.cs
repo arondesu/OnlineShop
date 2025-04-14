@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 //testing the changes 5:32 PM
 
@@ -318,7 +318,10 @@ namespace OnlineShop
 
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3662dfaca05054cfbe56bc2f472d350411667652
         private void pnlCart_Paint(object sender, PaintEventArgs e)
         {
 
