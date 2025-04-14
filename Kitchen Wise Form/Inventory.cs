@@ -155,7 +155,7 @@ namespace OnlineShop
                 MessageBox.Show("Error loading sales data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void homeBtn_Click(object sender, EventArgs e)
+        private void homeBtn_Click(object sender, EventArgs e) //Items button
         {
             LoadInventoryData();
             //CheckInventory("someProductID"); //plan for calling from dbFunc // Replace "someProductID" with the actual product ID you want to check

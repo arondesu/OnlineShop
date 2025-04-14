@@ -348,5 +348,51 @@ namespace OnlineShop
         {
 
         }
+
+        //start editing here, connect the table to the quantity label:
+        private void gfoodstore_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void smugrack_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mpothold_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sbrazier_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void descascador_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cspong_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sware_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kscale_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tcloth_qty_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

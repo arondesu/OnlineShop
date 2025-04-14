@@ -63,6 +63,16 @@ namespace OnlineShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310 {
+            get {
+                object obj = ResourceManager.GetObject("1486504353-cart-ecommerce-shop-commerce-supermarket-trolley-shopping_81310", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1e5447e1d7ac58b828aedd211d4d45be {
             get {
                 object obj = ResourceManager.GetObject("1e5447e1d7ac58b828aedd211d4d45be", resourceCulture);
