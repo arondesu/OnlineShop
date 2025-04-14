@@ -158,7 +158,6 @@ C:\Users\Woots\Source\Repos\OnlineShop\bin\Debug\net8.0-windows\runtimes\win\lib
 C:\Users\Woots\Source\Repos\OnlineShop\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.csproj.AssemblyReference.cache
 C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.InventoryForm.resources
-C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.LoginForm.resources
 C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.MainShop.resources
 C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.Properties.Resources.resources
 C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.csproj.GenerateResource.cache

@@ -171,6 +171,7 @@
             tcloth_qty.Size = new Size(65, 20);
             tcloth_qty.TabIndex = 47;
             tcloth_qty.Text = "Quantity";
+            tcloth_qty.Click += tcloth_qty_Click;
             // 
             // kscale_qty
             // 
@@ -180,6 +181,7 @@
             kscale_qty.Size = new Size(65, 20);
             kscale_qty.TabIndex = 46;
             kscale_qty.Text = "Quantity";
+            kscale_qty.Click += kscale_qty_Click;
             // 
             // sware_qty
             // 
@@ -189,6 +191,7 @@
             sware_qty.Size = new Size(65, 20);
             sware_qty.TabIndex = 45;
             sware_qty.Text = "Quantity";
+            sware_qty.Click += sware_qty_Click;
             // 
             // cspong_qty
             // 
@@ -198,6 +201,7 @@
             cspong_qty.Size = new Size(65, 20);
             cspong_qty.TabIndex = 44;
             cspong_qty.Text = "Quantity";
+            cspong_qty.Click += cspong_qty_Click;
             // 
             // descascador_qty
             // 
@@ -207,6 +211,7 @@
             descascador_qty.Size = new Size(65, 20);
             descascador_qty.TabIndex = 43;
             descascador_qty.Text = "Quantity";
+            descascador_qty.Click += descascador_qty_Click;
             // 
             // sbrazier_qty
             // 
@@ -216,6 +221,7 @@
             sbrazier_qty.Size = new Size(65, 20);
             sbrazier_qty.TabIndex = 42;
             sbrazier_qty.Text = "Quantity";
+            sbrazier_qty.Click += sbrazier_qty_Click;
             // 
             // gfoodstore_qty
             // 
@@ -225,6 +231,7 @@
             gfoodstore_qty.Size = new Size(65, 20);
             gfoodstore_qty.TabIndex = 41;
             gfoodstore_qty.Text = "Quantity";
+            gfoodstore_qty.Click += gfoodstore_qty_Click;
             // 
             // mpothold_qty
             // 
@@ -234,6 +241,7 @@
             mpothold_qty.Size = new Size(65, 20);
             mpothold_qty.TabIndex = 40;
             mpothold_qty.Text = "Quantity";
+            mpothold_qty.Click += mpothold_qty_Click;
             // 
             // smugrack_qty
             // 
@@ -243,6 +251,7 @@
             smugrack_qty.Size = new Size(65, 20);
             smugrack_qty.TabIndex = 39;
             smugrack_qty.Text = "Quantity";
+            smugrack_qty.Click += smugrack_qty_Click;
             // 
             // button9
             // 

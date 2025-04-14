@@ -86,8 +86,6 @@ namespace OnlineShop
             string quantityInput = Microsoft.VisualBasic.Interaction.InputBox($"Enter quantity for {itemName}:", "Quantity Input", "1");
             if (!int.TryParse(quantityInput, out int quantity) || quantity <= 0)
             {
-                MessageBox.Show("Invalid quantity. Please enter an exact amount.",
-                    "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -320,6 +318,10 @@ namespace OnlineShop
 
         }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 3662dfaca05054cfbe56bc2f472d350411667652
         private void pnlCart_Paint(object sender, PaintEventArgs e)
         {
 
@@ -346,6 +348,52 @@ namespace OnlineShop
         }
 
         private void picCartLogo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //start editing here, connect the table to the quantity label:
+        private void gfoodstore_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void smugrack_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mpothold_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sbrazier_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void descascador_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cspong_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sware_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kscale_qty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tcloth_qty_Click(object sender, EventArgs e)
         {
 
         }

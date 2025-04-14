@@ -118,22 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="43e19e3de4e66d368f488876d54d4fca" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\pictures items\43e19e3de4e66d368f488876d54d4fca.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="717352fb282b041a865e761437a3b311" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\pictures items\717352fb282b041a865e761437a3b311.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="f815b8d765b8b36dbc31967c7fc0ce45" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\pictures items\f815b8d765b8b36dbc31967c7fc0ce45.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="5b0a23344ae75e65ee45c6fd699de638" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\pictures items\5b0a23344ae75e65ee45c6fd699de638.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="717352fb282b041a865e761437a3b311" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\pictures items\717352fb282b041a865e761437a3b311.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="1e5447e1d7ac58b828aedd211d4d45be" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\pictures items\1e5447e1d7ac58b828aedd211d4d45be.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="5b0a23344ae75e65ee45c6fd699de638" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\pictures items\5b0a23344ae75e65ee45c6fd699de638.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="43e19e3de4e66d368f488876d54d4fca" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\pictures items\43e19e3de4e66d368f488876d54d4fca.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="b371e730d18082066616788cbafec851" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\pictures items\b371e730d18082066616788cbafec851.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1486504353-cart-ecommerce-shop-commerce-supermarket-trolley-shopping_81310" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\1486504353-cart-ecommerce-shop-commerce-supermarket-trolley-shopping_81310.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
