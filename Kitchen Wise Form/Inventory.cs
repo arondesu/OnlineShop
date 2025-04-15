@@ -155,13 +155,6 @@ namespace OnlineShop
                 MessageBox.Show("Error loading sales data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void homeBtn_Click(object sender, EventArgs e) //Items button
-        {
-            LoadInventoryData();
-            //CheckInventory("someProductID"); //plan for calling from dbFunc // Replace "someProductID" with the actual product ID you want to check
-            homeDataGrid.Visible = true;
-            salesDataGrid.Visible = false;
-        }
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Check if MainShop is already open
@@ -180,44 +173,35 @@ namespace OnlineShop
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void salesBtn_Click(object sender, EventArgs e)
+        private void salesBtn_Click(object sender, EventArgs e) //transactions should be here
         {
             LoadSalesData();
+            inv_bg_pic.Visible = false;
             homeDataGrid.Visible = false;
             salesDataGrid.Visible = true;
         }
 
-        private void homePanel_Paint(object sender, PaintEventArgs e)
+
+        private void home_btn_Click(object sender, EventArgs e) //brief details of each item?? i need your thoughts.
+        {
+            inv_bg_pic.Visible = true;
+            homeDataGrid.Visible = false;
+            salesDataGrid.Visible = false;
+        }
+
+        private void item_btn_Click(object sender, EventArgs e) //Items button; CRUD operations need to be applied.
         {
 
         }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void invBtn_Click(object sender, EventArgs e) //Inventory button; CRU operations need to be applied.
         {
-
+            LoadInventoryData();
+            //CheckInventory("someProductID"); //plan for calling from dbFunc // Replace "someProductID" with the actual product ID you want to check
+            inv_bg_pic.Visible = false;
+            homeDataGrid.Visible = true;
+            salesDataGrid.Visible = false;
         }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
+        private void bck_btn_Click_2(object sender, EventArgs e)
         {
             //Calling the MainShop form
             MainShop mn = new MainShop();

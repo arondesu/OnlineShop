@@ -23,7 +23,7 @@ namespace OnlineShop
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen; // Center the form on startup
             SetupScrollablePanel(); // Call method to set up the scrollable panel
-            
+
             // Initialize the dictionary with your labels
             quantityLabels = new Dictionary<string, Label>
             {
@@ -37,7 +37,7 @@ namespace OnlineShop
                 {"Kitchen Scale", kscale_qty},
                 {"Table Cloth", tcloth_qty}
             };
-        
+
             // Sync the labels with inventory
             dbFunc.SyncQuantityLabels(quantityLabels);
         }
@@ -256,17 +256,28 @@ namespace OnlineShop
                 return;
             }
 
-            // Show the total amount
+            // Show the total amount and ask if they want to add more items
             string totalAmount = lblTotal.Text.Split('₱')[1];
-            DialogResult result = MessageBox.Show($"Your total amount is ₱{totalAmount}.\nWould you like to purchase more items?",
-                                                  "Checkout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show($"Your total amount is ₱{totalAmount}.\nWould you like to add more items?",
+                                        "Checkout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                MessageBox.Show("Feel free to add more items!", "Continue Shopping", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Continue shopping! Add more items to your cart.", 
+                               "Continue Shopping", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
-            else
+
+            try
             {
+                // Parse the amounts from labels
+                decimal subtotal = decimal.Parse(lblSubtotal.Text.Split('₱')[1]);
+                decimal discount = decimal.Parse(lblDiscount.Text.Split('₱')[1]);
+                decimal total = decimal.Parse(lblTotal.Text.Split('₱')[1]);
+
+                // Process the checkout
+                dbFunc.ProcessCheckout(subtotal, discount, total, itemNames, quantities);
+
                 MessageBox.Show("Thank you for your purchase! We hope to see you again soon.",
                                 "Thank You", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -276,6 +287,11 @@ namespace OnlineShop
                 prices.Clear();
 
                 UpdateOrderSummary();
+                RefreshQuantities(); // Refresh the quantity labels
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during checkout: {ex.Message}", "Checkout Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -327,5 +343,13 @@ namespace OnlineShop
         {
             dbFunc.SyncQuantityLabels(quantityLabels);
         }
+
+        private void inv_btn_Click(object sender, EventArgs e)
+        {
+            InventoryForm inv = new InventoryForm();
+            inv.Show();
+            this.Hide();
+        }
+
     }
 }

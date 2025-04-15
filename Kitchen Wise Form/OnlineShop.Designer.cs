@@ -92,6 +92,7 @@
             lstboxOrderList = new ListBox();
             mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             panel3 = new Panel();
+            inv_btn = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -171,7 +172,6 @@
             tcloth_qty.Size = new Size(65, 20);
             tcloth_qty.TabIndex = 47;
             tcloth_qty.Text = "Quantity";
-            
             // 
             // kscale_qty
             // 
@@ -620,7 +620,6 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 4;
             pictureBox3.TabStop = false;
-           
             // 
             // pictureBox2
             // 
@@ -631,7 +630,6 @@
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
-           
             // 
             // pictureBox1
             // 
@@ -663,7 +661,6 @@
             label2.Size = new Size(907, 46);
             label2.TabIndex = 1;
             label2.Text = "Shop Smarter, Live Better – Exclusive Deals Just for You!";
-      
             // 
             // panel2
             // 
@@ -694,7 +691,6 @@
             pnlCart.Name = "pnlCart";
             pnlCart.Size = new Size(506, 1059);
             pnlCart.TabIndex = 6;
-        
             // 
             // removeBt
             // 
@@ -734,7 +730,6 @@
             picCartLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             picCartLogo.TabIndex = 36;
             picCartLogo.TabStop = false;
-           
             // 
             // lblShopCart
             // 
@@ -823,11 +818,24 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(15, 26, 43);
+            panel3.Controls.Add(inv_btn);
             panel3.Controls.Add(label2);
             panel3.Location = new Point(0, 1);
             panel3.Name = "panel3";
             panel3.Size = new Size(1393, 122);
             panel3.TabIndex = 7;
+            // 
+            // inv_btn
+            // 
+            inv_btn.AutoSize = true;
+            inv_btn.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            inv_btn.Image = Properties.Resources._1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310;
+            inv_btn.Location = new Point(28, 43);
+            inv_btn.Name = "inv_btn";
+            inv_btn.Size = new Size(109, 31);
+            inv_btn.TabIndex = 2;
+            inv_btn.Text = "Inventory";
+            inv_btn.Click += inv_btn_Click;
             // 
             // MainShop
             // 
@@ -926,5 +934,6 @@
         private Label gfoodstore_qty;
         private Label mpothold_qty;
         private Panel panel3;
+        private Label inv_btn;
     }
 }
