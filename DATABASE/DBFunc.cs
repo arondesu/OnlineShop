@@ -89,7 +89,7 @@ public class DBFunc
         return null;
     }
 
-    public void SyncQuantityLabels(Dictionary<string, Label> quantityLabels)
+    public void SyncQuantityLabels(Dictionary<string, Label> quantityLabels) //stocks label are shown
     {
         try
         {
