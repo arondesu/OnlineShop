@@ -89,4 +89,28 @@ public class DBFunc
         return null;
     }
 
+    public void SyncQuantityLabels(Dictionary<string, Label> quantityLabels)
+    {
+        try
+        {
+            DataTable inventoryData = checkInvTable(null);
+            if (inventoryData != null)
+            {
+                foreach (DataRow row in inventoryData.Rows)
+                {
+                    string productName = row["ProductName"].ToString();
+                    int quantity = Convert.ToInt32(row["InStock"]);
+
+                    if (quantityLabels.ContainsKey(productName))
+                    {
+                        quantityLabels[productName].Text = $"In Stock: {quantity}";
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error syncing quantity labels: " + ex.Message, "Sync Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
 }

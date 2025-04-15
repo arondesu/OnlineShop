@@ -15,11 +15,31 @@ namespace OnlineShop
         private List<int> quantities = new List<int>();
         private List<double> prices = new List<double>();
 
+        private Dictionary<string, Label> quantityLabels;
+        private DBFunc dbFunc = new DBFunc();
+
         public MainShop()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen; // Center the form on startup
             SetupScrollablePanel(); // Call method to set up the scrollable panel
+            
+            // Initialize the dictionary with your labels
+            quantityLabels = new Dictionary<string, Label>
+            {
+                {"Glass Food Storage", gfoodstore_qty},
+                {"Steel Mug Rack", smugrack_qty},
+                {"Mitts Potholders", mpothold_qty},
+                {"Steel Brazier Pot", sbrazier_qty},
+                {"Descascador", descascador_qty},
+                {"Cleaning Sponge", cspong_qty},
+                {"Silverware Set", sware_qty},
+                {"Kitchen Scale", kscale_qty},
+                {"Table Cloth", tcloth_qty}
+            };
+        
+            // Sync the labels with inventory
+            dbFunc.SyncQuantityLabels(quantityLabels);
         }
 
         private List<string> availableItems = new List<string>
@@ -303,99 +323,9 @@ namespace OnlineShop
 
         }
 
-        private void LoginMenu_Click(object sender, EventArgs e)
+        private void RefreshQuantities()
         {
-            /*if (admin == null || admin.IsDisposed)
-            {
-                admin = new LoginForm();
-            }
-            admin.Show();
-            admin.BringToFront();*/
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 3662dfaca05054cfbe56bc2f472d350411667652
-        private void pnlCart_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label20_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void picCartLogo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //start editing here, connect the table to the quantity label:
-        private void gfoodstore_qty_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void smugrack_qty_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mpothold_qty_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sbrazier_qty_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void descascador_qty_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cspong_qty_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sware_qty_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kscale_qty_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tcloth_qty_Click(object sender, EventArgs e)
-        {
-
+            dbFunc.SyncQuantityLabels(quantityLabels);
         }
     }
 }
