@@ -8,7 +8,7 @@ namespace OnlineShop.DATABASE
     internal class DBConn
     {
         private SqlConnection conn; // Use Microsoft.Data.SqlClient.SqlConnection
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Woots\source\repos\OnlineShop\DATABASE\appliance_db.mdf"";Integrated Security=True";
+        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ADMIN\source\repos\OnlineShop\DATABASE\appliance_db.mdf"";Integrated Security=True";
 
         public SqlConnection GetConnection()
         {
