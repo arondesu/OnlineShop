@@ -707,7 +707,7 @@
             pnlCart.Controls.Add(btnMinus);
             pnlCart.Controls.Add(lstboxOrderList);
             pnlCart.Location = new Point(776, 109);
-            pnlCart.Margin = new Padding(2, 2, 2, 2);
+            pnlCart.Margin = new Padding(2);
             pnlCart.Name = "pnlCart";
             pnlCart.Size = new Size(443, 713);
             pnlCart.TabIndex = 6;
@@ -802,7 +802,7 @@
             // 
             btnPlus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPlus.Location = new Point(115, 343);
-            btnPlus.Margin = new Padding(2, 2, 2, 2);
+            btnPlus.Margin = new Padding(2);
             btnPlus.Name = "btnPlus";
             btnPlus.Size = new Size(54, 28);
             btnPlus.TabIndex = 4;
@@ -814,7 +814,7 @@
             // 
             btnMinus.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnMinus.Location = new Point(46, 343);
-            btnMinus.Margin = new Padding(2, 2, 2, 2);
+            btnMinus.Margin = new Padding(2);
             btnMinus.Name = "btnMinus";
             btnMinus.Size = new Size(54, 29);
             btnMinus.TabIndex = 3;
@@ -827,7 +827,7 @@
             lstboxOrderList.FormattingEnabled = true;
             lstboxOrderList.ItemHeight = 15;
             lstboxOrderList.Location = new Point(38, 116);
-            lstboxOrderList.Margin = new Padding(2, 2, 2, 2);
+            lstboxOrderList.Margin = new Padding(2);
             lstboxOrderList.Name = "lstboxOrderList";
             lstboxOrderList.Size = new Size(374, 214);
             lstboxOrderList.TabIndex = 2;
@@ -853,13 +853,13 @@
             // inv_btn
             // 
             inv_btn.AutoSize = true;
-            inv_btn.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            inv_btn.Image = Properties.Resources._1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310;
+            inv_btn.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            inv_btn.Image = (Image)resources.GetObject("inv_btn.Image");
             inv_btn.Location = new Point(24, 32);
             inv_btn.Name = "inv_btn";
-            inv_btn.Size = new Size(91, 25);
+            inv_btn.Size = new Size(71, 22);
             inv_btn.TabIndex = 2;
-            inv_btn.Text = "Inventory";
+            inv_btn.Text = "ADMIN";
             inv_btn.Click += inv_btn_Click;
             // 
             // MainShop
