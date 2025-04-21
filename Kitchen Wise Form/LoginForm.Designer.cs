@@ -41,26 +41,28 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(296, 185);
+            textBox1.Location = new Point(178, 171);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(211, 27);
+            textBox1.Size = new Size(142, 23);
             textBox1.TabIndex = 0;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(296, 253);
+            textBox2.Location = new Point(178, 222);
+            textBox2.Margin = new Padding(3, 2, 3, 2);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(211, 27);
+            textBox2.Size = new Size(142, 23);
             textBox2.TabIndex = 1;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
             // Userlbl
             // 
             Userlbl.AutoSize = true;
-            Userlbl.Location = new Point(211, 190);
+            Userlbl.Location = new Point(104, 174);
             Userlbl.Name = "Userlbl";
-            Userlbl.Size = new Size(78, 20);
+            Userlbl.Size = new Size(63, 15);
             Userlbl.TabIndex = 2;
             Userlbl.Text = "Username:";
             Userlbl.Click += Userlbl_Click;
@@ -68,9 +70,9 @@
             // Passlbl
             // 
             Passlbl.AutoSize = true;
-            Passlbl.Location = new Point(211, 257);
+            Passlbl.Location = new Point(104, 225);
             Passlbl.Name = "Passlbl";
-            Passlbl.Size = new Size(73, 20);
+            Passlbl.Size = new Size(60, 15);
             Passlbl.TabIndex = 3;
             Passlbl.Text = "Password:";
             Passlbl.Click += Passlbl_Click;
@@ -79,17 +81,18 @@
             // 
             Kwiselbl.AutoSize = true;
             Kwiselbl.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Kwiselbl.Location = new Point(261, 83);
+            Kwiselbl.Location = new Point(101, 105);
             Kwiselbl.Name = "Kwiselbl";
-            Kwiselbl.Size = new Size(275, 41);
+            Kwiselbl.Size = new Size(229, 32);
             Kwiselbl.TabIndex = 4;
-            Kwiselbl.Text = "KitchenWise Admin";
+            Kwiselbl.Text = "Kitchen Wise Admin";
             // 
             // loginBtn
             // 
-            loginBtn.Location = new Point(333, 317);
+            loginBtn.Location = new Point(178, 278);
+            loginBtn.Margin = new Padding(3, 2, 3, 2);
             loginBtn.Name = "loginBtn";
-            loginBtn.Size = new Size(134, 36);
+            loginBtn.Size = new Size(74, 27);
             loginBtn.TabIndex = 5;
             loginBtn.Text = "Login";
             loginBtn.UseVisualStyleBackColor = true;
@@ -98,19 +101,19 @@
             // iconPctbx
             // 
             iconPctbx.Image = Properties.Resources._1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310;
-            iconPctbx.Location = new Point(185, 77);
-            iconPctbx.Margin = new Padding(2, 3, 2, 3);
+            iconPctbx.Location = new Point(187, 61);
+            iconPctbx.Margin = new Padding(2, 2, 2, 2);
             iconPctbx.Name = "iconPctbx";
-            iconPctbx.Size = new Size(55, 56);
+            iconPctbx.Size = new Size(48, 42);
             iconPctbx.SizeMode = PictureBoxSizeMode.StretchImage;
             iconPctbx.TabIndex = 6;
             iconPctbx.TabStop = false;
             // 
             // KitchenWiseAdmin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(401, 368);
             Controls.Add(iconPctbx);
             Controls.Add(loginBtn);
             Controls.Add(Kwiselbl);
@@ -119,6 +122,7 @@
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "KitchenWiseAdmin";
             Text = "KitchenWise Admin";
             ((System.ComponentModel.ISupportInitialize)iconPctbx).EndInit();
