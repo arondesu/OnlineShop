@@ -1,4 +1,9 @@
-﻿namespace OnlineShop
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
 {
     partial class InventoryForm
     {
@@ -7,18 +12,22 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        // Remove the duplicate Dispose method definition.  
+        // The `Dispose` method is already defined in the `InventoryForm` class, so the duplicate definition is unnecessary.  
+        // Retain only one definition of the `Dispose` method.  
+
+        // Removed the duplicate Dispose method definition to resolve CS0111 error.  
+        // The `Dispose` method is already defined in the `InventoryForm` class, so the duplicate definition is unnecessary.  
+
+        // The following duplicate Dispose method has been removed:  
+        // protected override void Dispose(bool disposing)  
+        // {  
+        //     if (disposing && (components != null))  
+        //     {  
+        //         components.Dispose();  
+        //     }  
+        //     base.Dispose(disposing);  
+        // }
 
         #region Windows Form Designer generated code
 
@@ -28,8 +37,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryForm));
+            components = new Container();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(InventoryForm));
             panel1 = new Panel();
             label1 = new Label();
             pictureBox1 = new PictureBox();
@@ -39,6 +48,21 @@
             homeDataGrid = new DataGridView();
             salesDataGrid = new DataGridView();
             dBFuncBindingSource = new BindingSource(components);
+            itemdatagrid = new DataGridView();
+            panel4 = new Panel();
+            updBtn = new Button();
+            insrtBtn = new Button();
+            label6 = new Label();
+            dlBtn = new Button();
+            StckTxtbx = new TextBox();
+            Pricelbl = new Label();
+            PrcTxtbx = new TextBox();
+            Description = new Label();
+            DescTxtbx = new TextBox();
+            PrdctNameTxtbx = new TextBox();
+            PrdctName = new Label();
+            PrdctIdTxtbx = new TextBox();
+            prdctId = new Label();
             panel3 = new Panel();
             bck_btn = new Button();
             salesBtn = new Button();
@@ -47,13 +71,15 @@
             item_btn = new Button();
             invBtn = new Button();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             homePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)inv_bg_pic).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)homeDataGrid).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)salesDataGrid).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dBFuncBindingSource).BeginInit();
+            ((ISupportInitialize)inv_bg_pic).BeginInit();
+            ((ISupportInitialize)homeDataGrid).BeginInit();
+            ((ISupportInitialize)salesDataGrid).BeginInit();
+            ((ISupportInitialize)dBFuncBindingSource).BeginInit();
+            ((ISupportInitialize)itemdatagrid).BeginInit();
+            panel4.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -66,8 +92,9 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(2, 3, 2, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1924, 111);
+            panel1.Size = new Size(1597, 111);
             panel1.TabIndex = 27;
+            panel1.Paint += panel1_Paint;
             // 
             // label1
             // 
@@ -87,10 +114,11 @@
             pictureBox1.Location = new Point(86, 29);
             pictureBox1.Margin = new Padding(2, 3, 2, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(55, 56);
+            pictureBox1.Size = new Size(58, 60);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // panel2
             // 
@@ -99,7 +127,7 @@
             panel2.Location = new Point(235, 111);
             panel2.Margin = new Padding(2, 3, 2, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1689, 741);
+            panel2.Size = new Size(1362, 741);
             panel2.TabIndex = 28;
             // 
             // homePanel
@@ -108,48 +136,200 @@
             homePanel.Controls.Add(inv_bg_pic);
             homePanel.Controls.Add(homeDataGrid);
             homePanel.Controls.Add(salesDataGrid);
-            homePanel.Location = new Point(6, 0);
+            homePanel.Controls.Add(itemdatagrid);
+            homePanel.Controls.Add(panel4);
+            homePanel.Location = new Point(1, 2);
             homePanel.Margin = new Padding(3, 4, 3, 4);
             homePanel.Name = "homePanel";
-            homePanel.Size = new Size(1058, 759);
+            homePanel.Size = new Size(1491, 759);
             homePanel.TabIndex = 0;
             // 
             // inv_bg_pic
             // 
             inv_bg_pic.Image = Properties.Resources._1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310;
-            inv_bg_pic.Location = new Point(449, 207);
+            inv_bg_pic.Location = new Point(411, 264);
             inv_bg_pic.Name = "inv_bg_pic";
-            inv_bg_pic.Size = new Size(237, 184);
+            inv_bg_pic.Size = new Size(217, 186);
             inv_bg_pic.TabIndex = 3;
             inv_bg_pic.TabStop = false;
+            inv_bg_pic.Click += inv_bg_pic_Click;
             // 
             // homeDataGrid
             // 
             homeDataGrid.BackgroundColor = Color.FromArgb(209, 207, 201);
+            homeDataGrid.BorderStyle = BorderStyle.None;
             homeDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            homeDataGrid.Location = new Point(70, 7);
+            homeDataGrid.Location = new Point(0, -2);
             homeDataGrid.Margin = new Padding(3, 4, 3, 4);
             homeDataGrid.Name = "homeDataGrid";
             homeDataGrid.RowHeadersWidth = 51;
-            homeDataGrid.Size = new Size(850, 646);
+            homeDataGrid.Size = new Size(1028, 737);
             homeDataGrid.TabIndex = 0;
+            homeDataGrid.CellContentClick += homeDataGrid_CellContentClick;
             // 
             // salesDataGrid
             // 
             salesDataGrid.AutoGenerateColumns = false;
             salesDataGrid.BackgroundColor = Color.FromArgb(209, 207, 201);
+            salesDataGrid.BorderStyle = BorderStyle.None;
             salesDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             salesDataGrid.DataSource = dBFuncBindingSource;
-            salesDataGrid.Location = new Point(48, 45);
+            salesDataGrid.Location = new Point(-6, 0);
             salesDataGrid.Margin = new Padding(3, 4, 3, 4);
             salesDataGrid.Name = "salesDataGrid";
             salesDataGrid.RowHeadersWidth = 51;
-            salesDataGrid.Size = new Size(769, 482);
+            salesDataGrid.Size = new Size(1034, 737);
             salesDataGrid.TabIndex = 1;
             // 
             // dBFuncBindingSource
             // 
             dBFuncBindingSource.DataSource = typeof(DBFunc);
+            // 
+            // itemdatagrid
+            // 
+            itemdatagrid.BackgroundColor = Color.FromArgb(209, 207, 201);
+            itemdatagrid.BorderStyle = BorderStyle.None;
+            itemdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            itemdatagrid.Location = new Point(-6, 0);
+            itemdatagrid.Margin = new Padding(3, 4, 3, 4);
+            itemdatagrid.Name = "itemdatagrid";
+            itemdatagrid.RowHeadersWidth = 51;
+            itemdatagrid.Size = new Size(1034, 737);
+            itemdatagrid.TabIndex = 8;
+            itemdatagrid.CellContentClick += itemdatagrid_CellContentClick;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Gray;
+            panel4.Controls.Add(updBtn);
+            panel4.Controls.Add(insrtBtn);
+            panel4.Controls.Add(label6);
+            panel4.Controls.Add(dlBtn);
+            panel4.Controls.Add(StckTxtbx);
+            panel4.Controls.Add(Pricelbl);
+            panel4.Controls.Add(PrcTxtbx);
+            panel4.Controls.Add(Description);
+            panel4.Controls.Add(DescTxtbx);
+            panel4.Controls.Add(PrdctNameTxtbx);
+            panel4.Controls.Add(PrdctName);
+            panel4.Controls.Add(PrdctIdTxtbx);
+            panel4.Controls.Add(prdctId);
+            panel4.Location = new Point(1028, 2);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(463, 737);
+            panel4.TabIndex = 0;
+            // 
+            // updBtn
+            // 
+            updBtn.Location = new Point(94, 569);
+            updBtn.Name = "updBtn";
+            updBtn.Size = new Size(140, 35);
+            updBtn.TabIndex = 6;
+            updBtn.Text = "Update";
+            updBtn.UseVisualStyleBackColor = true;
+            updBtn.Click += button2_Click;
+            // 
+            // insrtBtn
+            // 
+            insrtBtn.Location = new Point(94, 502);
+            insrtBtn.Name = "insrtBtn";
+            insrtBtn.Size = new Size(140, 35);
+            insrtBtn.TabIndex = 7;
+            insrtBtn.Text = "Insert";
+            insrtBtn.UseVisualStyleBackColor = true;
+            insrtBtn.Click += button3_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(138, 304);
+            label6.Name = "label6";
+            label6.Size = new Size(48, 20);
+            label6.TabIndex = 17;
+            label6.Text = "Stock:";
+            // 
+            // dlBtn
+            // 
+            dlBtn.Location = new Point(94, 432);
+            dlBtn.Name = "dlBtn";
+            dlBtn.Size = new Size(140, 35);
+            dlBtn.TabIndex = 5;
+            dlBtn.Text = "Delete";
+            dlBtn.UseVisualStyleBackColor = true;
+            dlBtn.Click += button1_Click;
+            // 
+            // StckTxtbx
+            // 
+            StckTxtbx.Location = new Point(54, 328);
+            StckTxtbx.Name = "StckTxtbx";
+            StckTxtbx.Size = new Size(224, 27);
+            StckTxtbx.TabIndex = 11;
+            // 
+            // Pricelbl
+            // 
+            Pricelbl.AutoSize = true;
+            Pricelbl.Location = new Point(140, 237);
+            Pricelbl.Name = "Pricelbl";
+            Pricelbl.Size = new Size(44, 20);
+            Pricelbl.TabIndex = 16;
+            Pricelbl.Text = "Price:";
+            // 
+            // PrcTxtbx
+            // 
+            PrcTxtbx.Location = new Point(54, 262);
+            PrcTxtbx.Name = "PrcTxtbx";
+            PrcTxtbx.Size = new Size(224, 27);
+            PrcTxtbx.TabIndex = 10;
+            // 
+            // Description
+            // 
+            Description.AutoSize = true;
+            Description.Location = new Point(122, 171);
+            Description.Name = "Description";
+            Description.Size = new Size(88, 20);
+            Description.TabIndex = 15;
+            Description.Text = "Description:";
+            Description.Click += Description_Click;
+            // 
+            // DescTxtbx
+            // 
+            DescTxtbx.Location = new Point(54, 194);
+            DescTxtbx.Name = "DescTxtbx";
+            DescTxtbx.Size = new Size(224, 27);
+            DescTxtbx.TabIndex = 9;
+            // 
+            // PrdctNameTxtbx
+            // 
+            PrdctNameTxtbx.Location = new Point(54, 134);
+            PrdctNameTxtbx.Name = "PrdctNameTxtbx";
+            PrdctNameTxtbx.Size = new Size(224, 27);
+            PrdctNameTxtbx.TabIndex = 8;
+            // 
+            // PrdctName
+            // 
+            PrdctName.AutoSize = true;
+            PrdctName.Location = new Point(111, 106);
+            PrdctName.Name = "PrdctName";
+            PrdctName.Size = new Size(107, 20);
+            PrdctName.TabIndex = 14;
+            PrdctName.Text = "Product Name:";
+            // 
+            // PrdctIdTxtbx
+            // 
+            PrdctIdTxtbx.Location = new Point(54, 66);
+            PrdctIdTxtbx.Name = "PrdctIdTxtbx";
+            PrdctIdTxtbx.Size = new Size(224, 27);
+            PrdctIdTxtbx.TabIndex = 0;
+            // 
+            // prdctId
+            // 
+            prdctId.AutoSize = true;
+            prdctId.Location = new Point(124, 34);
+            prdctId.Name = "prdctId";
+            prdctId.Size = new Size(82, 20);
+            prdctId.TabIndex = 13;
+            prdctId.Text = "Product ID:";
+            prdctId.Click += label2_Click;
             // 
             // panel3
             // 
@@ -166,6 +346,7 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(235, 741);
             panel3.TabIndex = 28;
+            panel3.Paint += panel3_Paint;
             // 
             // bck_btn
             // 
@@ -251,7 +432,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1924, 852);
+            ClientSize = new Size(1597, 852);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);
@@ -260,13 +441,16 @@
             Text = " KitchenWise";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             homePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)inv_bg_pic).EndInit();
-            ((System.ComponentModel.ISupportInitialize)homeDataGrid).EndInit();
-            ((System.ComponentModel.ISupportInitialize)salesDataGrid).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dBFuncBindingSource).EndInit();
+            ((ISupportInitialize)inv_bg_pic).EndInit();
+            ((ISupportInitialize)homeDataGrid).EndInit();
+            ((ISupportInitialize)salesDataGrid).EndInit();
+            ((ISupportInitialize)dBFuncBindingSource).EndInit();
+            ((ISupportInitialize)itemdatagrid).EndInit();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -288,5 +472,22 @@
         private Button bck_btn;
         private Button salesBtn;
         private PictureBox inv_bg_pic;
+        private DataGridView dataItems;
+        private Button insrtBtn;
+        private Button updBtn;
+        private Button dlBtn;
+        private DataGridView itemdatagrid;
+        private Panel CruPnl;
+        private TextBox PrdctIdTxtbx;
+        private Label label6;
+        private Label Pricelbl;
+        private Label Description;
+        private Label PrdctName;
+        private Label prdctId;
+        private TextBox StckTxtbx;
+        private TextBox PrcTxtbx;
+        private TextBox DescTxtbx;
+        private TextBox PrdctNameTxtbx;
+        private Panel panel4;
     }
 }

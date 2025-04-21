@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.Data.SqlClient;
+using OnlineShop.Kitchen_Wise_Form;
 
 //testing the changes 5:32 PM
 
@@ -263,7 +264,7 @@ namespace OnlineShop
 
             if (result == DialogResult.Yes)
             {
-                MessageBox.Show("Continue shopping! Add more items to your cart.", 
+                MessageBox.Show("Continue shopping! Add more items to your cart.",
                                "Continue Shopping", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
@@ -346,10 +347,14 @@ namespace OnlineShop
 
         private void inv_btn_Click(object sender, EventArgs e)
         {
-            InventoryForm inv = new InventoryForm();
-            inv.Show();
+            KitchenWiseAdmin adminForm = new KitchenWiseAdmin();
+            adminForm.Show();
             this.Hide();
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
