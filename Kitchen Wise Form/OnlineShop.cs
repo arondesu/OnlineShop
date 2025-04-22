@@ -2,8 +2,6 @@
 using Microsoft.Data.SqlClient;
 using OnlineShop.Kitchen_Wise_Form;
 
-//testing the changes 5:32 PM
-
 namespace OnlineShop
 {
     public partial class MainShop : Form
@@ -43,39 +41,7 @@ namespace OnlineShop
             dbFunc.SyncQuantityLabels(quantityLabels);
         }
 
-        private List<string> availableItems = new List<string>
-            {
-                    "Glass Food Storage",
-                    "Steel Mug Rack",
-                    "Mitts Potholders",
-                    "Steel Brazier Pot",
-                    "Descascador",
-                    "Cleaning Sponge",
-                    "Silverware Set",
-                    "Kitchen Scale",
-                    "Table Cloth",
-                    "glass food storage",
-                    "steel mug rack",
-                    "mitts potholders",
-                    "steel brazier pot",
-                    "descascador",
-                    "cleaning sponge",
-                    "silverware set",
-                    "kitchen scale",
-                    "table cloth"
-            };
-        private List<double> availablePrices = new List<double>
-            {
-                    275,
-                    50.45,
-                    65,
-                    150.50,
-                    79,
-                    35.50,
-                    175.50,
-                    499,
-                    55.50
-            };
+
         private void SetupScrollablePanel()
         {
             // Create a panel that enables only vertical scrolling
@@ -259,10 +225,10 @@ namespace OnlineShop
 
             // Show the total amount and ask if they want to add more items
             string totalAmount = lblTotal.Text.Split('₱')[1];
-            DialogResult result = MessageBox.Show($"Your total amount is ₱{totalAmount}.\nWould you like to add more items?",
+            DialogResult result = MessageBox.Show($"Your total amount is ₱{totalAmount}.\nAre you sure you want to proceed to checkout?",
                                         "Checkout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
+            if (result == DialogResult.No)
             {
                 MessageBox.Show("Continue shopping! Add more items to your cart.",
                                "Continue Shopping", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -280,7 +246,7 @@ namespace OnlineShop
                 dbFunc.ProcessCheckout(subtotal, discount, total, itemNames, quantities);
 
                 MessageBox.Show("Thank you for your purchase! We hope to see you again soon.",
-                                "Thank You", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                "Order Complete.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Clear all data for a fresh start
                 itemNames.Clear();
@@ -355,6 +321,11 @@ namespace OnlineShop
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

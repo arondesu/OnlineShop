@@ -1,16 +1,5 @@
--- Create Table (if it doesn't exist)
-IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Items')
-BEGIN
-    CREATE TABLE Inventory (
-        ProductID INT IDENTITY(1,1) PRIMARY KEY,
-        ProductName NVARCHAR(100) NOT NULL,
-        Description NVARCHAR(255),
-        Price DECIMAL(10, 2) NOT NULL,
-        InStock INT NOT NULL DEFAULT 0,
-        Category NVARCHAR(50),
-        DateAdded DATETIME DEFAULT GETDATE()
-    );
-END
+-- SELECT (Read) - Query all items
+SELECT * FROM Inventory;
 
 -- INSERT (Create) - Add new items to inventory
 INSERT INTO Inventory (ProductName, Description, Price, InStock, Category)
@@ -24,9 +13,6 @@ VALUES
     ('Silverware Set', 'Complete set of silverware', 175.50, 20, 'Dining'),
     ('Kitchen Scale', 'Digital kitchen scale with high precision', 499.00, 15, 'Measurement'),
     ('Table Cloth', 'Elegant table cloth for dining', 55.50, 45, 'Dining');
-
--- SELECT (Read) - Query all items
-SELECT * FROM Inventory;
 
 -- SELECT (Read) - Query specific item by ID
 SELECT * FROM Inventory WHERE ProductID = 1;
@@ -44,8 +30,8 @@ WHERE ProductName = 'Glass Food Storage';
 
 -- UPDATE - Increase stock quantity
 UPDATE Inventory 
-SET InStock = InStock + 10
-WHERE ProductName = 'Kitchen Scale';
+SET InStock = InStock + 50
+WHERE ProductName = 'Glass Food Storage';
 
 -- UPDATE - Update multiple fields
 UPDATE Inventory 

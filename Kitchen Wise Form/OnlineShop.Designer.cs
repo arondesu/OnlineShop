@@ -92,6 +92,7 @@
             lstboxOrderList = new ListBox();
             mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             panel3 = new Panel();
+            btnClose = new Label();
             inv_btn = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
@@ -842,6 +843,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(15, 26, 43);
+            panel3.Controls.Add(btnClose);
             panel3.Controls.Add(inv_btn);
             panel3.Controls.Add(label2);
             panel3.Location = new Point(0, 1);
@@ -850,14 +852,28 @@
             panel3.Size = new Size(1219, 92);
             panel3.TabIndex = 7;
             // 
+            // btnClose
+            // 
+            btnClose.AutoSize = true;
+            btnClose.BackColor = Color.Chocolate;
+            btnClose.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClose.ForeColor = SystemColors.ControlLightLight;
+            btnClose.Location = new Point(1171, 8);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(30, 32);
+            btnClose.TabIndex = 37;
+            btnClose.Text = "X";
+            btnClose.Click += btnClose_Click;
+            // 
             // inv_btn
             // 
             inv_btn.AutoSize = true;
-            inv_btn.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            inv_btn.Image = (Image)resources.GetObject("inv_btn.Image");
-            inv_btn.Location = new Point(24, 32);
+            inv_btn.BackColor = Color.Chocolate;
+            inv_btn.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            inv_btn.ForeColor = SystemColors.ControlLightLight;
+            inv_btn.Location = new Point(12, 8);
             inv_btn.Name = "inv_btn";
-            inv_btn.Size = new Size(71, 22);
+            inv_btn.Size = new Size(78, 25);
             inv_btn.TabIndex = 2;
             inv_btn.Text = "ADMIN";
             inv_btn.Click += inv_btn_Click;
@@ -871,6 +887,7 @@
             Controls.Add(pnlCart);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "MainShop";
@@ -961,5 +978,6 @@
         private Label mpothold_qty;
         private Panel panel3;
         private Label inv_btn;
+        private Label btnClose;
     }
 }

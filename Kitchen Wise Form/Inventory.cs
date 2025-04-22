@@ -490,5 +490,10 @@ namespace OnlineShop.Kitchen_Wise_Form
         {
 
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

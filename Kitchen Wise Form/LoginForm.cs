@@ -21,7 +21,7 @@ namespace OnlineShop
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen; // Center the form on startup
             dbFunc = new DBFunc();
-            
+
             // Set password character to hide the password input
             textBox2.PasswordChar = '*';
         }
@@ -37,7 +37,7 @@ namespace OnlineShop
                 // Validate input
                 if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 {
-                    MessageBox.Show("Please enter both username and password.", "Login Error", 
+                    MessageBox.Show("Please enter both username and password.", "Login Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -53,35 +53,28 @@ namespace OnlineShop
                 }
                 else
                 {
-                    MessageBox.Show("Invalid username or password.", "Login Failed", 
+                    MessageBox.Show("Invalid username or password.", "Login Failed",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("DATABASE ERROR: " + ex.Message, "Connection Error", 
+                MessageBox.Show("DATABASE ERROR: " + ex.Message, "Connection Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void btnShop_Click(object sender, EventArgs e)
         {
-            // Password textbox - you might want to set PasswordChar property in the designer
+            //Calling the MainShop form
+            MainShop main = new MainShop();
+            main.Show();
+            this.Hide();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void label5_Click(object sender, EventArgs e)
         {
-            // Username textbox
-        }
-
-        private void Userlbl_Click(object sender, EventArgs e)
-        {
-            // Username label click event
-        }
-
-        private void Passlbl_Click(object sender, EventArgs e)
-        {
-            // Password label click event
+            Application.Exit();
         }
     }
 }
