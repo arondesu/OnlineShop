@@ -45,11 +45,12 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
             homePanel = new Panel();
+            itemdatagrid = new DataGridView();
             inv_bg_pic = new PictureBox();
             homeDataGrid = new DataGridView();
             salesDataGrid = new DataGridView();
             dBFuncBindingSource = new BindingSource(components);
-            itemdatagrid = new DataGridView();
+            adminDashboardForm1 = new AdminDashboardForm();
             panel3 = new Panel();
             bck_btn = new Button();
             salesBtn = new Button();
@@ -57,15 +58,16 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             button4 = new Button();
             item_btn = new Button();
             invBtn = new Button();
+            addProductForm1 = new AddProductForm();
             panel1.SuspendLayout();
             ((ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             homePanel.SuspendLayout();
+            ((ISupportInitialize)itemdatagrid).BeginInit();
             ((ISupportInitialize)inv_bg_pic).BeginInit();
             ((ISupportInitialize)homeDataGrid).BeginInit();
             ((ISupportInitialize)salesDataGrid).BeginInit();
             ((ISupportInitialize)dBFuncBindingSource).BeginInit();
-            ((ISupportInitialize)itemdatagrid).BeginInit();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -81,7 +83,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             panel1.Name = "panel1";
             panel1.Size = new Size(1108, 83);
             panel1.TabIndex = 27;
-            panel1.Paint += panel1_Paint;
             // 
             // btnClose
             // 
@@ -118,7 +119,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // panel2
             // 
@@ -132,14 +132,28 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // homePanel
             // 
             homePanel.BackColor = Color.FromArgb(209, 207, 201);
+            homePanel.Controls.Add(addProductForm1);
+            homePanel.Controls.Add(itemdatagrid);
             homePanel.Controls.Add(inv_bg_pic);
             homePanel.Controls.Add(homeDataGrid);
             homePanel.Controls.Add(salesDataGrid);
-            homePanel.Controls.Add(itemdatagrid);
+            homePanel.Controls.Add(adminDashboardForm1);
             homePanel.Location = new Point(1, 2);
             homePanel.Name = "homePanel";
             homePanel.Size = new Size(900, 569);
             homePanel.TabIndex = 0;
+            // 
+            // itemdatagrid
+            // 
+            itemdatagrid.BackgroundColor = Color.FromArgb(209, 207, 201);
+            itemdatagrid.BorderStyle = BorderStyle.None;
+            itemdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            itemdatagrid.Dock = DockStyle.Fill;
+            itemdatagrid.Location = new Point(0, 0);
+            itemdatagrid.Name = "itemdatagrid";
+            itemdatagrid.RowHeadersWidth = 51;
+            itemdatagrid.Size = new Size(900, 569);
+            itemdatagrid.TabIndex = 40;
             // 
             // inv_bg_pic
             // 
@@ -150,7 +164,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             inv_bg_pic.Size = new Size(132, 132);
             inv_bg_pic.TabIndex = 3;
             inv_bg_pic.TabStop = false;
-            inv_bg_pic.Click += inv_bg_pic_Click;
             // 
             // homeDataGrid
             // 
@@ -163,7 +176,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             homeDataGrid.RowHeadersWidth = 51;
             homeDataGrid.Size = new Size(900, 569);
             homeDataGrid.TabIndex = 0;
-            homeDataGrid.CellContentClick += homeDataGrid_CellContentClick;
             // 
             // salesDataGrid
             // 
@@ -182,17 +194,13 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // 
             dBFuncBindingSource.DataSource = typeof(DBFunc);
             // 
-            // itemdatagrid
+            // adminDashboardForm1
             // 
-            itemdatagrid.BackgroundColor = Color.FromArgb(209, 207, 201);
-            itemdatagrid.BorderStyle = BorderStyle.None;
-            itemdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            itemdatagrid.Location = new Point(-5, 0);
-            itemdatagrid.Name = "itemdatagrid";
-            itemdatagrid.RowHeadersWidth = 51;
-            itemdatagrid.Size = new Size(905, 553);
-            itemdatagrid.TabIndex = 8;
-            itemdatagrid.CellContentClick += itemdatagrid_CellContentClick;
+            adminDashboardForm1.BackColor = Color.FromArgb(15, 26, 43);
+            adminDashboardForm1.Location = new Point(-1, -2);
+            adminDashboardForm1.Name = "adminDashboardForm1";
+            adminDashboardForm1.Size = new Size(902, 556);
+            adminDashboardForm1.TabIndex = 39;
             // 
             // panel3
             // 
@@ -209,7 +217,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             panel3.Name = "panel3";
             panel3.Size = new Size(206, 556);
             panel3.TabIndex = 28;
-            panel3.Paint += panel3_Paint;
             // 
             // bck_btn
             // 
@@ -292,6 +299,13 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             invBtn.UseVisualStyleBackColor = false;
             invBtn.Click += invBtn_Click;
             // 
+            // addProductForm1
+            // 
+            addProductForm1.Location = new Point(-1, -2);
+            addProductForm1.Name = "addProductForm1";
+            addProductForm1.Size = new Size(900, 556);
+            addProductForm1.TabIndex = 41;
+            // 
             // InventoryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -310,11 +324,11 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             ((ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             homePanel.ResumeLayout(false);
+            ((ISupportInitialize)itemdatagrid).EndInit();
             ((ISupportInitialize)inv_bg_pic).EndInit();
             ((ISupportInitialize)homeDataGrid).EndInit();
             ((ISupportInitialize)salesDataGrid).EndInit();
             ((ISupportInitialize)dBFuncBindingSource).EndInit();
-            ((ISupportInitialize)itemdatagrid).EndInit();
             panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -332,13 +346,15 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
         private Panel homePanel;
         private DataGridView homeDataGrid;
         private BindingSource dBFuncBindingSource;
-        private DataGridView salesDataGrid;
         private Button bck_btn;
         private Button salesBtn;
         private PictureBox inv_bg_pic;
         private DataGridView dataItems;
-        private DataGridView itemdatagrid;
         private Panel CruPnl;
         private Label btnClose;
+        private AdminDashboardForm adminDashboardForm1;
+        private DataGridView salesDataGrid;
+        private DataGridView itemdatagrid;
+        private AddProductForm addProductForm1;
     }
 }

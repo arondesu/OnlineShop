@@ -34,7 +34,7 @@
             Userlbl = new Label();
             Passlbl = new Label();
             Kwiselbl = new Label();
-            loginBtn = new Button();
+            btnLogin = new Button();
             iconPctbx = new PictureBox();
             btnShop = new Button();
             label1 = new Label();
@@ -89,16 +89,16 @@
             Kwiselbl.TabIndex = 4;
             Kwiselbl.Text = "Kitchen Wise Admin";
             // 
-            // loginBtn
+            // btnLogin
             // 
-            loginBtn.Location = new Point(246, 222);
-            loginBtn.Margin = new Padding(3, 2, 3, 2);
-            loginBtn.Name = "loginBtn";
-            loginBtn.Size = new Size(74, 27);
-            loginBtn.TabIndex = 5;
-            loginBtn.Text = "Login";
-            loginBtn.UseVisualStyleBackColor = true;
-            loginBtn.Click += button1_Click;
+            btnLogin.Location = new Point(246, 222);
+            btnLogin.Margin = new Padding(3, 2, 3, 2);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(74, 27);
+            btnLogin.TabIndex = 5;
+            btnLogin.Text = "Login";
+            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += button1_Click;
             // 
             // iconPctbx
             // 
@@ -182,7 +182,7 @@
             Controls.Add(label1);
             Controls.Add(btnShop);
             Controls.Add(iconPctbx);
-            Controls.Add(loginBtn);
+            Controls.Add(btnLogin);
             Controls.Add(Kwiselbl);
             Controls.Add(Passlbl);
             Controls.Add(Userlbl);
@@ -205,7 +205,7 @@
         private Label Userlbl;
         private Label Passlbl;
         private Label Kwiselbl;
-        private Button loginBtn;
+        private Button btnLogin;
         private PictureBox iconPctbx;
         private Button btnShop;
         private Label label1;
