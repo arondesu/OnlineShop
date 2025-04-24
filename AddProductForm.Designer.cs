@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            dataGridView1 = new DataGridView();
             label1 = new Label();
-            panel3 = new Panel();
             panel4 = new Panel();
             panel2 = new Panel();
+            AddProductForm_imageView = new PictureBox();
             txtItem_status = new ComboBox();
             txtItem_type = new ComboBox();
             btnImport = new Button();
@@ -50,8 +51,8 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            AddProductForm_imageView = new PictureBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AddProductForm_imageView).BeginInit();
@@ -60,12 +61,22 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(panel3);
             panel1.Location = new Point(14, 15);
             panel1.Name = "panel1";
             panel1.Size = new Size(874, 301);
             panel1.TabIndex = 1;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 37);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(868, 261);
+            dataGridView1.TabIndex = 4;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // label1
             // 
@@ -79,14 +90,6 @@
             label1.Size = new Size(184, 28);
             label1.TabIndex = 3;
             label1.Text = "Data of Products";
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.Chocolate;
-            panel3.Location = new Point(15, 37);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(847, 252);
-            panel3.TabIndex = 1;
             // 
             // panel4
             // 
@@ -122,9 +125,19 @@
             panel2.Size = new Size(118, 100);
             panel2.TabIndex = 25;
             // 
+            // AddProductForm_imageView
+            // 
+            AddProductForm_imageView.BackColor = Color.Gainsboro;
+            AddProductForm_imageView.Location = new Point(0, 0);
+            AddProductForm_imageView.Name = "AddProductForm_imageView";
+            AddProductForm_imageView.Size = new Size(118, 100);
+            AddProductForm_imageView.TabIndex = 0;
+            AddProductForm_imageView.TabStop = false;
+            // 
             // txtItem_status
             // 
             txtItem_status.FormattingEnabled = true;
+            txtItem_status.Items.AddRange(new object[] { "Available", "Unavailabe" });
             txtItem_status.Location = new Point(543, 108);
             txtItem_status.Name = "txtItem_status";
             txtItem_status.Size = new Size(127, 23);
@@ -133,6 +146,7 @@
             // txtItem_type
             // 
             txtItem_type.FormattingEnabled = true;
+            txtItem_type.Items.AddRange(new object[] { "Appliance", "Furniture" });
             txtItem_type.Location = new Point(153, 108);
             txtItem_type.Name = "txtItem_type";
             txtItem_type.Size = new Size(127, 23);
@@ -164,6 +178,7 @@
             btnClear.TabIndex = 21;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
             // btnDelete
             // 
@@ -311,15 +326,6 @@
             label2.TabIndex = 4;
             label2.Text = "Product ID:";
             // 
-            // AddProductForm_imageView
-            // 
-            AddProductForm_imageView.BackColor = Color.Gainsboro;
-            AddProductForm_imageView.Location = new Point(0, 0);
-            AddProductForm_imageView.Name = "AddProductForm_imageView";
-            AddProductForm_imageView.Size = new Size(118, 100);
-            AddProductForm_imageView.TabIndex = 0;
-            AddProductForm_imageView.TabStop = false;
-            // 
             // AddProductForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -330,6 +336,7 @@
             Size = new Size(900, 556);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel2.ResumeLayout(false);
@@ -341,7 +348,6 @@
 
         private Panel panel1;
         private Panel panel4;
-        private Panel panel3;
         private Label label1;
         private Label label6;
         private Label label4;
@@ -362,5 +368,6 @@
         private ComboBox txtItem_status;
         private Panel panel2;
         private PictureBox AddProductForm_imageView;
+        private DataGridView dataGridView1;
     }
 }

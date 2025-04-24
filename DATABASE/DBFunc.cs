@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using OnlineShop;
 using OnlineShop.DATABASE;
 using System.Windows.Forms;
+using System.IO;
 
 public class DBFunc
 {
@@ -71,8 +72,8 @@ public class DBFunc
         }
     }
 
-    //FUNCTION FOR ADDING PRODUCT
-    public bool checkItemID(string txtItem_id, string txtItem_name, string txtItem_type, string txtItem_stock, string txtItem_price, string txtItem_status)
+    //FUNCTION FOR CHECKING DUPLICATE ID
+    public bool checkItemID(string txtItem_id, string txtItem_name, string txtItem_type, string txtItem_stock, string txtItem_price, string txtItem_status, string AddProductForm_imageView)
     {
         try
         {
@@ -93,38 +94,75 @@ public class DBFunc
 
                     if (dataTable.Rows.Count >= 1)
                     {
-                        MessageBox.Show("Product ID: " + txtItem_id.Trim() + " is taken already.", "Error Message",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"Product ID: {txtItem_id.Trim()} already exists. Please use a unique ID.",
+                            "Duplicate ID Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false; // Exit early to prevent further processing
                     }
                     else
                     {
-                        string insertData = "INSERT INTO items (item_id, item_name, item_type, item_stock, item_price, item_status, item_image, date_insert) " +
-                                            "VALUES (@itemID, @itemName, @itemType, @itemStock, @itemPrice, @itemStatus, @itemImage, @dateInsert)";
-
-                        DateTime today = DateTime.Now;
-
-                        using (SqlCommand cmd = new SqlCommand(insertData, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@itemID", txtItem_id.Trim());
-                            cmd.Parameters.AddWithValue("@itemName", txtItem_name.Trim());
-                            cmd.Parameters.AddWithValue("@itemType", txtItem_type.Trim());
-                            cmd.Parameters.AddWithValue("@itemStock", txtItem_stock.Trim());
-                            cmd.Parameters.AddWithValue("@itemPrice", txtItem_price.Trim());
-                            cmd.Parameters.AddWithValue("@itemStatus", txtItem_status.Trim());
-                            cmd.Parameters.AddWithValue("@itemImage", "image path");
-                            cmd.Parameters.AddWithValue("@dateInsert", today);
-
-                            cmd.ExecuteNonQuery();
-                        }
+                        return true;
                     }
                 }
             }
         }
         catch (Exception ex)
         {
-            MessageBox.Show("Failed Connection: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
         }
-        return false;
+
+    }
+
+    //FUNCTION FOR ADDING PRODUCT
+    public bool AddProduct(string txtItem_id, string txtItem_name, string txtItem_type, string txtItem_stock, string txtItem_price, string txtItem_status, string AddProductForm_imageView)
+    {
+        // Check if the item ID already exists
+        if (!checkItemID(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView))
+        {
+            // If the item ID is not unique, return false to prevent adding the product
+            return false;
+        }
+
+        using SqlConnection conn = dbConn.GetConnection();
+        conn.Open();
+
+        string insertData = "INSERT INTO items (item_id, item_name, item_type, item_stock, item_price, item_status, item_image, date_insert) " +
+                            "VALUES (@itemID, @itemName, @itemType, @itemStock, @itemPrice, @itemStatus, @itemImage, @dateInsert)";
+
+        DateTime today = DateTime.Now;
+
+        string path = Path.Combine(@"C:\Users\ADMIN\Source\Repos\OnlineShop\Item_Directory\" + txtItem_id.Trim());
+        string directoryPath = Path.GetDirectoryName(path);
+
+        if (!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+        }
+
+        if (string.IsNullOrEmpty(AddProductForm_imageView))
+        {
+            MessageBox.Show("Please select an image for the product.", "Image Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
+        File.Copy(AddProductForm_imageView, path, true);
+
+        using (SqlCommand cmd = new SqlCommand(insertData, conn))
+        {
+            cmd.Parameters.AddWithValue("@itemID", txtItem_id.Trim());
+            cmd.Parameters.AddWithValue("@itemName", txtItem_name.Trim());
+            cmd.Parameters.AddWithValue("@itemType", txtItem_type.Trim());
+            cmd.Parameters.AddWithValue("@itemStock", txtItem_stock.Trim());
+            cmd.Parameters.AddWithValue("@itemPrice", txtItem_price.Trim());
+            cmd.Parameters.AddWithValue("@itemStatus", txtItem_status.Trim());
+            cmd.Parameters.AddWithValue("@itemImage", path);
+            cmd.Parameters.AddWithValue("@dateInsert", today);
+
+            cmd.ExecuteNonQuery();
+
+            MessageBox.Show("Product ID: " + txtItem_id.Trim() + " added successfully.", "Success Message",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return true;
+        }
     }
 
     //FUNCTION FOR 
@@ -256,5 +294,18 @@ public class DBFunc
     {
         // Generate a unique order number (PO-YYYYMMDD-XXXX)
         return $"PO-{DateTime.Now:yyyyMMdd}-{new Random().Next(1000, 9999)}";
+    }
+
+   
+    //FUNCTION FOR CLEARING FIELDS
+    public void clearField(TextBox txtItem_id, TextBox txtItem_name, ComboBox txtItem_type, TextBox txtItem_stock, TextBox txtItem_price, ComboBox txtItem_status, PictureBox AddProductForm_imageView)
+    {
+        txtItem_id.Clear();
+        txtItem_name.Clear();
+        txtItem_type.SelectedIndex = -1;
+        txtItem_stock.Clear();
+        txtItem_price.Clear();
+        txtItem_status.SelectedIndex = -1;
+        AddProductForm_imageView.ImageLocation = null;
     }
 }

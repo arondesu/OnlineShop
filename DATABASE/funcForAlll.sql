@@ -19,5 +19,7 @@ CREATE TABLE items
 
 SELECT * FROM items;
 
+SELECT * FROM items WHERE date_delete IS NULL
+
 
 

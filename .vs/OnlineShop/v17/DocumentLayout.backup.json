@@ -3,32 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\database\\funcforalll.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\funcforalll.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\database\\dbfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\dbfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\database\\dbfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\dbfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\database\\funcforalll.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\funcforalll.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\database\\funcforalll.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\funcforalll.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\additemdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:additemdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,11 +26,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 606,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "DBFunc.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\DATABASE\\DBFunc.cs",
               "RelativeDocumentMoniker": "DATABASE\\DBFunc.cs",
@@ -56,14 +44,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "funcForAlll.sql ",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\DATABASE\\funcForAlll.sql",
-              "RelativeDocumentMoniker": "DATABASE\\funcForAlll.sql",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\DATABASE\\funcForAlll.sql",
-              "RelativeToolTip": "DATABASE\\funcForAlll.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-04-23T12:23:48.957Z",
+              "DocumentIndex": 1,
+              "Title": "DBConn.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\DATABASE\\DBConn.cs",
+              "RelativeDocumentMoniker": "DATABASE\\DBConn.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\DATABASE\\DBConn.cs",
+              "RelativeToolTip": "DATABASE\\DBConn.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T10:52:21.632Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
@@ -92,40 +82,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AddProductForm.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\AddProductForm.cs",
               "RelativeDocumentMoniker": "AddProductForm.cs",
               "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\AddProductForm.cs",
               "RelativeToolTip": "AddProductForm.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAIwEAAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAApwBgAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T11:40:33.469Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Inventory.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\Kitchen Wise Form\\Inventory.cs",
-              "RelativeDocumentMoniker": "Kitchen Wise Form\\Inventory.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\Kitchen Wise Form\\Inventory.cs [Design]",
-              "RelativeToolTip": "Kitchen Wise Form\\Inventory.cs [Design]",
+              "DocumentIndex": 3,
+              "Title": "AddItemData.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\AddItemData.cs",
+              "RelativeDocumentMoniker": "AddItemData.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\AddItemData.cs",
+              "RelativeToolTip": "AddItemData.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAA7wD0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:37:45.408Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AddProductForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\AddProductForm.cs",
-              "RelativeDocumentMoniker": "AddProductForm.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\AddProductForm.cs [Design]",
-              "RelativeToolTip": "AddProductForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:37:43.476Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-04-24T10:50:35.915Z",
+              "EditorCaption": ""
             }
           ]
         },

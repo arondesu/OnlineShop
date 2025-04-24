@@ -213,143 +213,59 @@ namespace OnlineShop.Kitchen_Wise_Form
             itemdatagrid.Visible = true;
         }
 
-        private void LoadItemData() //Loads items data into the item data grid
+        private void LoadItemData() //Loads items data into the item data grid // PALIHUG KOG TRANSFER ANI SA DBFUNC KAY FUNCTION NI. TYYY
         {
             try
             {
-                // Get connection to the database
-                using SqlConnection connection = dbConn.GetConnection();
-                connection.Open();
-                Console.WriteLine("Database connected successfully!");
+                //for temporary testing
+                using SqlConnection conn = dbConn.GetConnection();
+                conn.Open();
 
-                // Test if Items table exists
-                string checkTable = "SELECT COUNT(*) FROM sys.tables WHERE name = 'Items'";
-                using SqlCommand cmdTable = new SqlCommand(checkTable, connection);
+                string SelectItem = "SELECT * FROM items WHERE date_delete IS NULL";
 
-                int tableExists = (int)cmdTable.ExecuteScalar();
-                if (tableExists == 0)
+                using (SqlCommand cmd = new SqlCommand(SelectItem, conn))
                 {
-                    // If table doesn't exist, offer to create it
-                    DialogResult result = MessageBox.Show("Items table does not exist! Would you like to create it?",
-                        "Table Missing", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-                    if (result == DialogResult.Yes)
+                    while (reader.Read())
                     {
-                        CreateItemsTable(connection);
-                        // After creating the table, refresh the connection
-                        return;
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
+                        AddItemData aid = new AddItemData();
 
-                // Load items data
-                string query = "SELECT * FROM Items";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
+                        aid.ID = (int)reader["id"];
+                        aid.ItemID = reader["item_id"].ToString();
+                        aid.ItemName = reader["item_name"].ToString();
+                        aid.Type = reader["item_type"].ToString();
+                        aid.Stock = reader["item_stock"].ToString();
+                        aid.Price = reader["item_price"].ToString();
+                        aid.Status = reader["item_status"].ToString();
+                        aid.Image = reader["item_image"].ToString();
+                        aid.DateInsert = reader["date_insert"].ToString();
+                        aid.DateUpdate = reader["date_update"].ToString();
 
-                if (dt.Rows.Count > 0)
-                {
-                    itemdatagrid.DataSource = dt;
-                    itemdatagrid.AutoGenerateColumns = true;
-                    itemdatagrid.Visible = true;
-                    itemdatagrid.Refresh();
-                    itemdatagrid.AutoResizeColumns();
-                    itemdatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                }
-                else
-                {
-                    DialogResult result = MessageBox.Show("No items data found. Would you like to add sample data?",
-                        "Empty Table", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-                    if (result == DialogResult.Yes)
-                    {
-                        // Insert sample data
-                        InsertItemsSampleData(connection);
-                        // Reload the data
-                        LoadItemData();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Connection Error: " + ex.Message + "\n\nStack Trace: " + ex.StackTrace,
-                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error: " + ex.Message);
             }
-        }
-
-        // Helper method to create Items table
-        private void CreateItemsTable(SqlConnection connection)
-        {
-            try
+            finally
             {
-                string createTableQuery = @"
-                    IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Items')
-                    BEGIN
-                        CREATE TABLE Items (
-                            ProductId INT IDENTITY(1,1) PRIMARY KEY,
-                            ProductName NVARCHAR(100) NOT NULL,
-                            Description NVARCHAR(255),
-                            Price DECIMAL(10, 2) NOT NULL,
-                            Stock INT NOT NULL DEFAULT 0
-                        );
-                    END";
-
-                using SqlCommand cmd = new SqlCommand(createTableQuery, connection);
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("Items table created successfully!",
-                    "Table Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using SqlConnection conn = dbConn.GetConnection();
+                conn.Close();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error creating Items table: " + ex.Message,
-                    "Table Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
-        // Helper method to insert sample data into Items table
-        private void InsertItemsSampleData(SqlConnection connection)
-        {
-            try
-            {
-                string insertQuery = @"
-                    INSERT INTO Items (ProductName, Description, Price, Stock)
-                    VALUES 
-                        ('Glass Food Storage', 'High-quality glass container for food storage', 275.00, 17),
-                        ('Steel Mug Rack', 'Stainless steel rack for mugs', 50.45, 10),
-                        ('Mitts Potholders', 'Heat-resistant kitchen mitts', 65.00, 27),
-                        ('Steel Brazier Pot', 'Durable steel cooking pot', 150.50, 40),
-                        ('Descascador', 'Multipurpose peeler tool', 79.00, 26),
-                        ('Cleaning Sponge', 'Heavy-duty kitchen cleaning sponge', 35.50, 197),
-                        ('Silverware Set', 'Complete set of silverware', 175.50, 776),
-                        ('Kitchen Scale', 'Digital kitchen scale with high precision', 499.00, 53),
-                        ('Table Cloth', 'Elegant table cloth for dining', 55.50, 500)";
-
-                using SqlCommand cmd = new SqlCommand(insertQuery, connection);
-                int rowsAffected = cmd.ExecuteNonQuery();
-
-                MessageBox.Show($"Successfully added {rowsAffected} sample items to the Items table!",
-                    "Sample Data Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error adding sample data to Items table: " + ex.Message,
-                    "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void invBtn_Click(object sender, EventArgs e) //Inventory button; CRU operations need to be applied.
         {
-            LoadInventoryData();
-            //CheckInventory("someProductID"); //plan for calling from dbFunc // Replace "someProductID" with the actual product ID you want to check
+
+            LoadItemData();
             inv_bg_pic.Visible = false;
-            homeDataGrid.Visible = true;
+            homeDataGrid.Visible = false;
             salesDataGrid.Visible = false;
-            itemdatagrid.Visible = false;
+            itemdatagrid.Visible = true;
         }
         private void bck_btn_Click_2(object sender, EventArgs e)
         {
