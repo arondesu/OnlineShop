@@ -53,7 +53,7 @@ namespace OnlineShop
             // Check for duplicate Item ID
 
             // Attempt to add the product
-            bool isAdded = dbFunc.AddProduct(itemId, itemName, itemType, itemStock, itemPrice, itemStatus, AddProductForm_imageView.ImageLocation);
+            bool isAdded = dbFunc.AddProduct(itemId, itemName, itemType, itemStock, itemPrice, itemStatus);
             if (isAdded)
             {
                 MessageBox.Show("Product added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -104,23 +104,6 @@ namespace OnlineShop
                 txtItem_stock.Text = row.Cells[4].Value.ToString();
                 txtItem_price.Text = row.Cells[5].Value.ToString();
                 txtItem_status.Text = row.Cells[6].Value.ToString();
-
-                string imagePath = row.Cells[7].Value.ToString();
-                try
-                {
-                    if (imagePath != null)
-                    {
-                        AddProductForm_imageView.Image = Image.FromFile(imagePath);
-                    }
-                    else
-                    {
-                        AddProductForm_imageView.Image = null; // Clear the image if path is empty
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error loading image: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
         }
 
@@ -132,7 +115,7 @@ namespace OnlineShop
             }
             else
             {
-                DialogResult check = MessageBox.Show("Are you sure you want to update Product ID: ?" + txtItem_id.Text.Trim() + "?", "Update Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult check = MessageBox.Show("Are you sure you want to UPDATE Product ID: " + txtItem_id.Text.Trim() + "?", "Update Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (check == DialogResult.Yes)
                 {
@@ -144,14 +127,13 @@ namespace OnlineShop
                             {
                                 connection.Open();
 
-
                                 string updateData = "UPDATE items SET item_id = @item_id, " +
                                     "item_name = @item_name, item_type = @item_type, item_stock = @item_stock, " +
-                                    "item_price = @item_price, item_status = @item_status, " +
-                                    "item_image = @item_image WHERE id = @id";
+                                    "item_price = @item_price, item_status = @item_status";
                                 DateTime today = DateTime.Now;
 
-                                using (SqlCommand updateD = new SqlCommand(updateData, connection)) { 
+                                using (SqlCommand updateD = new SqlCommand(updateData, connection))
+                                {
                                     updateD.Parameters.AddWithValue("@item_id", txtItem_id.Text.Trim());
                                     updateD.Parameters.AddWithValue("@item_name", txtItem_name.Text.Trim());
                                     updateD.Parameters.AddWithValue("@item_type", txtItem_type.Text.Trim());
@@ -159,12 +141,11 @@ namespace OnlineShop
                                     updateD.Parameters.AddWithValue("@item_price", txtItem_price.Text.Trim());
                                     updateD.Parameters.AddWithValue("@item_status", txtItem_status.Text.Trim());
                                     updateD.Parameters.AddWithValue("@date_update", today);
-                                    updateD.Parameters.AddWithValue("@item_image", AddProductForm_imageView.ImageLocation);
                                     updateD.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                                    
+
                                     updateD.ExecuteNonQuery();
                                     dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView);
-                                    
+
                                     MessageBox.Show("Product ID: " + txtItem_id.Text.Trim() + " updated successfully!", "Update Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                     itemListData();
@@ -183,6 +164,59 @@ namespace OnlineShop
                         }
 
                         // Add your update logic here, e.g., calling a method to update the product in the database.  
+                    }
+                }
+            }
+        }
+        //FUNCTION FOR DELETE BUTTON
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dbFunc.emptyFields(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status))
+            {
+                MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult check = MessageBox.Show("Are you sure you want to DELETE Product ID: " + txtItem_id.Text.Trim() + "?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (check == DialogResult.Yes)
+                {
+                    using (SqlConnection connection = dbConn.GetConnection())
+                    {
+                        try
+                        {
+                            if (connection.State != ConnectionState.Open)
+                            {
+                                connection.Open();
+                            }
+
+                            string deleteData = "UPDATE items SET date_delete = @dataDelete WHERE item_id = @item_id";
+                            DateTime today = DateTime.Now;
+
+                            using (SqlCommand deleted = new SqlCommand(deleteData, connection))
+                            {
+                                deleted.Parameters.AddWithValue("@dataDelete", today);
+                                deleted.Parameters.AddWithValue("@item_id", txtItem_id.Text.Trim());
+
+                                deleted.ExecuteNonQuery();
+                                dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView);
+
+                                MessageBox.Show("Product ID: " + txtItem_id.Text.Trim() + " deleted successfully!", "Delete Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                itemListData();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Connection Failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            if (connection.State == ConnectionState.Open)
+                            {
+                                connection.Close();
+                            }
+                        }
                     }
                 }
             }
