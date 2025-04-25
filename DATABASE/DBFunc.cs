@@ -308,4 +308,52 @@ public class DBFunc
         txtItem_status.SelectedIndex = -1;
         AddProductForm_imageView.ImageLocation = null;
     }
+    public void LoadItemData() //Loads items data into the item data grid // PALIHUG KOG TRANSFER ANI SA DBFUNC KAY FUNCTION NI. TYYY
+    {
+        try
+        {
+            //for temporary testing
+            using SqlConnection conn = dbConn.GetConnection();
+            conn.Open();
+
+            string SelectItem = "SELECT * FROM items WHERE date_delete IS NULL";
+
+            using (SqlCommand cmd = new SqlCommand(SelectItem, conn))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    AddItemData aid = new AddItemData();
+
+                    aid.ID = (int)reader["id"];
+                    aid.ItemID = reader["item_id"].ToString();
+                    aid.ItemName = reader["item_name"].ToString();
+                    aid.Type = reader["item_type"].ToString();
+                    aid.Stock = reader["item_stock"].ToString();
+                    aid.Price = reader["item_price"].ToString();
+                    aid.Status = reader["item_status"].ToString();
+                    aid.Image = reader["item_image"].ToString();
+                    aid.DateInsert = reader["date_insert"].ToString();
+                    aid.DateUpdate = reader["date_update"].ToString();
+
+
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+        finally
+        {
+            using SqlConnection conn = dbConn.GetConnection();
+            conn.Close();
+        }
+
+    }
+
+
+
 }
+

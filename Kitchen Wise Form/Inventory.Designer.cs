@@ -45,6 +45,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
             homePanel = new Panel();
+            addProductForm1 = new AddProductForm();
             itemdatagrid = new DataGridView();
             inv_bg_pic = new PictureBox();
             homeDataGrid = new DataGridView();
@@ -58,7 +59,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             button4 = new Button();
             item_btn = new Button();
             invBtn = new Button();
-            addProductForm1 = new AddProductForm();
             panel1.SuspendLayout();
             ((ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -142,6 +142,13 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             homePanel.Name = "homePanel";
             homePanel.Size = new Size(900, 569);
             homePanel.TabIndex = 0;
+            // 
+            // addProductForm1
+            // 
+            addProductForm1.Location = new Point(-1, -2);
+            addProductForm1.Name = "addProductForm1";
+            addProductForm1.Size = new Size(900, 556);
+            addProductForm1.TabIndex = 41;
             // 
             // itemdatagrid
             // 
@@ -298,13 +305,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             invBtn.Text = "Inventory";
             invBtn.UseVisualStyleBackColor = false;
             invBtn.Click += invBtn_Click;
-            // 
-            // addProductForm1
-            // 
-            addProductForm1.Location = new Point(-1, -2);
-            addProductForm1.Name = "addProductForm1";
-            addProductForm1.Size = new Size(900, 556);
-            addProductForm1.TabIndex = 41;
             // 
             // InventoryForm
             // 

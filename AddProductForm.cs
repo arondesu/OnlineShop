@@ -17,11 +17,13 @@ namespace OnlineShop
     public partial class AddProductForm : UserControl
     {
         private DBFunc dbFunc;
+        private DBConn dbConn;
 
         public AddProductForm()
         {
             InitializeComponent();
             dbFunc = new DBFunc();
+            dbConn = new DBConn();
             itemListData();
         }
 
@@ -56,6 +58,7 @@ namespace OnlineShop
             {
                 MessageBox.Show("Product added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView);
+                itemListData();
             }
             else
             {
@@ -117,6 +120,70 @@ namespace OnlineShop
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error loading image: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dbFunc.emptyFields(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status))
+            {
+                MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult check = MessageBox.Show("Are you sure you want to update Product ID: ?" + txtItem_id.Text.Trim() + "?", "Update Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (check == DialogResult.Yes)
+                {
+                    using (SqlConnection connection = dbConn.GetConnection())
+                    {
+                        if (connection.State != ConnectionState.Open)
+                        {
+                            try
+                            {
+                                connection.Open();
+
+
+                                string updateData = "UPDATE items SET item_id = @item_id, " +
+                                    "item_name = @item_name, item_type = @item_type, item_stock = @item_stock, " +
+                                    "item_price = @item_price, item_status = @item_status, " +
+                                    "item_image = @item_image WHERE id = @id";
+                                DateTime today = DateTime.Now;
+
+                                using (SqlCommand updateD = new SqlCommand(updateData, connection)) { 
+                                    updateD.Parameters.AddWithValue("@item_id", txtItem_id.Text.Trim());
+                                    updateD.Parameters.AddWithValue("@item_name", txtItem_name.Text.Trim());
+                                    updateD.Parameters.AddWithValue("@item_type", txtItem_type.Text.Trim());
+                                    updateD.Parameters.AddWithValue("@item_stock", txtItem_stock.Text.Trim());
+                                    updateD.Parameters.AddWithValue("@item_price", txtItem_price.Text.Trim());
+                                    updateD.Parameters.AddWithValue("@item_status", txtItem_status.Text.Trim());
+                                    updateD.Parameters.AddWithValue("@date_update", today);
+                                    updateD.Parameters.AddWithValue("@item_image", AddProductForm_imageView.ImageLocation);
+                                    updateD.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                                    
+                                    updateD.ExecuteNonQuery();
+                                    dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView);
+                                    
+                                    MessageBox.Show("Product ID: " + txtItem_id.Text.Trim() + " updated successfully!", "Update Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                    itemListData();
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Connection Failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                            finally
+                            {
+                                connection.Close();
+                            }
+                        }
+
+                        // Add your update logic here, e.g., calling a method to update the product in the database.  
+                    }
                 }
             }
         }
