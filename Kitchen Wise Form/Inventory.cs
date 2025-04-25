@@ -24,10 +24,10 @@ namespace OnlineShop.Kitchen_Wise_Form
             dbConn = new DBConn();
             dbFunc = new DBFunc();
             this.StartPosition = FormStartPosition.CenterScreen;
+            inv_bg_pic.Visible = true;
+            addProductForm1.Visible = false;
+            adminDashboardForm1.Visible = true;
 
-            // Initialize data grids
-            homeDataGrid.Visible = false;
-            salesDataGrid.Visible = false;
 
             // If itemDataGrid doesn't exist in the designer, create it programmatically
             if (itemDataGrid == null)
@@ -189,28 +189,26 @@ namespace OnlineShop.Kitchen_Wise_Form
 
         private void salesBtn_Click(object sender, EventArgs e) //transactions should be here
         {
-            LoadSalesData();
-            inv_bg_pic.Visible = false;
-            homeDataGrid.Visible = false;
-            salesDataGrid.Visible = true;
-            itemdatagrid.Visible = false;
+            //LoadSalesData();
+            //inv_bg_pic.Visible = false;
+            //homeDataGrid.Visible = false;
+            //salesDataGrid.Visible = true;
+            //itemdatagrid.Visible = false;
         }
 
         private void home_btn_Click(object sender, EventArgs e) //brief details of each item?? i need your thoughts.
-        {
-            inv_bg_pic.Visible = true;
-            homeDataGrid.Visible = false;
-            salesDataGrid.Visible = false;
-            itemdatagrid.Visible = false;
+        { 
+            adminDashboardForm1.BringToFront();
+            adminDashboardForm1.Visible = true;
+            addProductForm1.Visible = false;
         }
 
         private void item_btn_Click(object sender, EventArgs e) //Items button; CRUD operations need to be applied.
         {
-            LoadItemData();
-            inv_bg_pic.Visible = false;
-            homeDataGrid.Visible = false;
-            salesDataGrid.Visible = false;
-            itemdatagrid.Visible = true;
+           
+            adminDashboardForm1.Visible = false;
+            addProductForm1.Visible = true;
+            addProductForm1.BringToFront();
         }
 
         private void LoadItemData() //Loads items data into the item data grid // PALIHUG KOG TRANSFER ANI SA DBFUNC KAY FUNCTION NI. TYYY
@@ -261,11 +259,11 @@ namespace OnlineShop.Kitchen_Wise_Form
         private void invBtn_Click(object sender, EventArgs e) //Inventory button; CRU operations need to be applied.
         {
 
-            LoadItemData();
-            inv_bg_pic.Visible = false;
-            homeDataGrid.Visible = false;
-            salesDataGrid.Visible = false;
-            itemdatagrid.Visible = true;
+            //LoadItemData();
+            //inv_bg_pic.Visible = false;
+            //homeDataGrid.Visible = false;
+            //salesDataGrid.Visible = false;
+            //itemdatagrid.Visible = true;
         }
         private void bck_btn_Click_2(object sender, EventArgs e)
         {

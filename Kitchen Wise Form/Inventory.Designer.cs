@@ -46,7 +46,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             panel2 = new Panel();
             homePanel = new Panel();
             addProductForm1 = new AddProductForm();
-            itemdatagrid = new DataGridView();
             inv_bg_pic = new PictureBox();
             homeDataGrid = new DataGridView();
             salesDataGrid = new DataGridView();
@@ -59,11 +58,11 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             button4 = new Button();
             item_btn = new Button();
             invBtn = new Button();
+            BASE = new Panel();
             panel1.SuspendLayout();
             ((ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             homePanel.SuspendLayout();
-            ((ISupportInitialize)itemdatagrid).BeginInit();
             ((ISupportInitialize)inv_bg_pic).BeginInit();
             ((ISupportInitialize)homeDataGrid).BeginInit();
             ((ISupportInitialize)salesDataGrid).BeginInit();
@@ -132,12 +131,12 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // homePanel
             // 
             homePanel.BackColor = Color.FromArgb(209, 207, 201);
+            homePanel.Controls.Add(BASE);
             homePanel.Controls.Add(addProductForm1);
-            homePanel.Controls.Add(itemdatagrid);
+            homePanel.Controls.Add(adminDashboardForm1);
             homePanel.Controls.Add(inv_bg_pic);
             homePanel.Controls.Add(homeDataGrid);
             homePanel.Controls.Add(salesDataGrid);
-            homePanel.Controls.Add(adminDashboardForm1);
             homePanel.Location = new Point(1, 2);
             homePanel.Name = "homePanel";
             homePanel.Size = new Size(900, 569);
@@ -145,22 +144,10 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // 
             // addProductForm1
             // 
-            addProductForm1.Location = new Point(-1, -2);
+            addProductForm1.Location = new Point(-3, -2);
             addProductForm1.Name = "addProductForm1";
             addProductForm1.Size = new Size(900, 556);
             addProductForm1.TabIndex = 41;
-            // 
-            // itemdatagrid
-            // 
-            itemdatagrid.BackgroundColor = Color.FromArgb(209, 207, 201);
-            itemdatagrid.BorderStyle = BorderStyle.None;
-            itemdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            itemdatagrid.Dock = DockStyle.Fill;
-            itemdatagrid.Location = new Point(0, 0);
-            itemdatagrid.Name = "itemdatagrid";
-            itemdatagrid.RowHeadersWidth = 51;
-            itemdatagrid.Size = new Size(900, 569);
-            itemdatagrid.TabIndex = 40;
             // 
             // inv_bg_pic
             // 
@@ -306,6 +293,13 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             invBtn.UseVisualStyleBackColor = false;
             invBtn.Click += invBtn_Click;
             // 
+            // BASE
+            // 
+            BASE.Location = new Point(0, 0);
+            BASE.Name = "BASE";
+            BASE.Size = new Size(901, 554);
+            BASE.TabIndex = 42;
+            // 
             // InventoryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -324,7 +318,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             ((ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             homePanel.ResumeLayout(false);
-            ((ISupportInitialize)itemdatagrid).EndInit();
             ((ISupportInitialize)inv_bg_pic).EndInit();
             ((ISupportInitialize)homeDataGrid).EndInit();
             ((ISupportInitialize)salesDataGrid).EndInit();
@@ -344,7 +337,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
         private PictureBox pictureBox1;
         private Button home_btn;
         private Panel homePanel;
-        private DataGridView homeDataGrid;
         private BindingSource dBFuncBindingSource;
         private Button bck_btn;
         private Button salesBtn;
@@ -354,7 +346,8 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
         private Label btnClose;
         private AdminDashboardForm adminDashboardForm1;
         private DataGridView salesDataGrid;
-        private DataGridView itemdatagrid;
         private AddProductForm addProductForm1;
+        private DataGridView homeDataGrid;
+        private Panel BASE;
     }
 }
