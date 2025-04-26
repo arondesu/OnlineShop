@@ -1,3 +1,5 @@
+using OnlineShop.Kitchen_Wise_Form;
+
 namespace OnlineShop
 {
     internal static class Program
@@ -10,7 +12,7 @@ namespace OnlineShop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new KitchenWiseAdmin());
+            Application.Run(new InventoryForm());
         }
     }
 }

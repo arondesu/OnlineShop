@@ -39,57 +39,6 @@ namespace OnlineShop.Kitchen_Wise_Form
             }
         }
 
-        public void CheckInventory(string productID) //called from dbFunc.cs
-        {
-            // Call the checkInvTable method
-            DataTable inventoryTable = dbFunc.checkInvTable(productID);
-
-            // Check if the DataTable is not null and has rows
-            if (inventoryTable != null && inventoryTable.Rows.Count > 0)
-            {
-                Console.WriteLine("Inventory data retrieved successfully.");
-                // Process the DataTable as needed
-            }
-            else
-            {
-                Console.WriteLine("No inventory data found or an error occurred.");
-            }
-
-            // Another example of getting data from inv table
-            using SqlConnection connection = dbConn.GetConnection();
-            connection.Open();
-            Console.WriteLine("Database connected successfully!");
-
-            string query = "SELECT ProductId, QuantityInStock, Location FROM Inventory WHERE ProductId = @ProductId";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@ProductId", productID); // Use the method parameter 'productID' here
-
-            try
-            {
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        Console.WriteLine($"Product ID: {reader["ProductId"]}");
-                        Console.WriteLine($"Quantity: {reader["QuantityInStock"]}");
-                        Console.WriteLine($"Location: {reader["Location"]}");
-                        Console.WriteLine("---------------------");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine($"No inventory found for Product ID: {productID}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error checking inventory: {ex.Message}");
-            }
-        }
-
         private void LoadSalesData()
         {
             try
@@ -107,30 +56,10 @@ namespace OnlineShop.Kitchen_Wise_Form
                 salesDataGrid.AutoGenerateColumns = true;
                 salesDataGrid.Visible = true;
                 salesDataGrid.Refresh();
-                salesDataGrid.AutoResizeColumns();
-                salesDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading sales data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Check if MainShop is already open
-            MainShop? mainShop = Application.OpenForms.OfType<MainShop>().FirstOrDefault();
-
-            if (mainShop == null)
-            {
-                mainShop = new MainShop();
-                mainShop.Show();
-            }
-            else
-            {
-                mainShop.WindowState = FormWindowState.Normal;
-                mainShop.Show();
-                mainShop.BringToFront();
             }
         }
 
@@ -160,6 +89,54 @@ namespace OnlineShop.Kitchen_Wise_Form
             addProductForm1.Visible = true;
             salesDataGrid.Visible = false;
             itemdatagrid.Visible = false;
+        }
+
+        private void invBtn_Click(object sender, EventArgs e) //Inventory button; CRU operations need to be applied.
+        {
+            LoadInventoryData();
+            itemdatagrid.BringToFront();
+            inv_bg_pic.Visible = false;
+            homeDataGrid.Visible = false;
+            salesDataGrid.Visible = false;
+            itemdatagrid.Visible = true;
+        }
+
+
+        private void bck_btn_Click_2(object sender, EventArgs e)
+        {
+            //Calling the MainShop form
+            MainShop mn = new MainShop();
+            mn.Show();
+            this.Hide();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void LoadInventoryData()
+        {
+            try
+            {
+                using SqlConnection connection = dbConn.GetConnection();
+                connection.Open();
+                Console.WriteLine("Database connected successfully!");
+
+                string query = "SELECT * FROM inventory";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                itemdatagrid.DataSource = dt;
+                itemdatagrid.AutoGenerateColumns = true;
+                itemdatagrid.Visible = true;
+                itemdatagrid.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading sales data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadItemData() //Loads items data into the item data grid 
@@ -202,28 +179,6 @@ namespace OnlineShop.Kitchen_Wise_Form
                 using SqlConnection conn = dbConn.GetConnection();
                 conn.Close();
             }
-        }
-
-        private void invBtn_Click(object sender, EventArgs e) //Inventory button; CRU operations need to be applied.
-        {
-            LoadItemData();
-            inv_bg_pic.Visible = false;
-            homeDataGrid.Visible = false;
-            salesDataGrid.Visible = false;
-            itemdatagrid.Visible = true;
-        }
-
-        private void bck_btn_Click_2(object sender, EventArgs e)
-        {
-            //Calling the MainShop form
-            MainShop mn = new MainShop();
-            mn.Show();
-            this.Hide();
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
     }
 }
