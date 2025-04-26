@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\valle\\source\\repos\\OnlineShop\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\valle\\source\\repos\\onlineshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\valle\\source\\repos\\onlineshop\\kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -38,11 +42,24 @@
       "DocumentGroups": [
         {
           "DockedHeight": 606,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\valle\\source\\repos\\OnlineShop\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\valle\\source\\repos\\OnlineShop\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T22:37:12.581Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -66,20 +83,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "OnlineShop.cs",
               "DocumentMoniker": "C:\\Users\\valle\\source\\repos\\OnlineShop\\Kitchen Wise Form\\OnlineShop.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\OnlineShop.cs",
               "ToolTip": "C:\\Users\\valle\\source\\repos\\OnlineShop\\Kitchen Wise Form\\OnlineShop.cs",
               "RelativeToolTip": "Kitchen Wise Form\\OnlineShop.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAuwFkAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAAAFkAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-26T22:24:58.19Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "DBFunc.cs",
               "DocumentMoniker": "C:\\Users\\valle\\source\\repos\\OnlineShop\\DATABASE\\DBFunc.cs",
               "RelativeDocumentMoniker": "DATABASE\\DBFunc.cs",
@@ -92,7 +109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "OnlineShop.cs [Design]",
               "DocumentMoniker": "C:\\Users\\valle\\source\\repos\\OnlineShop\\Kitchen Wise Form\\OnlineShop.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\OnlineShop.cs",
@@ -104,7 +121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Inventory.cs [Design]",
               "DocumentMoniker": "C:\\Users\\valle\\source\\repos\\OnlineShop\\Kitchen Wise Form\\Inventory.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\Inventory.cs",
@@ -116,7 +133,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Inventory.Designer.cs",
               "DocumentMoniker": "C:\\Users\\valle\\source\\repos\\OnlineShop\\Kitchen Wise Form\\Inventory.Designer.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\Inventory.Designer.cs",
@@ -129,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "OnlineShop",
               "DocumentMoniker": "C:\\Users\\valle\\Source\\Repos\\OnlineShop\\OnlineShop.csproj",
               "RelativeDocumentMoniker": "OnlineShop.csproj",
@@ -142,7 +159,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "DBConn.cs",
               "DocumentMoniker": "C:\\Users\\valle\\source\\repos\\OnlineShop\\DATABASE\\DBConn.cs",
               "RelativeDocumentMoniker": "DATABASE\\DBConn.cs",
