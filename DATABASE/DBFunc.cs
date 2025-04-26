@@ -181,7 +181,11 @@ public class DBFunc
         }
     }
 
+<<<<<<< HEAD
     //FUNCTION FOR SHOWING DATA IN DATAGRIDVIEW
+=======
+    //FUNCTION FOR 
+>>>>>>> b06fc22987a5cdb7624185d3a63502706fedf7f0
     public DataTable checkInvTable(string ProductID) //to be checked if working 
     {
         try
@@ -231,24 +235,36 @@ public class DBFunc
         }
     }
 
+
     //FUNCTION FOR ADDING STOCK ON ITEMS(SHOP)
     public void SyncQuantityLabels(Dictionary<string, Label> quantityLabels) //stocks label are shown
     {
         try
         {
-            DataTable inventoryData = checkInvTable(null);
-            if (inventoryData != null)
+            DataTable inventoryData = checkInvTable(string.Empty);
+            if (inventoryData != null && inventoryData.Rows.Count > 0)
             {
                 foreach (DataRow row in inventoryData.Rows)
                 {
-                    string productName = row["ProductName"].ToString();
-                    int quantity = Convert.ToInt32(row["InStock"]);
+                    // Debug information to see what columns are available
+                    Console.WriteLine("Available columns: " + string.Join(", ", inventoryData.Columns.Cast<DataColumn>().Select(c => c.ColumnName)));
 
-                    if (quantityLabels.ContainsKey(productName))
+                    // Use the correct column names from your items table
+                    string productName = row["ProductName"]?.ToString();
+
+                    if (!string.IsNullOrEmpty(productName) && quantityLabels.ContainsKey(productName) && quantityLabels[productName] != null)
                     {
-                        quantityLabels[productName].Text = $"In Stock: {quantity}";
+                        if (int.TryParse(row["InStock"]?.ToString(), out int quantity))
+                        {
+                            quantityLabels[productName].Text = $"In Stock: {quantity}";
+                        }
                     }
+
                 }
+            }
+            else
+            {
+                MessageBox.Show("No inventory data available", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         catch (Exception ex)
