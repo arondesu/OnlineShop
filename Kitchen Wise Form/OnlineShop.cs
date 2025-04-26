@@ -25,7 +25,6 @@ namespace OnlineShop
         {
             InitializeComponent(); 
             this.StartPosition = FormStartPosition.CenterScreen; // Center the form on startup
-            SetupScrollablePanel(); // Call method to set up the scrollable panel
 
             // Initialize the dictionary with your labels
             quantityLabels = new Dictionary<string, Label>
@@ -39,15 +38,9 @@ namespace OnlineShop
                 {"Silverware Set", sware_qty},
                 {"Kitchen Scale", kscale_qty},
                 {"Table Cloth", tcloth_qty}
-<<<<<<< HEAD
-            };
-
-            // Sync the labels with inventory
-=======
 };
 
             //THEN sync
->>>>>>> f53a7d6384d3ecafe6f58315ea173f4756252241
             dbFunc.SyncQuantityLabels(quantityLabels);
         }
 
