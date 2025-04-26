@@ -49,9 +49,9 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             addProductForm1 = new AddProductForm();
             inv_bg_pic = new PictureBox();
             itemdatagrid = new DataGridView();
-            homeDataGrid = new DataGridView();
             salesDataGrid = new DataGridView();
             dBFuncBindingSource = new BindingSource(components);
+            homeDataGrid = new DataGridView();
             panel3 = new Panel();
             bck_btn = new Button();
             salesBtn = new Button();
@@ -65,9 +65,9 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             homePanel.SuspendLayout();
             ((ISupportInitialize)inv_bg_pic).BeginInit();
             ((ISupportInitialize)itemdatagrid).BeginInit();
-            ((ISupportInitialize)homeDataGrid).BeginInit();
             ((ISupportInitialize)salesDataGrid).BeginInit();
             ((ISupportInitialize)dBFuncBindingSource).BeginInit();
+            ((ISupportInitialize)homeDataGrid).BeginInit();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -170,6 +170,8 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // 
             // itemdatagrid
             // 
+            itemdatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            itemdatagrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             itemdatagrid.BackgroundColor = Color.FromArgb(209, 207, 201);
             itemdatagrid.BorderStyle = BorderStyle.None;
             itemdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -180,19 +182,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             itemdatagrid.RowHeadersWidth = 51;
             itemdatagrid.Size = new Size(1286, 948);
             itemdatagrid.TabIndex = 40;
-            // 
-            // homeDataGrid
-            // 
-            homeDataGrid.BackgroundColor = Color.FromArgb(209, 207, 201);
-            homeDataGrid.BorderStyle = BorderStyle.None;
-            homeDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            homeDataGrid.Dock = DockStyle.Fill;
-            homeDataGrid.Location = new Point(0, 0);
-            homeDataGrid.Margin = new Padding(4, 5, 4, 5);
-            homeDataGrid.Name = "homeDataGrid";
-            homeDataGrid.RowHeadersWidth = 51;
-            homeDataGrid.Size = new Size(1286, 948);
-            homeDataGrid.TabIndex = 0;
             // 
             // salesDataGrid
             // 
@@ -213,6 +202,19 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // dBFuncBindingSource
             // 
             dBFuncBindingSource.DataSource = typeof(DBFunc);
+            // 
+            // homeDataGrid
+            // 
+            homeDataGrid.BackgroundColor = Color.FromArgb(209, 207, 201);
+            homeDataGrid.BorderStyle = BorderStyle.None;
+            homeDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            homeDataGrid.Dock = DockStyle.Fill;
+            homeDataGrid.Location = new Point(0, 0);
+            homeDataGrid.Margin = new Padding(4, 5, 4, 5);
+            homeDataGrid.Name = "homeDataGrid";
+            homeDataGrid.RowHeadersWidth = 51;
+            homeDataGrid.Size = new Size(1286, 948);
+            homeDataGrid.TabIndex = 0;
             // 
             // panel3
             // 
@@ -325,9 +327,9 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             homePanel.ResumeLayout(false);
             ((ISupportInitialize)inv_bg_pic).EndInit();
             ((ISupportInitialize)itemdatagrid).EndInit();
-            ((ISupportInitialize)homeDataGrid).EndInit();
             ((ISupportInitialize)salesDataGrid).EndInit();
             ((ISupportInitialize)dBFuncBindingSource).EndInit();
+            ((ISupportInitialize)homeDataGrid).EndInit();
             panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
