@@ -393,7 +393,6 @@ C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.Kitch
 C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.KitchenWiseAdmin.resources
 C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.MainShop.resources
 C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.Properties.Resources.resources
-C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.SalesForm.resources
 C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.csproj.GenerateResource.cache
 C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.AssemblyInfoInputs.cache
@@ -406,3 +405,4 @@ C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\refint\OnlineSho
 C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.pdb
 C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.genruntimeconfig.cache
 C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\ref\OnlineShop.dll
+C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.ExtraItemForm.resources

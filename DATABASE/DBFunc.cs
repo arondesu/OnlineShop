@@ -147,10 +147,6 @@ public class DBFunc
         string path = Path.Combine(@"C:\Users\ADMIN\Source\Repos\OnlineShop\Item_Directory\" + txtItem_id.Trim());
         string directoryPath = Path.GetDirectoryName(path);
 
-        if (!Directory.Exists(directoryPath))
-        {
-            Directory.CreateDirectory(directoryPath);
-        }
 
         if (string.IsNullOrEmpty(AddProductForm_imageView))
         {
@@ -158,7 +154,6 @@ public class DBFunc
             return false;
         }
 
-        File.Copy(AddProductForm_imageView, path, true);
 
         using (SqlCommand cmd = new SqlCommand(insertData, conn))
         {
@@ -186,8 +181,8 @@ public class DBFunc
         }
     }
 
-    //FUNCTION FOR 
-    public DataTable checkInvTable(string ProductID) //to be check if working 
+    //FUNCTION FOR SHOWING DATA IN DATAGRIDVIEW
+    public DataTable checkInvTable(string ProductID) //to be checked if working 
     {
         try
         {
@@ -195,20 +190,22 @@ public class DBFunc
             connection.Open();
 
             // Test if table exists
-            string checkTable = "SELECT * FROM sys.tables WHERE name = 'inventory'";
+            string checkTable = "SELECT COUNT(*) FROM sys.tables WHERE name = 'inventory'";
             using SqlCommand cmdTable = new SqlCommand(checkTable, connection);
 
-            int tableExists = (int)cmdTable.ExecuteScalar();
+            int tableExists = Convert.ToInt32(cmdTable.ExecuteScalar());
+
             if (tableExists == 0)
             {
                 MessageBox.Show("Inventory table does not exist!");
+                return new DataTable(); // Return an empty DataTable instead of null
             }
 
-            //Test if data exists
-            string countQuery = "SELECT * FROM inventory";
+            // Test if data exists
+            string countQuery = "SELECT COUNT(*) FROM inventory";
             using SqlCommand cmdData = new SqlCommand(countQuery, connection);
 
-            int rowCount = (int)cmdData.ExecuteScalar();
+            int rowCount = Convert.ToInt32(cmdData.ExecuteScalar());
             Console.WriteLine($"Number of rows in Inventory: {rowCount}");
 
             // Original data loading code
@@ -221,13 +218,17 @@ public class DBFunc
             {
                 return dt;
             }
+            else
+            {
+                MessageBox.Show("No data found in the Inventory table.");
+                return new DataTable(); // Return an empty DataTable if no rows exist
+            }
         }
         catch (Exception ex)
         {
             MessageBox.Show("Connection Error: " + ex.Message + "\n\nStack Trace: " + ex.StackTrace, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
+            return new DataTable(); // Return an empty DataTable in case of an exception
         }
-        return null;
     }
 
     //FUNCTION FOR ADDING STOCK ON ITEMS(SHOP)

@@ -21,6 +21,7 @@ namespace OnlineShop.Kitchen_Wise_Form
         public InventoryForm()
         {
             InitializeComponent();
+            SetupScrollablePanel();
             dbConn = new DBConn();
             dbFunc = new DBFunc();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -38,7 +39,31 @@ namespace OnlineShop.Kitchen_Wise_Form
                 itemDataGrid.Visible = false;
             }
         }
+        private void SetupScrollablePanel()
+        {
+            // Create a panel that enables only vertical scrolling
+            Panel scrollablePanel = new Panel
+            {
+                Dock = DockStyle.Fill,  // Make it fill the form
+                AutoScroll = true,      // Enable scrolling
+                HorizontalScroll = { Enabled = false, Visible = false }, // Disable horizontal scroll
+                VerticalScroll = { Enabled = true, Visible = true }      // Enable vertical scroll
+            };
 
+            // Ensure that only vertical scrolling is active
+            scrollablePanel.AutoScrollMinSize = new Size(0, scrollablePanel.Height + 1);
+
+            // Move all existing controls into the panel
+            while (this.Controls.Count > 0)
+            {
+                Control ctrl = this.Controls[0];
+                this.Controls.Remove(ctrl);
+                scrollablePanel.Controls.Add(ctrl);
+            }
+
+            // Add the scrollable panel to the form
+            this.Controls.Add(scrollablePanel);
+        }
         private void LoadSalesData()
         {
             try
