@@ -147,10 +147,6 @@ public class DBFunc
         string path = Path.Combine(@"C:\Users\ADMIN\Source\Repos\OnlineShop\Item_Directory\" + txtItem_id.Trim());
         string directoryPath = Path.GetDirectoryName(path);
 
-        if (!Directory.Exists(directoryPath))
-        {
-            Directory.CreateDirectory(directoryPath);
-        }
 
         if (string.IsNullOrEmpty(AddProductForm_imageView))
         {
@@ -158,7 +154,6 @@ public class DBFunc
             return false;
         }
 
-        File.Copy(AddProductForm_imageView, path, true);
 
         using (SqlCommand cmd = new SqlCommand(insertData, conn))
         {
@@ -186,8 +181,16 @@ public class DBFunc
         }
     }
 
+<<<<<<< HEAD
+    //FUNCTION FOR SHOWING DATA IN DATAGRIDVIEW
+=======
     //FUNCTION FOR 
+<<<<<<< HEAD
+>>>>>>> b06fc22987a5cdb7624185d3a63502706fedf7f0
     public DataTable checkInvTable(string ProductID) //to be checked if working 
+=======
+    public DataTable checkInvTable(string ProductID) //to be check if working 
+>>>>>>> parent of b06fc22 ([]Fixed minor errors again :>[])
     {
         try
         {
@@ -195,22 +198,20 @@ public class DBFunc
             connection.Open();
 
             // Test if table exists
-            string checkTable = "SELECT COUNT(*) FROM sys.tables WHERE name = 'inventory'";
+            string checkTable = "SELECT * FROM sys.tables WHERE name = 'inventory'";
             using SqlCommand cmdTable = new SqlCommand(checkTable, connection);
 
-            int tableExists = Convert.ToInt32(cmdTable.ExecuteScalar());
-
+            int tableExists = (int)cmdTable.ExecuteScalar();
             if (tableExists == 0)
             {
                 MessageBox.Show("Inventory table does not exist!");
-                return new DataTable(); // Return an empty DataTable instead of null
             }
 
-            // Test if data exists
-            string countQuery = "SELECT COUNT(*) FROM inventory";
+            //Test if data exists
+            string countQuery = "SELECT * FROM inventory";
             using SqlCommand cmdData = new SqlCommand(countQuery, connection);
 
-            int rowCount = Convert.ToInt32(cmdData.ExecuteScalar());
+            int rowCount = (int)cmdData.ExecuteScalar();
             Console.WriteLine($"Number of rows in Inventory: {rowCount}");
 
             // Original data loading code
@@ -223,49 +224,33 @@ public class DBFunc
             {
                 return dt;
             }
-            else
-            {
-                MessageBox.Show("No data found in the Inventory table.");
-                return new DataTable(); // Return an empty DataTable if no rows exist
-            }
         }
         catch (Exception ex)
         {
             MessageBox.Show("Connection Error: " + ex.Message + "\n\nStack Trace: " + ex.StackTrace, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return new DataTable(); // Return an empty DataTable in case of an exception
+            
         }
+        return null;
     }
-
 
     //FUNCTION FOR ADDING STOCK ON ITEMS(SHOP)
     public void SyncQuantityLabels(Dictionary<string, Label> quantityLabels) //stocks label are shown
     {
         try
         {
-            DataTable inventoryData = checkInvTable(string.Empty);
-            if (inventoryData != null && inventoryData.Rows.Count > 0)
+            DataTable inventoryData = checkInvTable(null);
+            if (inventoryData != null)
             {
                 foreach (DataRow row in inventoryData.Rows)
                 {
-                    // Debug information to see what columns are available
-                    Console.WriteLine("Available columns: " + string.Join(", ", inventoryData.Columns.Cast<DataColumn>().Select(c => c.ColumnName)));
+                    string productName = row["ProductName"].ToString();
+                    int quantity = Convert.ToInt32(row["InStock"]);
 
-                    // Use the correct column names from your items table
-                    string productName = row["ProductName"]?.ToString();
-
-                    if (!string.IsNullOrEmpty(productName) && quantityLabels.ContainsKey(productName) && quantityLabels[productName] != null)
+                    if (quantityLabels.ContainsKey(productName))
                     {
-                        if (int.TryParse(row["InStock"]?.ToString(), out int quantity))
-                        {
-                            quantityLabels[productName].Text = $"In Stock: {quantity}";
-                        }
+                        quantityLabels[productName].Text = $"In Stock: {quantity}";
                     }
-
                 }
-            }
-            else
-            {
-                MessageBox.Show("No inventory data available", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         catch (Exception ex)

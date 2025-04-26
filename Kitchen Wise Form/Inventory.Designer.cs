@@ -79,9 +79,8 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2, 2, 2, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1114, 83);
+            panel1.Size = new Size(1583, 138);
             panel1.TabIndex = 27;
             // 
             // btnClose
@@ -90,9 +89,10 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             btnClose.BackColor = Color.Chocolate;
             btnClose.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.ForeColor = SystemColors.ControlLightLight;
-            btnClose.Location = new Point(1076, 3);
+            btnClose.Location = new Point(1537, 5);
+            btnClose.Margin = new Padding(4, 0, 4, 0);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(30, 32);
+            btnClose.Size = new Size(44, 48);
             btnClose.TabIndex = 38;
             btnClose.Text = "X";
             btnClose.Click += btnClose_Click;
@@ -102,20 +102,18 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Emoji", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(461, 23);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(659, 38);
             label1.Name = "label1";
-            label1.Size = new Size(299, 36);
+            label1.Size = new Size(439, 53);
             label1.TabIndex = 2;
             label1.Text = "KitchenWise Inventory";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources._1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310;
-            pictureBox1.Location = new Point(75, 22);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Location = new Point(107, 37);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(51, 45);
+            pictureBox1.Size = new Size(73, 75);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -123,10 +121,9 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // panel2
             // 
             panel2.Controls.Add(homePanel);
-            panel2.Location = new Point(206, 83);
-            panel2.Margin = new Padding(2, 2, 2, 2);
+            panel2.Location = new Point(294, 138);
             panel2.Name = "panel2";
-            panel2.Size = new Size(901, 556);
+            panel2.Size = new Size(1287, 927);
             panel2.TabIndex = 28;
             // 
             // homePanel
@@ -138,35 +135,36 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             homePanel.Controls.Add(itemdatagrid);
             homePanel.Controls.Add(salesDataGrid);
             homePanel.Controls.Add(homeDataGrid);
-            homePanel.Location = new Point(1, 2);
+            homePanel.Location = new Point(1, 3);
+            homePanel.Margin = new Padding(4, 5, 4, 5);
             homePanel.Name = "homePanel";
-            homePanel.Size = new Size(900, 569);
+            homePanel.Size = new Size(1286, 948);
             homePanel.TabIndex = 0;
             // 
             // adminDashboardForm1
             // 
             adminDashboardForm1.BackColor = Color.FromArgb(15, 26, 43);
-            adminDashboardForm1.Location = new Point(-1, -2);
-            adminDashboardForm1.Margin = new Padding(3, 4, 3, 4);
+            adminDashboardForm1.Location = new Point(-1, -3);
+            adminDashboardForm1.Margin = new Padding(4, 7, 4, 7);
             adminDashboardForm1.Name = "adminDashboardForm1";
-            adminDashboardForm1.Size = new Size(902, 556);
+            adminDashboardForm1.Size = new Size(1289, 927);
             adminDashboardForm1.TabIndex = 39;
             // 
             // addProductForm1
             // 
-            addProductForm1.Location = new Point(-1, -2);
-            addProductForm1.Margin = new Padding(3, 4, 3, 4);
+            addProductForm1.Location = new Point(-1, -3);
+            addProductForm1.Margin = new Padding(4, 7, 4, 7);
             addProductForm1.Name = "addProductForm1";
-            addProductForm1.Size = new Size(902, 556);
+            addProductForm1.Size = new Size(1289, 927);
             addProductForm1.TabIndex = 41;
             // 
             // inv_bg_pic
             // 
             inv_bg_pic.Image = Properties.Resources._1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310;
-            inv_bg_pic.Location = new Point(360, 198);
-            inv_bg_pic.Margin = new Padding(3, 2, 3, 2);
+            inv_bg_pic.Location = new Point(514, 330);
+            inv_bg_pic.Margin = new Padding(4, 3, 4, 3);
             inv_bg_pic.Name = "inv_bg_pic";
-            inv_bg_pic.Size = new Size(132, 132);
+            inv_bg_pic.Size = new Size(189, 220);
             inv_bg_pic.TabIndex = 3;
             inv_bg_pic.TabStop = false;
             // 
@@ -179,10 +177,10 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             itemdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             itemdatagrid.Dock = DockStyle.Fill;
             itemdatagrid.Location = new Point(0, 0);
-            itemdatagrid.Margin = new Padding(3, 2, 3, 2);
+            itemdatagrid.Margin = new Padding(4, 3, 4, 3);
             itemdatagrid.Name = "itemdatagrid";
             itemdatagrid.RowHeadersWidth = 51;
-            itemdatagrid.Size = new Size(900, 569);
+            itemdatagrid.Size = new Size(1286, 948);
             itemdatagrid.TabIndex = 40;
             // 
             // salesDataGrid
@@ -194,10 +192,11 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             salesDataGrid.BorderStyle = BorderStyle.None;
             salesDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             salesDataGrid.DataSource = dBFuncBindingSource;
-            salesDataGrid.Location = new Point(-5, -2);
+            salesDataGrid.Location = new Point(-7, -3);
+            salesDataGrid.Margin = new Padding(4, 5, 4, 5);
             salesDataGrid.Name = "salesDataGrid";
             salesDataGrid.RowHeadersWidth = 51;
-            salesDataGrid.Size = new Size(906, 555);
+            salesDataGrid.Size = new Size(1294, 925);
             salesDataGrid.TabIndex = 1;
             // 
             // dBFuncBindingSource
@@ -211,9 +210,10 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             homeDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             homeDataGrid.Dock = DockStyle.Fill;
             homeDataGrid.Location = new Point(0, 0);
+            homeDataGrid.Margin = new Padding(4, 5, 4, 5);
             homeDataGrid.Name = "homeDataGrid";
             homeDataGrid.RowHeadersWidth = 51;
-            homeDataGrid.Size = new Size(900, 569);
+            homeDataGrid.Size = new Size(1286, 948);
             homeDataGrid.TabIndex = 0;
             // 
             // panel3
@@ -226,19 +226,18 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             panel3.Controls.Add(item_btn);
             panel3.Controls.Add(invBtn);
             panel3.Dock = DockStyle.Left;
-            panel3.Location = new Point(0, 83);
-            panel3.Margin = new Padding(2, 2, 2, 2);
+            panel3.Location = new Point(0, 138);
             panel3.Name = "panel3";
-            panel3.Size = new Size(206, 579);
+            panel3.Size = new Size(294, 927);
             panel3.TabIndex = 28;
             // 
             // bck_btn
             // 
             bck_btn.BackColor = Color.FromArgb(158, 147, 114);
-            bck_btn.Location = new Point(43, 458);
-            bck_btn.Margin = new Padding(3, 2, 3, 2);
+            bck_btn.Location = new Point(61, 763);
+            bck_btn.Margin = new Padding(4, 3, 4, 3);
             bck_btn.Name = "bck_btn";
-            bck_btn.Size = new Size(117, 32);
+            bck_btn.Size = new Size(167, 53);
             bck_btn.TabIndex = 6;
             bck_btn.Text = "Back";
             bck_btn.UseVisualStyleBackColor = false;
@@ -249,10 +248,9 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             salesBtn.BackColor = Color.FromArgb(189, 196, 212);
             salesBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             salesBtn.ForeColor = Color.FromArgb(15, 26, 43);
-            salesBtn.Location = new Point(43, 239);
-            salesBtn.Margin = new Padding(2, 2, 2, 2);
+            salesBtn.Location = new Point(61, 398);
             salesBtn.Name = "salesBtn";
-            salesBtn.Size = new Size(117, 30);
+            salesBtn.Size = new Size(167, 50);
             salesBtn.TabIndex = 5;
             salesBtn.Text = "Sales";
             salesBtn.UseVisualStyleBackColor = false;
@@ -263,10 +261,9 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             home_btn.BackColor = Color.FromArgb(189, 196, 212);
             home_btn.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             home_btn.ForeColor = Color.FromArgb(15, 26, 43);
-            home_btn.Location = new Point(43, 64);
-            home_btn.Margin = new Padding(2, 2, 2, 2);
+            home_btn.Location = new Point(61, 107);
             home_btn.Name = "home_btn";
-            home_btn.Size = new Size(117, 32);
+            home_btn.Size = new Size(167, 53);
             home_btn.TabIndex = 4;
             home_btn.Text = "Home";
             home_btn.UseVisualStyleBackColor = false;
@@ -277,10 +274,9 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             button4.BackColor = Color.FromArgb(189, 196, 212);
             button4.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.FromArgb(15, 26, 43);
-            button4.Location = new Point(43, 291);
-            button4.Margin = new Padding(2, 2, 2, 2);
+            button4.Location = new Point(61, 485);
             button4.Name = "button4";
-            button4.Size = new Size(117, 33);
+            button4.Size = new Size(167, 55);
             button4.TabIndex = 3;
             button4.Text = "Sales Report";
             button4.UseVisualStyleBackColor = false;
@@ -290,10 +286,9 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             item_btn.BackColor = Color.FromArgb(189, 196, 212);
             item_btn.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             item_btn.ForeColor = Color.FromArgb(15, 26, 43);
-            item_btn.Location = new Point(43, 181);
-            item_btn.Margin = new Padding(2, 2, 2, 2);
+            item_btn.Location = new Point(61, 302);
             item_btn.Name = "item_btn";
-            item_btn.Size = new Size(117, 33);
+            item_btn.Size = new Size(167, 55);
             item_btn.TabIndex = 2;
             item_btn.Text = "Items";
             item_btn.UseVisualStyleBackColor = false;
@@ -304,10 +299,9 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             invBtn.BackColor = Color.FromArgb(189, 196, 212);
             invBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             invBtn.ForeColor = Color.FromArgb(15, 26, 43);
-            invBtn.Location = new Point(43, 119);
-            invBtn.Margin = new Padding(2, 2, 2, 2);
+            invBtn.Location = new Point(61, 198);
             invBtn.Name = "invBtn";
-            invBtn.Size = new Size(117, 35);
+            invBtn.Size = new Size(167, 58);
             invBtn.TabIndex = 0;
             invBtn.Text = "Inventory";
             invBtn.UseVisualStyleBackColor = false;
@@ -315,15 +309,15 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // 
             // InventoryForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1114, 662);
+            ClientSize = new Size(1583, 1065);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "InventoryForm";
             Text = " KitchenWise";
             panel1.ResumeLayout(false);

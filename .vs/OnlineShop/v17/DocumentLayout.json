@@ -1,8 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\VS REPOSITORY\\",
+  "WorkspaceRootPath": "C:\\Users\\valle\\source\\repos\\OnlineShop\\",
   "Documents": [
     {
+<<<<<<< HEAD
+<<<<<<< HEAD
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\valle\\source\\repos\\onlineshop\\kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|d:\\vs repository\\kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,6 +44,11 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/D__VS_REPOSITORY_DATABASE_APPLIANCE_DB.MDF/True/SqlTable/dbo.sales.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+>>>>>>> b06fc22987a5cdb7624185d3a63502706fedf7f0
+=======
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\valle\\source\\repos\\onlineshop\\kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+>>>>>>> parent of b06fc22 ([]Fixed minor errors again :>[])
     }
   ],
   "DocumentGroupContainers": [
@@ -48,10 +58,37 @@
       "DocumentGroups": [
         {
           "DockedHeight": 606,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
+<<<<<<< HEAD
+<<<<<<< HEAD
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OnlineShop.cs",
+              "DocumentMoniker": "C:\\Users\\valle\\source\\repos\\OnlineShop\\Kitchen Wise Form\\OnlineShop.cs",
+              "RelativeDocumentMoniker": "Kitchen Wise Form\\OnlineShop.cs",
+              "ToolTip": "C:\\Users\\valle\\source\\repos\\OnlineShop\\Kitchen Wise Form\\OnlineShop.cs",
+              "RelativeToolTip": "Kitchen Wise Form\\OnlineShop.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAC0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T21:17:12.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+=======
+>>>>>>> b06fc22987a5cdb7624185d3a63502706fedf7f0
+=======
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+>>>>>>> parent of b06fc22 ([]Fixed minor errors again :>[])
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
@@ -69,70 +106,21 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+<<<<<<< HEAD
+=======
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "OnlineShop.cs",
-              "DocumentMoniker": "D:\\VS REPOSITORY\\Kitchen Wise Form\\OnlineShop.cs",
-              "RelativeDocumentMoniker": "Kitchen Wise Form\\OnlineShop.cs",
-              "ToolTip": "D:\\VS REPOSITORY\\Kitchen Wise Form\\OnlineShop.cs",
-              "RelativeToolTip": "Kitchen Wise Form\\OnlineShop.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABRAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T15:44:46.524Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OnlineShop.cs [Design]",
-              "DocumentMoniker": "D:\\VS REPOSITORY\\Kitchen Wise Form\\OnlineShop.cs",
-              "RelativeDocumentMoniker": "Kitchen Wise Form\\OnlineShop.cs",
-              "ToolTip": "D:\\VS REPOSITORY\\Kitchen Wise Form\\OnlineShop.cs [Design]",
-              "RelativeToolTip": "Kitchen Wise Form\\OnlineShop.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T15:44:43.171Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "dbo.inventory [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/D__VS_REPOSITORY_DATABASE_APPLIANCE_DB.MDF/True/SqlTable/dbo.inventory.sql",
-              "ToolTip": "dbo.inventory [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-04-29T15:34:39.255Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DBFunc.cs",
-              "DocumentMoniker": "D:\\VS REPOSITORY\\DATABASE\\DBFunc.cs",
-              "RelativeDocumentMoniker": "DATABASE\\DBFunc.cs",
-              "ToolTip": "D:\\VS REPOSITORY\\DATABASE\\DBFunc.cs",
-              "RelativeToolTip": "DATABASE\\DBFunc.cs",
-              "ViewState": "AgIAAOMAAAAAAAAAAAAiwP8AAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T07:35:07.675Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "Inventory.cs [Design]",
-              "DocumentMoniker": "D:\\VS REPOSITORY\\Kitchen Wise Form\\Inventory.cs",
+              "DocumentMoniker": "C:\\Users\\valle\\source\\repos\\OnlineShop\\Kitchen Wise Form\\Inventory.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\Inventory.cs",
-              "ToolTip": "D:\\VS REPOSITORY\\Kitchen Wise Form\\Inventory.cs [Design]",
-              "RelativeToolTip": "Kitchen Wise Form\\Inventory.cs [Design]",
+              "ToolTip": "C:\\Users\\valle\\source\\repos\\OnlineShop\\Kitchen Wise Form\\Inventory.cs [Design]*",
+              "RelativeToolTip": "Kitchen Wise Form\\Inventory.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T15:31:35.733Z",
+              "WhenOpened": "2025-04-26T16:17:21.233Z",
               "EditorCaption": " [Design]"
+<<<<<<< HEAD
             },
             {
               "$type": "Document",
@@ -194,6 +182,9 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-29T07:05:40.499Z",
               "EditorCaption": ""
+>>>>>>> b06fc22987a5cdb7624185d3a63502706fedf7f0
+=======
+>>>>>>> parent of b06fc22 ([]Fixed minor errors again :>[])
             }
           ]
         },
