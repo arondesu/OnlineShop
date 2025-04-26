@@ -39,9 +39,15 @@ namespace OnlineShop
                 {"Silverware Set", sware_qty},
                 {"Kitchen Scale", kscale_qty},
                 {"Table Cloth", tcloth_qty}
+<<<<<<< HEAD
             };
 
             // Sync the labels with inventory
+=======
+};
+
+            //THEN sync
+>>>>>>> f53a7d6384d3ecafe6f58315ea173f4756252241
             dbFunc.SyncQuantityLabels(quantityLabels);
         }
 

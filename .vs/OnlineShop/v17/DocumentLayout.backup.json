@@ -5,6 +5,9 @@
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53a7d6384d3ecafe6f58315ea173f4756252241
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\valle\\source\\repos\\onlineshop\\extraitemform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:extraitemform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -102,10 +105,13 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/D__VS_REPOSITORY_DATABASE_APPLIANCE_DB.MDF/True/SqlTable/dbo.sales.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
 >>>>>>> b06fc22987a5cdb7624185d3a63502706fedf7f0
+<<<<<<< HEAD
 =======
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\valle\\source\\repos\\onlineshop\\kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
 >>>>>>> parent of b06fc22 ([]Fixed minor errors again :>[])
+=======
+>>>>>>> f53a7d6384d3ecafe6f58315ea173f4756252241
     }
   ],
   "DocumentGroupContainers": [
@@ -168,9 +174,37 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddProductForm.cs",
+              "DocumentMoniker": "C:\\Users\\valle\\source\\repos\\OnlineShop\\AddProductForm.cs",
+              "RelativeDocumentMoniker": "AddProductForm.cs",
+              "ToolTip": "C:\\Users\\valle\\source\\repos\\OnlineShop\\AddProductForm.cs",
+              "RelativeToolTip": "AddProductForm.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAowB0AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T20:48:51.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ExtraItemForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\valle\\source\\repos\\OnlineShop\\ExtraItemForm.cs",
+              "RelativeDocumentMoniker": "ExtraItemForm.cs",
+              "ToolTip": "C:\\Users\\valle\\source\\repos\\OnlineShop\\ExtraItemForm.cs [Design]",
+              "RelativeToolTip": "ExtraItemForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T20:00:07.976Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53a7d6384d3ecafe6f58315ea173f4756252241
               "Title": "ExtraItemForm.cs",
               "DocumentMoniker": "C:\\Users\\valle\\source\\repos\\OnlineShop\\ExtraItemForm.cs",
               "RelativeDocumentMoniker": "ExtraItemForm.cs",

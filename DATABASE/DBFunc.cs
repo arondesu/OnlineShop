@@ -186,6 +186,9 @@ public class DBFunc
 =======
     //FUNCTION FOR 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53a7d6384d3ecafe6f58315ea173f4756252241
 >>>>>>> b06fc22987a5cdb7624185d3a63502706fedf7f0
     public DataTable checkInvTable(string ProductID) //to be checked if working 
 =======

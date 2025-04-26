@@ -5,6 +5,9 @@
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53a7d6384d3ecafe6f58315ea173f4756252241
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\valle\\source\\repos\\onlineshop\\kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
 =======
@@ -45,10 +48,13 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/D__VS_REPOSITORY_DATABASE_APPLIANCE_DB.MDF/True/SqlTable/dbo.sales.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
 >>>>>>> b06fc22987a5cdb7624185d3a63502706fedf7f0
+<<<<<<< HEAD
 =======
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\valle\\source\\repos\\onlineshop\\kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
 >>>>>>> parent of b06fc22 ([]Fixed minor errors again :>[])
+=======
+>>>>>>> f53a7d6384d3ecafe6f58315ea173f4756252241
     }
   ],
   "DocumentGroupContainers": [
@@ -64,6 +70,9 @@
               "$type": "Bookmark",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53a7d6384d3ecafe6f58315ea173f4756252241
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
@@ -83,12 +92,15 @@
               "$type": "Bookmark",
 =======
 >>>>>>> b06fc22987a5cdb7624185d3a63502706fedf7f0
+<<<<<<< HEAD
 =======
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
 >>>>>>> parent of b06fc22 ([]Fixed minor errors again :>[])
+=======
+>>>>>>> f53a7d6384d3ecafe6f58315ea173f4756252241
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
@@ -108,6 +120,13 @@
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+>>>>>>> f53a7d6384d3ecafe6f58315ea173f4756252241
             },
             {
               "$type": "Document",
@@ -183,8 +202,11 @@
               "WhenOpened": "2025-04-29T07:05:40.499Z",
               "EditorCaption": ""
 >>>>>>> b06fc22987a5cdb7624185d3a63502706fedf7f0
+<<<<<<< HEAD
 =======
 >>>>>>> parent of b06fc22 ([]Fixed minor errors again :>[])
+=======
+>>>>>>> f53a7d6384d3ecafe6f58315ea173f4756252241
             }
           ]
         },
