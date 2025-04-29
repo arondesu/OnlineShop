@@ -154,12 +154,8 @@ public class DBFunc
             cmd.Parameters.AddWithValue("@itemStock", txtItem_stock.Trim());
             cmd.Parameters.AddWithValue("@itemPrice", txtItem_price.Trim());
             cmd.Parameters.AddWithValue("@itemStatus", txtItem_status.Trim());
-<<<<<<< HEAD
-            cmd.Parameters.AddWithValue("@dateInsert", today.ToString("yyyy-MM-dd"));
-=======
             cmd.Parameters.AddWithValue("@itemImage", path);
             cmd.Parameters.AddWithValue("@dateInsert", today);
->>>>>>> 2ef51e8f9fbfe646900b42cb9b806ef220d6a954
 
             cmd.ExecuteNonQuery();
 
