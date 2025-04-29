@@ -45,7 +45,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
             homePanel = new Panel();
-            BASE = new Panel();
             addProductForm1 = new AddProductForm();
             adminDashboardForm1 = new AdminDashboardForm();
             itemdatagrid = new DataGridView();
@@ -146,14 +145,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             homePanel.Name = "homePanel";
             homePanel.Size = new Size(1029, 759);
             homePanel.TabIndex = 0;
-            // 
-            // BASE
-            // 
-            BASE.Location = new Point(0, 0);
-            BASE.Margin = new Padding(3, 4, 3, 4);
-            BASE.Name = "BASE";
-            BASE.Size = new Size(1030, 739);
-            BASE.TabIndex = 42;
             // 
             // addProductForm1
             // 
