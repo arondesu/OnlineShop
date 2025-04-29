@@ -1,8 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Woots\\source\\repos\\arondesu\\OnlineShop\\",
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\arondesu\\onlineshop\\addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -36,6 +37,40 @@
     {
       "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|C:\\Users\\Woots\\source\\repos\\arondesu\\OnlineShop\\kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+=======
+<<<<<<< HEAD
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\database\\dbfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\dbfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\arondesu\\onlineshop\\addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\arondesu\\onlineshop\\admindashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:admindashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+>>>>>>> parent of 2e522ae (......)
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+<<<<<<< HEAD
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\admin\\source\\repos\\onlineshop\\additemdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:additemdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\arondesu\\onlineshop\\kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\arondesu\\onlineshop\\kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+>>>>>>> parent of 2e522ae (......)
+>>>>>>> 2ef51e8f9fbfe646900b42cb9b806ef220d6a954
     }
   ],
   "DocumentGroupContainers": [
@@ -44,20 +79,41 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
+<<<<<<< HEAD
+          "DockedHeight": 606,
+          "SelectedChildIndex": 0,
+=======
           "DockedHeight": 599,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 10,
+>>>>>>> parent of 2e522ae (......)
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DBFunc.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\DATABASE\\DBFunc.cs",
+              "RelativeDocumentMoniker": "DATABASE\\DBFunc.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\DATABASE\\DBFunc.cs",
+              "RelativeToolTip": "DATABASE\\DBFunc.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA1wE0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T03:03:20.195Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DBConn.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\DATABASE\\DBConn.cs",
+              "RelativeDocumentMoniker": "DATABASE\\DBConn.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\DATABASE\\DBConn.cs",
+              "RelativeToolTip": "DATABASE\\DBConn.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T10:52:21.632Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -69,19 +125,16 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+<<<<<<< HEAD
             }
           ]
         },
@@ -104,11 +157,17 @@
               "EditorCaption": ""
             },
             {
+=======
+            },
+            {
+<<<<<<< HEAD
+>>>>>>> 2ef51e8f9fbfe646900b42cb9b806ef220d6a954
               "$type": "Bookmark",
-              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 4,
               "Title": "dbo.sales [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_WOOTS_SOURCE_REPOS_ARONDESU_ONLINESHOP_DATABASE_APPLIANCE_DB.MDF/True/SqlTable/dbo.sales.sql",
@@ -128,17 +187,45 @@
               "ViewState": "AgIAAPcAAAAAAAAAAAAAABABAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-28T03:57:17.42Z",
+=======
+              "DocumentIndex": 2,
+              "Title": "AddProductForm.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\AddProductForm.cs",
+              "RelativeDocumentMoniker": "AddProductForm.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\AddProductForm.cs",
+              "RelativeToolTip": "AddProductForm.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAApwBgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T11:40:33.469Z",
+>>>>>>> 2ef51e8f9fbfe646900b42cb9b806ef220d6a954
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 7,
+=======
+              "DocumentIndex": 3,
+              "Title": "AddItemData.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\AddItemData.cs",
+              "RelativeDocumentMoniker": "AddItemData.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\OnlineShop\\AddItemData.cs",
+              "RelativeToolTip": "AddItemData.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAA7wD0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T10:50:35.915Z",
+              "EditorCaption": ""
+=======
+              "$type": "Document",
+              "DocumentIndex": 1,
+>>>>>>> 2ef51e8f9fbfe646900b42cb9b806ef220d6a954
               "Title": "AdminDashboardForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\arondesu\\OnlineShop\\AdminDashboardForm.cs",
               "RelativeDocumentMoniker": "AdminDashboardForm.cs",
               "ToolTip": "C:\\Users\\Woots\\source\\repos\\arondesu\\OnlineShop\\AdminDashboardForm.cs [Design]",
               "RelativeToolTip": "AdminDashboardForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< HEAD
               "WhenOpened": "2025-04-27T14:03:45.534Z"
             },
             {
@@ -164,17 +251,65 @@
               "RelativeToolTip": "AddProductForm.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T14:03:18.257Z",
+=======
+              "WhenOpened": "2025-04-27T13:35:09.586Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddProductForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\arondesu\\OnlineShop\\AddProductForm.cs",
+              "RelativeDocumentMoniker": "AddProductForm.cs",
+              "ToolTip": "C:\\Users\\Woots\\source\\repos\\arondesu\\OnlineShop\\AddProductForm.cs [Design]",
+              "RelativeToolTip": "AddProductForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-27T13:35:06.439Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OnlineShop.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\arondesu\\OnlineShop\\Kitchen Wise Form\\OnlineShop.cs",
+              "RelativeDocumentMoniker": "Kitchen Wise Form\\OnlineShop.cs",
+              "ToolTip": "C:\\Users\\Woots\\source\\repos\\arondesu\\OnlineShop\\Kitchen Wise Form\\OnlineShop.cs [Design]",
+              "RelativeToolTip": "Kitchen Wise Form\\OnlineShop.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-27T13:25:09.544Z",
+>>>>>>> 2ef51e8f9fbfe646900b42cb9b806ef220d6a954
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 6,
+=======
+              "DocumentIndex": 3,
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\arondesu\\OnlineShop\\Kitchen Wise Form\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Kitchen Wise Form\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\Woots\\source\\repos\\arondesu\\OnlineShop\\Kitchen Wise Form\\LoginForm.cs [Design]",
+              "RelativeToolTip": "Kitchen Wise Form\\LoginForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-27T13:25:07.566Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+>>>>>>> 2ef51e8f9fbfe646900b42cb9b806ef220d6a954
               "Title": "Inventory.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\arondesu\\OnlineShop\\Kitchen Wise Form\\Inventory.cs",
               "RelativeDocumentMoniker": "Kitchen Wise Form\\Inventory.cs",
               "ToolTip": "C:\\Users\\Woots\\source\\repos\\arondesu\\OnlineShop\\Kitchen Wise Form\\Inventory.cs [Design]",
               "RelativeToolTip": "Kitchen Wise Form\\Inventory.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< HEAD
               "WhenOpened": "2025-04-27T13:37:55.79Z"
             },
             {
@@ -198,6 +333,29 @@
               "RelativeToolTip": "Kitchen Wise Form\\OnlineShop.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T13:38:10.296Z"
+=======
+              "WhenOpened": "2025-04-27T13:24:56.764Z",
+              "EditorCaption": " [Design]"
+>>>>>>> parent of 2e522ae (......)
+            }
+          ]
+        },
+        {
+<<<<<<< HEAD
+          "DockedHeight": 387,
+=======
+          "DockedHeight": 226,
+>>>>>>> parent of 2e522ae (......)
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+>>>>>>> 2ef51e8f9fbfe646900b42cb9b806ef220d6a954
             }
           ]
         }
