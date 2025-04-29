@@ -9,8 +9,8 @@ using System.IO;
 public class DBFunc
 {
     //use this file to improve readability
-
     private DBConn dbConn = new DBConn();
+
     //FUNCTION FOR CHECKING IF USER, PASS IS TRUE
     public bool isLoginTrue(string username, string password)
     {
@@ -43,6 +43,7 @@ public class DBFunc
             return false;
         }
     }
+
     //FUNCTION FOR CHECKING IF ITEM IS EMPTY
     public bool emptyFields(TextBox txtItem_id, TextBox txtItem_name, ComboBox txtItem_type, TextBox txtItem_stock, TextBox txtItem_price, ComboBox txtItem_status)
     {
@@ -70,8 +71,9 @@ public class DBFunc
 
         }
     }
+
     //FUNCTION FOR CHECKING DUPLICATE ID
-    public bool checkItemID(string txtItem_id, string txtItem_name, string txtItem_type, string txtItem_stock, string txtItem_price, string txtItem_status)
+    public bool checkItemID(string txtItem_id, string txtItem_name, string txtItem_type, string txtItem_stock, string txtItem_price, string txtItem_status, string AddProductForm_imageView)
     {
         try
         {
@@ -109,11 +111,12 @@ public class DBFunc
         }
 
     }
+
     //FUNCTION FOR ADDING PRODUCT
-    public bool AddProduct(string txtItem_id, string txtItem_name, string txtItem_type, string txtItem_stock, string txtItem_price, string txtItem_status)
+    public bool AddProduct(string txtItem_id, string txtItem_name, string txtItem_type, string txtItem_stock, string txtItem_price, string txtItem_status, string AddProductForm_imageView)
     {
         // Check if the item ID already exists
-        if (!checkItemID(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status))
+        if (!checkItemID(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView))
         {
             // If the item ID is not unique, return false to prevent adding the product
             return false;
@@ -122,10 +125,26 @@ public class DBFunc
         using SqlConnection conn = dbConn.GetConnection();
         conn.Open();
 
-        string insertData = "INSERT INTO items (item_id, item_name, item_type, item_stock, item_price, item_status, date_insert) " +
-                            "VALUES (@itemID, @itemName, @itemType, @itemStock, @itemPrice, @itemStatus, @dateInsert)";
+        string insertData = "INSERT INTO items (item_id, item_name, item_type, item_stock, item_price, item_status, item_image, date_insert) " +
+                            "VALUES (@itemID, @itemName, @itemType, @itemStock, @itemPrice, @itemStatus, @itemImage, @dateInsert)";
 
         DateTime today = DateTime.Now;
+
+        string path = Path.Combine(@"C:\Users\ADMIN\Source\Repos\OnlineShop\Item_Directory\" + txtItem_id.Trim());
+        string directoryPath = Path.GetDirectoryName(path);
+
+        if (!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+        }
+
+        if (string.IsNullOrEmpty(AddProductForm_imageView))
+        {
+            MessageBox.Show("Please select an image for the product.", "Image Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
+        File.Copy(AddProductForm_imageView, path, true);
 
         using (SqlCommand cmd = new SqlCommand(insertData, conn))
         {
@@ -135,6 +154,7 @@ public class DBFunc
             cmd.Parameters.AddWithValue("@itemStock", txtItem_stock.Trim());
             cmd.Parameters.AddWithValue("@itemPrice", txtItem_price.Trim());
             cmd.Parameters.AddWithValue("@itemStatus", txtItem_status.Trim());
+            cmd.Parameters.AddWithValue("@itemImage", path);
             cmd.Parameters.AddWithValue("@dateInsert", today);
 
             cmd.ExecuteNonQuery();
@@ -144,7 +164,7 @@ public class DBFunc
             return true;
         }
     }
-    
+
     //FUNCTION FOR 
     public DataTable checkInvTable(string ProductID) //to be check if working 
     {
@@ -191,6 +211,7 @@ public class DBFunc
         }
         return null;
     }
+
     //FUNCTION FOR ADDING STOCK ON ITEMS(SHOP)
     public void SyncQuantityLabels(Dictionary<string, Label> quantityLabels) //stocks label are shown
     {
@@ -216,6 +237,7 @@ public class DBFunc
             MessageBox.Show("Error syncing quantity labels: " + ex.Message, "Sync Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
+
     //FUNCTION FOR CHECKOUT BUTTON
     public void ProcessCheckout(decimal subtotal, decimal discount, decimal total, List<string> itemNames, List<int> quantities)
     {
@@ -266,12 +288,15 @@ public class DBFunc
             throw;
         }
     }
+
     //FUNCTION FOR CUSTOM GENERATE PO NUMBER
     private string GenerateOrderNumber()
     {
         // Generate a unique order number (PO-YYYYMMDD-XXXX)
         return $"PO-{DateTime.Now:yyyyMMdd}-{new Random().Next(1000, 9999)}";
     }
+
+   
     //FUNCTION FOR CLEARING FIELDS
     public void clearField(TextBox txtItem_id, TextBox txtItem_name, ComboBox txtItem_type, TextBox txtItem_stock, TextBox txtItem_price, ComboBox txtItem_status, PictureBox AddProductForm_imageView)
     {
