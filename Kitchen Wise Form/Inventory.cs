@@ -24,14 +24,6 @@ namespace OnlineShop.Kitchen_Wise_Form
             dbConn = new DBConn();
             dbFunc = new DBFunc();
             this.StartPosition = FormStartPosition.CenterScreen;
-            inv_bg_pic.Visible = true;
-            inv_bg_pic.BringToFront();
-            addProductForm1.Visible = false;
-            adminDashboardForm1.Visible = true;
-
-            // Initialize data grids
-            homeDataGrid.Visible = false;
-            salesDataGrid.Visible = false;
 
             // If itemDataGrid doesn't exist in the designer, create it programmatically
             if (itemDataGrid == null)
@@ -98,56 +90,6 @@ namespace OnlineShop.Kitchen_Wise_Form
             }
         }
 
-        private void LoadInventoryData() //plan to transfer this to dbFunc.cs
-        {
-            try
-            {
-                using SqlConnection connection = dbConn.GetConnection();
-                connection.Open();
-                Console.WriteLine("Database connected successfully!");
-
-                // Test if table exists
-                string checkTable = "SELECT COUNT(*) FROM sys.tables WHERE name = 'inventory'";
-                using SqlCommand cmdTable = new SqlCommand(checkTable, connection);
-
-                int tableExists = (int)cmdTable.ExecuteScalar();
-                if (tableExists == 0)
-                {
-                    MessageBox.Show("Inventory table does not exist!");
-                    return;
-                }
-
-
-                //Test if data exists
-                string countQuery = "SELECT COUNT(*) FROM Inventory";
-                using SqlCommand cmdData = new SqlCommand(countQuery, connection);
-
-                int rowCount = (int)cmdData.ExecuteScalar();
-                Console.WriteLine($"Number of rows in Inventory: {rowCount}");
-
-
-                // Original data loading code
-                string query = "SELECT * FROM Inventory";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-
-                if (dt.Rows.Count > 0)
-                {
-                    homeDataGrid.DataSource = dt;
-                    homeDataGrid.AutoGenerateColumns = true;
-                    homeDataGrid.Visible = true;
-                    homeDataGrid.Refresh();
-                    homeDataGrid.AutoResizeColumns();
-                    homeDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Connection Error: " + ex.Message + "\n\nStack Trace: " + ex.StackTrace, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void LoadSalesData()
         {
             try
@@ -173,10 +115,11 @@ namespace OnlineShop.Kitchen_Wise_Form
                 MessageBox.Show("Error loading sales data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Check if MainShop is already open
-            MainShop mainShop = Application.OpenForms.OfType<MainShop>().FirstOrDefault();
+            MainShop? mainShop = Application.OpenForms.OfType<MainShop>().FirstOrDefault();
 
             if (mainShop == null)
             {
@@ -201,7 +144,7 @@ namespace OnlineShop.Kitchen_Wise_Form
         }
 
         private void home_btn_Click(object sender, EventArgs e) //brief details of each item?? i need your thoughts.
-        { 
+        {
             adminDashboardForm1.BringToFront();
             adminDashboardForm1.Visible = true;
             addProductForm1.Visible = false;
@@ -209,22 +152,17 @@ namespace OnlineShop.Kitchen_Wise_Form
             itemdatagrid.Visible = false;
         }
 
-
         private void item_btn_Click(object sender, EventArgs e) //Items button; CRUD operations need to be applied.
         {
-           
+            LoadItemData();
+            addProductForm1.BringToFront();
             adminDashboardForm1.Visible = false;
             addProductForm1.Visible = true;
-            addProductForm1.BringToFront();
             salesDataGrid.Visible = false;
-            LoadItemData();
-            inv_bg_pic.Visible = false;
-            homeDataGrid.Visible = false;
-            salesDataGrid.Visible = false;
-            itemdatagrid.Visible = true;
+            itemdatagrid.Visible = false;
         }
 
-        private void LoadItemData() //Loads items data into the item data grid // PALIHUG KOG TRANSFER ANI SA DBFUNC KAY FUNCTION NI. TYYY
+        private void LoadItemData() //Loads items data into the item data grid 
         {
             try
             {
@@ -252,8 +190,6 @@ namespace OnlineShop.Kitchen_Wise_Form
                         aid.Image = reader["item_image"].ToString();
                         aid.DateInsert = reader["date_insert"].ToString();
                         aid.DateUpdate = reader["date_update"].ToString();
-
-
                     }
                 }
             }
@@ -266,18 +202,17 @@ namespace OnlineShop.Kitchen_Wise_Form
                 using SqlConnection conn = dbConn.GetConnection();
                 conn.Close();
             }
-
         }
 
         private void invBtn_Click(object sender, EventArgs e) //Inventory button; CRU operations need to be applied.
         {
-
             LoadItemData();
             inv_bg_pic.Visible = false;
             homeDataGrid.Visible = false;
             salesDataGrid.Visible = false;
             itemdatagrid.Visible = true;
         }
+
         private void bck_btn_Click_2(object sender, EventArgs e)
         {
             //Calling the MainShop form
@@ -290,6 +225,5 @@ namespace OnlineShop.Kitchen_Wise_Form
         {
             Application.Exit();
         }
-
     }
 }

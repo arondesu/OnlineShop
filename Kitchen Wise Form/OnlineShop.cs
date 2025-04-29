@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Data;
+using System.Diagnostics;
 using Microsoft.Data.SqlClient;
 using OnlineShop.Kitchen_Wise_Form;
 
@@ -217,6 +218,7 @@ namespace OnlineShop
 
         private void buttonCheckout_Click(object sender, EventArgs e)
         {
+
             if (itemNames.Count == 0)
             {
                 MessageBox.Show("Your cart is empty.", "Checkout Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

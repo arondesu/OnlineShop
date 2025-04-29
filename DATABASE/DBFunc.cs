@@ -5,11 +5,13 @@ using OnlineShop;
 using OnlineShop.DATABASE;
 using System.Windows.Forms;
 using System.IO;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 public class DBFunc
 {
     //use this file to improve readability
-    private DBConn dbConn = new DBConn();
+    internal DBConn dbConn = new DBConn();
+
 
     //FUNCTION FOR CHECKING IF USER, PASS IS TRUE
     public bool isLoginTrue(string username, string password)
@@ -115,11 +117,23 @@ public class DBFunc
     //FUNCTION FOR ADDING PRODUCT
     public bool AddProduct(string txtItem_id, string txtItem_name, string txtItem_type, string txtItem_stock, string txtItem_price, string txtItem_status, string AddProductForm_imageView)
     {
+        // Validate numeric fields
+        if (!int.TryParse(txtItem_stock, out int itemStock))
+        {
+            MessageBox.Show("Invalid stock value. Please enter a valid integer.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
+        if (!decimal.TryParse(txtItem_price, out decimal itemPrice))
+        {
+            MessageBox.Show("Invalid price value. Please enter a valid decimal number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
         // Check if the item ID already exists
         if (!checkItemID(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView))
         {
-            // If the item ID is not unique, return false to prevent adding the product
-            return false;
+            return false; // Prevent adding duplicate product
         }
 
         using SqlConnection conn = dbConn.GetConnection();
@@ -151,17 +165,24 @@ public class DBFunc
             cmd.Parameters.AddWithValue("@itemID", txtItem_id.Trim());
             cmd.Parameters.AddWithValue("@itemName", txtItem_name.Trim());
             cmd.Parameters.AddWithValue("@itemType", txtItem_type.Trim());
-            cmd.Parameters.AddWithValue("@itemStock", txtItem_stock.Trim());
-            cmd.Parameters.AddWithValue("@itemPrice", txtItem_price.Trim());
+            cmd.Parameters.AddWithValue("@itemStock", itemStock); // Use parsed integer
+            cmd.Parameters.AddWithValue("@itemPrice", itemPrice); // Use parsed decimal
             cmd.Parameters.AddWithValue("@itemStatus", txtItem_status.Trim());
             cmd.Parameters.AddWithValue("@itemImage", path);
             cmd.Parameters.AddWithValue("@dateInsert", today);
 
-            cmd.ExecuteNonQuery();
-
-            MessageBox.Show("Product ID: " + txtItem_id.Trim() + " added successfully.", "Success Message",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return true;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Product ID: " + txtItem_id.Trim() + " added successfully.", "Success Message",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 
@@ -172,10 +193,9 @@ public class DBFunc
         {
             using SqlConnection connection = dbConn.GetConnection();
             connection.Open();
-            Console.WriteLine("Database connected successfully!");
 
             // Test if table exists
-            string checkTable = "SELECT COUNT(*) FROM sys.tables WHERE name = 'Inventory'";
+            string checkTable = "SELECT * FROM sys.tables WHERE name = 'inventory'";
             using SqlCommand cmdTable = new SqlCommand(checkTable, connection);
 
             int tableExists = (int)cmdTable.ExecuteScalar();
@@ -184,14 +204,12 @@ public class DBFunc
                 MessageBox.Show("Inventory table does not exist!");
             }
 
-
             //Test if data exists
-            string countQuery = "SELECT COUNT(*) FROM Inventory";
+            string countQuery = "SELECT * FROM inventory";
             using SqlCommand cmdData = new SqlCommand(countQuery, connection);
 
             int rowCount = (int)cmdData.ExecuteScalar();
             Console.WriteLine($"Number of rows in Inventory: {rowCount}");
-
 
             // Original data loading code
             string query = "SELECT * FROM Inventory";
@@ -288,15 +306,12 @@ public class DBFunc
             throw;
         }
     }
-
     //FUNCTION FOR CUSTOM GENERATE PO NUMBER
     private string GenerateOrderNumber()
     {
         // Generate a unique order number (PO-YYYYMMDD-XXXX)
         return $"PO-{DateTime.Now:yyyyMMdd}-{new Random().Next(1000, 9999)}";
     }
-
-   
     //FUNCTION FOR CLEARING FIELDS
     public void clearField(TextBox txtItem_id, TextBox txtItem_name, ComboBox txtItem_type, TextBox txtItem_stock, TextBox txtItem_price, ComboBox txtItem_status, PictureBox AddProductForm_imageView)
     {
@@ -308,4 +323,5 @@ public class DBFunc
         txtItem_status.SelectedIndex = -1;
         AddProductForm_imageView.ImageLocation = null;
     }
+   
 }
