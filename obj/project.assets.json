@@ -3054,23 +3054,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\valle\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Nikke\\.nuget\\packages\\": {},
+    "D:\\Visual Studio SDK\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\valle\\Source\\Repos\\OnlineShop\\OnlineShop.csproj",
+      "projectUniqueName": "D:\\VS REPOSITORY\\OnlineShop.csproj",
       "projectName": "OnlineShop",
-      "projectPath": "C:\\Users\\valle\\Source\\Repos\\OnlineShop\\OnlineShop.csproj",
-      "packagesPath": "C:\\Users\\valle\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\valle\\Source\\Repos\\OnlineShop\\obj\\",
+      "projectPath": "D:\\VS REPOSITORY\\OnlineShop.csproj",
+      "packagesPath": "C:\\Users\\Nikke\\.nuget\\packages\\",
+      "outputPath": "D:\\VS REPOSITORY\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "D:\\Visual Studio SDK\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\valle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Nikke\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

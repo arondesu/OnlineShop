@@ -24,7 +24,8 @@ namespace OnlineShop
             this.StartPosition = FormStartPosition.CenterScreen; // Center the form on startup
             SetupScrollablePanel(); // Call method to set up the scrollable panel
 
-            // Initialize the dictionary with your labels
+
+            //Initialize the dictionary first
             quantityLabels = new Dictionary<string, Label>
             {
                 {"Glass Food Storage", gfoodstore_qty},
@@ -36,9 +37,9 @@ namespace OnlineShop
                 {"Silverware Set", sware_qty},
                 {"Kitchen Scale", kscale_qty},
                 {"Table Cloth", tcloth_qty}
-            };
+};
 
-            // Sync the labels with inventory
+            //THEN sync
             dbFunc.SyncQuantityLabels(quantityLabels);
         }
 
