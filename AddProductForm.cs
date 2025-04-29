@@ -107,56 +107,11 @@ namespace OnlineShop
                 {
                     if (imagePath != null)
                     {
-<<<<<<< HEAD
-                        if (connection.State != ConnectionState.Open)
-                        {
-                            try
-                            {
-                                connection.Open();
-                                string updateData = "UPDATE items SET item_id = @item_id, " +
-                                    "item_name = @item_name, item_type = @item_type, item_stock = @item_stock, " +
-                                    "item_price = @item_price, item_status = @item_status, date_update = @date_update";
-                                DateTime today = DateTime.Today;
-
-                                using (SqlCommand updateD = new SqlCommand(updateData, connection))
-                                {
-                                    updateD.Parameters.AddWithValue("@item_id", txtItem_id.Text.Trim());
-                                    updateD.Parameters.AddWithValue("@item_name", txtItem_name.Text.Trim());
-                                    updateD.Parameters.AddWithValue("@item_type", txtItem_type.Text.Trim());
-                                    updateD.Parameters.AddWithValue("@item_stock", txtItem_stock.Text.Trim());
-                                    updateD.Parameters.AddWithValue("@item_price", txtItem_price.Text.Trim());
-                                    updateD.Parameters.AddWithValue("@item_status", txtItem_status.Text.Trim());
-                                    updateD.Parameters.AddWithValue("@date_update", today);
-                                    updateD.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells[0].Value.ToString());
-
-                                    updateD.ExecuteNonQuery();
-                                    dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView);
-
-                                    MessageBox.Show("Product ID: " + txtItem_id.Text.Trim() + " updated successfully!", "Update Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                    itemListData();
-                                }
-
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Connection Failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-
-                            finally
-                            {
-                                connection.Close();
-                            }
-                        }
-
-                        // Add your update logic here, e.g., calling a method to update the product in the database.  
-=======
                         AddProductForm_imageView.Image = Image.FromFile(imagePath);
                     }
                     else
                     {
                         AddProductForm_imageView.Image = null; // Clear the image if path is empty
->>>>>>> 2ef51e8f9fbfe646900b42cb9b806ef220d6a954
                     }
                 }
                 catch (Exception ex)
