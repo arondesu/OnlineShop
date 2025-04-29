@@ -329,5 +329,10 @@ namespace OnlineShop
         {
             Application.Exit();
         }
+
+        private void gfoodstore_qty_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

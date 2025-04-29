@@ -155,7 +155,6 @@ C:\Users\Woots\Source\Repos\OnlineShop\bin\Debug\net8.0-windows\runtimes\unix\li
 C:\Users\Woots\Source\Repos\OnlineShop\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
 C:\Users\Woots\Source\Repos\OnlineShop\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.csproj.AssemblyReference.cache
-C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.InventoryForm.resources
 C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.MainShop.resources
 C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.Properties.Resources.resources
 C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.csproj.GenerateResource.cache
@@ -406,3 +405,8 @@ C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\refint\OnlineSho
 C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.pdb
 C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.genruntimeconfig.cache
 C:\Users\valle\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\ref\OnlineShop.dll
+C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.AddProductForm.resources
+C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.AdminDashboardForm.resources
+C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.Kitchen_Wise_Form.InventoryForm.resources
+C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.KitchenWiseAdmin.resources
+C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.SalesForm.resources
