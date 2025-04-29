@@ -24,13 +24,10 @@ namespace OnlineShop.Kitchen_Wise_Form
             dbConn = new DBConn();
             dbFunc = new DBFunc();
             this.StartPosition = FormStartPosition.CenterScreen;
-<<<<<<< HEAD
             inv_bg_pic.Visible = true;
             inv_bg_pic.BringToFront();
             addProductForm1.Visible = false;
             adminDashboardForm1.Visible = true;
-=======
->>>>>>> 2ef51e8f9fbfe646900b42cb9b806ef220d6a954
 
             // Initialize data grids
             homeDataGrid.Visible = false;
@@ -200,7 +197,6 @@ namespace OnlineShop.Kitchen_Wise_Form
             inv_bg_pic.Visible = false;
             homeDataGrid.Visible = false;
             salesDataGrid.Visible = true;
-<<<<<<< HEAD
             salesDataGrid.BringToFront();
         }
 
@@ -210,34 +206,22 @@ namespace OnlineShop.Kitchen_Wise_Form
             adminDashboardForm1.Visible = true;
             addProductForm1.Visible = false;
             salesDataGrid.Visible = false;
-=======
             itemdatagrid.Visible = false;
         }
 
-        private void home_btn_Click(object sender, EventArgs e) //brief details of each item?? i need your thoughts.
-        {
-            inv_bg_pic.Visible = true;
-            homeDataGrid.Visible = false;
-            salesDataGrid.Visible = false;
-            itemdatagrid.Visible = false;
->>>>>>> 2ef51e8f9fbfe646900b42cb9b806ef220d6a954
-        }
 
         private void item_btn_Click(object sender, EventArgs e) //Items button; CRUD operations need to be applied.
         {
-<<<<<<< HEAD
            
             adminDashboardForm1.Visible = false;
             addProductForm1.Visible = true;
             addProductForm1.BringToFront();
             salesDataGrid.Visible = false;
-=======
             LoadItemData();
             inv_bg_pic.Visible = false;
             homeDataGrid.Visible = false;
             salesDataGrid.Visible = false;
             itemdatagrid.Visible = true;
->>>>>>> 2ef51e8f9fbfe646900b42cb9b806ef220d6a954
         }
 
         private void LoadItemData() //Loads items data into the item data grid // PALIHUG KOG TRANSFER ANI SA DBFUNC KAY FUNCTION NI. TYYY
