@@ -48,16 +48,16 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             updateInvPnl = new Panel();
             panel5 = new Panel();
             AddProductForm_imageView = new PictureBox();
-            txtItem_status = new ComboBox();
-            txtItem_type = new ComboBox();
+            cmbItemStatus = new ComboBox();
+            cmbItemType = new ComboBox();
             btnImport = new Button();
             btnClear = new Button();
             btnUpdate = new Button();
             btnAdd = new Button();
-            txtItem_price = new TextBox();
-            txtItem_stock = new TextBox();
-            txtItem_name = new TextBox();
-            txtItem_id = new TextBox();
+            txtItemPrice = new TextBox();
+            txtItemStock = new TextBox();
+            txtItemName = new TextBox();
+            txtItemId = new TextBox();
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
@@ -171,16 +171,16 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // 
             updateInvPnl.BackColor = Color.FromArgb(15, 26, 43);
             updateInvPnl.Controls.Add(panel5);
-            updateInvPnl.Controls.Add(txtItem_status);
-            updateInvPnl.Controls.Add(txtItem_type);
+            updateInvPnl.Controls.Add(cmbItemStatus);
+            updateInvPnl.Controls.Add(cmbItemType);
             updateInvPnl.Controls.Add(btnImport);
             updateInvPnl.Controls.Add(btnClear);
             updateInvPnl.Controls.Add(btnUpdate);
             updateInvPnl.Controls.Add(btnAdd);
-            updateInvPnl.Controls.Add(txtItem_price);
-            updateInvPnl.Controls.Add(txtItem_stock);
-            updateInvPnl.Controls.Add(txtItem_name);
-            updateInvPnl.Controls.Add(txtItem_id);
+            updateInvPnl.Controls.Add(txtItemPrice);
+            updateInvPnl.Controls.Add(txtItemStock);
+            updateInvPnl.Controls.Add(txtItemName);
+            updateInvPnl.Controls.Add(txtItemId);
             updateInvPnl.Controls.Add(label8);
             updateInvPnl.Controls.Add(label7);
             updateInvPnl.Controls.Add(label6);
@@ -212,25 +212,25 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             AddProductForm_imageView.TabIndex = 0;
             AddProductForm_imageView.TabStop = false;
             // 
-            // txtItem_status
+            // cmbItemStatus
             // 
-            txtItem_status.FormattingEnabled = true;
-            txtItem_status.Items.AddRange(new object[] { "Available", "Unavailabe" });
-            txtItem_status.Location = new Point(621, 144);
-            txtItem_status.Margin = new Padding(3, 4, 3, 4);
-            txtItem_status.Name = "txtItem_status";
-            txtItem_status.Size = new Size(145, 28);
-            txtItem_status.TabIndex = 24;
+            cmbItemStatus.FormattingEnabled = true;
+            cmbItemStatus.Items.AddRange(new object[] { "Available", "Unavailabe" });
+            cmbItemStatus.Location = new Point(621, 144);
+            cmbItemStatus.Margin = new Padding(3, 4, 3, 4);
+            cmbItemStatus.Name = "cmbItemStatus";
+            cmbItemStatus.Size = new Size(145, 28);
+            cmbItemStatus.TabIndex = 24;
             // 
-            // txtItem_type
+            // cmbItemType
             // 
-            txtItem_type.FormattingEnabled = true;
-            txtItem_type.Items.AddRange(new object[] { "Appliance", "Furniture" });
-            txtItem_type.Location = new Point(225, 145);
-            txtItem_type.Margin = new Padding(3, 4, 3, 4);
-            txtItem_type.Name = "txtItem_type";
-            txtItem_type.Size = new Size(145, 28);
-            txtItem_type.TabIndex = 23;
+            cmbItemType.FormattingEnabled = true;
+            cmbItemType.Items.AddRange(new object[] { "Appliance", "Furniture" });
+            cmbItemType.Location = new Point(225, 145);
+            cmbItemType.Margin = new Padding(3, 4, 3, 4);
+            cmbItemType.Name = "cmbItemType";
+            cmbItemType.Size = new Size(145, 28);
+            cmbItemType.TabIndex = 23;
             // 
             // btnImport
             // 
@@ -244,6 +244,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             btnImport.TabIndex = 22;
             btnImport.Text = "Import";
             btnImport.UseVisualStyleBackColor = false;
+            btnImport.Click += btnImport_Click;
             // 
             // btnClear
             // 
@@ -257,6 +258,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             btnClear.TabIndex = 21;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
             // btnUpdate
             // 
@@ -270,6 +272,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             btnUpdate.TabIndex = 19;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnAdd
             // 
@@ -283,38 +286,40 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             btnAdd.TabIndex = 18;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
-            // txtItem_price
+            // txtItemPrice
             // 
-            txtItem_price.Location = new Point(621, 92);
-            txtItem_price.Margin = new Padding(3, 4, 3, 4);
-            txtItem_price.Name = "txtItem_price";
-            txtItem_price.Size = new Size(145, 27);
-            txtItem_price.TabIndex = 15;
+            txtItemPrice.Location = new Point(621, 92);
+            txtItemPrice.Margin = new Padding(3, 4, 3, 4);
+            txtItemPrice.Name = "txtItemPrice";
+            txtItemPrice.Size = new Size(145, 27);
+            txtItemPrice.TabIndex = 15;
             // 
-            // txtItem_stock
+            // txtItemStock
             // 
-            txtItem_stock.Location = new Point(621, 44);
-            txtItem_stock.Margin = new Padding(3, 4, 3, 4);
-            txtItem_stock.Name = "txtItem_stock";
-            txtItem_stock.Size = new Size(145, 27);
-            txtItem_stock.TabIndex = 14;
+            txtItemStock.Location = new Point(621, 44);
+            txtItemStock.Margin = new Padding(3, 4, 3, 4);
+            txtItemStock.Name = "txtItemStock";
+            txtItemStock.Size = new Size(145, 27);
+            txtItemStock.TabIndex = 14;
             // 
-            // txtItem_name
+            // txtItemName
             // 
-            txtItem_name.Location = new Point(225, 94);
-            txtItem_name.Margin = new Padding(3, 4, 3, 4);
-            txtItem_name.Name = "txtItem_name";
-            txtItem_name.Size = new Size(145, 27);
-            txtItem_name.TabIndex = 12;
+            txtItemName.Location = new Point(225, 94);
+            txtItemName.Margin = new Padding(3, 4, 3, 4);
+            txtItemName.Name = "txtItemName";
+            txtItemName.Size = new Size(145, 27);
+            txtItemName.TabIndex = 12;
             // 
-            // txtItem_id
+            // txtItemId
             // 
-            txtItem_id.Location = new Point(225, 45);
-            txtItem_id.Margin = new Padding(3, 4, 3, 4);
-            txtItem_id.Name = "txtItem_id";
-            txtItem_id.Size = new Size(145, 27);
-            txtItem_id.TabIndex = 11;
+            txtItemId.Location = new Point(225, 45);
+            txtItemId.Margin = new Padding(3, 4, 3, 4);
+            txtItemId.Name = "txtItemId";
+            txtItemId.Size = new Size(145, 27);
+            txtItemId.TabIndex = 11;
+            txtItemId.TextChanged += txtItemId_TextChanged;
             // 
             // label8
             // 
@@ -618,16 +623,16 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
         private Panel updateInvPnl;
         private Panel panel5;
         private PictureBox AddProductForm_imageView;
-        private ComboBox txtItem_status;
-        private ComboBox txtItem_type;
+        private ComboBox cmbItemStatus;
+        private ComboBox cmbItemType;
         private Button btnImport;
         private Button btnClear;
         private Button btnUpdate;
         private Button btnAdd;
-        private TextBox txtItem_price;
-        private TextBox txtItem_stock;
-        private TextBox txtItem_name;
-        private TextBox txtItem_id;
+        private TextBox txtItemPrice;
+        private TextBox txtItemStock;
+        private TextBox txtItemName;
+        private TextBox txtItemId;
         private Label label8;
         private Label label6;
         private Label label4;

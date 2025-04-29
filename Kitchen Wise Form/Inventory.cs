@@ -39,6 +39,14 @@ namespace OnlineShop.Kitchen_Wise_Form
             }
         }
 
+        public void itemListData()
+        {
+            AddItemData addItemData = new AddItemData();
+            List<AddItemData> listDatas = addItemData.itemListData();
+
+            itemdatagrid.DataSource = listDatas;
+        }
+
         private void LoadSalesData()
         {
             try
@@ -158,13 +166,13 @@ namespace OnlineShop.Kitchen_Wise_Form
                         AddItemData aid = new AddItemData();
 
                         aid.ID = (int)reader["id"];
-                        aid.ItemID = reader["item_id"].ToString();
-                        aid.ItemName = reader["item_name"].ToString();
-                        aid.Type = reader["item_type"].ToString();
-                        aid.Stock = reader["item_stock"].ToString();
-                        aid.Price = reader["item_price"].ToString();
-                        aid.Status = reader["item_status"].ToString();
-                        aid.Image = reader["item_image"].ToString();
+                        aid.ItemID = reader["ProductId"].ToString();
+                        aid.ItemName = reader["ProductName"].ToString();
+                        aid.Type = reader["Description"].ToString();
+                        aid.Stock = reader["InStock"].ToString();
+                        aid.Price = reader["PurchasePrice"].ToString();
+                        aid.Status = reader["ValueOnHand"].ToString();
+                        aid.Image = reader["Photo"].ToString();
                         aid.DateInsert = reader["date_insert"].ToString();
                         aid.DateUpdate = reader["date_update"].ToString();
                     }
@@ -180,10 +188,52 @@ namespace OnlineShop.Kitchen_Wise_Form
                 conn.Close();
             }
         }
-
+ 
         private void itemdatagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                // Make sure a valid row is clicked (not header or empty area)
+                if (e.RowIndex >= 0)
+                {
+                    // Get the selected row
+                    DataGridViewRow row = itemdatagrid.Rows[e.RowIndex];
 
+                    // Populate the textboxes with data from the selected row
+                    txtItemId.Text = row.Cells["ProductId"].Value.ToString();
+                    txtItemName.Text = row.Cells["ProductName"].Value.ToString();
+
+                    // For comboboxes, find and select the matching item
+                    cmbItemType.Text = row.Cells["Description"].Value.ToString();
+
+                    txtItemStock.Text = row.Cells["InStock"].Value.ToString();
+                    txtItemPrice.Text = row.Cells["PurchasePrice"].Value.ToString();
+
+                    cmbItemStatus.Text = row.Cells["ValueOnHand"].Value.ToString();
+
+                    // For the image, set the image location if it exists
+                    string imagePath = row.Cells["Photo"].Value?.ToString();
+                    if (!string.IsNullOrEmpty(imagePath) && System.IO.File.Exists(imagePath))
+                    {
+                        AddProductForm_imageView.ImageLocation = imagePath;
+                    }
+                    else
+                    {
+                        AddProductForm_imageView.ImageLocation = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error selecting row: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void itemdatagrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Call the same code as in CellContentClick
+            itemdatagrid_CellContentClick(sender, e);
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -199,5 +249,138 @@ namespace OnlineShop.Kitchen_Wise_Form
         {
 
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Get values from your input controls
+                string itemName = txtItemName.Text;
+                string itemType = cmbItemType.Text;
+                string itemStock = txtItemStock.Text;
+                string itemPrice = txtItemPrice.Text;
+                string itemStatus = cmbItemStatus.Text;
+                string imagePath = AddProductForm_imageView.ImageLocation;
+
+                // Validate inputs
+                if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(itemType) || 
+                    string.IsNullOrEmpty(itemStock) || string.IsNullOrEmpty(itemPrice))
+                {
+                    MessageBox.Show("Please fill in all required fields.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Connect to database
+                using SqlConnection conn = dbConn.GetConnection();
+                conn.Open();
+
+                // Calculate ValueOnHand as quantity × price
+                int stock = Convert.ToInt32(itemStock);
+                decimal price = Convert.ToDecimal(itemPrice);
+                decimal valueOnHand = stock * price;
+
+                // Modified SQL insert command
+                string insertQuery = @"INSERT INTO inventory 
+                            (ProductName, Description, InStock, PurchasePrice, SalesPrice, ValueOnHand, Photo, date_insert) 
+                            VALUES 
+                            (@itemName, @itemType, @itemStock, @itemPrice, @itemPrice, @valueOnHand, @itemImage, @dateInsert)";
+
+                using SqlCommand cmd = new SqlCommand(insertQuery, conn);
+                cmd.Parameters.AddWithValue("@itemName", itemName);
+                cmd.Parameters.AddWithValue("@itemType", itemType);
+                cmd.Parameters.AddWithValue("@itemStock", stock);
+                cmd.Parameters.AddWithValue("@itemPrice", price);
+                cmd.Parameters.AddWithValue("@valueOnHand", valueOnHand);
+                
+                // For the image, convert file to byte array if it exists
+                if (!string.IsNullOrEmpty(imagePath) && System.IO.File.Exists(imagePath))
+                {
+                    byte[] imageData = System.IO.File.ReadAllBytes(imagePath);
+                    cmd.Parameters.Add("@itemImage", SqlDbType.VarBinary, imageData.Length).Value = imageData;
+                }
+                else
+                {
+                    cmd.Parameters.Add("@itemImage", SqlDbType.VarBinary).Value = DBNull.Value;
+                }
+                
+                cmd.Parameters.AddWithValue("@dateInsert", DateTime.Now);
+
+                // Execute the command
+                int result = cmd.ExecuteNonQuery();
+
+                if (result > 0)
+                {
+                    MessageBox.Show("Item added successfully!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Clear input fields
+                    ClearInputFields();
+
+                    // Refresh the data grid to show the newly added item
+                    LoadInventoryData();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add item.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error adding item: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Helper method to clear input fields
+        private void ClearInputFields()
+        {
+            // Replace these with your actual input control names
+            txtItemId.Text = "";
+            txtItemName.Text = "";
+            cmbItemType.SelectedIndex = -1;
+            txtItemStock.Text = "";
+            txtItemPrice.Text = "";
+            cmbItemStatus.SelectedIndex = -1;
+            AddProductForm_imageView.ImageLocation = "";
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Image Files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
+                string imagePath = string.Empty;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    imagePath = dialog.FileName;
+                    AddProductForm_imageView.ImageLocation = imagePath;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error importing image. Please try again.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtItemId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
+
