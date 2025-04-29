@@ -95,10 +95,10 @@ namespace OnlineShop.Kitchen_Wise_Form
         {
             LoadInventoryData();
             itemdatagrid.BringToFront();
+            updateInvPnl.BringToFront();
             inv_bg_pic.Visible = false;
             homeDataGrid.Visible = false;
             salesDataGrid.Visible = false;
-            itemdatagrid.Visible = true;
         }
 
 
@@ -179,6 +179,25 @@ namespace OnlineShop.Kitchen_Wise_Form
                 using SqlConnection conn = dbConn.GetConnection();
                 conn.Close();
             }
+        }
+
+        private void itemdatagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

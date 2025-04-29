@@ -45,13 +45,32 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
             homePanel = new Panel();
-            adminDashboardForm1 = new AdminDashboardForm();
-            addProductForm1 = new AddProductForm();
-            inv_bg_pic = new PictureBox();
+            updateInvPnl = new Panel();
+            panel5 = new Panel();
+            AddProductForm_imageView = new PictureBox();
+            txtItem_status = new ComboBox();
+            txtItem_type = new ComboBox();
+            btnImport = new Button();
+            btnClear = new Button();
+            btnUpdate = new Button();
+            btnAdd = new Button();
+            txtItem_price = new TextBox();
+            txtItem_stock = new TextBox();
+            txtItem_name = new TextBox();
+            txtItem_id = new TextBox();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
             itemdatagrid = new DataGridView();
             salesDataGrid = new DataGridView();
             dBFuncBindingSource = new BindingSource(components);
             homeDataGrid = new DataGridView();
+            adminDashboardForm1 = new AdminDashboardForm();
+            addProductForm1 = new AddProductForm();
+            inv_bg_pic = new PictureBox();
             panel3 = new Panel();
             bck_btn = new Button();
             salesBtn = new Button();
@@ -63,11 +82,14 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             ((ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             homePanel.SuspendLayout();
-            ((ISupportInitialize)inv_bg_pic).BeginInit();
+            updateInvPnl.SuspendLayout();
+            panel5.SuspendLayout();
+            ((ISupportInitialize)AddProductForm_imageView).BeginInit();
             ((ISupportInitialize)itemdatagrid).BeginInit();
             ((ISupportInitialize)salesDataGrid).BeginInit();
             ((ISupportInitialize)dBFuncBindingSource).BeginInit();
             ((ISupportInitialize)homeDataGrid).BeginInit();
+            ((ISupportInitialize)inv_bg_pic).BeginInit();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -132,44 +154,239 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // homePanel
             // 
             homePanel.BackColor = Color.FromArgb(209, 207, 201);
-            homePanel.Controls.Add(adminDashboardForm1);
-            homePanel.Controls.Add(addProductForm1);
-            homePanel.Controls.Add(inv_bg_pic);
+            homePanel.Controls.Add(updateInvPnl);
             homePanel.Controls.Add(itemdatagrid);
             homePanel.Controls.Add(salesDataGrid);
             homePanel.Controls.Add(homeDataGrid);
+            homePanel.Controls.Add(adminDashboardForm1);
+            homePanel.Controls.Add(addProductForm1);
+            homePanel.Controls.Add(inv_bg_pic);
             homePanel.Location = new Point(1, 2);
             homePanel.Margin = new Padding(3, 4, 3, 4);
             homePanel.Name = "homePanel";
             homePanel.Size = new Size(1029, 758);
             homePanel.TabIndex = 0;
             // 
-            // adminDashboardForm1
+            // updateInvPnl
             // 
-            adminDashboardForm1.BackColor = Color.FromArgb(15, 26, 43);
-            adminDashboardForm1.Location = new Point(-1, -2);
-            adminDashboardForm1.Margin = new Padding(3, 6, 3, 6);
-            adminDashboardForm1.Name = "adminDashboardForm1";
-            adminDashboardForm1.Size = new Size(1031, 742);
-            adminDashboardForm1.TabIndex = 39;
+            updateInvPnl.BackColor = Color.FromArgb(15, 26, 43);
+            updateInvPnl.Controls.Add(panel5);
+            updateInvPnl.Controls.Add(txtItem_status);
+            updateInvPnl.Controls.Add(txtItem_type);
+            updateInvPnl.Controls.Add(btnImport);
+            updateInvPnl.Controls.Add(btnClear);
+            updateInvPnl.Controls.Add(btnUpdate);
+            updateInvPnl.Controls.Add(btnAdd);
+            updateInvPnl.Controls.Add(txtItem_price);
+            updateInvPnl.Controls.Add(txtItem_stock);
+            updateInvPnl.Controls.Add(txtItem_name);
+            updateInvPnl.Controls.Add(txtItem_id);
+            updateInvPnl.Controls.Add(label8);
+            updateInvPnl.Controls.Add(label7);
+            updateInvPnl.Controls.Add(label6);
+            updateInvPnl.Controls.Add(label4);
+            updateInvPnl.Controls.Add(label3);
+            updateInvPnl.Controls.Add(label2);
+            updateInvPnl.Location = new Point(0, 440);
+            updateInvPnl.Margin = new Padding(3, 4, 3, 4);
+            updateInvPnl.Name = "updateInvPnl";
+            updateInvPnl.Size = new Size(1029, 299);
+            updateInvPnl.TabIndex = 42;
             // 
-            // addProductForm1
+            // panel5
             // 
-            addProductForm1.Location = new Point(-1, -2);
-            addProductForm1.Margin = new Padding(3, 6, 3, 6);
-            addProductForm1.Name = "addProductForm1";
-            addProductForm1.Size = new Size(1031, 742);
-            addProductForm1.TabIndex = 41;
+            panel5.Controls.Add(AddProductForm_imageView);
+            panel5.Location = new Point(831, 20);
+            panel5.Margin = new Padding(3, 4, 3, 4);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(135, 133);
+            panel5.TabIndex = 25;
             // 
-            // inv_bg_pic
+            // AddProductForm_imageView
             // 
-            inv_bg_pic.Image = Properties.Resources._1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310;
-            inv_bg_pic.Location = new Point(411, 264);
-            inv_bg_pic.Margin = new Padding(3, 2, 3, 2);
-            inv_bg_pic.Name = "inv_bg_pic";
-            inv_bg_pic.Size = new Size(151, 176);
-            inv_bg_pic.TabIndex = 3;
-            inv_bg_pic.TabStop = false;
+            AddProductForm_imageView.BackColor = Color.Gainsboro;
+            AddProductForm_imageView.Location = new Point(0, 0);
+            AddProductForm_imageView.Margin = new Padding(3, 4, 3, 4);
+            AddProductForm_imageView.Name = "AddProductForm_imageView";
+            AddProductForm_imageView.Size = new Size(135, 133);
+            AddProductForm_imageView.TabIndex = 0;
+            AddProductForm_imageView.TabStop = false;
+            // 
+            // txtItem_status
+            // 
+            txtItem_status.FormattingEnabled = true;
+            txtItem_status.Items.AddRange(new object[] { "Available", "Unavailabe" });
+            txtItem_status.Location = new Point(621, 144);
+            txtItem_status.Margin = new Padding(3, 4, 3, 4);
+            txtItem_status.Name = "txtItem_status";
+            txtItem_status.Size = new Size(145, 28);
+            txtItem_status.TabIndex = 24;
+            // 
+            // txtItem_type
+            // 
+            txtItem_type.FormattingEnabled = true;
+            txtItem_type.Items.AddRange(new object[] { "Appliance", "Furniture" });
+            txtItem_type.Location = new Point(225, 145);
+            txtItem_type.Margin = new Padding(3, 4, 3, 4);
+            txtItem_type.Name = "txtItem_type";
+            txtItem_type.Size = new Size(145, 28);
+            txtItem_type.TabIndex = 23;
+            // 
+            // btnImport
+            // 
+            btnImport.BackColor = Color.FromArgb(189, 196, 212);
+            btnImport.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnImport.ForeColor = Color.FromArgb(15, 26, 43);
+            btnImport.Location = new Point(859, 160);
+            btnImport.Margin = new Padding(2, 3, 2, 3);
+            btnImport.Name = "btnImport";
+            btnImport.Size = new Size(73, 64);
+            btnImport.TabIndex = 22;
+            btnImport.Text = "Import";
+            btnImport.UseVisualStyleBackColor = false;
+            // 
+            // btnClear
+            // 
+            btnClear.BackColor = Color.FromArgb(189, 196, 212);
+            btnClear.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnClear.ForeColor = Color.FromArgb(15, 26, 43);
+            btnClear.Location = new Point(630, 224);
+            btnClear.Margin = new Padding(2, 3, 2, 3);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(73, 64);
+            btnClear.TabIndex = 21;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = false;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.BackColor = Color.FromArgb(189, 196, 212);
+            btnUpdate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnUpdate.ForeColor = Color.FromArgb(15, 26, 43);
+            btnUpdate.Location = new Point(453, 224);
+            btnUpdate.Margin = new Padding(2, 3, 2, 3);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(76, 64);
+            btnUpdate.TabIndex = 19;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = false;
+            // 
+            // btnAdd
+            // 
+            btnAdd.BackColor = Color.FromArgb(189, 196, 212);
+            btnAdd.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAdd.ForeColor = Color.FromArgb(15, 26, 43);
+            btnAdd.Location = new Point(268, 224);
+            btnAdd.Margin = new Padding(2, 3, 2, 3);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(73, 64);
+            btnAdd.TabIndex = 18;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = false;
+            // 
+            // txtItem_price
+            // 
+            txtItem_price.Location = new Point(621, 92);
+            txtItem_price.Margin = new Padding(3, 4, 3, 4);
+            txtItem_price.Name = "txtItem_price";
+            txtItem_price.Size = new Size(145, 27);
+            txtItem_price.TabIndex = 15;
+            // 
+            // txtItem_stock
+            // 
+            txtItem_stock.Location = new Point(621, 44);
+            txtItem_stock.Margin = new Padding(3, 4, 3, 4);
+            txtItem_stock.Name = "txtItem_stock";
+            txtItem_stock.Size = new Size(145, 27);
+            txtItem_stock.TabIndex = 14;
+            // 
+            // txtItem_name
+            // 
+            txtItem_name.Location = new Point(225, 94);
+            txtItem_name.Margin = new Padding(3, 4, 3, 4);
+            txtItem_name.Name = "txtItem_name";
+            txtItem_name.Size = new Size(145, 27);
+            txtItem_name.TabIndex = 12;
+            // 
+            // txtItem_id
+            // 
+            txtItem_id.Location = new Point(225, 45);
+            txtItem_id.Margin = new Padding(3, 4, 3, 4);
+            txtItem_id.Name = "txtItem_id";
+            txtItem_id.Size = new Size(145, 27);
+            txtItem_id.TabIndex = 11;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(543, 142);
+            label8.Margin = new Padding(2, 0, 2, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(77, 27);
+            label8.TabIndex = 10;
+            label8.Text = "Status:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(552, 90);
+            label7.Margin = new Padding(2, 0, 2, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(64, 27);
+            label7.TabIndex = 9;
+            label7.Text = "Price:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(48, 94);
+            label6.Margin = new Padding(2, 0, 2, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(155, 27);
+            label6.TabIndex = 8;
+            label6.Text = "Product Name:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(140, 144);
+            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(63, 27);
+            label4.TabIndex = 6;
+            label4.Text = "Type:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(546, 42);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(71, 27);
+            label3.TabIndex = 5;
+            label3.Text = "Stock:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(83, 45);
+            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(120, 27);
+            label2.TabIndex = 4;
+            label2.Text = "Product ID:";
             // 
             // itemdatagrid
             // 
@@ -185,6 +402,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             itemdatagrid.RowHeadersWidth = 51;
             itemdatagrid.Size = new Size(1029, 758);
             itemdatagrid.TabIndex = 40;
+            itemdatagrid.CellContentClick += itemdatagrid_CellContentClick;
             // 
             // salesDataGrid
             // 
@@ -218,6 +436,33 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             homeDataGrid.RowHeadersWidth = 51;
             homeDataGrid.Size = new Size(1029, 758);
             homeDataGrid.TabIndex = 0;
+            // 
+            // adminDashboardForm1
+            // 
+            adminDashboardForm1.BackColor = Color.FromArgb(15, 26, 43);
+            adminDashboardForm1.Location = new Point(-1, -2);
+            adminDashboardForm1.Margin = new Padding(3, 6, 3, 6);
+            adminDashboardForm1.Name = "adminDashboardForm1";
+            adminDashboardForm1.Size = new Size(1031, 742);
+            adminDashboardForm1.TabIndex = 39;
+            // 
+            // addProductForm1
+            // 
+            addProductForm1.Location = new Point(-1, -2);
+            addProductForm1.Margin = new Padding(3, 6, 3, 6);
+            addProductForm1.Name = "addProductForm1";
+            addProductForm1.Size = new Size(1031, 742);
+            addProductForm1.TabIndex = 41;
+            // 
+            // inv_bg_pic
+            // 
+            inv_bg_pic.Image = Properties.Resources._1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310;
+            inv_bg_pic.Location = new Point(411, 264);
+            inv_bg_pic.Margin = new Padding(3, 2, 3, 2);
+            inv_bg_pic.Name = "inv_bg_pic";
+            inv_bg_pic.Size = new Size(151, 176);
+            inv_bg_pic.TabIndex = 3;
+            inv_bg_pic.TabStop = false;
             // 
             // panel3
             // 
@@ -334,11 +579,15 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             ((ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             homePanel.ResumeLayout(false);
-            ((ISupportInitialize)inv_bg_pic).EndInit();
+            updateInvPnl.ResumeLayout(false);
+            updateInvPnl.PerformLayout();
+            panel5.ResumeLayout(false);
+            ((ISupportInitialize)AddProductForm_imageView).EndInit();
             ((ISupportInitialize)itemdatagrid).EndInit();
             ((ISupportInitialize)salesDataGrid).EndInit();
             ((ISupportInitialize)dBFuncBindingSource).EndInit();
             ((ISupportInitialize)homeDataGrid).EndInit();
+            ((ISupportInitialize)inv_bg_pic).EndInit();
             panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -366,5 +615,24 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
         private DataGridView salesDataGrid;
         private DataGridView itemdatagrid;
         private AddProductForm addProductForm1;
+        private Panel updateInvPnl;
+        private Panel panel5;
+        private PictureBox AddProductForm_imageView;
+        private ComboBox txtItem_status;
+        private ComboBox txtItem_type;
+        private Button btnImport;
+        private Button btnClear;
+        private Button btnUpdate;
+        private Button btnAdd;
+        private TextBox txtItem_price;
+        private TextBox txtItem_stock;
+        private TextBox txtItem_name;
+        private TextBox txtItem_id;
+        private Label label8;
+        private Label label6;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label7;
     }
 }
