@@ -25,6 +25,7 @@ namespace OnlineShop.Kitchen_Wise_Form
             dbFunc = new DBFunc();
             this.StartPosition = FormStartPosition.CenterScreen;
             inv_bg_pic.Visible = true;
+            inv_bg_pic.BringToFront();
             addProductForm1.Visible = false;
             adminDashboardForm1.Visible = true;
 
@@ -189,11 +190,11 @@ namespace OnlineShop.Kitchen_Wise_Form
 
         private void salesBtn_Click(object sender, EventArgs e) //transactions should be here
         {
-            //LoadSalesData();
-            //inv_bg_pic.Visible = false;
-            //homeDataGrid.Visible = false;
-            //salesDataGrid.Visible = true;
-            //itemdatagrid.Visible = false;
+            LoadSalesData();
+            inv_bg_pic.Visible = false;
+            homeDataGrid.Visible = false;
+            salesDataGrid.Visible = true;
+            salesDataGrid.BringToFront();
         }
 
         private void home_btn_Click(object sender, EventArgs e) //brief details of each item?? i need your thoughts.
@@ -201,6 +202,7 @@ namespace OnlineShop.Kitchen_Wise_Form
             adminDashboardForm1.BringToFront();
             adminDashboardForm1.Visible = true;
             addProductForm1.Visible = false;
+            salesDataGrid.Visible = false;
         }
 
         private void item_btn_Click(object sender, EventArgs e) //Items button; CRUD operations need to be applied.
@@ -209,6 +211,7 @@ namespace OnlineShop.Kitchen_Wise_Form
             adminDashboardForm1.Visible = false;
             addProductForm1.Visible = true;
             addProductForm1.BringToFront();
+            salesDataGrid.Visible = false;
         }
 
         private void LoadItemData() //Loads items data into the item data grid // PALIHUG KOG TRANSFER ANI SA DBFUNC KAY FUNCTION NI. TYYY

@@ -126,11 +126,10 @@ namespace OnlineShop
                             try
                             {
                                 connection.Open();
-
                                 string updateData = "UPDATE items SET item_id = @item_id, " +
                                     "item_name = @item_name, item_type = @item_type, item_stock = @item_stock, " +
-                                    "item_price = @item_price, item_status = @item_status";
-                                DateTime today = DateTime.Now;
+                                    "item_price = @item_price, item_status = @item_status, date_update = @date_update";
+                                DateTime today = DateTime.Today;
 
                                 using (SqlCommand updateD = new SqlCommand(updateData, connection))
                                 {
