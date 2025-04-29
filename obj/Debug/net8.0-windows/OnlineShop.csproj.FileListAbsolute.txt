@@ -499,3 +499,4 @@ D:\VS REPOSITORY\obj\Debug\net8.0-windows\OnlineShop.pdb
 D:\VS REPOSITORY\obj\Debug\net8.0-windows\OnlineShop.genruntimeconfig.cache
 D:\VS REPOSITORY\bin\Debug\net8.0-windows\OnlineShop.pdb
 D:\VS REPOSITORY\obj\Debug\net8.0-windows\ref\OnlineShop.dll
+D:\VS REPOSITORY\bin\Debug\net8.0-windows\itextsharp.dll

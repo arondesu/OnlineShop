@@ -171,17 +171,17 @@ namespace OnlineShop
             AddItemToCart("Cleaning Sponge", 35.50);
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e)
         {
             AddItemToCart("Silverware Set", 175.50);
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button8_Click(object sender, EventArgs e)
         {
             AddItemToCart("Kitchen Scale", 499);
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void button9_Click(object sender, EventArgs e)
         {
             AddItemToCart("Table Cloth", 55.50);
         }

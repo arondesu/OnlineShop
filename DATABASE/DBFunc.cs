@@ -281,39 +281,68 @@ public class DBFunc
         {
             using SqlConnection conn = dbConn.GetConnection();
             conn.Open();
-            
-            // Begin transaction to ensure both operations complete
+
             using SqlTransaction transaction = conn.BeginTransaction();
             try
             {
                 // 1. Insert into sales table
-                string salesQuery = @"INSERT INTO sales (PurchaseOrderNo, PurchaseDate, Subtotal, Discount, Total) 
-                                    VALUES (@OrderNo, @Date, @Subtotal, @Discount, @Total)";
-                
+                string salesQuery = @"INSERT INTO sales (PurchaseOrderNo, Subtotal, Discount, Total) 
+                                 VALUES (@OrderNo, @Subtotal, @Discount, @Total)";
+
                 using SqlCommand salesCmd = new SqlCommand(salesQuery, conn, transaction);
-                salesCmd.Parameters.AddWithValue("@OrderNo", GenerateOrderNumber()); //random generated numbers
-                salesCmd.Parameters.AddWithValue("@Date", DateTime.Now.Date);
+                salesCmd.Parameters.AddWithValue("@OrderNo", GenerateOrderNumber());
                 salesCmd.Parameters.AddWithValue("@Subtotal", subtotal);
                 salesCmd.Parameters.AddWithValue("@Discount", discount);
                 salesCmd.Parameters.AddWithValue("@Total", total);
                 salesCmd.ExecuteNonQuery();
 
-                // 2. Update inventory quantities
+                // 2. Update inventory quantities + insert into Reports
                 for (int i = 0; i < itemNames.Count; i++)
                 {
+                    // 2a. Update inventory
                     string updateQuery = "UPDATE Inventory SET InStock = InStock - @Quantity WHERE ProductName = @ProductName";
                     using SqlCommand updateCmd = new SqlCommand(updateQuery, conn, transaction);
                     updateCmd.Parameters.AddWithValue("@Quantity", quantities[i]);
                     updateCmd.Parameters.AddWithValue("@ProductName", itemNames[i]);
                     updateCmd.ExecuteNonQuery();
+
+                    // 2b. Get product price
+                    string priceQuery = "SELECT PurchasePrice FROM Inventory WHERE ProductName = @ProductName";
+                    using SqlCommand priceCmd = new SqlCommand(priceQuery, conn, transaction);
+                    priceCmd.Parameters.AddWithValue("@ProductName", itemNames[i]);
+                    object priceResult = priceCmd.ExecuteScalar();
+                    decimal price = priceResult != null ? Convert.ToDecimal(priceResult) : 0;
+
+                    // 2c. Insert or update Reports table
+                    string reportQuery = @"
+                        IF EXISTS (
+                            SELECT 1 FROM Reports 
+                            WHERE ProductName = @ProductName AND CAST(ReportDate AS DATE) = CAST(GETDATE() AS DATE)
+                        )
+                        BEGIN
+                            UPDATE Reports 
+                            SET QuantitySold = QuantitySold + @QuantitySold,
+                                TotalSales = TotalSales + @TotalSales
+                            WHERE ProductName = @ProductName AND CAST(ReportDate AS DATE) = CAST(GETDATE() AS DATE)
+                        END
+                        ELSE
+                        BEGIN
+                            INSERT INTO Reports (ProductName, QuantitySold, TotalSales, ReportDate)
+                            VALUES (@ProductName, @QuantitySold, @TotalSales, GETDATE())
+                        END";
+
+                    using SqlCommand reportCmd = new SqlCommand(reportQuery, conn, transaction);
+                    reportCmd.Parameters.AddWithValue("@ProductName", itemNames[i]);
+                    reportCmd.Parameters.AddWithValue("@QuantitySold", quantities[i]);
+                    reportCmd.Parameters.AddWithValue("@TotalSales", quantities[i] * price);
+                    reportCmd.ExecuteNonQuery();
+
                 }
 
-                // Commit the transaction
                 transaction.Commit();
             }
             catch (Exception ex)
             {
-                // Rollback on error
                 transaction.Rollback();
                 throw new Exception($"Error processing checkout: {ex.Message}");
             }
@@ -324,6 +353,7 @@ public class DBFunc
             throw;
         }
     }
+
     //FUNCTION FOR CUSTOM GENERATE PO NUMBER
     private string GenerateOrderNumber()
     {
@@ -341,5 +371,27 @@ public class DBFunc
         txtItem_status.SelectedIndex = -1;
         AddProductForm_imageView.ImageLocation = null;
     }
-   
+
+    //Function for Reports table
+    public void InsertReport(string productName, int quantitySold, decimal unitPrice)
+    {
+        decimal totalSales = quantitySold * unitPrice;
+
+        using SqlConnection conn = dbConn.GetConnection();
+        conn.Open();
+
+        string query = @"INSERT INTO Reports (ProductName, QuantitySold, TotalSales, ReportDate)
+                     VALUES (@productName, @quantitySold, @totalSales, @reportDate)";
+
+        SqlCommand cmd = new SqlCommand(query, conn);
+        cmd.Parameters.AddWithValue("@productName", productName);
+        cmd.Parameters.AddWithValue("@quantitySold", quantitySold);
+        cmd.Parameters.AddWithValue("@totalSales", totalSales);
+        cmd.Parameters.AddWithValue("@reportDate", DateTime.Now);
+        cmd.ExecuteNonQuery();
+
+        conn.Close();
+    }
+
+
 }
