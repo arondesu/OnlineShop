@@ -208,11 +208,8 @@ namespace OnlineShop.Kitchen_Wise_Form
             salesDataGrid.Visible = false;
             itemdatagrid.Visible = false;
         }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> FIXED EVERYTHING 4/29/2025
         private void item_btn_Click(object sender, EventArgs e) //Items button; CRUD operations need to be applied.
         {
            
@@ -221,13 +218,10 @@ namespace OnlineShop.Kitchen_Wise_Form
             addProductForm1.BringToFront();
             salesDataGrid.Visible = false;
             LoadItemData();
-<<<<<<< HEAD
             inv_bg_pic.Visible = false;
             homeDataGrid.Visible = false;
             salesDataGrid.Visible = false;
             itemdatagrid.Visible = true;
-=======
->>>>>>> FIXED EVERYTHING 4/29/2025
         }
 
         private void LoadItemData() //Loads items data into the item data grid // PALIHUG KOG TRANSFER ANI SA DBFUNC KAY FUNCTION NI. TYYY

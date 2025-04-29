@@ -12,15 +12,9 @@
       }
     ],
     "additionalProbingPaths": [
-<<<<<<< HEAD
       "C:\\Users\\Woots\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\Woots\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-=======
-      "C:\\Users\\Nikke\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Nikke\\.nuget\\packages",
-      "D:\\Visual Studio SDK\\NuGetPackages"
->>>>>>> FIXED EVERYTHING 4/29/2025
     ],
     "configProperties": {
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": true,

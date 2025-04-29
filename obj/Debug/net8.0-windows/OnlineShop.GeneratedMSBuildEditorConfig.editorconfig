@@ -14,11 +14,7 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OnlineShop
-<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\Woots\Source\Repos\OnlineShop\
-=======
-build_property.ProjectDir = D:\VS REPOSITORY\
->>>>>>> FIXED EVERYTHING 4/29/2025
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false
