@@ -61,3 +61,5 @@ nunit-*.xml
 
 .vs/OnlineShop/CopilotIndices/17.13.441.19478/CodeChunks.db
 .vs/OnlineShop/CopilotIndices/17.13.441.19478/SemanticSymbols.db
+
+#removed dbfunc
