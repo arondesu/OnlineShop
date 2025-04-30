@@ -16,7 +16,7 @@
     <Compile Update="AdminDashboardForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="SalesForm.cs">
+    <Compile Update="ExtraItemForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

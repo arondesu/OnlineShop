@@ -1,6 +1,8 @@
 ﻿using System.Data;
 using System.Diagnostics;
+using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using OnlineShop.DATABASE;
 using OnlineShop.Kitchen_Wise_Form;
 
 namespace OnlineShop
@@ -17,12 +19,12 @@ namespace OnlineShop
 
         private Dictionary<string, Label> quantityLabels;
         private DBFunc dbFunc = new DBFunc();
+        private DBConn dbConn = new DBConn();
 
         public MainShop()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             this.StartPosition = FormStartPosition.CenterScreen; // Center the form on startup
-            SetupScrollablePanel(); // Call method to set up the scrollable panel
 
             // Initialize the dictionary with your labels
             quantityLabels = new Dictionary<string, Label>
@@ -36,37 +38,10 @@ namespace OnlineShop
                 {"Silverware Set", sware_qty},
                 {"Kitchen Scale", kscale_qty},
                 {"Table Cloth", tcloth_qty}
-            };
+};
 
-            // Sync the labels with inventory
+            //THEN sync
             dbFunc.SyncQuantityLabels(quantityLabels);
-        }
-
-
-        private void SetupScrollablePanel()
-        {
-            // Create a panel that enables only vertical scrolling
-            Panel scrollablePanel = new Panel
-            {
-                Dock = DockStyle.Fill,  // Make it fill the form
-                AutoScroll = true,      // Enable scrolling
-                HorizontalScroll = { Enabled = false, Visible = false }, // Disable horizontal scroll
-                VerticalScroll = { Enabled = true, Visible = true }      // Enable vertical scroll
-            };
-
-            // Ensure that only vertical scrolling is active
-            scrollablePanel.AutoScrollMinSize = new Size(0, scrollablePanel.Height + 1);
-
-            // Move all existing controls into the panel
-            while (this.Controls.Count > 0)
-            {
-                Control ctrl = this.Controls[0];
-                this.Controls.Remove(ctrl);
-                scrollablePanel.Controls.Add(ctrl);
-            }
-
-            // Add the scrollable panel to the form
-            this.Controls.Add(scrollablePanel);
         }
 
         private void AddItemToCart(string itemName, double itemPrice)
@@ -170,17 +145,17 @@ namespace OnlineShop
             AddItemToCart("Cleaning Sponge", 35.50);
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e)
         {
             AddItemToCart("Silverware Set", 175.50);
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button8_Click(object sender, EventArgs e)
         {
             AddItemToCart("Kitchen Scale", 499);
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void button9_Click(object sender, EventArgs e)
         {
             AddItemToCart("Table Cloth", 55.50);
         }
@@ -330,9 +305,55 @@ namespace OnlineShop
             Application.Exit();
         }
 
-        private void gfoodstore_qty_Click(object sender, EventArgs e)
+        private void label20_Click(object sender, EventArgs e)
         {
-
+            LoadItemData();
+            extraItemForm1.Visible = true;
+            extraItemForm1.BringToFront();
         }
+
+        private void LoadItemData() //Loads items data into the item data grid 
+        {
+            try
+            {
+                //for temporary testing
+                using SqlConnection conn = dbConn.GetConnection();
+                conn.Open();
+
+                string SelectItem = "SELECT * FROM items WHERE date_delete IS NULL";
+
+                using (SqlCommand cmd = new SqlCommand(SelectItem, conn))
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        AddItemData aid = new AddItemData();
+
+                        aid.ID = (int)reader["id"];
+                        aid.ItemID = reader["item_id"].ToString();
+                        aid.ItemName = reader["item_name"].ToString();
+                        aid.Type = reader["item_type"].ToString();
+                        aid.Stock = reader["item_stock"].ToString();
+                        aid.Price = reader["item_price"].ToString();
+                        aid.Status = reader["item_status"].ToString();
+                        aid.Image = reader["item_image"].ToString();
+                        aid.DateInsert = reader["date_insert"].ToString();
+                        aid.DateUpdate = reader["date_update"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                using SqlConnection conn = dbConn.GetConnection();
+                conn.Close();
+            }
+        }
+
+
     }
 }
