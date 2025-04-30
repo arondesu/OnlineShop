@@ -118,7 +118,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             btnClose.BackColor = Color.FromArgb(138, 3, 34);
             btnClose.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.ForeColor = SystemColors.ControlLightLight;
-            btnClose.Location = new Point(1224, 0);
+            btnClose.Location = new Point(1232, 0);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(38, 41);
             btnClose.TabIndex = 38;
@@ -223,6 +223,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // 
             reports_grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             reports_grid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            reports_grid.BackgroundColor = Color.FromArgb(209, 207, 201);
             reports_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             reports_grid.Location = new Point(5, 7);
             reports_grid.Margin = new Padding(3, 4, 3, 4);
@@ -250,9 +251,9 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // 
             // addInventory1
             // 
-            addInventory1.Location = new Point(122, 31);
+            addInventory1.Location = new Point(-1, 5);
             addInventory1.Name = "addInventory1";
-            addInventory1.Size = new Size(1286, 900);
+            addInventory1.Size = new Size(1031, 711);
             addInventory1.TabIndex = 43;
             // 
             // panel3

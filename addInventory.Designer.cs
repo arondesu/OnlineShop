@@ -28,52 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel4 = new Panel();
             panel2 = new Panel();
             AddProductForm_imageView = new PictureBox();
-            txtItem_status = new ComboBox();
-            txtItem_type = new ComboBox();
+            cmbItemStatus = new ComboBox();
+            cmbItemType = new ComboBox();
             btnImport = new Button();
             btnClear = new Button();
             btnDelete = new Button();
             btnUpdate = new Button();
             btnAdd = new Button();
-            txtItem_price = new TextBox();
-            txtItem_stock = new TextBox();
-            txtItem_name = new TextBox();
-            txtItem_id = new TextBox();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
+            txtItemPrice = new TextBox();
+            txtItemStock = new TextBox();
+            txtItemName = new TextBox();
+            txtItemId = new TextBox();
+            statusLbl = new Label();
+            priceLbl = new Label();
+            prdctNameLbl = new Label();
+            typeLbl = new Label();
+            stockLbl = new Label();
+            prdctlbl = new Label();
+            dataGridViewInventory = new DataGridView();
+            panel1 = new Panel();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AddProductForm_imageView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewInventory).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(15, 26, 43);
             panel4.Controls.Add(panel2);
-            panel4.Controls.Add(txtItem_status);
-            panel4.Controls.Add(txtItem_type);
+            panel4.Controls.Add(cmbItemStatus);
+            panel4.Controls.Add(cmbItemType);
             panel4.Controls.Add(btnImport);
             panel4.Controls.Add(btnClear);
             panel4.Controls.Add(btnDelete);
             panel4.Controls.Add(btnUpdate);
             panel4.Controls.Add(btnAdd);
-            panel4.Controls.Add(txtItem_price);
-            panel4.Controls.Add(txtItem_stock);
-            panel4.Controls.Add(txtItem_name);
-            panel4.Controls.Add(txtItem_id);
-            panel4.Controls.Add(label8);
-            panel4.Controls.Add(label7);
-            panel4.Controls.Add(label6);
-            panel4.Controls.Add(label4);
-            panel4.Controls.Add(label3);
-            panel4.Controls.Add(label2);
+            panel4.Controls.Add(txtItemPrice);
+            panel4.Controls.Add(txtItemStock);
+            panel4.Controls.Add(txtItemName);
+            panel4.Controls.Add(txtItemId);
+            panel4.Controls.Add(statusLbl);
+            panel4.Controls.Add(priceLbl);
+            panel4.Controls.Add(prdctNameLbl);
+            panel4.Controls.Add(typeLbl);
+            panel4.Controls.Add(stockLbl);
+            panel4.Controls.Add(prdctlbl);
             panel4.Location = new Point(1, 445);
             panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
@@ -99,25 +104,25 @@
             AddProductForm_imageView.TabIndex = 0;
             AddProductForm_imageView.TabStop = false;
             // 
-            // txtItem_status
+            // cmbItemStatus
             // 
-            txtItem_status.FormattingEnabled = true;
-            txtItem_status.Items.AddRange(new object[] { "Available", "Unavailabe" });
-            txtItem_status.Location = new Point(621, 144);
-            txtItem_status.Margin = new Padding(3, 4, 3, 4);
-            txtItem_status.Name = "txtItem_status";
-            txtItem_status.Size = new Size(145, 28);
-            txtItem_status.TabIndex = 24;
+            cmbItemStatus.FormattingEnabled = true;
+            cmbItemStatus.Items.AddRange(new object[] { "Available", "Unavailabe" });
+            cmbItemStatus.Location = new Point(621, 144);
+            cmbItemStatus.Margin = new Padding(3, 4, 3, 4);
+            cmbItemStatus.Name = "cmbItemStatus";
+            cmbItemStatus.Size = new Size(145, 28);
+            cmbItemStatus.TabIndex = 24;
             // 
-            // txtItem_type
+            // cmbItemType
             // 
-            txtItem_type.FormattingEnabled = true;
-            txtItem_type.Items.AddRange(new object[] { "Appliance", "Furniture" });
-            txtItem_type.Location = new Point(204, 144);
-            txtItem_type.Margin = new Padding(3, 4, 3, 4);
-            txtItem_type.Name = "txtItem_type";
-            txtItem_type.Size = new Size(208, 28);
-            txtItem_type.TabIndex = 23;
+            cmbItemType.FormattingEnabled = true;
+            cmbItemType.Items.AddRange(new object[] { "Appliance", "Furniture" });
+            cmbItemType.Location = new Point(204, 144);
+            cmbItemType.Margin = new Padding(3, 4, 3, 4);
+            cmbItemType.Name = "cmbItemType";
+            cmbItemType.Size = new Size(208, 28);
+            cmbItemType.TabIndex = 23;
             // 
             // btnImport
             // 
@@ -170,6 +175,7 @@
             btnUpdate.TabIndex = 19;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnAdd
             // 
@@ -183,120 +189,150 @@
             btnAdd.TabIndex = 18;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
-            // txtItem_price
+            // txtItemPrice
             // 
-            txtItem_price.Location = new Point(621, 92);
-            txtItem_price.Margin = new Padding(3, 4, 3, 4);
-            txtItem_price.Name = "txtItem_price";
-            txtItem_price.Size = new Size(145, 27);
-            txtItem_price.TabIndex = 15;
+            txtItemPrice.Location = new Point(621, 92);
+            txtItemPrice.Margin = new Padding(3, 4, 3, 4);
+            txtItemPrice.Name = "txtItemPrice";
+            txtItemPrice.Size = new Size(145, 27);
+            txtItemPrice.TabIndex = 15;
             // 
-            // txtItem_stock
+            // txtItemStock
             // 
-            txtItem_stock.Location = new Point(621, 44);
-            txtItem_stock.Margin = new Padding(3, 4, 3, 4);
-            txtItem_stock.Name = "txtItem_stock";
-            txtItem_stock.Size = new Size(145, 27);
-            txtItem_stock.TabIndex = 14;
+            txtItemStock.Location = new Point(621, 44);
+            txtItemStock.Margin = new Padding(3, 4, 3, 4);
+            txtItemStock.Name = "txtItemStock";
+            txtItemStock.Size = new Size(145, 27);
+            txtItemStock.TabIndex = 14;
             // 
-            // txtItem_name
+            // txtItemName
             // 
-            txtItem_name.Location = new Point(204, 92);
-            txtItem_name.Margin = new Padding(3, 4, 3, 4);
-            txtItem_name.Name = "txtItem_name";
-            txtItem_name.Size = new Size(208, 27);
-            txtItem_name.TabIndex = 12;
+            txtItemName.Location = new Point(204, 92);
+            txtItemName.Margin = new Padding(3, 4, 3, 4);
+            txtItemName.Name = "txtItemName";
+            txtItemName.Size = new Size(208, 27);
+            txtItemName.TabIndex = 12;
             // 
-            // txtItem_id
+            // txtItemId
             // 
-            txtItem_id.Location = new Point(204, 44);
-            txtItem_id.Margin = new Padding(3, 4, 3, 4);
-            txtItem_id.Name = "txtItem_id";
-            txtItem_id.Size = new Size(208, 27);
-            txtItem_id.TabIndex = 11;
+            txtItemId.Location = new Point(204, 44);
+            txtItemId.Margin = new Padding(3, 4, 3, 4);
+            txtItemId.Name = "txtItemId";
+            txtItemId.Size = new Size(208, 27);
+            txtItemId.TabIndex = 11;
             // 
-            // label8
+            // statusLbl
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(543, 147);
-            label8.Margin = new Padding(2, 0, 2, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(77, 27);
-            label8.TabIndex = 10;
-            label8.Text = "Status:";
+            statusLbl.AutoSize = true;
+            statusLbl.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            statusLbl.ForeColor = Color.White;
+            statusLbl.Location = new Point(543, 147);
+            statusLbl.Margin = new Padding(2, 0, 2, 0);
+            statusLbl.Name = "statusLbl";
+            statusLbl.Size = new Size(77, 27);
+            statusLbl.TabIndex = 10;
+            statusLbl.Text = "Status:";
             // 
-            // label7
+            // priceLbl
             // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.FromArgb(15, 26, 43);
-            label7.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(554, 95);
-            label7.Margin = new Padding(2, 0, 2, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(64, 27);
-            label7.TabIndex = 9;
-            label7.Text = "Price:";
+            priceLbl.AutoSize = true;
+            priceLbl.BackColor = Color.FromArgb(15, 26, 43);
+            priceLbl.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            priceLbl.ForeColor = Color.White;
+            priceLbl.Location = new Point(554, 95);
+            priceLbl.Margin = new Padding(2, 0, 2, 0);
+            priceLbl.Name = "priceLbl";
+            priceLbl.Size = new Size(64, 27);
+            priceLbl.TabIndex = 9;
+            priceLbl.Text = "Price:";
             // 
-            // label6
+            // prdctNameLbl
             // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.FromArgb(15, 26, 43);
-            label6.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(25, 95);
-            label6.Margin = new Padding(2, 0, 2, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(155, 27);
-            label6.TabIndex = 8;
-            label6.Text = "Product Name:";
+            prdctNameLbl.AutoSize = true;
+            prdctNameLbl.BackColor = Color.FromArgb(15, 26, 43);
+            prdctNameLbl.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            prdctNameLbl.ForeColor = Color.White;
+            prdctNameLbl.Location = new Point(25, 95);
+            prdctNameLbl.Margin = new Padding(2, 0, 2, 0);
+            prdctNameLbl.Name = "prdctNameLbl";
+            prdctNameLbl.Size = new Size(155, 27);
+            prdctNameLbl.TabIndex = 8;
+            prdctNameLbl.Text = "Product Name:";
             // 
-            // label4
+            // typeLbl
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.FromArgb(15, 26, 43);
-            label4.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(111, 147);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(63, 27);
-            label4.TabIndex = 6;
-            label4.Text = "Type:";
+            typeLbl.AutoSize = true;
+            typeLbl.BackColor = Color.FromArgb(15, 26, 43);
+            typeLbl.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            typeLbl.ForeColor = Color.White;
+            typeLbl.Location = new Point(111, 147);
+            typeLbl.Margin = new Padding(2, 0, 2, 0);
+            typeLbl.Name = "typeLbl";
+            typeLbl.Size = new Size(63, 27);
+            typeLbl.TabIndex = 6;
+            typeLbl.Text = "Type:";
             // 
-            // label3
+            // stockLbl
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(15, 26, 43);
-            label3.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(543, 44);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(71, 27);
-            label3.TabIndex = 5;
-            label3.Text = "Stock:";
+            stockLbl.AutoSize = true;
+            stockLbl.BackColor = Color.FromArgb(15, 26, 43);
+            stockLbl.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            stockLbl.ForeColor = Color.White;
+            stockLbl.Location = new Point(543, 44);
+            stockLbl.Margin = new Padding(2, 0, 2, 0);
+            stockLbl.Name = "stockLbl";
+            stockLbl.Size = new Size(71, 27);
+            stockLbl.TabIndex = 5;
+            stockLbl.Text = "Stock:";
             // 
-            // label2
+            // prdctlbl
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.FromArgb(15, 26, 43);
-            label2.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(58, 41);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(120, 27);
-            label2.TabIndex = 4;
-            label2.Text = "Product ID:";
+            prdctlbl.AutoSize = true;
+            prdctlbl.BackColor = Color.FromArgb(15, 26, 43);
+            prdctlbl.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            prdctlbl.ForeColor = Color.White;
+            prdctlbl.Location = new Point(58, 41);
+            prdctlbl.Margin = new Padding(2, 0, 2, 0);
+            prdctlbl.Name = "prdctlbl";
+            prdctlbl.Size = new Size(120, 27);
+            prdctlbl.TabIndex = 4;
+            prdctlbl.Text = "Product ID:";
+            // 
+            // dataGridViewInventory
+            // 
+            dataGridViewInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewInventory.BackgroundColor = Color.FromArgb(209, 207, 201);
+            dataGridViewInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewInventory.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewInventory.Location = new Point(-1, 0);
+            dataGridViewInventory.Name = "dataGridViewInventory";
+            dataGridViewInventory.RowHeadersWidth = 51;
+            dataGridViewInventory.Size = new Size(1029, 445);
+            dataGridViewInventory.TabIndex = 4;
+            dataGridViewInventory.CellContentClick += dataGridViewInventory_CellContentClick;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(dataGridViewInventory);
+            panel1.Location = new Point(1, -1);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1028, 445);
+            panel1.TabIndex = 5;
             // 
             // addInventory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(panel1);
             Controls.Add(panel4);
             Name = "addInventory";
             Size = new Size(1029, 720);
@@ -304,6 +340,8 @@
             panel4.PerformLayout();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)AddProductForm_imageView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewInventory).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -312,22 +350,24 @@
         private Panel panel4;
         private Panel panel2;
         private PictureBox AddProductForm_imageView;
-        private ComboBox txtItem_status;
-        private ComboBox txtItem_type;
+        private ComboBox cmbItemStatus;
+        private ComboBox cmbItemType;
         private Button btnImport;
         private Button btnClear;
         private Button btnDelete;
         private Button btnUpdate;
         private Button btnAdd;
-        private TextBox txtItem_price;
-        private TextBox txtItem_stock;
-        private TextBox txtItem_name;
-        private TextBox txtItem_id;
-        private Label label8;
-        private Label label7;
-        private Label label6;
-        private Label label4;
-        private Label label3;
-        private Label label2;
+        private TextBox txtItemPrice;
+        private TextBox txtItemStock;
+        private TextBox txtItemName;
+        private TextBox txtItemId;
+        private Label statusLbl;
+        private Label priceLbl;
+        private Label prdctNameLbl;
+        private Label typeLbl;
+        private Label stockLbl;
+        private Label prdctlbl;
+        private DataGridView dataGridViewInventory;
+        private Panel panel1;
     }
 }
