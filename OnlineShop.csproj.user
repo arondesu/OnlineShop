@@ -7,6 +7,9 @@
     <Compile Update="AddProductForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="ExtraItemForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Kitchen Wise Form\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -370,5 +370,65 @@ namespace OnlineShop.Kitchen_Wise_Form
         {
 
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            adminDashboardForm1.BringToFront();
+            adminDashboardForm1.Visible = true;
+            addProductForm1.Visible = false;
+            salesDataGrid.Visible = false;
+            itemdatagrid.Visible = false;
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+            LoadInventoryData();
+            addInventory1.BringToFront();
+            inv_bg_pic.Visible = false;
+            homeDataGrid.Visible = false;
+            salesDataGrid.Visible = false;
+            itemdatagrid.Visible = false;
+            addInventory1.Visible = true;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            LoadItemData();
+            addProductForm1.BringToFront();
+            adminDashboardForm1.Visible = false;
+            addProductForm1.Visible = true;
+            salesDataGrid.Visible = false;
+            itemdatagrid.Visible = false;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            LoadSalesData();
+            inv_bg_pic.Visible = false;
+            homeDataGrid.Visible = false;
+            salesDataGrid.Visible = true;
+            salesDataGrid.BringToFront();
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+            reports_grid.BringToFront();
+            RefreshReportsGrid();
+            reports_grid.Columns["ReportDate"].DefaultCellStyle.Format = "g"; // short datetime
+            adminDashboardForm1.Visible = false;
+            addProductForm1.Visible = false;
+            salesDataGrid.Visible = false;
+            itemdatagrid.Visible = false;
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+            LoadItemData();
+            addProductForm1.BringToFront();
+            adminDashboardForm1.Visible = false;
+            addProductForm1.Visible = true;
+            salesDataGrid.Visible = false;
+            itemdatagrid.Visible = false;
+        }
     }
 }

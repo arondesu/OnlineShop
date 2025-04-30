@@ -150,7 +150,7 @@
             btnDelete.BackColor = Color.FromArgb(189, 196, 212);
             btnDelete.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.FromArgb(15, 26, 43);
-            btnDelete.Location = new Point(503, 211);
+            btnDelete.Location = new Point(499, 211);
             btnDelete.Margin = new Padding(2, 3, 2, 3);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(115, 46);

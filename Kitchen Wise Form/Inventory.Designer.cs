@@ -55,6 +55,12 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             inv_bg_pic = new PictureBox();
             addInventory1 = new addInventory();
             panel3 = new Panel();
+            pictureBox3 = new PictureBox();
+            itemlbl = new Label();
+            label3 = new Label();
+            saleslbl = new Label();
+            inventorylbl = new Label();
+            homelbl = new Label();
             pictureBox2 = new PictureBox();
             salesIcon = new PictureBox();
             itemIcon = new PictureBox();
@@ -62,12 +68,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             homeIcon = new PictureBox();
             print_btn = new Button();
             bck_btn = new Button();
-            salesBtn = new Button();
-            home_btn = new Button();
-            report_btn = new Button();
-            item_btn = new Button();
-            invBtn = new Button();
-            label2 = new Label();
             panel1.SuspendLayout();
             ((ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -79,6 +79,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             ((ISupportInitialize)reports_grid).BeginInit();
             ((ISupportInitialize)inv_bg_pic).BeginInit();
             panel3.SuspendLayout();
+            ((ISupportInitialize)pictureBox3).BeginInit();
             ((ISupportInitialize)pictureBox2).BeginInit();
             ((ISupportInitialize)salesIcon).BeginInit();
             ((ISupportInitialize)itemIcon).BeginInit();
@@ -104,7 +105,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Emoji", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(527, 31);
+            label1.Location = new Point(521, 34);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(435, 53);
@@ -114,7 +115,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // btnClose
             // 
             btnClose.AutoSize = true;
-            btnClose.BackColor = Color.Chocolate;
+            btnClose.BackColor = Color.FromArgb(138, 3, 34);
             btnClose.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.ForeColor = SystemColors.ControlLightLight;
             btnClose.Location = new Point(1224, 0);
@@ -127,10 +128,10 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources._1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310;
-            pictureBox1.Location = new Point(77, 12);
+            pictureBox1.Location = new Point(60, 13);
             pictureBox1.Margin = new Padding(2, 3, 2, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(94, 93);
+            pictureBox1.Size = new Size(82, 84);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -165,7 +166,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // adminDashboardForm1
             // 
             adminDashboardForm1.BackColor = Color.FromArgb(15, 26, 43);
-            adminDashboardForm1.Location = new Point(-6, -3);
+            adminDashboardForm1.Location = new Point(-5, -2);
             adminDashboardForm1.Margin = new Padding(3, 5, 3, 5);
             adminDashboardForm1.Name = "adminDashboardForm1";
             adminDashboardForm1.Size = new Size(1035, 740);
@@ -257,7 +258,12 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(15, 26, 43);
-            panel3.Controls.Add(label2);
+            panel3.Controls.Add(pictureBox3);
+            panel3.Controls.Add(itemlbl);
+            panel3.Controls.Add(label3);
+            panel3.Controls.Add(saleslbl);
+            panel3.Controls.Add(inventorylbl);
+            panel3.Controls.Add(homelbl);
             panel3.Controls.Add(pictureBox2);
             panel3.Controls.Add(salesIcon);
             panel3.Controls.Add(itemIcon);
@@ -265,22 +271,81 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             panel3.Controls.Add(homeIcon);
             panel3.Controls.Add(print_btn);
             panel3.Controls.Add(bck_btn);
-            panel3.Controls.Add(salesBtn);
-            panel3.Controls.Add(home_btn);
-            panel3.Controls.Add(report_btn);
-            panel3.Controls.Add(item_btn);
-            panel3.Controls.Add(invBtn);
             panel3.Dock = DockStyle.Left;
+            panel3.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            panel3.ForeColor = Color.White;
             panel3.Location = new Point(0, 111);
             panel3.Margin = new Padding(2, 3, 2, 3);
             panel3.Name = "panel3";
             panel3.Size = new Size(235, 720);
             panel3.TabIndex = 28;
             // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(17, 443);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(74, 55);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 19;
+            pictureBox3.TabStop = false;
+            // 
+            // itemlbl
+            // 
+            itemlbl.AutoSize = true;
+            itemlbl.Location = new Point(105, 249);
+            itemlbl.Name = "itemlbl";
+            itemlbl.Size = new Size(73, 31);
+            itemlbl.TabIndex = 18;
+            itemlbl.Text = "Items";
+            itemlbl.Click += label4_Click_1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(105, 386);
+            label3.Name = "label3";
+            label3.Size = new Size(97, 31);
+            label3.TabIndex = 17;
+            label3.Text = "Reports";
+            label3.Click += label3_Click_1;
+            // 
+            // saleslbl
+            // 
+            saleslbl.AutoSize = true;
+            saleslbl.Location = new Point(105, 318);
+            saleslbl.Name = "saleslbl";
+            saleslbl.Size = new Size(68, 31);
+            saleslbl.TabIndex = 16;
+            saleslbl.Text = "Sales";
+            saleslbl.Click += label4_Click;
+            // 
+            // inventorylbl
+            // 
+            inventorylbl.AutoSize = true;
+            inventorylbl.Location = new Point(91, 178);
+            inventorylbl.Name = "inventorylbl";
+            inventorylbl.Size = new Size(118, 31);
+            inventorylbl.TabIndex = 14;
+            inventorylbl.Text = "Inventory";
+            inventorylbl.Click += label2_Click_1;
+            // 
+            // homelbl
+            // 
+            homelbl.AutoSize = true;
+            homelbl.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            homelbl.ForeColor = Color.White;
+            homelbl.Location = new Point(94, 100);
+            homelbl.Name = "homelbl";
+            homelbl.Size = new Size(79, 31);
+            homelbl.TabIndex = 13;
+            homelbl.Text = "Home";
+            homelbl.Click += label2_Click;
+            // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(3, 373);
+            pictureBox2.Location = new Point(12, 373);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(79, 64);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -290,7 +355,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // salesIcon
             // 
             salesIcon.Image = (Image)resources.GetObject("salesIcon.Image");
-            salesIcon.Location = new Point(7, 303);
+            salesIcon.Location = new Point(15, 303);
             salesIcon.Name = "salesIcon";
             salesIcon.Size = new Size(79, 64);
             salesIcon.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -300,7 +365,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // itemIcon
             // 
             itemIcon.Image = (Image)resources.GetObject("itemIcon.Image");
-            itemIcon.Location = new Point(7, 233);
+            itemIcon.Location = new Point(15, 233);
             itemIcon.Name = "itemIcon";
             itemIcon.Size = new Size(79, 64);
             itemIcon.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -311,7 +376,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // InventoryIcon
             // 
             InventoryIcon.Image = (Image)resources.GetObject("InventoryIcon.Image");
-            InventoryIcon.Location = new Point(7, 163);
+            InventoryIcon.Location = new Point(15, 163);
             InventoryIcon.Name = "InventoryIcon";
             InventoryIcon.Size = new Size(79, 64);
             InventoryIcon.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -321,7 +386,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // homeIcon
             // 
             homeIcon.Image = Properties.Resources._6;
-            homeIcon.Location = new Point(12, 87);
+            homeIcon.Location = new Point(20, 87);
             homeIcon.Name = "homeIcon";
             homeIcon.Size = new Size(74, 54);
             homeIcon.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -331,12 +396,12 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // print_btn
             // 
             print_btn.BackColor = Color.FromArgb(58, 135, 24);
-            print_btn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            print_btn.Font = new Font("Segoe UI", 12.2F, FontStyle.Bold);
             print_btn.ForeColor = Color.White;
-            print_btn.Location = new Point(87, 468);
+            print_btn.Location = new Point(101, 454);
             print_btn.Margin = new Padding(2, 3, 2, 3);
             print_btn.Name = "print_btn";
-            print_btn.Size = new Size(134, 41);
+            print_btn.Size = new Size(108, 44);
             print_btn.TabIndex = 7;
             print_btn.Text = "Print";
             print_btn.UseVisualStyleBackColor = false;
@@ -354,87 +419,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             bck_btn.Text = "Back";
             bck_btn.UseVisualStyleBackColor = false;
             bck_btn.Click += bck_btn_Click_2;
-            // 
-            // salesBtn
-            // 
-            salesBtn.BackColor = Color.FromArgb(189, 196, 212);
-            salesBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            salesBtn.ForeColor = Color.FromArgb(15, 26, 43);
-            salesBtn.Location = new Point(84, 313);
-            salesBtn.Margin = new Padding(2, 3, 2, 3);
-            salesBtn.Name = "salesBtn";
-            salesBtn.Size = new Size(134, 40);
-            salesBtn.TabIndex = 5;
-            salesBtn.Text = "Sales";
-            salesBtn.UseVisualStyleBackColor = false;
-            salesBtn.Click += salesBtn_Click;
-            // 
-            // home_btn
-            // 
-            home_btn.BackColor = Color.FromArgb(189, 196, 212);
-            home_btn.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            home_btn.ForeColor = Color.FromArgb(15, 26, 43);
-            home_btn.Location = new Point(91, 98);
-            home_btn.Margin = new Padding(2, 3, 2, 3);
-            home_btn.Name = "home_btn";
-            home_btn.Size = new Size(134, 43);
-            home_btn.TabIndex = 4;
-            home_btn.Text = "Home";
-            home_btn.UseVisualStyleBackColor = false;
-            home_btn.Click += home_btn_Click;
-            // 
-            // report_btn
-            // 
-            report_btn.BackColor = Color.FromArgb(189, 196, 212);
-            report_btn.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            report_btn.ForeColor = Color.FromArgb(15, 26, 43);
-            report_btn.Location = new Point(87, 376);
-            report_btn.Margin = new Padding(2, 3, 2, 3);
-            report_btn.Name = "report_btn";
-            report_btn.Size = new Size(134, 44);
-            report_btn.TabIndex = 3;
-            report_btn.Text = "Reports";
-            report_btn.UseVisualStyleBackColor = false;
-            report_btn.Click += report_btn_Click;
-            // 
-            // item_btn
-            // 
-            item_btn.BackColor = Color.FromArgb(189, 196, 212);
-            item_btn.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            item_btn.ForeColor = Color.FromArgb(15, 26, 43);
-            item_btn.Location = new Point(86, 244);
-            item_btn.Margin = new Padding(2, 3, 2, 3);
-            item_btn.Name = "item_btn";
-            item_btn.Size = new Size(134, 44);
-            item_btn.TabIndex = 2;
-            item_btn.Text = "Items";
-            item_btn.UseVisualStyleBackColor = false;
-            item_btn.Click += item_btn_Click;
-            // 
-            // invBtn
-            // 
-            invBtn.BackColor = Color.FromArgb(189, 196, 212);
-            invBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            invBtn.ForeColor = Color.FromArgb(15, 26, 43);
-            invBtn.Location = new Point(86, 163);
-            invBtn.Margin = new Padding(2, 3, 2, 3);
-            invBtn.Name = "invBtn";
-            invBtn.Size = new Size(134, 47);
-            invBtn.TabIndex = 0;
-            invBtn.Text = "Inventory";
-            invBtn.UseVisualStyleBackColor = false;
-            invBtn.Click += invBtn_Click;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(84, 32);
-            label2.Name = "label2";
-            label2.Size = new Size(68, 28);
-            label2.TabIndex = 13;
-            label2.Text = "Home";
             // 
             // InventoryForm
             // 
@@ -462,6 +446,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             ((ISupportInitialize)inv_bg_pic).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((ISupportInitialize)pictureBox3).EndInit();
             ((ISupportInitialize)pictureBox2).EndInit();
             ((ISupportInitialize)salesIcon).EndInit();
             ((ISupportInitialize)itemIcon).EndInit();
@@ -474,12 +459,8 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private Button report_btn;
-        private Button item_btn;
-        private Button invBtn;
         private Label label1;
         private PictureBox pictureBox1;
-        private Button home_btn;
         private Panel homePanel;
         private DataGridView homeDataGrid;
         private BindingSource dBFuncBindingSource;
@@ -501,6 +482,11 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
         private PictureBox itemIcon;
         private PictureBox pictureBox2;
         private PictureBox salesIcon;
-        private Label label2;
+        private Label homelbl;
+        private Label inventorylbl;
+        private Label label3;
+        private Label saleslbl;
+        private Label itemlbl;
+        private PictureBox pictureBox3;
     }
 }
