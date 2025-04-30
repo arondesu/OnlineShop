@@ -312,6 +312,7 @@ namespace OnlineShop
             extraItemForm1.BringToFront();
         }
 
+
         private void LoadItemData() //Loads items data into the item data grid 
         {
             try
