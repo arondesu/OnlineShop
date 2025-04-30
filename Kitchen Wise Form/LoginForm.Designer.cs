@@ -37,7 +37,6 @@
             btnLogin = new Button();
             iconPctbx = new PictureBox();
             btnShop = new Button();
-            label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -47,24 +46,24 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(203, 197);
+            textBox1.Location = new Point(196, 218);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(162, 27);
+            textBox1.Size = new Size(169, 27);
             textBox1.TabIndex = 0;
             textBox1.KeyDown += textBox1_KeyDown;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(203, 248);
+            textBox2.Location = new Point(196, 269);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(162, 27);
+            textBox2.Size = new Size(170, 27);
             textBox2.TabIndex = 1;
             textBox2.KeyDown += textBox2_KeyDown;
             // 
             // Userlbl
             // 
             Userlbl.AutoSize = true;
-            Userlbl.Location = new Point(119, 201);
+            Userlbl.Location = new Point(107, 221);
             Userlbl.Name = "Userlbl";
             Userlbl.Size = new Size(78, 20);
             Userlbl.TabIndex = 2;
@@ -73,7 +72,7 @@
             // Passlbl
             // 
             Passlbl.AutoSize = true;
-            Passlbl.Location = new Point(119, 252);
+            Passlbl.Location = new Point(107, 269);
             Passlbl.Name = "Passlbl";
             Passlbl.Size = new Size(73, 20);
             Passlbl.TabIndex = 3;
@@ -91,7 +90,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(281, 296);
+            btnLogin.Location = new Point(280, 313);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(85, 36);
             btnLogin.TabIndex = 5;
@@ -102,33 +101,26 @@
             // iconPctbx
             // 
             iconPctbx.Image = Properties.Resources._1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310;
-            iconPctbx.Location = new Point(223, 37);
+            iconPctbx.Location = new Point(215, 37);
             iconPctbx.Margin = new Padding(2, 3, 2, 3);
             iconPctbx.Name = "iconPctbx";
-            iconPctbx.Size = new Size(55, 56);
+            iconPctbx.Size = new Size(84, 77);
             iconPctbx.SizeMode = PictureBoxSizeMode.StretchImage;
             iconPctbx.TabIndex = 6;
             iconPctbx.TabStop = false;
             // 
             // btnShop
             // 
-            btnShop.Location = new Point(147, 433);
+            btnShop.BackColor = Color.FromArgb(15, 26, 43);
+            btnShop.ForeColor = Color.White;
+            btnShop.Location = new Point(170, 456);
             btnShop.Margin = new Padding(3, 4, 3, 4);
             btnShop.Name = "btnShop";
-            btnShop.Size = new Size(192, 53);
+            btnShop.Size = new Size(186, 41);
             btnShop.TabIndex = 7;
             btnShop.Text = "SHOP NOW";
-            btnShop.UseVisualStyleBackColor = true;
+            btnShop.UseVisualStyleBackColor = false;
             btnShop.Click += btnShop_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(152, 355);
-            label1.Name = "label1";
-            label1.Size = new Size(209, 20);
-            label1.TabIndex = 8;
-            label1.Text = "Don't have an admin account?";
             // 
             // label2
             // 
@@ -163,7 +155,7 @@
             btnClose.BackColor = Color.Chocolate;
             btnClose.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.ForeColor = SystemColors.ControlLightLight;
-            btnClose.Location = new Point(435, 8);
+            btnClose.Location = new Point(474, 9);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(38, 41);
             btnClose.TabIndex = 12;
@@ -174,12 +166,11 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(475, 503);
+            ClientSize = new Size(524, 530);
             Controls.Add(btnClose);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(btnShop);
             Controls.Add(iconPctbx);
             Controls.Add(btnLogin);
@@ -207,7 +198,6 @@
         private Button btnLogin;
         private PictureBox iconPctbx;
         private Button btnShop;
-        private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;

@@ -122,22 +122,23 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Emoji", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI Emoji", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(527, 30);
+            label1.Location = new Point(504, 30);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(375, 46);
+            label1.Size = new Size(405, 49);
             label1.TabIndex = 2;
-            label1.Text = "KitchenWise Inventory";
+            label1.Text = "KitchenWise Database";
+            label1.Click += label1_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources._1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310;
-            pictureBox1.Location = new Point(86, 30);
+            pictureBox1.Location = new Point(64, 20);
             pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(58, 60);
+            pictureBox1.Size = new Size(82, 76);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -237,10 +238,10 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             btnImport.BackColor = Color.FromArgb(189, 196, 212);
             btnImport.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnImport.ForeColor = Color.FromArgb(15, 26, 43);
-            btnImport.Location = new Point(859, 160);
+            btnImport.Location = new Point(831, 174);
             btnImport.Margin = new Padding(2, 3, 2, 3);
             btnImport.Name = "btnImport";
-            btnImport.Size = new Size(73, 64);
+            btnImport.Size = new Size(135, 50);
             btnImport.TabIndex = 22;
             btnImport.Text = "Import";
             btnImport.UseVisualStyleBackColor = false;
@@ -251,10 +252,10 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             btnClear.BackColor = Color.FromArgb(189, 196, 212);
             btnClear.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.FromArgb(15, 26, 43);
-            btnClear.Location = new Point(630, 224);
+            btnClear.Location = new Point(594, 218);
             btnClear.Margin = new Padding(2, 3, 2, 3);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(73, 64);
+            btnClear.Size = new Size(108, 47);
             btnClear.TabIndex = 21;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
@@ -265,10 +266,10 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             btnUpdate.BackColor = Color.FromArgb(189, 196, 212);
             btnUpdate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.FromArgb(15, 26, 43);
-            btnUpdate.Location = new Point(453, 224);
+            btnUpdate.Location = new Point(411, 218);
             btnUpdate.Margin = new Padding(2, 3, 2, 3);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(76, 64);
+            btnUpdate.Size = new Size(135, 47);
             btnUpdate.TabIndex = 19;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
@@ -279,10 +280,10 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             btnAdd.BackColor = Color.FromArgb(189, 196, 212);
             btnAdd.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAdd.ForeColor = Color.FromArgb(15, 26, 43);
-            btnAdd.Location = new Point(268, 224);
+            btnAdd.Location = new Point(225, 218);
             btnAdd.Margin = new Padding(2, 3, 2, 3);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(73, 64);
+            btnAdd.Size = new Size(145, 47);
             btnAdd.TabIndex = 18;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = false;
@@ -488,7 +489,9 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // bck_btn
             // 
             bck_btn.BackColor = Color.FromArgb(158, 147, 114);
-            bck_btn.Location = new Point(49, 610);
+            bck_btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bck_btn.ForeColor = Color.White;
+            bck_btn.Location = new Point(49, 665);
             bck_btn.Margin = new Padding(3, 2, 3, 2);
             bck_btn.Name = "bck_btn";
             bck_btn.Size = new Size(134, 42);

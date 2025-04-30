@@ -410,3 +410,4 @@ C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.Admin
 C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.Kitchen_Wise_Form.InventoryForm.resources
 C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.KitchenWiseAdmin.resources
 C:\Users\Woots\Source\Repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.SalesForm.resources
+C:\Users\Woots\Source\Repos\OnlineShop\bin\Debug\net8.0-windows\itextsharp.dll
