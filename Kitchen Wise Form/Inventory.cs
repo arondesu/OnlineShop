@@ -98,11 +98,12 @@ namespace OnlineShop.Kitchen_Wise_Form
         private void invBtn_Click(object sender, EventArgs e) //Inventory button; CRU operations need to be applied.
         {
             LoadInventoryData();
-            itemdatagrid.BringToFront();
+            addInventory1.BringToFront();
             inv_bg_pic.Visible = false;
             homeDataGrid.Visible = false;
             salesDataGrid.Visible = false;
-            itemdatagrid.Visible = true;
+            itemdatagrid.Visible = false;
+            addInventory1.Visible = true;
         }
 
 
@@ -353,6 +354,21 @@ namespace OnlineShop.Kitchen_Wise_Form
             {
                 throw new Exception($"Error adding section to PDF: {ex.Message}");
             }
+        }
+
+        private void InventoryIcon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void itemIcon_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

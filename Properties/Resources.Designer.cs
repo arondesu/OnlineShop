@@ -103,6 +103,16 @@ namespace OnlineShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _6 {
+            get {
+                object obj = ResourceManager.GetObject("6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _717352fb282b041a865e761437a3b311 {
             get {
                 object obj = ResourceManager.GetObject("717352fb282b041a865e761437a3b311", resourceCulture);
