@@ -7,7 +7,7 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using OnlineShop.DATABASE;
 
-namespace OnlineShop
+namespace OnlineShop.Forms
 {
     internal class AddItemData
     {

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="addInventory.cs">
+    <Compile Update="Forms\addInventory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="AddProductForm.cs">
+    <Compile Update="Forms\AddProductForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="ExtraItemForm.cs">
+    <Compile Update="Forms\ExtraItemForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Kitchen Wise Form\LoginForm.cs">
@@ -19,10 +19,10 @@
     <Compile Update="Kitchen Wise Form\Inventory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="AdminDashboardForm.cs">
+    <Compile Update="Forms\AdminDashboardForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="SalesForm.cs">
+    <Compile Update="Forms\SalesForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

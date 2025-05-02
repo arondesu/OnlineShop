@@ -211,7 +211,7 @@
             btnUpdate.Location = new Point(322, 193);
             btnUpdate.Margin = new Padding(2, 3, 2, 3);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(73, 64);
+            btnUpdate.Size = new Size(74, 64);
             btnUpdate.TabIndex = 19;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;

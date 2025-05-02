@@ -144,8 +144,8 @@ public class DBFunc
 
         DateTime today = DateTime.Now;
 
-        string path = Path.Combine(@"C:\Users\ADMIN\Source\Repos\OnlineShop\Item_Directory\" + txtItem_id.Trim());
-        string directoryPath = Path.GetDirectoryName(path);
+        string path = Path.Combine(@"C:\Users\Woots\source\repos\OnlineShop\pictures items\" + txtItem_id.Trim());
+        string directoryPath = Path.GetDirectoryName(path) ?? string.Empty;
 
         if (!Directory.Exists(directoryPath))
         {

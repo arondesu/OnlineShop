@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using OnlineShop.DATABASE;
 using Microsoft.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using OnlineShop.Forms;
 
 namespace OnlineShop
 {
@@ -108,9 +109,80 @@ namespace OnlineShop
                 string imagePath = row.Cells[7].Value.ToString();
                 try
                 {
-                    if (imagePath != null)
+                    if (!string.IsNullOrEmpty(imagePath))
                     {
-                        AddProductForm_imageView.Image = Image.FromFile(imagePath);
+                        // First try the original path
+                        if (File.Exists(imagePath))
+                        {
+                            // Load and resize the image
+                            using (Image originalImage = Image.FromFile(imagePath))
+                            {
+                                // Create a resized version (adjust max dimensions as needed)
+                                int maxWidth = 300;  // Set your desired max width
+                                int maxHeight = 300; // Set your desired max height
+                                
+                                // Calculate new dimensions while preserving aspect ratio
+                                int newWidth, newHeight;
+                                double aspectRatio = (double)originalImage.Width / originalImage.Height;
+                                
+                                if (aspectRatio > 1) // Width > Height
+                                {
+                                    newWidth = maxWidth;
+                                    newHeight = (int)(maxWidth / aspectRatio);
+                                }
+                                else // Height >= Width
+                                {
+                                    newHeight = maxHeight;
+                                    newWidth = (int)(maxHeight * aspectRatio);
+                                }
+                                
+                                // Create resized image
+                                Bitmap resizedImage = new Bitmap(originalImage, newWidth, newHeight);
+                                AddProductForm_imageView.Image = resizedImage;
+                                
+                                // Set SizeMode to keep the image properly displayed
+                                AddProductForm_imageView.SizeMode = PictureBoxSizeMode.Zoom;
+                            }
+                        }
+                        else
+                        {
+                            // Try with corrected path if original doesn't exist
+                            string fileName = Path.GetFileName(imagePath);
+                            string correctedPath = Path.Combine(@"C:\Users\Woots\source\repos\OnlineShop\pictures items\", fileName);
+                            
+                            if (File.Exists(correctedPath))
+                            {
+                                // Load and resize the image (same resizing code as above)
+                                using (Image originalImage = Image.FromFile(correctedPath))
+                                {
+                                    int maxWidth = 300;
+                                    int maxHeight = 300;
+                                    
+                                    int newWidth, newHeight;
+                                    double aspectRatio = (double)originalImage.Width / originalImage.Height;
+                                    
+                                    if (aspectRatio > 1)
+                                    {
+                                        newWidth = maxWidth;
+                                        newHeight = (int)(maxWidth / aspectRatio);
+                                    }
+                                    else
+                                    {
+                                        newHeight = maxHeight;
+                                        newWidth = (int)(maxHeight * aspectRatio);
+                                    }
+                                    
+                                    Bitmap resizedImage = new Bitmap(originalImage, newWidth, newHeight);
+                                    AddProductForm_imageView.Image = resizedImage;
+                                    AddProductForm_imageView.SizeMode = PictureBoxSizeMode.Zoom;
+                                }
+                            }
+                            else
+                            {
+                                AddProductForm_imageView.Image = null;
+                                MessageBox.Show($"Image file not found at: {imagePath}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
                     }
                     else
                     {
@@ -119,6 +191,7 @@ namespace OnlineShop
                 }
                 catch (Exception ex)
                 {
+                    AddProductForm_imageView.Image = null;
                     MessageBox.Show("Error loading image: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
