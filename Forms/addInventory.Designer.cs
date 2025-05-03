@@ -1,4 +1,4 @@
-﻿namespace OnlineShop
+namespace OnlineShop
 {
     partial class addInventory
     {
@@ -28,15 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel4 = new Panel();
-            panel2 = new Panel();
-            AddProductForm_imageView = new PictureBox();
             cmbItemStatus = new ComboBox();
             cmbItemType = new ComboBox();
-            btnImport = new Button();
             btnClear = new Button();
-            btnDelete = new Button();
             btnUpdate = new Button();
             btnAdd = new Button();
             txtItemPrice = new TextBox();
@@ -52,8 +48,6 @@
             dataGridViewInventory = new DataGridView();
             panel1 = new Panel();
             panel4.SuspendLayout();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)AddProductForm_imageView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInventory).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -61,12 +55,9 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(15, 26, 43);
-            panel4.Controls.Add(panel2);
             panel4.Controls.Add(cmbItemStatus);
             panel4.Controls.Add(cmbItemType);
-            panel4.Controls.Add(btnImport);
             panel4.Controls.Add(btnClear);
-            panel4.Controls.Add(btnDelete);
             panel4.Controls.Add(btnUpdate);
             panel4.Controls.Add(btnAdd);
             panel4.Controls.Add(txtItemPrice);
@@ -84,25 +75,6 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(1028, 275);
             panel4.TabIndex = 3;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(AddProductForm_imageView);
-            panel2.Location = new Point(831, 20);
-            panel2.Margin = new Padding(3, 4, 3, 4);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(135, 133);
-            panel2.TabIndex = 25;
-            // 
-            // AddProductForm_imageView
-            // 
-            AddProductForm_imageView.BackColor = Color.Gainsboro;
-            AddProductForm_imageView.Location = new Point(0, 0);
-            AddProductForm_imageView.Margin = new Padding(3, 4, 3, 4);
-            AddProductForm_imageView.Name = "AddProductForm_imageView";
-            AddProductForm_imageView.Size = new Size(135, 133);
-            AddProductForm_imageView.TabIndex = 0;
-            AddProductForm_imageView.TabStop = false;
             // 
             // cmbItemStatus
             // 
@@ -123,19 +95,7 @@
             cmbItemType.Name = "cmbItemType";
             cmbItemType.Size = new Size(208, 28);
             cmbItemType.TabIndex = 23;
-            // 
-            // btnImport
-            // 
-            btnImport.BackColor = Color.FromArgb(189, 196, 212);
-            btnImport.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnImport.ForeColor = Color.FromArgb(15, 26, 43);
-            btnImport.Location = new Point(831, 160);
-            btnImport.Margin = new Padding(2, 3, 2, 3);
-            btnImport.Name = "btnImport";
-            btnImport.Size = new Size(135, 42);
-            btnImport.TabIndex = 22;
-            btnImport.Text = "Import";
-            btnImport.UseVisualStyleBackColor = false;
+            cmbItemType.SelectedIndexChanged += cmbItemType_SelectedIndexChanged;
             // 
             // btnClear
             // 
@@ -150,25 +110,12 @@
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
             // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.FromArgb(189, 196, 212);
-            btnDelete.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.ForeColor = Color.FromArgb(15, 26, 43);
-            btnDelete.Location = new Point(499, 211);
-            btnDelete.Margin = new Padding(2, 3, 2, 3);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(115, 46);
-            btnDelete.TabIndex = 20;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = false;
-            // 
             // btnUpdate
             // 
             btnUpdate.BackColor = Color.FromArgb(189, 196, 212);
             btnUpdate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.FromArgb(15, 26, 43);
-            btnUpdate.Location = new Point(353, 211);
+            btnUpdate.Location = new Point(421, 211);
             btnUpdate.Margin = new Padding(2, 3, 2, 3);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(117, 46);
@@ -305,14 +252,14 @@
             dataGridViewInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewInventory.BackgroundColor = Color.FromArgb(209, 207, 201);
             dataGridViewInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewInventory.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridViewInventory.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewInventory.Location = new Point(-1, 0);
             dataGridViewInventory.Name = "dataGridViewInventory";
             dataGridViewInventory.RowHeadersWidth = 51;
@@ -338,8 +285,6 @@
             Size = new Size(1029, 720);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)AddProductForm_imageView).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInventory).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -348,13 +293,9 @@
         #endregion
 
         private Panel panel4;
-        private Panel panel2;
-        private PictureBox AddProductForm_imageView;
         private ComboBox cmbItemStatus;
         private ComboBox cmbItemType;
-        private Button btnImport;
         private Button btnClear;
-        private Button btnDelete;
         private Button btnUpdate;
         private Button btnAdd;
         private TextBox txtItemPrice;

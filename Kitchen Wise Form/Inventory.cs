@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -220,7 +220,7 @@ namespace OnlineShop.Kitchen_Wise_Form
 
         public void RefreshReportsGrid()
         {
-            string query = "SELECT ReportDate, ProductName, QuantitySold, TotalSales FROM Reports ORDER BY ReportDate DESC";
+            string query = "SELECT ReportDate, ProductName, QuantitySold, QuantityReturned, TotalSales FROM Reports ORDER BY ReportDate DESC";
 
             using SqlConnection conn = dbConn.GetConnection();
             using SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
@@ -430,6 +430,11 @@ namespace OnlineShop.Kitchen_Wise_Form
             addProductForm1.Visible = true;
             salesDataGrid.Visible = false;
             itemdatagrid.Visible = false;
+        }
+
+        private void adminDashboardForm1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

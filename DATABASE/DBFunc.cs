@@ -6,6 +6,7 @@ using OnlineShop.DATABASE;
 using System.Windows.Forms;
 using System.IO;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
+using System;
 
 public class DBFunc
 {
@@ -186,6 +187,7 @@ public class DBFunc
         }
     }
 
+
     //FUNCTION FOR 
     public DataTable checkInvTable(string ProductID) //to be checked if working 
     {
@@ -300,7 +302,15 @@ public class DBFunc
                 for (int i = 0; i < itemNames.Count; i++)
                 {
                     // 2a. Update inventory
-                    string updateQuery = "UPDATE Inventory SET InStock = InStock - @Quantity WHERE ProductName = @ProductName";
+                    // 2a. Update inventory
+                    string updateQuery = @"UPDATE Inventory 
+                                     SET InStock = InStock - @Quantity,
+                                         Status = CASE 
+                                                    WHEN InStock - @Quantity = 0 THEN 'Out of Stock'
+                                                    WHEN InStock - @Quantity <= 15 THEN 'Low Stock'
+                                                    ELSE 'Available'
+                                                  END
+                                     WHERE ProductName = @ProductName";
                     using SqlCommand updateCmd = new SqlCommand(updateQuery, conn, transaction);
                     updateCmd.Parameters.AddWithValue("@Quantity", quantities[i]);
                     updateCmd.Parameters.AddWithValue("@ProductName", itemNames[i]);

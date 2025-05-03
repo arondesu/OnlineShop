@@ -171,6 +171,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             adminDashboardForm1.Name = "adminDashboardForm1";
             adminDashboardForm1.Size = new Size(1035, 740);
             adminDashboardForm1.TabIndex = 39;
+            adminDashboardForm1.Load += adminDashboardForm1_Load;
             // 
             // itemdatagrid
             // 
