@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,9 +50,17 @@ namespace OnlineShop.Kitchen_Wise_Form
             {
                 using SqlConnection connection = dbConn.GetConnection();
                 connection.Open();
-                Console.WriteLine("Database connected successfully!");
 
-                string query = "SELECT * FROM Sales";
+                string query = @"
+                    SELECT 
+                        PurchaseOrderNo,
+                        Subtotal,
+                        Discount,
+                        Total,
+                        PurchaseDate
+                    FROM Sales
+                    ORDER BY PurchaseDate DESC";
+
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -202,14 +210,13 @@ namespace OnlineShop.Kitchen_Wise_Form
         {
             string query = @"
             SELECT 
-            i.ProductName,
-            ISNULL(SUM(s.Total) / NULLIF(i.PurchasePrice, 0), 0) AS QuantitySold,
-            ISNULL(SUM(s.Total), 0) AS TotalSales,
-            GETDATE() AS ReportDate
-            FROM Inventory i
-            LEFT JOIN Sales s ON i.ProductName = s.PurchaseOrderNo -- replace this with actual matching column
-            GROUP BY i.ProductName, i.PurchasePrice
-            ORDER BY ReportDate DESC";
+            r.ProductName,
+            r.QuantitySold,
+            r.TotalSales,
+            r.StocksAdded,
+            r.ReportDate
+            FROM Reports r
+            ORDER BY r.ReportDate DESC";
 
             using SqlConnection conn = dbConn.GetConnection();
             SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
@@ -220,7 +227,7 @@ namespace OnlineShop.Kitchen_Wise_Form
 
         public void RefreshReportsGrid()
         {
-            string query = "SELECT ReportDate, ProductName, QuantitySold, QuantityReturned, TotalSales FROM Reports ORDER BY ReportDate DESC";
+            string query = "SELECT ReportDate, ProductName, QuantitySold, StocksAdded, TotalSales FROM Reports ORDER BY ReportDate DESC";
 
             using SqlConnection conn = dbConn.GetConnection();
             using SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
@@ -257,7 +264,7 @@ namespace OnlineShop.Kitchen_Wise_Form
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
                     using FileStream fs = new FileStream(saveDialog.FileName, FileMode.Create);
-                    using Document document = new Document(PageSize.A4, 25, 25, 30, 30);
+                    using Document document = new Document(PageSize.A4.Rotate(), 25, 25, 30, 30); // Changed to landscape for graph
                     PdfWriter writer = PdfWriter.GetInstance(document, fs);
 
                     document.Open();
@@ -289,6 +296,26 @@ namespace OnlineShop.Kitchen_Wise_Form
                         AddSectionToPdf(document, "Reports Data", reports_grid);
                     }
 
+                    // Add Sales Graph
+                    document.NewPage();
+                    Font graphTitleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14);
+                    Paragraph graphTitle = new Paragraph("Daily Sales Graph", graphTitleFont);
+                    graphTitle.Alignment = Element.ALIGN_CENTER;
+                    document.Add(graphTitle);
+                    document.Add(new Paragraph("\n"));
+
+                    // Create the graph image
+                    var plotModel = CreateSalesPlotModel();
+                    var pngExporter = new OxyPlot.WindowsForms.PngExporter { Width = 800, Height = 400 };
+                    using (var stream = new MemoryStream())
+                    {
+                        pngExporter.Export(plotModel, stream);
+                        var chartImage = iTextSharp.text.Image.GetInstance(stream.ToArray());
+                        chartImage.ScaleToFit(document.PageSize.Width - 50, document.PageSize.Height - 100);
+                        chartImage.Alignment = Element.ALIGN_CENTER;
+                        document.Add(chartImage);
+                    }
+
                     document.Close();
                     MessageBox.Show("PDF generated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -297,6 +324,60 @@ namespace OnlineShop.Kitchen_Wise_Form
             {
                 MessageBox.Show($"Error generating PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private OxyPlot.PlotModel CreateSalesPlotModel()
+        {
+            var plotModel = new OxyPlot.PlotModel { Title = "Daily Sales for Current Month" };
+            
+            plotModel.Axes.Add(new OxyPlot.Axes.DateTimeAxis { 
+                Position = OxyPlot.Axes.AxisPosition.Bottom,
+                Title = "Date",
+                StringFormat = "MM/dd"
+            });
+            
+            plotModel.Axes.Add(new OxyPlot.Axes.LinearAxis { 
+                Position = OxyPlot.Axes.AxisPosition.Left,
+                Title = "Sales Amount (₱)",
+                LabelFormatter = value => string.Format("₱{0:N2}", value)  // Changed to use LabelFormatter instead of StringFormat
+            });
+        
+            var lineSeries = new OxyPlot.Series.LineSeries
+            {
+                Title = "Daily Sales",
+                MarkerType = OxyPlot.MarkerType.Circle,
+                MarkerSize = 4,
+                MarkerStroke = OxyPlot.OxyColors.Blue,
+                TrackerFormatString = "Date: {2:MM/dd/yyyy}\nSales: ₱{4:N2}"  // Updated tracker format
+            };
+        
+            using (SqlConnection conn = dbConn.GetConnection())
+            {
+                conn.Open();
+                string query = @"
+                    SELECT 
+                        CAST(ReportDate AS DATE) as SaleDate,
+                        SUM(TotalSales) as DailySales
+                    FROM Reports
+                    WHERE ReportDate >= DATEADD(MONTH, -1, GETDATE())
+                    GROUP BY CAST(ReportDate AS DATE)
+                    ORDER BY SaleDate";
+        
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        DateTime date = reader.GetDateTime(0);
+                        decimal sales = reader.GetDecimal(1);
+                        double dateValue = OxyPlot.Axes.DateTimeAxis.ToDouble(date);
+                        lineSeries.Points.Add(new OxyPlot.DataPoint(dateValue, (double)sales));
+                    }
+                }
+            }
+        
+            plotModel.Series.Add(lineSeries);
+            return plotModel;
         }
 
         private void AddSectionToPdf(Document document, string title, DataGridView grid)

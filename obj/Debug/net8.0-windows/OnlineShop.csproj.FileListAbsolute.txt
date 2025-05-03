@@ -507,3 +507,7 @@ C:\Users\Woots\source\repos\OnlineShop\obj\Debug\net8.0-windows\refint\OnlineSho
 C:\Users\Woots\source\repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.pdb
 C:\Users\Woots\source\repos\OnlineShop\obj\Debug\net8.0-windows\OnlineShop.genruntimeconfig.cache
 C:\Users\Woots\source\repos\OnlineShop\obj\Debug\net8.0-windows\ref\OnlineShop.dll
+D:\VS REPOSITORY\obj\Debug\net8.0-windows\OnlineShop.addInventory.resources
+D:\VS REPOSITORY\obj\Debug\net8.0-windows\OnlineShop.ExtraItemForm.resources
+D:\VS REPOSITORY\bin\Debug\net8.0-windows\OxyPlot.dll
+D:\VS REPOSITORY\bin\Debug\net8.0-windows\OxyPlot.WindowsForms.dll

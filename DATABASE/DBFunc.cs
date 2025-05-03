@@ -288,20 +288,21 @@ public class DBFunc
             try
             {
                 // 1. Insert into sales table
-                string salesQuery = @"INSERT INTO sales (PurchaseOrderNo, Subtotal, Discount, Total) 
-                                 VALUES (@OrderNo, @Subtotal, @Discount, @Total)";
-
+                // In the ProcessCheckout method
+                string salesQuery = @"INSERT INTO sales (PurchaseOrderNo, Subtotal, Discount, Total, PurchaseDate) 
+                                     VALUES (@OrderNo, @Subtotal, @Discount, @Total, @PurchaseDate)";
+                
                 using SqlCommand salesCmd = new SqlCommand(salesQuery, conn, transaction);
                 salesCmd.Parameters.AddWithValue("@OrderNo", GenerateOrderNumber());
                 salesCmd.Parameters.AddWithValue("@Subtotal", subtotal);
                 salesCmd.Parameters.AddWithValue("@Discount", discount);
                 salesCmd.Parameters.AddWithValue("@Total", total);
+                salesCmd.Parameters.AddWithValue("@PurchaseDate", DateTime.Now);  // Add this line
                 salesCmd.ExecuteNonQuery();
 
                 // 2. Update inventory quantities + insert into Reports
                 for (int i = 0; i < itemNames.Count; i++)
                 {
-                    // 2a. Update inventory
                     // 2a. Update inventory
                     string updateQuery = @"UPDATE Inventory 
                                      SET InStock = InStock - @Quantity,
@@ -383,21 +384,22 @@ public class DBFunc
     }
 
     //Function for Reports table
-    public void InsertReport(string productName, int quantitySold, decimal unitPrice)
+    public void InsertReport(string productName, int quantitySold, decimal unitPrice, int quantityReturned)
     {
         decimal totalSales = quantitySold * unitPrice;
 
         using SqlConnection conn = dbConn.GetConnection();
         conn.Open();
 
-        string query = @"INSERT INTO Reports (ProductName, QuantitySold, TotalSales, ReportDate)
-                     VALUES (@productName, @quantitySold, @totalSales, @reportDate)";
+        string query = @"INSERT INTO Reports (ProductName, QuantitySold, QuantityReturned, TotalSales, ReportDate)
+                     VALUES (@productName, @quantitySold, @quantityReturn, @totalSales, @reportDate)";
 
         SqlCommand cmd = new SqlCommand(query, conn);
         cmd.Parameters.AddWithValue("@productName", productName);
         cmd.Parameters.AddWithValue("@quantitySold", quantitySold);
         cmd.Parameters.AddWithValue("@totalSales", totalSales);
         cmd.Parameters.AddWithValue("@reportDate", DateTime.Now);
+        cmd.Parameters.AddWithValue("@quantityReturn", quantityReturned); // Now using the parameter instead of hardcoded 0
         cmd.ExecuteNonQuery();
 
         conn.Close();

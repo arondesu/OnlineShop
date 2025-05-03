@@ -95,12 +95,6 @@ namespace OnlineShop
             {
                 DataTable dt = dbFunc.checkInvTable(string.Empty);
                 dataGridViewInventory.DataSource = dt;
-    
-                // Remove QuantityReturned column if it exists
-                if (dataGridViewInventory.Columns.Contains("QuantityReturned"))
-                {
-                    dataGridViewInventory.Columns.Remove("QuantityReturned");
-                }
             }
             catch (Exception ex)
             {
@@ -307,7 +301,41 @@ namespace OnlineShop
                         }
                     }
 
-                    // Update inventory item - ONLY use columns that exist in the database
+                    // Get current stock level before update
+                    string getCurrentStockQuery = "SELECT InStock FROM Inventory WHERE ProductId = @ProductId";
+                    int currentStock = 0;
+
+                    using (SqlCommand cmd = new SqlCommand(getCurrentStockQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ProductId", txtItemId.Text.Trim());
+                        var result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            currentStock = Convert.ToInt32(result);
+                        }
+                    }
+
+                    // Calculate quantity change
+                    int quantityChange = stock - currentStock;
+
+                    if (quantityChange != 0) // Only create report if there's a change in quantity
+                    {
+                        // Insert into Reports table for tracking quantity changes
+                        string reportQuery = @"INSERT INTO Reports 
+                                        (ProductName, QuantitySold, StocksAdded, TotalSales, ReportDate)
+                                        VALUES 
+                                        (@ProductName, @QuantitySold, @StocksAdded, 0, GETDATE())";
+
+                        using (SqlCommand reportCmd = new SqlCommand(reportQuery, conn))
+                        {
+                            reportCmd.Parameters.AddWithValue("@ProductName", txtItemName.Text.Trim());
+                            reportCmd.Parameters.AddWithValue("@QuantitySold", quantityChange < 0 ? Math.Abs(quantityChange) : 0);
+                            reportCmd.Parameters.AddWithValue("@StocksAdded", quantityChange > 0 ? quantityChange : 0);
+                            reportCmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    // Update inventory item without QuantityReturned
                     string updateQuery = @"UPDATE Inventory 
                                         SET ProductName = @ProductName, 
                                             Description = @Description, 
@@ -323,14 +351,19 @@ namespace OnlineShop
                         cmd.Parameters.AddWithValue("@Description", cmbItemType.Text.Trim());
                         cmd.Parameters.AddWithValue("@InStock", stock);
                         cmd.Parameters.AddWithValue("@PurchasePrice", price);
-                        cmd.Parameters.AddWithValue("@Status", status); // Use the automatically determined status
-                        // Remove QuantityReturned parameter
+                        cmd.Parameters.AddWithValue("@Status", status);
 
                         cmd.ExecuteNonQuery();
 
-                        MessageBox.Show("Inventory item updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        string message = quantityChange > 0 
+                            ? $"Inventory item updated successfully!\nQuantity Added: {quantityChange}"
+                            : quantityChange < 0 
+                                ? $"Inventory item updated successfully!\nQuantity Deducted: {Math.Abs(quantityChange)}"
+                                : "Inventory item updated successfully!";
+                        
+                        MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Refresh the data grid
+                        // Just refresh inventory data
                         LoadInventoryData();
 
                         // Clear the form
