@@ -24,7 +24,6 @@ namespace OnlineShop
             this.StartPosition = FormStartPosition.CenterScreen; // Center the form on startup
             SetupScrollablePanel(); // Call method to set up the scrollable panel
 
-
             //Initialize the dictionary first
             quantityLabels = new Dictionary<string, Label>
             {
@@ -37,10 +36,28 @@ namespace OnlineShop
                 {"Silverware Set", sware_qty},
                 {"Kitchen Scale", kscale_qty},
                 {"Table Cloth", tcloth_qty}
-};
+            };
 
-            //THEN sync
-            dbFunc.SyncQuantityLabels(quantityLabels);
+            // Create a dictionary to store the buttons
+            Dictionary<string, Button> addButtons = new Dictionary<string, Button>
+            {
+                {"Glass Food Storage", button1},
+                {"Steel Mug Rack", button2},
+                {"Mitts Potholders", button3},
+                {"Steel Brazier Pot", button4},
+                {"Descascador", button5},
+                {"Cleaning Sponge", button6},
+                {"Silverware Set", button7},
+                {"Kitchen Scale", button8},
+                {"Table Cloth", button9}
+            };
+            foreach (var button in addButtons.Values)
+            {
+                button.ForeColor = Color.White;
+            }
+
+            //THEN sync and update button states
+            dbFunc.SyncQuantityLabelsAndButtons(quantityLabels, addButtons);
         }
 
 
@@ -311,7 +328,28 @@ namespace OnlineShop
 
         private void RefreshQuantities()
         {
-            dbFunc.SyncQuantityLabels(quantityLabels);
+            // Create a panel that enables only vertical scrolling
+            Panel scrollablePanel = new Panel
+            {
+                Dock = DockStyle.Fill,  // Make it fill the form
+                AutoScroll = true,      // Enable scrolling
+                HorizontalScroll = { Enabled = false, Visible = false }, // Disable horizontal scroll
+                VerticalScroll = { Enabled = true, Visible = true }      // Enable vertical scroll
+            };
+
+            // Ensure that only vertical scrolling is active
+            scrollablePanel.AutoScrollMinSize = new Size(0, scrollablePanel.Height + 1);
+
+            // Move all existing controls into the panel
+            while (this.Controls.Count > 0)
+            {
+                Control ctrl = this.Controls[0];
+                this.Controls.Remove(ctrl);
+                scrollablePanel.Controls.Add(ctrl);
+            }
+
+            // Add the scrollable panel to the form
+            this.Controls.Add(scrollablePanel);
         }
 
         private void inv_btn_Click(object sender, EventArgs e)
@@ -332,3 +370,4 @@ namespace OnlineShop
         }
     }
 }
+

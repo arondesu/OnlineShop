@@ -239,8 +239,8 @@ public class DBFunc
     }
 
 
-    //FUNCTION FOR ADDING STOCK ON ITEMS(SHOP)
-    public void SyncQuantityLabels(Dictionary<string, Label> quantityLabels) //stocks label are shown
+    //FUNCTION FOR ADDING STOCK ON ITEMS(SHOP) WITH BUTTON CONTROL
+    public void SyncQuantityLabelsAndButtons(Dictionary<string, Label> quantityLabels, Dictionary<string, Button> addButtons)
     {
         try
         {
@@ -249,20 +249,39 @@ public class DBFunc
             {
                 foreach (DataRow row in inventoryData.Rows)
                 {
-                    // Debug information to see what columns are available
-                    Console.WriteLine("Available columns: " + string.Join(", ", inventoryData.Columns.Cast<DataColumn>().Select(c => c.ColumnName)));
-
                     // Use the correct column names from your items table
                     string productName = row["ProductName"]?.ToString();
 
-                    if (!string.IsNullOrEmpty(productName) && quantityLabels.ContainsKey(productName) && quantityLabels[productName] != null)
+                    if (!string.IsNullOrEmpty(productName) && 
+                        quantityLabels.ContainsKey(productName) && 
+                        quantityLabels[productName] != null &&
+                        addButtons.ContainsKey(productName) && 
+                        addButtons[productName] != null)
                     {
                         if (int.TryParse(row["InStock"]?.ToString(), out int quantity))
                         {
-                            quantityLabels[productName].Text = $"In Stock: {quantity}";
+                            if (quantity <= 0)
+                            {
+                                // No stock available
+                                quantityLabels[productName].Text = "NO STOCK";
+                                quantityLabels[productName].ForeColor = Color.Red;
+                                addButtons[productName].Enabled = false;
+                                addButtons[productName].BackColor = Color.Red;
+                                addButtons[productName].Text = "X";  // Change + to X
+                                addButtons[productName].ForeColor = Color.White;  // Make X white
+                            }
+                            else
+                            {
+                                // Stock available - use the specified color (158, 147, 114)
+                                quantityLabels[productName].Text = $"In Stock: {quantity}";
+                                quantityLabels[productName].ForeColor = SystemColors.ControlText;
+                                addButtons[productName].Enabled = true;
+                                addButtons[productName].BackColor = Color.FromArgb(158, 147, 114);
+                                addButtons[productName].Text = "+";  // Ensure it's + when in stock
+                                addButtons[productName].ForeColor = Color.White;  // Keep text color white
+                            }
                         }
                     }
-
                 }
             }
             else
@@ -272,7 +291,7 @@ public class DBFunc
         }
         catch (Exception ex)
         {
-            MessageBox.Show("Error syncing quantity labels: " + ex.Message, "Sync Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Error syncing quantity labels and buttons: " + ex.Message, "Sync Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
