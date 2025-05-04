@@ -30,6 +30,12 @@ namespace OnlineShop.Kitchen_Wise_Form
             dbFunc = new DBFunc();
             this.StartPosition = FormStartPosition.CenterScreen;
 
+            // Subscribe to inventory changes
+            if (addInventory1 != null)
+            {
+                addInventory1.InventoryChanged += OnInventoryChanged;
+            }
+
             // If itemDataGrid doesn't exist in the designer, create it programmatically
             if (itemDataGrid == null)
             {
@@ -153,45 +159,62 @@ namespace OnlineShop.Kitchen_Wise_Form
             }
         }
 
-        private void LoadItemData() //Loads items data into the item data grid 
+        private void LoadItemData()
         {
             try
             {
-                //for temporary testing
                 using SqlConnection conn = dbConn.GetConnection();
                 conn.Open();
 
-                string SelectItem = "SELECT * FROM items WHERE date_delete IS NULL";
+                // Only select needed columns and format the query for better readability
+                string selectItem = @"
+                    SELECT 
+                        id,
+                        item_id,
+                        item_name,
+                        item_type,
+                        item_stock,
+                        item_price,
+                        item_image,
+                        date_insert,
+                        date_update
+                    FROM items 
+                    WHERE date_delete IS NULL 
+                    ORDER BY date_update DESC";
 
-                using (SqlCommand cmd = new SqlCommand(SelectItem, conn))
+                using (SqlCommand cmd = new SqlCommand(selectItem, conn))
                 {
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
 
-                    while (reader.Read())
-                    {
-                        AddItemData aid = new AddItemData();
+                    // Configure DataGridView before setting DataSource
+                    itemDataGrid.AutoGenerateColumns = true;
+                    itemDataGrid.AllowUserToAddRows = false;
+                    itemDataGrid.AllowUserToDeleteRows = false;
+                    itemDataGrid.ReadOnly = true;
+                    itemDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    itemDataGrid.MultiSelect = false;
+                    itemDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                        aid.ID = (int)reader["id"];
-                        aid.ItemID = reader["item_id"].ToString();
-                        aid.ItemName = reader["item_name"].ToString();
-                        aid.Type = reader["item_type"].ToString();
-                        aid.Stock = reader["item_stock"].ToString();
-                        aid.Price = reader["item_price"].ToString();
-                        aid.Status = reader["item_status"].ToString();
-                        aid.Image = reader["item_image"].ToString();
-                        aid.DateInsert = reader["date_insert"].ToString();
-                        aid.DateUpdate = reader["date_update"].ToString();
-                    }
+                    // Set the DataSource
+                    itemDataGrid.DataSource = dt;
+
+                    // Format specific columns
+                    if (itemDataGrid.Columns["date_insert"] != null)
+                        itemDataGrid.Columns["date_insert"].DefaultCellStyle.Format = "g";
+                    if (itemDataGrid.Columns["date_update"] != null)
+                        itemDataGrid.Columns["date_update"].DefaultCellStyle.Format = "g";
+                    if (itemDataGrid.Columns["item_price"] != null)
+                        itemDataGrid.Columns["item_price"].DefaultCellStyle.Format = "C2";
+
+                    itemDataGrid.Visible = true;
+                    itemDataGrid.Refresh();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                using SqlConnection conn = dbConn.GetConnection();
-                conn.Close();
+                MessageBox.Show("Error loading item data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -498,6 +521,7 @@ namespace OnlineShop.Kitchen_Wise_Form
         {
             reports_grid.BringToFront();
             RefreshReportsGrid();
+            reports_grid.Visible = true;
             reports_grid.Columns["ReportDate"].DefaultCellStyle.Format = "g"; // short datetime
             adminDashboardForm1.Visible = false;
             addProductForm1.Visible = false;
@@ -518,6 +542,13 @@ namespace OnlineShop.Kitchen_Wise_Form
         private void adminDashboardForm1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        // Add handler for inventory changes
+        private void OnInventoryChanged(object sender, EventArgs e)
+        {
+        // Refresh inventory data when changes occur
+        LoadInventoryData();
         }
     }
 }

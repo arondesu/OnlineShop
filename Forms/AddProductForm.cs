@@ -25,16 +25,76 @@ namespace OnlineShop
         {
             InitializeComponent();
             dbFunc = new DBFunc();
+            
+            // Load the data
             itemListData();
+
+            // Update the ComboBox items directly since it's already created in Designer
+            txtDescription.Items.Clear();
+            txtDescription.Items.AddRange(new object[] {
+                "Durable and transparent container for food storage",
+                "A sturdy rack designed to neatly organize mugs",
+                "Heat-resistant mitts and potholders for kitchen safety",
+                "A versatile and durable pot for cooking",
+                "A handy peeler for effortless food preparation",
+                "A multi-purpose sponge for cleaning kitchen surfaces",
+                "A complete set of utensils for dining",
+                "A precise scale for measuring ingredients",
+                "A decorative and protective cover for tables"
+            });
         }
 
         public void itemListData()
         {
-            AddItemData addItemData = new AddItemData();
-            List<AddItemData> listDatas = addItemData.itemListData();
+            try
+            {
+                using SqlConnection conn = dbConn.GetConnection();
+                conn.Open();
 
-            dataGridView1.DataSource = listDatas;
+                string query = @"SELECT id, item_id, item_name, item_type, Description, 
+                                item_stock, item_price, item_image, date_insert, date_update 
+                                FROM items 
+                                WHERE date_delete IS NULL 
+                                ORDER BY date_update DESC";
+
+                using SqlCommand cmd = new SqlCommand(query, conn);
+                using SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                // Configure DataGridView properties
+                dataGridView1.AutoGenerateColumns = true;
+                dataGridView1.AllowUserToAddRows = false;
+                dataGridView1.AllowUserToDeleteRows = false;
+                dataGridView1.ReadOnly = true;
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataGridView1.MultiSelect = false;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                // Set the DataSource
+                dataGridView1.DataSource = dt;
+
+                // Format specific columns
+                if (dataGridView1.Columns["item_price"] != null)
+                    dataGridView1.Columns["item_price"].DefaultCellStyle.Format = "C2";
+                if (dataGridView1.Columns["date_insert"] != null)
+                    dataGridView1.Columns["date_insert"].DefaultCellStyle.Format = "d";
+                if (dataGridView1.Columns["date_update"] != null)
+                    dataGridView1.Columns["date_update"].DefaultCellStyle.Format = "d";
+
+                dataGridView1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading item data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+        AddItemData addItemData = new AddItemData();
+private List<AddItemData> listDatas;
+
+        // Add event to notify when product is added
+        public event EventHandler ProductAdded;
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string itemId = txtItem_id.Text.Trim();
@@ -42,24 +102,28 @@ namespace OnlineShop
             string itemType = txtItem_type.Text.Trim();
             string itemStock = txtItem_stock.Text.Trim();
             string itemPrice = txtItem_price.Text.Trim();
-            string itemStatus = txtItem_status.Text.Trim();
+            string description = txtDescription.Text.Trim();
 
             // Check if any fields are empty
-            if (dbFunc.emptyFields(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status))
+            if (dbFunc.emptyFields(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription))
             {
                 MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Check for duplicate Item ID
+            // Fix the AddProduct call by matching the correct parameter count
+            bool isAdded = dbFunc.AddProduct(itemId, itemName, itemType, description, itemStock, itemPrice, AddProductForm_imageView.ImageLocation);
 
-            // Attempt to add the product
-            bool isAdded = dbFunc.AddProduct(itemId, itemName, itemType, itemStock, itemPrice, itemStatus, AddProductForm_imageView.ImageLocation);
             if (isAdded)
             {
                 MessageBox.Show("Product added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView);
+                dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
+                txtDescription.Items.Clear();
+                txtDescription.Text = "";
                 itemListData();
+
+                // Notify subscribers that a product was added
+                ProductAdded?.Invoke(this, EventArgs.Empty);
             }
             else
             {
@@ -90,7 +154,7 @@ namespace OnlineShop
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView);
+            dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
 
         }
 
@@ -99,14 +163,14 @@ namespace OnlineShop
             if (e.RowIndex != -1)
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                txtItem_id.Text = row.Cells[1].Value.ToString();
-                txtItem_name.Text = row.Cells[2].Value.ToString();
-                txtItem_type.Text = row.Cells[3].Value.ToString();
-                txtItem_stock.Text = row.Cells[4].Value.ToString();
-                txtItem_price.Text = row.Cells[5].Value.ToString();
-                txtItem_status.Text = row.Cells[6].Value.ToString();
+                txtItem_id.Text = row.Cells["item_id"].Value?.ToString() ?? "";
+                txtItem_name.Text = row.Cells["item_name"].Value?.ToString() ?? "";
+                txtItem_type.Text = row.Cells["item_type"].Value?.ToString() ?? "";
+                txtDescription.Text = row.Cells["Description"].Value?.ToString() ?? "";
+                txtItem_stock.Text = row.Cells["item_stock"].Value?.ToString() ?? "";
+                txtItem_price.Text = row.Cells["item_price"].Value?.ToString() ?? "";
 
-                string imagePath = row.Cells[7].Value.ToString();
+                string imagePath = row.Cells["item_image"].Value?.ToString() ?? "";
                 try
                 {
                     if (!string.IsNullOrEmpty(imagePath))
@@ -120,11 +184,11 @@ namespace OnlineShop
                                 // Create a resized version (adjust max dimensions as needed)
                                 int maxWidth = 300;  // Set your desired max width
                                 int maxHeight = 300; // Set your desired max height
-                                
+
                                 // Calculate new dimensions while preserving aspect ratio
                                 int newWidth, newHeight;
                                 double aspectRatio = (double)originalImage.Width / originalImage.Height;
-                                
+
                                 if (aspectRatio > 1) // Width > Height
                                 {
                                     newWidth = maxWidth;
@@ -135,11 +199,11 @@ namespace OnlineShop
                                     newHeight = maxHeight;
                                     newWidth = (int)(maxHeight * aspectRatio);
                                 }
-                                
+
                                 // Create resized image
                                 Bitmap resizedImage = new Bitmap(originalImage, newWidth, newHeight);
                                 AddProductForm_imageView.Image = resizedImage;
-                                
+
                                 // Set SizeMode to keep the image properly displayed
                                 AddProductForm_imageView.SizeMode = PictureBoxSizeMode.Zoom;
                             }
@@ -149,7 +213,7 @@ namespace OnlineShop
                             // Try with corrected path if original doesn't exist
                             string fileName = Path.GetFileName(imagePath);
                             string correctedPath = Path.Combine(@"C:\Users\Woots\source\repos\OnlineShop\pictures items\", fileName);
-                            
+
                             if (File.Exists(correctedPath))
                             {
                                 // Load and resize the image (same resizing code as above)
@@ -157,10 +221,10 @@ namespace OnlineShop
                                 {
                                     int maxWidth = 300;
                                     int maxHeight = 300;
-                                    
+
                                     int newWidth, newHeight;
                                     double aspectRatio = (double)originalImage.Width / originalImage.Height;
-                                    
+
                                     if (aspectRatio > 1)
                                     {
                                         newWidth = maxWidth;
@@ -171,7 +235,7 @@ namespace OnlineShop
                                         newHeight = maxHeight;
                                         newWidth = (int)(maxHeight * aspectRatio);
                                     }
-                                    
+
                                     Bitmap resizedImage = new Bitmap(originalImage, newWidth, newHeight);
                                     AddProductForm_imageView.Image = resizedImage;
                                     AddProductForm_imageView.SizeMode = PictureBoxSizeMode.Zoom;
@@ -199,101 +263,116 @@ namespace OnlineShop
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dbFunc.emptyFields(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status))
+            if (dbFunc.emptyFields(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription))
             {
                 MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            using SqlConnection connection = dbConn.GetConnection();
-            if (connection.State != ConnectionState.Open)
+    
+            // Check if a row is selected
+            if (dataGridView1.CurrentRow == null)
             {
-                try
-                {
-                    connection.Open();
-                    string updateData = "UPDATE items SET item_id = @item_id, " +
-                        "item_name = @item_name, item_type = @item_type, item_stock = @item_stock, " +
-                        "item_price = @item_price, item_status = @item_status, date_update = @date_update";
-                    DateTime today = DateTime.Today;
-
-                    using (SqlCommand updateD = new SqlCommand(updateData, connection))
-                    {
-                        updateD.Parameters.AddWithValue("@item_id", txtItem_id.Text.Trim());
-                        updateD.Parameters.AddWithValue("@item_name", txtItem_name.Text.Trim());
-                        updateD.Parameters.AddWithValue("@item_type", txtItem_type.Text.Trim());
-                        updateD.Parameters.AddWithValue("@item_stock", txtItem_stock.Text.Trim());
-                        updateD.Parameters.AddWithValue("@item_price", txtItem_price.Text.Trim());
-                        updateD.Parameters.AddWithValue("@item_status", txtItem_status.Text.Trim());
-                        updateD.Parameters.AddWithValue("@date_update", today);
-                        updateD.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells[0].Value.ToString());
-
-                        updateD.ExecuteNonQuery();
-                        dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView);
-
-                        MessageBox.Show("Product ID: " + txtItem_id.Text.Trim() + " updated successfully!", "Update Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView);
-                        itemListData();
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Connection Failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                finally
-                {
-                    connection.Close();
-                }
+                MessageBox.Show("Please select a product to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            using SqlConnection connection = dbConn.GetConnection();
+            try
+            {
+                connection.Open();
+                string updateData = @"UPDATE items 
+                            SET item_id = @item_id,
+                                item_name = @item_name, 
+                                item_type = @item_type, 
+                                item_stock = @item_stock,
+                                item_price = @item_price, 
+                                Description = @description, 
+                                date_update = @date_update
+                            WHERE id = @id";
+
+                using SqlCommand updateD = new SqlCommand(updateData, connection);
+                
+                // Add parameters with proper type checking
+                updateD.Parameters.AddWithValue("@item_id", txtItem_id.Text.Trim());
+                updateD.Parameters.AddWithValue("@item_name", txtItem_name.Text.Trim());
+                updateD.Parameters.AddWithValue("@item_type", txtItem_type.Text.Trim());
+                updateD.Parameters.AddWithValue("@item_stock", int.Parse(txtItem_stock.Text.Trim()));
+                updateD.Parameters.AddWithValue("@item_price", float.Parse(txtItem_price.Text.Trim()));
+                updateD.Parameters.AddWithValue("@description", txtDescription.Text.Trim());
+                updateD.Parameters.AddWithValue("@date_update", DateTime.Today);
+                updateD.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells["id"].Value);
+
+                updateD.ExecuteNonQuery();
+
+                MessageBox.Show("Product ID: " + txtItem_id.Text.Trim() + " updated successfully!", "Update Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
+                itemListData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Update Failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void txtDescription_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            using SqlConnection connection = dbConn.GetConnection();
+            if (dataGridView1.CurrentRow != null)
+            {
+                string itemId = txtItem_id.Text.Trim();
 
-            if (dbFunc.emptyFields(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status))
-            {
-                MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
-                DialogResult check = MessageBox.Show("Are you sure you want to delete product id: ?" + txtItem_id.Text.Trim(), "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (check == DialogResult.Yes)
+                DialogResult result = MessageBox.Show(
+                    "Are you sure you want to delete this product?",
+                    "Confirm Delete",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
                 {
-                    if (connection.State != ConnectionState.Open)
+                    using (SqlConnection connection = dbConn.GetConnection())
                     {
                         try
                         {
                             connection.Open();
-                            string deleteData = "UPDATE items SET date_delete = @date_delete WHERE id = @id";
-                            DateTime today = DateTime.Today;
-                            using (SqlCommand deleteD = new SqlCommand(deleteData, connection))
+                            string deleteQuery = "DELETE FROM items WHERE item_id = @item_id";
+
+                            using (SqlCommand cmd = new SqlCommand(deleteQuery, connection))
                             {
-                                deleteD.Parameters.AddWithValue("@date_delete", today);
-                                deleteD.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                                deleteD.ExecuteNonQuery();
-                                dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView);
-                                MessageBox.Show("Product ID: " + txtItem_id.Text.Trim() + " deleted successfully!", "Delete Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                itemListData();
+                                cmd.Parameters.AddWithValue("@item_id", itemId);
+                                cmd.ExecuteNonQuery();
                             }
+
+                            MessageBox.Show("Product deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
+                            itemListData();
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Connection Failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        finally
-                        {
-                            connection.Close();
+                            MessageBox.Show("Error deleting product: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Please select a product to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            dataGridView1_CellClick(sender, e);
         }
     }
 }

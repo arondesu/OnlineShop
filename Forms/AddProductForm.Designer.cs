@@ -1,4 +1,4 @@
-﻿namespace OnlineShop
+namespace OnlineShop
 {
     partial class AddProductForm
     {
@@ -32,9 +32,10 @@
             dataGridView1 = new DataGridView();
             label1 = new Label();
             panel4 = new Panel();
+            txtDescription = new ComboBox();
+            label5 = new Label();
             panel2 = new Panel();
             AddProductForm_imageView = new PictureBox();
-            txtItem_status = new ComboBox();
             txtItem_type = new ComboBox();
             btnImport = new Button();
             btnClear = new Button();
@@ -45,7 +46,6 @@
             txtItem_stock = new TextBox();
             txtItem_name = new TextBox();
             txtItem_id = new TextBox();
-            label8 = new Label();
             label7 = new Label();
             label6 = new Label();
             label4 = new Label();
@@ -73,13 +73,11 @@
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 49);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Location = new Point(3, 65);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(992, 348);
+            dataGridView1.Size = new Size(993, 333);
             dataGridView1.TabIndex = 4;
-            dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label1
@@ -98,8 +96,9 @@
             // panel4
             // 
             panel4.BackColor = Color.White;
+            panel4.Controls.Add(txtDescription);
+            panel4.Controls.Add(label5);
             panel4.Controls.Add(panel2);
-            panel4.Controls.Add(txtItem_status);
             panel4.Controls.Add(txtItem_type);
             panel4.Controls.Add(btnImport);
             panel4.Controls.Add(btnClear);
@@ -110,7 +109,6 @@
             panel4.Controls.Add(txtItem_stock);
             panel4.Controls.Add(txtItem_name);
             panel4.Controls.Add(txtItem_id);
-            panel4.Controls.Add(label8);
             panel4.Controls.Add(label7);
             panel4.Controls.Add(label6);
             panel4.Controls.Add(label4);
@@ -121,6 +119,31 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(999, 275);
             panel4.TabIndex = 2;
+            // 
+            // txtDescription
+            // 
+            txtDescription.FormattingEnabled = true;
+            txtDescription.Items.AddRange(new object[] { "Appliance", "Furniture" });
+            txtDescription.Location = new Point(619, 43);
+            txtDescription.Margin = new Padding(3, 4, 3, 4);
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(145, 28);
+            txtDescription.TabIndex = 27;
+            txtDescription.SelectedIndexChanged += txtDescription_SelectedIndexChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.White;
+            label5.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.Black;
+            label5.Location = new Point(486, 44);
+            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(128, 27);
+            label5.TabIndex = 26;
+            label5.Text = "Description:";
+            label5.Click += label5_Click;
             // 
             // panel2
             // 
@@ -140,16 +163,6 @@
             AddProductForm_imageView.Size = new Size(135, 133);
             AddProductForm_imageView.TabIndex = 0;
             AddProductForm_imageView.TabStop = false;
-            // 
-            // txtItem_status
-            // 
-            txtItem_status.FormattingEnabled = true;
-            txtItem_status.Items.AddRange(new object[] { "Available", "Unavailabe" });
-            txtItem_status.Location = new Point(621, 144);
-            txtItem_status.Margin = new Padding(3, 4, 3, 4);
-            txtItem_status.Name = "txtItem_status";
-            txtItem_status.Size = new Size(145, 28);
-            txtItem_status.TabIndex = 24;
             // 
             // txtItem_type
             // 
@@ -233,7 +246,7 @@
             // 
             // txtItem_price
             // 
-            txtItem_price.Location = new Point(621, 92);
+            txtItem_price.Location = new Point(619, 144);
             txtItem_price.Margin = new Padding(3, 4, 3, 4);
             txtItem_price.Name = "txtItem_price";
             txtItem_price.Size = new Size(145, 27);
@@ -241,7 +254,7 @@
             // 
             // txtItem_stock
             // 
-            txtItem_stock.Location = new Point(621, 44);
+            txtItem_stock.Location = new Point(619, 95);
             txtItem_stock.Margin = new Padding(3, 4, 3, 4);
             txtItem_stock.Name = "txtItem_stock";
             txtItem_stock.Size = new Size(145, 27);
@@ -263,26 +276,13 @@
             txtItem_id.Size = new Size(145, 27);
             txtItem_id.TabIndex = 11;
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.White;
-            label8.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.Black;
-            label8.Location = new Point(543, 147);
-            label8.Margin = new Padding(2, 0, 2, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(77, 27);
-            label8.TabIndex = 10;
-            label8.Text = "Status:";
-            // 
             // label7
             // 
             label7.AutoSize = true;
             label7.BackColor = Color.White;
             label7.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(554, 95);
+            label7.Location = new Point(550, 147);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
             label7.Size = new Size(64, 27);
@@ -321,7 +321,7 @@
             label3.BackColor = Color.White;
             label3.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(550, 47);
+            label3.Location = new Point(543, 95);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(71, 27);
@@ -370,7 +370,6 @@
         private Label label3;
         private Label label2;
         private Label label7;
-        private Label label8;
         private TextBox txtItem_price;
         private TextBox txtItem_stock;
         private TextBox txtItem_name;
@@ -381,9 +380,10 @@
         private Button btnUpdate;
         private Button btnAdd;
         private ComboBox txtItem_type;
-        private ComboBox txtItem_status;
         private Panel panel2;
         private PictureBox AddProductForm_imageView;
+        private Label label5;
+        private ComboBox txtDescription;
         private DataGridView dataGridView1;
     }
 }

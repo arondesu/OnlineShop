@@ -89,7 +89,7 @@ namespace OnlineShop
             });
         }
 
-        private void LoadInventoryData()
+        public void LoadInventoryData()
         {
             try
             {
@@ -132,6 +132,9 @@ namespace OnlineShop
             // This can be the same as CellClick or left empty if not needed
             dataGridViewInventory_CellClick(sender, e);
         }
+
+        // Add event to notify when inventory changes
+        public event EventHandler InventoryChanged;
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -220,6 +223,9 @@ namespace OnlineShop
 
                         // Refresh the data grid
                         LoadInventoryData();
+
+                        // Notify subscribers that inventory has changed
+                        InventoryChanged?.Invoke(this, EventArgs.Empty);
 
                         // Clear the form
                         ClearForm();
@@ -365,6 +371,9 @@ namespace OnlineShop
 
                         // Just refresh inventory data
                         LoadInventoryData();
+
+                        // Notify subscribers that inventory has changed
+                        InventoryChanged?.Invoke(this, EventArgs.Empty);
 
                         // Clear the form
                         ClearForm();

@@ -48,7 +48,7 @@ public class DBFunc
     }
 
     //FUNCTION FOR CHECKING IF ITEM IS EMPTY
-    public bool emptyFields(TextBox txtItem_id, TextBox txtItem_name, ComboBox txtItem_type, TextBox txtItem_stock, TextBox txtItem_price, ComboBox txtItem_status)
+    public bool emptyFields(TextBox txtItem_id, TextBox txtItem_name, ComboBox txtItem_type, TextBox txtItem_stock, TextBox txtItem_price, ComboBox txtDescription)
     {
         try
         {
@@ -58,7 +58,7 @@ public class DBFunc
             txtItem_type.SelectedIndex == -1 ||
             txtItem_stock.Text == "" ||
             txtItem_price.Text == "" ||
-            txtItem_status.SelectedIndex == -1)
+            txtDescription.SelectedIndex == -1)
             {
                 return true;
             }
@@ -76,7 +76,7 @@ public class DBFunc
     }
 
     //FUNCTION FOR CHECKING DUPLICATE ID
-    public bool checkItemID(string txtItem_id, string txtItem_name, string txtItem_type, string txtItem_stock, string txtItem_price, string txtItem_status, string AddProductForm_imageView)
+    public bool checkItemID(string txtItem_id, string txtItem_name, string txtItem_type, string txtItem_stock, string txtItem_price, string txtDescription, string AddProductForm_imageView)
     {
         try
         {
@@ -116,7 +116,7 @@ public class DBFunc
     }
 
     //FUNCTION FOR ADDING PRODUCT
-    public bool AddProduct(string txtItem_id, string txtItem_name, string txtItem_type, string txtItem_stock, string txtItem_price, string txtItem_status, string AddProductForm_imageView)
+    public bool AddProduct(string txtItem_id, string txtItem_name, string txtItem_type, string txtDescription, string txtItem_stock, string txtItem_price, string AddProductForm_imageView)
     {
         // Validate numeric fields
         if (!int.TryParse(txtItem_stock, out int itemStock))
@@ -132,7 +132,7 @@ public class DBFunc
         }
 
         // Check if the item ID already exists
-        if (!checkItemID(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtItem_status, AddProductForm_imageView))
+        if (!checkItemID(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView))
         {
             return false; // Prevent adding duplicate product
         }
@@ -140,8 +140,9 @@ public class DBFunc
         using SqlConnection conn = dbConn.GetConnection();
         conn.Open();
 
-        string insertData = "INSERT INTO items (item_id, item_name, item_type, item_stock, item_price, item_status, item_image, date_insert) " +
-                            "VALUES (@itemID, @itemName, @itemType, @itemStock, @itemPrice, @itemStatus, @itemImage, @dateInsert)";
+        // Corrected query matching table columns
+        string insertData = "INSERT INTO items (item_id, item_name, item_type, Description, item_stock, item_price, item_image, date_insert) " +
+                           "VALUES (@itemID, @itemName, @itemType, @Description, @itemStock, @itemPrice, @itemImage, @dateInsert)";
 
         DateTime today = DateTime.Now;
 
@@ -166,9 +167,9 @@ public class DBFunc
             cmd.Parameters.AddWithValue("@itemID", txtItem_id.Trim());
             cmd.Parameters.AddWithValue("@itemName", txtItem_name.Trim());
             cmd.Parameters.AddWithValue("@itemType", txtItem_type.Trim());
+            cmd.Parameters.AddWithValue("@Description", txtDescription.Trim());
             cmd.Parameters.AddWithValue("@itemStock", itemStock); // Use parsed integer
             cmd.Parameters.AddWithValue("@itemPrice", itemPrice); // Use parsed decimal
-            cmd.Parameters.AddWithValue("@itemStatus", txtItem_status.Trim());
             cmd.Parameters.AddWithValue("@itemImage", path);
             cmd.Parameters.AddWithValue("@dateInsert", today);
 
