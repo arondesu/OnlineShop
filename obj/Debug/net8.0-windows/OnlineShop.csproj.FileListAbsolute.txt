@@ -511,3 +511,5 @@ D:\VS REPOSITORY\obj\Debug\net8.0-windows\OnlineShop.addInventory.resources
 D:\VS REPOSITORY\obj\Debug\net8.0-windows\OnlineShop.ExtraItemForm.resources
 D:\VS REPOSITORY\bin\Debug\net8.0-windows\OxyPlot.dll
 D:\VS REPOSITORY\bin\Debug\net8.0-windows\OxyPlot.WindowsForms.dll
+C:\Users\Woots\Source\Repos\OnlineShop\bin\Debug\net8.0-windows\OxyPlot.dll
+C:\Users\Woots\Source\Repos\OnlineShop\bin\Debug\net8.0-windows\OxyPlot.WindowsForms.dll

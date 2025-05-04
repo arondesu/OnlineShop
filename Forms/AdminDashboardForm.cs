@@ -28,7 +28,7 @@ namespace OnlineShop
             LoadTotalStock();
             LoadTotalOrders();
             LoadRevenue();
-            LoadDailyRevenue();  
+            LoadDailyRevenue();
         }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
@@ -161,7 +161,6 @@ namespace OnlineShop
         //chart comes in here
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-            UpdateMonthlySalesChart();
         }
 
         private void UpdateMonthlySalesChart()
@@ -181,15 +180,17 @@ namespace OnlineShop
                         ORDER BY SaleDate";
 
                     var plotModel = new PlotModel { Title = "Daily Sales for Current Month" };
-                    
+
                     // Configure axes
-                    plotModel.Axes.Add(new OxyPlot.Axes.DateTimeAxis { 
+                    plotModel.Axes.Add(new OxyPlot.Axes.DateTimeAxis
+                    {
                         Position = OxyPlot.Axes.AxisPosition.Bottom,
                         Title = "Date",
                         StringFormat = "MM/dd"
                     });
-                    
-                    plotModel.Axes.Add(new OxyPlot.Axes.LinearAxis { 
+
+                    plotModel.Axes.Add(new OxyPlot.Axes.LinearAxis
+                    {
                         Position = OxyPlot.Axes.AxisPosition.Left,
                         Title = "Sales Amount (₱)"
                     });
@@ -210,7 +211,7 @@ namespace OnlineShop
                         {
                             DateTime date = reader.GetDateTime(0);
                             decimal sales = reader.GetDecimal(1);
-                            
+
                             // Convert DateTime to OxyPlot's DateTimeAxis format
                             double dateValue = DateTimeAxis.ToDouble(date);
                             lineSeries.Points.Add(new DataPoint(dateValue, (double)sales));
@@ -236,6 +237,11 @@ namespace OnlineShop
             {
                 MessageBox.Show("Error updating sales chart: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void GraphPnl_Paint(object sender, PaintEventArgs e)
+        {
+            UpdateMonthlySalesChart();
         }
     }
 }

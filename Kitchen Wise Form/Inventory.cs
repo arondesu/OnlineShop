@@ -457,6 +457,7 @@ namespace OnlineShop.Kitchen_Wise_Form
         {
             adminDashboardForm1.BringToFront();
             adminDashboardForm1.Visible = true;
+            reports_grid.Visible = false;
             addProductForm1.Visible = false;
             salesDataGrid.Visible = false;
             itemdatagrid.Visible = false;
@@ -492,6 +493,7 @@ namespace OnlineShop.Kitchen_Wise_Form
             salesDataGrid.BringToFront();
         }
 
+        //reports section
         private void label3_Click_1(object sender, EventArgs e)
         {
             reports_grid.BringToFront();
