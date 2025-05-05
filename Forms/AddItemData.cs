@@ -33,7 +33,14 @@ namespace OnlineShop.Forms
                 using SqlConnection conn = dbConn.GetConnection();
                 conn.Open();
 
-                string SelectItem = "SELECT * FROM items WHERE date_delete IS NULL";
+                // Modified query to correctly join with Inventory table
+                string SelectItem = @"SELECT i.*, 
+                                    inv.ProductName as inv_productname,
+                                    inv.Description as inv_description, 
+                                    inv.PurchasePrice as inv_price 
+                                    FROM items i 
+                                    LEFT JOIN Inventory inv ON i.item_name = inv.ProductName 
+                                    WHERE i.date_delete IS NULL";
 
                 using (SqlCommand cmd = new SqlCommand(SelectItem, conn))
                 {
@@ -48,7 +55,8 @@ namespace OnlineShop.Forms
                         aid.ItemName = reader["item_name"]?.ToString();
                         aid.Type = reader["item_type"]?.ToString();
                         aid.Stock = reader["item_stock"]?.ToString();
-                        aid.Price = reader["item_price"]?.ToString();
+                        // Use PurchasePrice from Inventory if available, otherwise fallback to items price
+                        aid.Price = reader["inv_price"]?.ToString() ?? reader["item_price"]?.ToString();
                         aid.Status = reader["item_status"]?.ToString();
                         aid.Image = reader["item_image"]?.ToString();
                         aid.DateInsert = reader["date_insert"]?.ToString();

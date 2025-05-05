@@ -227,11 +227,11 @@ namespace OnlineShop
 
                     using (SqlCommand itemCmd = new SqlCommand(insertItemQuery, conn))
                     {
-                        itemCmd.Parameters.AddWithValue("@ItemName", txtItemName.Text.Trim());
+                        itemCmd.Parameters.AddWithValue("@ItemName", txtItemName.Text.Trim());  // Using ProductName as ItemName
                         itemCmd.Parameters.AddWithValue("@ItemType", cmbItemType.Text.Trim());
-                        itemCmd.Parameters.AddWithValue("@Description", cmbItemType.Text.Trim());
-                        itemCmd.Parameters.AddWithValue("@Stock", stock);
-                        itemCmd.Parameters.AddWithValue("@Price", price);
+                        itemCmd.Parameters.AddWithValue("@Description", cmbItemType.Text.Trim());  // Using same Description
+                        itemCmd.Parameters.AddWithValue("@Stock", stock);  // Using InStock value
+                        itemCmd.Parameters.AddWithValue("@Price", price);  // Using PurchasePrice value
 
                         itemCmd.ExecuteNonQuery();
                     }
