@@ -53,26 +53,21 @@ public class DBFunc
     {
         try
         {
-
-            if (txtItem_id.Text == "" ||
-            txtItem_name.Text == "" ||
-            txtItem_type.SelectedIndex == -1 ||
-            txtItem_stock.Text == "" ||
-            txtItem_price.Text == "" ||
-            txtDescription.SelectedIndex == -1)
+            if (string.IsNullOrWhiteSpace(txtItem_id.Text) ||
+                string.IsNullOrWhiteSpace(txtItem_name.Text) ||
+                txtItem_type.SelectedIndex == -1 ||
+                string.IsNullOrWhiteSpace(txtItem_stock.Text) ||
+                string.IsNullOrWhiteSpace(txtItem_price.Text) ||
+                txtDescription.SelectedIndex == -1)
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
         catch (Exception e)
         {
             MessageBox.Show("Error: " + e.Message);
             return false;
-
         }
     }
 
@@ -148,13 +143,14 @@ public class DBFunc
 
         DateTime today = DateTime.Now;
 
-        string path = Path.Combine(@"C:\Users\Woots\source\repos\OnlineShop\pictures items\" + txtItem_id.Trim());
-        string directoryPath = Path.GetDirectoryName(path) ?? string.Empty;
-
+        string directoryPath = @"D:\VS REPOSITORY\Item_Directory";
         if (!Directory.Exists(directoryPath))
         {
             Directory.CreateDirectory(directoryPath);
         }
+
+        string fileName = txtItem_id.Trim() + Path.GetExtension(AddProductForm_imageView);
+        string path = Path.Combine(directoryPath, fileName);
 
         if (string.IsNullOrEmpty(AddProductForm_imageView))
         {
@@ -162,7 +158,23 @@ public class DBFunc
             return false;
         }
 
-        File.Copy(AddProductForm_imageView, path, true);
+        try
+        {
+            if (File.Exists(AddProductForm_imageView))
+            {
+                File.Copy(AddProductForm_imageView, path, true);
+            }
+            else
+            {
+                MessageBox.Show("Source image file not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error saving image: " + ex.Message, "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
 
         using (SqlCommand cmd = new SqlCommand(insertData, conn))
         {

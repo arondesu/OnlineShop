@@ -72,9 +72,6 @@
             pictureBox6 = new PictureBox();
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox1 = new PictureBox();
             label1 = new Label();
             label2 = new Label();
             saveFileDialog1 = new SaveFileDialog();
@@ -94,6 +91,9 @@
             panel3 = new Panel();
             btnClose = new Label();
             inv_btn = new Label();
+            pictureBox3 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -101,12 +101,12 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pnlCart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picCartLogo).BeginInit();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -163,7 +163,7 @@
             panel1.Location = new Point(0, 109);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(776, 713);
+            panel1.Size = new Size(776, 670);
             panel1.TabIndex = 0;
             // 
             // tcloth_qty
@@ -619,39 +619,6 @@
             pictureBox4.TabIndex = 5;
             pictureBox4.TabStop = false;
             // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = Properties.Resources._1e5447e1d7ac58b828aedd211d4d45be;
-            pictureBox3.Location = new Point(540, 32);
-            pictureBox3.Margin = new Padding(3, 2, 3, 2);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(181, 133);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 4;
-            pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources._717352fb282b041a865e761437a3b311;
-            pictureBox2.Location = new Point(295, 32);
-            pictureBox2.Margin = new Padding(3, 2, 3, 2);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(185, 133);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 3;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources._43e19e3de4e66d368f488876d54d4fca;
-            pictureBox1.Location = new Point(53, 32);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(182, 133);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -701,7 +668,7 @@
             pnlCart.Location = new Point(776, 109);
             pnlCart.Margin = new Padding(2);
             pnlCart.Name = "pnlCart";
-            pnlCart.Size = new Size(551, 713);
+            pnlCart.Size = new Size(551, 706);
             pnlCart.TabIndex = 6;
             // 
             // removeBt
@@ -869,11 +836,44 @@
             inv_btn.Text = "ADMIN";
             inv_btn.Click += inv_btn_Click;
             // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources._1e5447e1d7ac58b828aedd211d4d45be;
+            pictureBox3.Location = new Point(540, 32);
+            pictureBox3.Margin = new Padding(3, 2, 3, 2);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(181, 133);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 4;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources._717352fb282b041a865e761437a3b311;
+            pictureBox2.Location = new Point(295, 32);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(185, 133);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 3;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources._43e19e3de4e66d368f488876d54d4fca;
+            pictureBox1.Location = new Point(53, 32);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(182, 133);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
             // MainShop
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1235, 783);
+            ClientSize = new Size(1235, 776);
             Controls.Add(panel3);
             Controls.Add(pnlCart);
             Controls.Add(panel2);
@@ -891,14 +891,14 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             pnlCart.ResumeLayout(false);
             pnlCart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picCartLogo).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -908,12 +908,9 @@
         private Panel panel1;
         private Label label1;
         private Label label2;
-        private PictureBox pictureBox1;
         private PictureBox pictureBox6;
         private PictureBox pictureBox5;
         private PictureBox pictureBox4;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox2;
         private SaveFileDialog saveFileDialog1;
         private Label label8;
         private Label label7;
@@ -970,5 +967,8 @@
         private Panel panel3;
         private Label inv_btn;
         private Label btnClose;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox1;
     }
 }

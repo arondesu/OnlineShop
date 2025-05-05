@@ -130,8 +130,13 @@ private List<AddItemData> listDatas;
             string itemPrice = txtItem_price.Text.Trim();
             string description = txtDescription.Text.Trim();
 
-            // Check if any fields are empty
-            if (dbFunc.emptyFields(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription))
+            // Check if any fields are empty or contain only whitespace
+            if (string.IsNullOrWhiteSpace(itemId) || 
+                string.IsNullOrWhiteSpace(itemName) || 
+                string.IsNullOrWhiteSpace(itemType) || 
+                string.IsNullOrWhiteSpace(itemStock) || 
+                string.IsNullOrWhiteSpace(itemPrice) || 
+                string.IsNullOrWhiteSpace(description))
             {
                 MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -212,82 +217,53 @@ private List<AddItemData> listDatas;
                 {
                     if (!string.IsNullOrEmpty(imagePath))
                     {
-                        // First try the original path
-                        if (File.Exists(imagePath))
+                        string fileName = Path.GetFileName(imagePath);
+                        string newPath = Path.Combine(@"D:\VS REPOSITORY\Item_Directory\", fileName);
+
+                        // Try the new path first
+                        if (File.Exists(newPath))
                         {
-                            // Load and resize the image
-                            using (Image originalImage = Image.FromFile(imagePath))
-                            {
-                                // Create a resized version (adjust max dimensions as needed)
-                                int maxWidth = 300;  // Set your desired max width
-                                int maxHeight = 300; // Set your desired max height
-
-                                // Calculate new dimensions while preserving aspect ratio
-                                int newWidth, newHeight;
-                                double aspectRatio = (double)originalImage.Width / originalImage.Height;
-
-                                if (aspectRatio > 1) // Width > Height
-                                {
-                                    newWidth = maxWidth;
-                                    newHeight = (int)(maxWidth / aspectRatio);
-                                }
-                                else // Height >= Width
-                                {
-                                    newHeight = maxHeight;
-                                    newWidth = (int)(maxHeight * aspectRatio);
-                                }
-
-                                // Create resized image
-                                Bitmap resizedImage = new Bitmap(originalImage, newWidth, newHeight);
-                                AddProductForm_imageView.Image = resizedImage;
-
-                                // Set SizeMode to keep the image properly displayed
-                                AddProductForm_imageView.SizeMode = PictureBoxSizeMode.Zoom;
-                            }
+                            imagePath = newPath;
                         }
-                        else
+                        else if (!File.Exists(imagePath))
                         {
-                            // Try with corrected path if original doesn't exist
-                            string fileName = Path.GetFileName(imagePath);
-                            string correctedPath = Path.Combine(@"C:\Users\Woots\source\repos\OnlineShop\pictures items\", fileName);
+                            AddProductForm_imageView.Image = null;
+                            MessageBox.Show($"Image file not found at either:\n{imagePath}\nor\n{newPath}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
 
-                            if (File.Exists(correctedPath))
+                        using (Image originalImage = Image.FromFile(imagePath))
+                        {
+                            // Create a resized version (adjust max dimensions as needed)
+                            int maxWidth = 300;  // Set your desired max width
+                            int maxHeight = 300; // Set your desired max height
+
+                            // Calculate new dimensions while preserving aspect ratio
+                            int newWidth, newHeight;
+                            double aspectRatio = (double)originalImage.Width / originalImage.Height;
+
+                            if (aspectRatio > 1) // Width > Height
                             {
-                                // Load and resize the image (same resizing code as above)
-                                using (Image originalImage = Image.FromFile(correctedPath))
-                                {
-                                    int maxWidth = 300;
-                                    int maxHeight = 300;
-
-                                    int newWidth, newHeight;
-                                    double aspectRatio = (double)originalImage.Width / originalImage.Height;
-
-                                    if (aspectRatio > 1)
-                                    {
-                                        newWidth = maxWidth;
-                                        newHeight = (int)(maxWidth / aspectRatio);
-                                    }
-                                    else
-                                    {
-                                        newHeight = maxHeight;
-                                        newWidth = (int)(maxHeight * aspectRatio);
-                                    }
-
-                                    Bitmap resizedImage = new Bitmap(originalImage, newWidth, newHeight);
-                                    AddProductForm_imageView.Image = resizedImage;
-                                    AddProductForm_imageView.SizeMode = PictureBoxSizeMode.Zoom;
-                                }
+                                newWidth = maxWidth;
+                                newHeight = (int)(maxWidth / aspectRatio);
                             }
-                            else
+                            else // Height >= Width
                             {
-                                AddProductForm_imageView.Image = null;
-                                MessageBox.Show($"Image file not found at: {imagePath}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                newHeight = maxHeight;
+                                newWidth = (int)(maxHeight * aspectRatio);
                             }
+
+                            // Create resized image
+                            Bitmap resizedImage = new Bitmap(originalImage, newWidth, newHeight);
+                            AddProductForm_imageView.Image = resizedImage;
+
+                            // Set SizeMode to keep the image properly displayed
+                            AddProductForm_imageView.SizeMode = PictureBoxSizeMode.Zoom;
                         }
                     }
                     else
                     {
-                        AddProductForm_imageView.Image = null; // Clear the image if path is empty
+                        AddProductForm_imageView.Image = null;
                     }
                 }
                 catch (Exception ex)
@@ -300,16 +276,29 @@ private List<AddItemData> listDatas;
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dbFunc.emptyFields(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription))
-            {
-                MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-    
-            // Check if a row is selected
+            // First check if a row is selected
             if (dataGridView1.CurrentRow == null)
             {
                 MessageBox.Show("Please select a product to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string itemId = txtItem_id.Text.Trim();
+            string itemName = txtItem_name.Text.Trim();
+            string itemType = txtItem_type.Text.Trim();
+            string itemStock = txtItem_stock.Text.Trim();
+            string itemPrice = txtItem_price.Text.Trim();
+            string description = txtDescription.Text.Trim();
+
+            // Check if any fields are empty or contain only whitespace
+            if (string.IsNullOrWhiteSpace(itemId) || 
+                string.IsNullOrWhiteSpace(itemName) || 
+                string.IsNullOrWhiteSpace(itemType) || 
+                string.IsNullOrWhiteSpace(itemStock) || 
+                string.IsNullOrWhiteSpace(itemPrice) || 
+                string.IsNullOrWhiteSpace(description))
+            {
+                MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

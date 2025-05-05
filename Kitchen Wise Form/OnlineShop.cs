@@ -80,7 +80,7 @@ namespace OnlineShop
         }
 
         // Replace the conflicting OnProductChanged with this simpler event handler
-        private void OnInventoryChanged(object sender, EventArgs e)
+        private void OnInventoryChanged(object sender, AddProductForm.ProductEventArgs e)
         {
             try
             {
@@ -97,7 +97,11 @@ namespace OnlineShop
                     {"Table Cloth", button9}
                 };
         
+                // Update the static buttons and labels
                 dbFunc.SyncQuantityLabelsAndButtons(quantityLabels, addButtons);
+                
+                // Refresh the dynamic products display
+                LoadDynamicProducts();
             }
             catch (Exception ex)
             {
@@ -450,18 +454,50 @@ namespace OnlineShop
         {
             try
             {
-                // Create a flow layout panel for dynamic products
-                FlowLayoutPanel productPanel = new FlowLayoutPanel
+                // Remove any existing dynamic product panels
+                var existingPanels = panel1.Controls.OfType<Panel>()
+                                    .Where(p => p.Tag?.ToString() == "DynamicProducts")
+                                    .ToList();
+                foreach (var panel in existingPanels)
                 {
-                    Width = 800,
-                    Height = 300,
-                    AutoScroll = true,
+                    panel1.Controls.Remove(panel);
+                    panel.Dispose();
+                }
+
+                // Create a container panel for dynamic products
+                Panel containerPanel = new Panel
+                {
+                    Width = panel1.Width - 40,
+                    AutoSize = true,
+                    Tag = "DynamicProducts",
+                    BackColor = Color.Transparent
+                };
+
+                // Calculate the Y position after the last static product
+                int lastStaticY = 0;
+                foreach (Control control in panel1.Controls)
+                {
+                    if (control is Panel && control.Tag?.ToString() != "DynamicProducts")
+                    {
+                        lastStaticY = Math.Max(lastStaticY, control.Bottom);
+                    }
+                }
+
+                // Position the container below the last static product
+                containerPanel.Location = new Point(10, lastStaticY + 50);
+
+                // Create a FlowLayoutPanel inside the container
+                FlowLayoutPanel flowPanel = new FlowLayoutPanel
+                {
+                    Dock = DockStyle.Fill,
+                    AutoSize = true,
                     FlowDirection = FlowDirection.LeftToRight,
                     WrapContents = true,
                     Padding = new Padding(10),
-                    Location = new Point(50, 450), // Position below existing content
-                    BorderStyle = BorderStyle.FixedSingle
+                    BackColor = Color.Transparent
                 };
+
+                containerPanel.Controls.Add(flowPanel);
 
                 // Get data from the items table
                 DataTable dt = GetItemsForShop();
@@ -473,20 +509,18 @@ namespace OnlineShop
                         Text = "New Products",
                         Font = new Font("Segoe UI", 14, FontStyle.Bold),
                         ForeColor = Color.FromArgb(15, 26, 43),
-                        Location = new Point(50, 420),
-                        AutoSize = true
+                        AutoSize = true,
+                        Margin = new Padding(10)
                     };
-                    this.Controls.Add(titleLabel);
-
+                    flowPanel.Controls.Add(titleLabel);
+            
                     // Create a product card for each item
                     foreach (DataRow row in dt.Rows)
                     {
-                        // Inside LoadDynamicProducts method
-                        // Skip items that are already in the fixed product list
                         string itemName = row["item_name"].ToString();
                         if (quantityLabels != null && quantityLabels.ContainsKey(itemName))
                             continue;
-
+            
                         // Create a panel for each product
                         Panel productCard = new Panel
                         {
@@ -508,7 +542,6 @@ namespace OnlineShop
                             BorderStyle = BorderStyle.FixedSingle
                         };
                         
-                        // Try to load the image if available
                         string imagePath = row["item_image"]?.ToString();
                         if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
                         {
@@ -518,7 +551,6 @@ namespace OnlineShop
                             }
                             catch
                             {
-                                // Use a default image if the file can't be loaded
                                 productImage.Image = null;
                             }
                         }
@@ -527,69 +559,48 @@ namespace OnlineShop
                         Label nameLabel = new Label
                         {
                             Text = itemName,
-                            Top = 140,
-                            Left = 10,
                             Width = 160,
+                            Top = productImage.Bottom + 5,
+                            Left = 10,
                             Font = new Font("Segoe UI", 9, FontStyle.Bold),
                             TextAlign = ContentAlignment.MiddleCenter
                         };
-                        
-                        Label typeLabel = new Label
-                        {
-                            Text = row["item_type"].ToString(),
-                            Top = 165,
-                            Left = 10,
-                            Width = 160,
-                            Font = new Font("Segoe UI", 8),
-                            TextAlign = ContentAlignment.MiddleCenter
-                        };
-                        
+            
                         Label priceLabel = new Label
                         {
-                            Text = $"₱{Convert.ToDecimal(row["item_price"]):N2}",
-                            Top = 190,
-                            Left = 10,
+                            Text = $"₱{Convert.ToDouble(row["item_price"]):F2}",
                             Width = 160,
-                            Font = new Font("Segoe UI", 9, FontStyle.Bold),
-                            TextAlign = ContentAlignment.MiddleCenter,
-                            ForeColor = Color.FromArgb(15, 26, 43)
+                            Top = nameLabel.Bottom + 5,
+                            Left = 10,
+                            Font = new Font("Segoe UI", 9),
+                            TextAlign = ContentAlignment.MiddleCenter
                         };
-                        
-                        Button addToCartButton = new Button
+            
+                        Button addButton = new Button
                         {
                             Text = "Add to Cart",
-                            Top = 215,
-                            Left = 40,
-                            Width = 100,
-                            Height = 25,
-                            BackColor = Color.FromArgb(189, 196, 212),
-                            ForeColor = Color.FromArgb(15, 26, 43),
-                            FlatStyle = FlatStyle.Flat
+                            Width = 160,
+                            Height = 30,
+                            Top = priceLabel.Bottom + 5,
+                            Left = 10,
+                            BackColor = Color.FromArgb(15, 26, 43),  // Match the dark blue color
+                            ForeColor = Color.White,                 // White text
+                            FlatStyle = FlatStyle.Flat,             // Flat style to match existing buttons
+                            Margin = new Padding(0),
+                            Font = new Font("Segoe UI", 9)          // Match the font
                         };
-                        
-                        // Store the product info in the button's Tag property
-                        addToCartButton.Tag = new object[] { itemName, Convert.ToDouble(row["item_price"]) };
-                        addToCartButton.Click += DynamicAddToCart_Click;
-                        
-                        // Add controls to the product card
-                        productCard.Controls.Add(productImage);
-                        productCard.Controls.Add(nameLabel);
-                        productCard.Controls.Add(typeLabel);
-                        productCard.Controls.Add(priceLabel);
-                        productCard.Controls.Add(addToCartButton);
-                        
-                        // Add the product card to the flow layout panel
-                        productPanel.Controls.Add(productCard);
-                    }
-                    
-                    // Only add the panel if it has products
-                    if (productPanel.Controls.Count > 0)
-                    {
-                        this.Controls.Add(productPanel);
-                    }
-                    else
-                    {
-                        titleLabel.Dispose();
+            
+                        // Remove the border to match the flat style
+                        addButton.FlatAppearance.BorderSize = 0;
+            
+                        // Add click handler for the button
+                        string finalItemName = itemName;
+                        double finalPrice = Convert.ToDouble(row["item_price"]);
+                        addButton.Click += (s, e) => AddItemToCart(finalItemName, finalPrice);
+            
+                        // Add all controls to the product card
+                        productCard.Controls.AddRange(new Control[] { productImage, nameLabel, priceLabel, addButton });
+                        panel1.Controls.Add(productCard);
                     }
                 }
             }
