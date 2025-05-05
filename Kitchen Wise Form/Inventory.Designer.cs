@@ -46,14 +46,14 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             panel2 = new Panel();
             homePanel = new Panel();
             adminDashboardForm1 = new AdminDashboardForm();
-            itemdatagrid = new DataGridView();
             salesDataGrid = new DataGridView();
             dBFuncBindingSource = new BindingSource(components);
-            homeDataGrid = new DataGridView();
+            itemdatagrid = new DataGridView();
             reports_grid = new DataGridView();
             addProductForm1 = new AddProductForm();
             inv_bg_pic = new PictureBox();
             addInventory1 = new addInventory();
+            homeDataGrid = new DataGridView();
             panel3 = new Panel();
             pictureBox3 = new PictureBox();
             itemlbl = new Label();
@@ -72,12 +72,12 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             ((ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             homePanel.SuspendLayout();
-            ((ISupportInitialize)itemdatagrid).BeginInit();
             ((ISupportInitialize)salesDataGrid).BeginInit();
             ((ISupportInitialize)dBFuncBindingSource).BeginInit();
-            ((ISupportInitialize)homeDataGrid).BeginInit();
+            ((ISupportInitialize)itemdatagrid).BeginInit();
             ((ISupportInitialize)reports_grid).BeginInit();
             ((ISupportInitialize)inv_bg_pic).BeginInit();
+            ((ISupportInitialize)homeDataGrid).BeginInit();
             panel3.SuspendLayout();
             ((ISupportInitialize)pictureBox3).BeginInit();
             ((ISupportInitialize)pictureBox2).BeginInit();
@@ -95,7 +95,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(1107, 83);
             panel1.TabIndex = 27;
@@ -129,7 +129,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // 
             pictureBox1.Image = Properties.Resources._1486504353_cart_ecommerce_shop_commerce_supermarket_trolley_shopping_81310;
             pictureBox1.Location = new Point(52, 10);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(72, 63);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -141,7 +141,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // 
             panel2.Controls.Add(homePanel);
             panel2.Location = new Point(206, 83);
-            panel2.Margin = new Padding(2, 2, 2, 2);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
             panel2.Size = new Size(901, 540);
             panel2.TabIndex = 28;
@@ -172,21 +172,6 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             adminDashboardForm1.TabIndex = 39;
             adminDashboardForm1.Load += adminDashboardForm1_Load;
             // 
-            // itemdatagrid
-            // 
-            itemdatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            itemdatagrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
-            itemdatagrid.BackgroundColor = Color.FromArgb(209, 207, 201);
-            itemdatagrid.BorderStyle = BorderStyle.None;
-            itemdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            itemdatagrid.Dock = DockStyle.Fill;
-            itemdatagrid.Location = new Point(0, 0);
-            itemdatagrid.Margin = new Padding(3, 2, 3, 2);
-            itemdatagrid.Name = "itemdatagrid";
-            itemdatagrid.RowHeadersWidth = 51;
-            itemdatagrid.Size = new Size(900, 540);
-            itemdatagrid.TabIndex = 40;
-            // 
             // salesDataGrid
             // 
             salesDataGrid.AutoGenerateColumns = false;
@@ -206,17 +191,20 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // 
             dBFuncBindingSource.DataSource = typeof(DBFunc);
             // 
-            // homeDataGrid
+            // itemdatagrid
             // 
-            homeDataGrid.BackgroundColor = Color.FromArgb(209, 207, 201);
-            homeDataGrid.BorderStyle = BorderStyle.None;
-            homeDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            homeDataGrid.Dock = DockStyle.Fill;
-            homeDataGrid.Location = new Point(0, 0);
-            homeDataGrid.Name = "homeDataGrid";
-            homeDataGrid.RowHeadersWidth = 51;
-            homeDataGrid.Size = new Size(900, 540);
-            homeDataGrid.TabIndex = 0;
+            itemdatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            itemdatagrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            itemdatagrid.BackgroundColor = Color.FromArgb(209, 207, 201);
+            itemdatagrid.BorderStyle = BorderStyle.None;
+            itemdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            itemdatagrid.Dock = DockStyle.Fill;
+            itemdatagrid.Location = new Point(0, 0);
+            itemdatagrid.Margin = new Padding(3, 2, 3, 2);
+            itemdatagrid.Name = "itemdatagrid";
+            itemdatagrid.RowHeadersWidth = 51;
+            itemdatagrid.Size = new Size(900, 540);
+            itemdatagrid.TabIndex = 40;
             // 
             // reports_grid
             // 
@@ -250,11 +238,23 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             // 
             // addInventory1
             // 
-            addInventory1.Location = new Point(-1, 4);
+            addInventory1.Location = new Point(-1, -2);
             addInventory1.Margin = new Padding(3, 2, 3, 2);
             addInventory1.Name = "addInventory1";
-            addInventory1.Size = new Size(902, 533);
+            addInventory1.Size = new Size(902, 539);
             addInventory1.TabIndex = 43;
+            // 
+            // homeDataGrid
+            // 
+            homeDataGrid.BackgroundColor = Color.FromArgb(209, 207, 201);
+            homeDataGrid.BorderStyle = BorderStyle.None;
+            homeDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            homeDataGrid.Dock = DockStyle.Fill;
+            homeDataGrid.Location = new Point(0, 0);
+            homeDataGrid.Name = "homeDataGrid";
+            homeDataGrid.RowHeadersWidth = 51;
+            homeDataGrid.Size = new Size(900, 540);
+            homeDataGrid.TabIndex = 0;
             // 
             // panel3
             // 
@@ -276,7 +276,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             panel3.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             panel3.ForeColor = Color.White;
             panel3.Location = new Point(0, 83);
-            panel3.Margin = new Padding(2, 2, 2, 2);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
             panel3.Size = new Size(206, 540);
             panel3.TabIndex = 28;
@@ -406,7 +406,7 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             print_btn.Font = new Font("Segoe UI", 12.2F, FontStyle.Bold);
             print_btn.ForeColor = Color.White;
             print_btn.Location = new Point(88, 340);
-            print_btn.Margin = new Padding(2, 2, 2, 2);
+            print_btn.Margin = new Padding(2);
             print_btn.Name = "print_btn";
             print_btn.Size = new Size(94, 33);
             print_btn.TabIndex = 7;
@@ -447,12 +447,12 @@ namespace OnlineShop.Kitchen_Wise_Form  // Updated namespace to match
             ((ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             homePanel.ResumeLayout(false);
-            ((ISupportInitialize)itemdatagrid).EndInit();
             ((ISupportInitialize)salesDataGrid).EndInit();
             ((ISupportInitialize)dBFuncBindingSource).EndInit();
-            ((ISupportInitialize)homeDataGrid).EndInit();
+            ((ISupportInitialize)itemdatagrid).EndInit();
             ((ISupportInitialize)reports_grid).EndInit();
             ((ISupportInitialize)inv_bg_pic).EndInit();
+            ((ISupportInitialize)homeDataGrid).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((ISupportInitialize)pictureBox3).EndInit();

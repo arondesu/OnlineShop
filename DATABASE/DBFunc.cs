@@ -427,9 +427,62 @@ public class DBFunc
         conn.Close();
     }
 
-
+    //FUNCTION FOR SYNCING INVENTORY TO ITEMS TABLE
+    public bool SyncInventoryToItems()
+    {
+        try
+        {
+            using SqlConnection conn = dbConn.GetConnection();
+            conn.Open();
+            
+            // First, get all inventory items that aren't in the items table
+            string query = @"
+                SELECT i.* 
+                FROM Inventory i
+                LEFT JOIN items it ON i.ProductName = it.item_name
+                WHERE it.item_name IS NULL";
+                
+            SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+            DataTable inventoryItems = new DataTable();
+            adapter.Fill(inventoryItems);
+            
+            if (inventoryItems.Rows.Count == 0)
+            {
+                return true; // No items to sync
+            }
+            
+            // For each inventory item not in items table, add it
+            foreach (DataRow row in inventoryItems.Rows)
+            {
+                string insertQuery = @"
+                    INSERT INTO items (item_id, item_name, item_type, item_stock, item_price, Description, date_insert, date_update)
+                    VALUES (@itemId, @itemName, @itemType, @itemStock, @itemPrice, @description, @dateInsert, @dateInsert)";
+                    
+                using SqlCommand cmd = new SqlCommand(insertQuery, conn);
+                
+                // Generate a unique item_id
+                string itemId = "ITM" + DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(100, 999);
+                
+                cmd.Parameters.AddWithValue("@itemId", itemId);
+                cmd.Parameters.AddWithValue("@itemName", row["ProductName"]);
+                cmd.Parameters.AddWithValue("@itemType", "Kitchen Item"); // Default value since inventory doesn't have item_type
+                cmd.Parameters.AddWithValue("@itemStock", row["InStock"]);
+                cmd.Parameters.AddWithValue("@itemPrice", row["PurchasePrice"]);
+                cmd.Parameters.AddWithValue("@description", row["Description"] ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@dateInsert", DateTime.Now);
+                
+                cmd.ExecuteNonQuery();
+            }
+            
+            return true;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error syncing inventory to items: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+    }
 }
-
 
 
 

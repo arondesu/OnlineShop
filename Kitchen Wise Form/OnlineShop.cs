@@ -2,11 +2,14 @@
 using System.Diagnostics;
 using Microsoft.Data.SqlClient;
 using OnlineShop.Kitchen_Wise_Form;
+using System.IO;
+using OnlineShop.DATABASE;
 
 namespace OnlineShop
 {
     public partial class MainShop : Form
     {
+        
         private const double DiscountRateLow = 0.10;
         private const double DiscountRateMid = 0.15;
         private const double DiscountRateHigh = 0.20;
@@ -17,6 +20,7 @@ namespace OnlineShop
 
         private Dictionary<string, Label> quantityLabels;
         private DBFunc dbFunc = new DBFunc();
+        private DBConn dbConn = new DBConn();
 
         public MainShop()
         {
@@ -58,6 +62,9 @@ namespace OnlineShop
 
             //THEN sync and update button states
             dbFunc.SyncQuantityLabelsAndButtons(quantityLabels, addButtons);
+            
+            // Now load dynamic products AFTER initializing quantityLabels
+            LoadDynamicProducts();
 
             // Subscribe to AddProductForm events
             var addProductForm = Application.OpenForms.OfType<Form>()
@@ -404,6 +411,197 @@ namespace OnlineShop
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        // Add this new method to load products dynamically from the database
+        private void LoadDynamicProducts()
+        {
+            try
+            {
+                // Create a flow layout panel for dynamic products
+                FlowLayoutPanel productPanel = new FlowLayoutPanel
+                {
+                    Width = 800,
+                    Height = 300,
+                    AutoScroll = true,
+                    FlowDirection = FlowDirection.LeftToRight,
+                    WrapContents = true,
+                    Padding = new Padding(10),
+                    Location = new Point(50, 450), // Position below existing content
+                    BorderStyle = BorderStyle.FixedSingle
+                };
+
+                // Get data from the items table
+                DataTable dt = GetItemsForShop();
+                
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    Label titleLabel = new Label
+                    {
+                        Text = "New Products",
+                        Font = new Font("Segoe UI", 14, FontStyle.Bold),
+                        ForeColor = Color.FromArgb(15, 26, 43),
+                        Location = new Point(50, 420),
+                        AutoSize = true
+                    };
+                    this.Controls.Add(titleLabel);
+
+                    // Create a product card for each item
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        // Inside LoadDynamicProducts method
+                        // Skip items that are already in the fixed product list
+                        string itemName = row["item_name"].ToString();
+                        if (quantityLabels != null && quantityLabels.ContainsKey(itemName))
+                            continue;
+
+                        // Create a panel for each product
+                        Panel productCard = new Panel
+                        {
+                            Width = 180,
+                            Height = 250,
+                            Margin = new Padding(10),
+                            BackColor = Color.White,
+                            BorderStyle = BorderStyle.FixedSingle
+                        };
+                        
+                        // Add product image
+                        PictureBox productImage = new PictureBox
+                        {
+                            Width = 160,
+                            Height = 120,
+                            Top = 10,
+                            Left = 10,
+                            SizeMode = PictureBoxSizeMode.Zoom,
+                            BorderStyle = BorderStyle.FixedSingle
+                        };
+                        
+                        // Try to load the image if available
+                        string imagePath = row["item_image"]?.ToString();
+                        if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+                        {
+                            try
+                            {
+                                productImage.Image = Image.FromFile(imagePath);
+                            }
+                            catch
+                            {
+                                // Use a default image if the file can't be loaded
+                                productImage.Image = null;
+                            }
+                        }
+                        
+                        // Add product details
+                        Label nameLabel = new Label
+                        {
+                            Text = itemName,
+                            Top = 140,
+                            Left = 10,
+                            Width = 160,
+                            Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                            TextAlign = ContentAlignment.MiddleCenter
+                        };
+                        
+                        Label typeLabel = new Label
+                        {
+                            Text = row["item_type"].ToString(),
+                            Top = 165,
+                            Left = 10,
+                            Width = 160,
+                            Font = new Font("Segoe UI", 8),
+                            TextAlign = ContentAlignment.MiddleCenter
+                        };
+                        
+                        Label priceLabel = new Label
+                        {
+                            Text = $"₱{Convert.ToDecimal(row["item_price"]):N2}",
+                            Top = 190,
+                            Left = 10,
+                            Width = 160,
+                            Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                            TextAlign = ContentAlignment.MiddleCenter,
+                            ForeColor = Color.FromArgb(15, 26, 43)
+                        };
+                        
+                        Button addToCartButton = new Button
+                        {
+                            Text = "Add to Cart",
+                            Top = 215,
+                            Left = 40,
+                            Width = 100,
+                            Height = 25,
+                            BackColor = Color.FromArgb(189, 196, 212),
+                            ForeColor = Color.FromArgb(15, 26, 43),
+                            FlatStyle = FlatStyle.Flat
+                        };
+                        
+                        // Store the product info in the button's Tag property
+                        addToCartButton.Tag = new object[] { itemName, Convert.ToDouble(row["item_price"]) };
+                        addToCartButton.Click += DynamicAddToCart_Click;
+                        
+                        // Add controls to the product card
+                        productCard.Controls.Add(productImage);
+                        productCard.Controls.Add(nameLabel);
+                        productCard.Controls.Add(typeLabel);
+                        productCard.Controls.Add(priceLabel);
+                        productCard.Controls.Add(addToCartButton);
+                        
+                        // Add the product card to the flow layout panel
+                        productPanel.Controls.Add(productCard);
+                    }
+                    
+                    // Only add the panel if it has products
+                    if (productPanel.Controls.Count > 0)
+                    {
+                        this.Controls.Add(productPanel);
+                    }
+                    else
+                    {
+                        titleLabel.Dispose();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading dynamic products: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DynamicAddToCart_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            object[] productInfo = btn.Tag as object[];
+            string itemName = (string)productInfo[0];
+            double itemPrice = (double)productInfo[1];
+            
+            // Use the existing AddItemToCart method
+            AddItemToCart(itemName, itemPrice);
+        }
+
+        private DataTable GetItemsForShop()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection conn = dbConn.GetConnection())
+                {
+                    conn.Open();
+                    string query = @"SELECT i.id, i.item_id, i.item_name, i.Description, 
+                                   i.item_type, i.item_stock, i.item_price, i.item_image 
+                                   FROM items i
+                                   WHERE i.date_delete IS NULL AND i.item_stock > 0
+                                   ORDER BY i.date_update DESC";
+                    
+                    using SqlCommand cmd = new SqlCommand(query, conn);
+                    using SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getting items for shop: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dt;
         }
     }
 }

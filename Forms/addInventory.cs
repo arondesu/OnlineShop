@@ -105,6 +105,15 @@ namespace OnlineShop
                 {
                     dataGridViewInventory.Columns["PurchasePrice"].Visible = false;
                 }
+                for (int i = 0; i < dataGridViewInventory.Columns.Count; i++)
+                 {
+                if (dataGridViewInventory.Columns[i].Name.Contains("Description"))
+                {
+                    // Set a reasonable fixed width for Description column
+                    dataGridViewInventory.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dataGridViewInventory.Columns[i].Width = 150; // Adjust this value as needed
+                }
+             }
             }
             catch (Exception ex)
             {
@@ -127,12 +136,12 @@ namespace OnlineShop
                 if (columnCount > 2) cmbItemType.Text = row.Cells[2].Value?.ToString() ?? "";
 
                 // Fix the swapped indexes - PurchasePrice is at index 3, InStock is at index 4
-                if (columnCount > 3) txtItemPrice.Text = row.Cells[3].Value?.ToString() ?? ""; 
-                if (columnCount > 4) txtItemStock.Text = row.Cells[4].Value?.ToString() ?? ""; 
+                if (columnCount > 3) txtItemPrice.Text = row.Cells[3].Value?.ToString() ?? "";
+                if (columnCount > 4) txtItemStock.Text = row.Cells[4].Value?.ToString() ?? "";
 
                 // Get status from the row (assuming it's at index 5)
                 if (columnCount > 5) cmbItemStatus.Text = row.Cells[5].Value?.ToString() ?? "Available";
-                
+
                 // Remove QuantityReturned code
             }
         }
@@ -190,7 +199,7 @@ namespace OnlineShop
                 {
                     status = "Available";
                 }
-                
+
                 // Update the status ComboBox to show the calculated status
                 cmbItemStatus.Text = status;
 
@@ -256,7 +265,7 @@ namespace OnlineShop
                 MessageBox.Show("Error adding inventory item: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -301,7 +310,7 @@ namespace OnlineShop
                 {
                     status = "Available";
                 }
-                
+
                 // Update the status ComboBox to show the calculated status
                 cmbItemStatus.Text = status;
 
@@ -401,12 +410,12 @@ namespace OnlineShop
                             itemCmd.ExecuteNonQuery();
                         }
 
-                        string message = quantityChange > 0 
+                        string message = quantityChange > 0
                             ? $"Inventory item updated successfully!\nQuantity Added: {quantityChange}"
-                            : quantityChange < 0 
+                            : quantityChange < 0
                                 ? $"Inventory item updated successfully!\nQuantity Deducted: {Math.Abs(quantityChange)}"
                                 : "Inventory item updated successfully!";
-                        
+
                         MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // Just refresh inventory data
@@ -426,7 +435,7 @@ namespace OnlineShop
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void btnClear_Click_1(object sender, EventArgs e)
         {
             ClearForm();
         }
@@ -452,5 +461,6 @@ namespace OnlineShop
         {
 
         }
+
     }
 }

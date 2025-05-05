@@ -1,60 +1,45 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\",
+  "WorkspaceRootPath": "D:\\VS REPOSITORY\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_WOOTS_SOURCE_REPOS_ONLINESHOP_DATABASE_APPLIANCE_DB.MDF/True/SqlTable/dbo.items.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\onlineshop\\forms\\addinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:forms\\addinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|C:\\Users\\Woots\\source\\repos\\OnlineShop\\forms\\addinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:forms\\addinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|C:\\Users\\Woots\\source\\repos\\OnlineShop\\kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_WOOTS_SOURCE_REPOS_ONLINESHOP_DATABASE_APPLIANCE_DB.MDF/True/SqlTable/dbo.inventory.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\onlineshop\\database\\dbfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\dbfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\onlineshop\\kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\onlineshop\\database\\funcforalll.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\funcforalll.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\onlineshop\\forms\\addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|d:\\vs repository\\forms\\addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:forms\\addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\onlineshop\\kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|d:\\vs repository\\forms\\addinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:forms\\addinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|C:\\Users\\Woots\\source\\repos\\OnlineShop\\forms\\addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|d:\\vs repository\\forms\\addinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:forms\\addinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/D__VS_REPOSITORY_DATABASE_APPLIANCE_DB.MDF/True/SqlTable/dbo.inventory.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|d:\\vs repository\\forms\\addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:forms\\addproductform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|C:\\Users\\Woots\\source\\repos\\OnlineShop\\kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\onlineshop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|d:\\vs repository\\kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:kitchen wise form\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\onlineshop\\database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|d:\\vs repository\\forms\\admindashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:forms\\admindashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|d:\\vs repository\\forms\\admindashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:forms\\admindashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|d:\\vs repository\\database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|c:\\users\\woots\\source\\repos\\onlineshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|d:\\vs repository\\database\\dbfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{967673B0-47A1-43AC-8901-D9E8E55906FD}|OnlineShop.csproj|solutionrelative:database\\dbfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -63,16 +48,20 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 599,
-          "SelectedChildIndex": -1,
+          "DockedHeight": 606,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Bookmark",
@@ -83,201 +72,142 @@
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{007a3a6b-b5b2-454d-a2bd-cf929f989be2}"
-            }
-          ]
-        },
-        {
-          "DockedHeight": 399,
-          "SelectedChildIndex": 2,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "dbo.items [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_WOOTS_SOURCE_REPOS_ONLINESHOP_DATABASE_APPLIANCE_DB.MDF/True/SqlTable/dbo.items.sql",
-              "ToolTip": "dbo.items [Data]",
+              "DocumentIndex": 3,
+              "Title": "dbo.inventory [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/D__VS_REPOSITORY_DATABASE_APPLIANCE_DB.MDF/True/SqlTable/dbo.inventory.sql",
+              "ToolTip": "dbo.inventory [Data]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-05-05T04:24:27.236Z",
+              "WhenOpened": "2025-05-05T13:58:40.973Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "addInventory.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Forms\\addInventory.cs",
+              "Title": "addInventory.cs",
+              "DocumentMoniker": "D:\\VS REPOSITORY\\Forms\\addInventory.cs",
               "RelativeDocumentMoniker": "Forms\\addInventory.cs",
-              "ToolTip": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Forms\\addInventory.cs [Design]",
-              "RelativeToolTip": "Forms\\addInventory.cs [Design]",
+              "ToolTip": "D:\\VS REPOSITORY\\Forms\\addInventory.cs",
+              "RelativeToolTip": "Forms\\addInventory.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAqwFAAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T02:39:02.638Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-05T13:58:18.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddProductForm.cs",
+              "DocumentMoniker": "D:\\VS REPOSITORY\\Forms\\AddProductForm.cs",
+              "RelativeDocumentMoniker": "Forms\\AddProductForm.cs",
+              "ToolTip": "D:\\VS REPOSITORY\\Forms\\AddProductForm.cs",
+              "RelativeToolTip": "Forms\\AddProductForm.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T12:05:16.476Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "addInventory.cs",
-              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Forms\\addInventory.cs",
+              "Title": "addInventory.cs [Design]",
+              "DocumentMoniker": "D:\\VS REPOSITORY\\Forms\\addInventory.cs",
               "RelativeDocumentMoniker": "Forms\\addInventory.cs",
-              "ToolTip": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Forms\\addInventory.cs",
-              "RelativeToolTip": "Forms\\addInventory.cs",
-              "ViewState": "AgIAANEAAAAAAAAAAAD4v14AAAAWAAAAAAAAAA==",
+              "ToolTip": "D:\\VS REPOSITORY\\Forms\\addInventory.cs [Design]",
+              "RelativeToolTip": "Forms\\addInventory.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T01:55:18.123Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T12:05:05.003Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "dbo.inventory.sql",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_WOOTS_SOURCE_REPOS_ONLINESHOP_DATABASE_APPLIANCE_DB.MDF/True/SqlTable/dbo.inventory.sql",
-              "ToolTip": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_WOOTS_SOURCE_REPOS_ONLINESHOP_DATABASE_APPLIANCE_DB.MDF/True/SqlTable/dbo.inventory.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-05-05T01:41:48.34Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "funcForAlll.sql",
-              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\DATABASE\\funcForAlll.sql",
-              "RelativeDocumentMoniker": "DATABASE\\funcForAlll.sql",
-              "ToolTip": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\DATABASE\\funcForAlll.sql",
-              "RelativeToolTip": "DATABASE\\funcForAlll.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-05-05T01:39:54.317Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AddProductForm.cs",
-              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Forms\\AddProductForm.cs",
-              "RelativeDocumentMoniker": "Forms\\AddProductForm.cs",
-              "ToolTip": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Forms\\AddProductForm.cs",
-              "RelativeToolTip": "Forms\\AddProductForm.cs",
-              "ViewState": "AgIAABIBAAAAAAAAAAAwwDsBAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T23:06:44.724Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "AddProductForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Forms\\AddProductForm.cs",
+              "DocumentMoniker": "D:\\VS REPOSITORY\\Forms\\AddProductForm.cs",
               "RelativeDocumentMoniker": "Forms\\AddProductForm.cs",
-              "ToolTip": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Forms\\AddProductForm.cs [Design]",
+              "ToolTip": "D:\\VS REPOSITORY\\Forms\\AddProductForm.cs [Design]",
               "RelativeToolTip": "Forms\\AddProductForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T23:02:38.809Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DBConn.cs",
-              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\DATABASE\\DBConn.cs",
-              "RelativeDocumentMoniker": "DATABASE\\DBConn.cs",
-              "ToolTip": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\DATABASE\\DBConn.cs",
-              "RelativeToolTip": "DATABASE\\DBConn.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAoAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T19:48:37.861Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DBFunc.cs",
-              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\DATABASE\\DBFunc.cs",
-              "RelativeDocumentMoniker": "DATABASE\\DBFunc.cs",
-              "ToolTip": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\DATABASE\\DBFunc.cs",
-              "RelativeToolTip": "DATABASE\\DBFunc.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAowJEAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T19:48:36.735Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Inventory.cs",
-              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Kitchen Wise Form\\Inventory.cs",
-              "RelativeDocumentMoniker": "Kitchen Wise Form\\Inventory.cs",
-              "ToolTip": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Kitchen Wise Form\\Inventory.cs",
-              "RelativeToolTip": "Kitchen Wise Form\\Inventory.cs",
-              "ViewState": "AgIAAJcAAAAAAAAAAAAwwK0AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T11:28:11.644Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Inventory.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Kitchen Wise Form\\Inventory.cs",
-              "RelativeDocumentMoniker": "Kitchen Wise Form\\Inventory.cs",
-              "ToolTip": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Kitchen Wise Form\\Inventory.cs [Design]",
-              "RelativeToolTip": "Kitchen Wise Form\\Inventory.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T11:27:35.117Z"
+              "WhenOpened": "2025-05-05T12:05:10.567Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "OnlineShop.cs",
-              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Kitchen Wise Form\\OnlineShop.cs",
-              "RelativeDocumentMoniker": "Kitchen Wise Form\\OnlineShop.cs",
-              "ToolTip": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Kitchen Wise Form\\OnlineShop.cs",
-              "RelativeToolTip": "Kitchen Wise Form\\OnlineShop.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAANAAAAAAAAAA==",
+              "Title": "AdminDashboardForm.cs",
+              "DocumentMoniker": "D:\\VS REPOSITORY\\Forms\\AdminDashboardForm.cs",
+              "RelativeDocumentMoniker": "Forms\\AdminDashboardForm.cs",
+              "ToolTip": "D:\\VS REPOSITORY\\Forms\\AdminDashboardForm.cs",
+              "RelativeToolTip": "Forms\\AdminDashboardForm.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAA9wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T09:56:54.567Z",
+              "WhenOpened": "2025-05-05T12:04:04.912Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "AdminDashboardForm.cs [Design]",
+              "DocumentMoniker": "D:\\VS REPOSITORY\\Forms\\AdminDashboardForm.cs",
+              "RelativeDocumentMoniker": "Forms\\AdminDashboardForm.cs",
+              "ToolTip": "D:\\VS REPOSITORY\\Forms\\AdminDashboardForm.cs [Design]",
+              "RelativeToolTip": "Forms\\AdminDashboardForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T15:25:08.428Z"
+              "WhenOpened": "2025-05-05T12:04:00.625Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "OnlineShop.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Kitchen Wise Form\\OnlineShop.cs",
-              "RelativeDocumentMoniker": "Kitchen Wise Form\\OnlineShop.cs",
-              "ToolTip": "C:\\Users\\Woots\\source\\repos\\OnlineShop\\Kitchen Wise Form\\OnlineShop.cs [Design]",
-              "RelativeToolTip": "Kitchen Wise Form\\OnlineShop.cs [Design]",
+              "DocumentIndex": 5,
+              "Title": "Inventory.cs",
+              "DocumentMoniker": "D:\\VS REPOSITORY\\Kitchen Wise Form\\Inventory.cs",
+              "RelativeDocumentMoniker": "Kitchen Wise Form\\Inventory.cs",
+              "ToolTip": "D:\\VS REPOSITORY\\Kitchen Wise Form\\Inventory.cs",
+              "RelativeToolTip": "Kitchen Wise Form\\Inventory.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAiwCMAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T14:03:50.821Z"
+              "WhenOpened": "2025-05-04T16:57:11.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DBConn.cs",
+              "DocumentMoniker": "D:\\VS REPOSITORY\\DATABASE\\DBConn.cs",
+              "RelativeDocumentMoniker": "DATABASE\\DBConn.cs",
+              "ToolTip": "D:\\VS REPOSITORY\\DATABASE\\DBConn.cs",
+              "RelativeToolTip": "DATABASE\\DBConn.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T12:00:22.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DBFunc.cs",
+              "DocumentMoniker": "D:\\VS REPOSITORY\\DATABASE\\DBFunc.cs",
+              "RelativeDocumentMoniker": "DATABASE\\DBFunc.cs",
+              "ToolTip": "D:\\VS REPOSITORY\\DATABASE\\DBFunc.cs",
+              "RelativeToolTip": "DATABASE\\DBFunc.cs",
+              "ViewState": "AgIAAIMBAAAAAAAAAAArwKQBAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T16:56:38.482Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedHeight": 387,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }

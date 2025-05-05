@@ -21,10 +21,14 @@ namespace OnlineShop
 
         private DBConn dbConn = new DBConn();
 
+        //Items form
         public AddProductForm()
         {
             InitializeComponent();
             dbFunc = new DBFunc();
+            
+            // Sync inventory data to items table
+            dbFunc.SyncInventoryToItems();
             
             // Load the data
             itemListData();
@@ -51,11 +55,12 @@ namespace OnlineShop
                 using SqlConnection conn = dbConn.GetConnection();
                 conn.Open();
 
-                string query = @"SELECT id, item_id, item_name, item_type, Description, 
-                                item_stock, item_price, item_image, date_insert, date_update 
-                                FROM items 
-                                WHERE date_delete IS NULL 
-                                ORDER BY date_update DESC";
+                // Modified query to include inventory data
+                string query = @"SELECT i.id, i.item_id, i.item_name, i.item_type, i.Description, 
+                                i.item_stock, i.item_price, i.item_image, i.date_insert, i.date_update 
+                                FROM items i
+                                WHERE i.date_delete IS NULL 
+                                ORDER BY i.date_update DESC";
 
                 using SqlCommand cmd = new SqlCommand(query, conn);
                 using SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -69,12 +74,21 @@ namespace OnlineShop
                 dataGridView1.ReadOnly = true;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dataGridView1.MultiSelect = false;
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
-                // Set the DataSource
+                // After setting the DataSource, adjust the Description column if it exists
                 dataGridView1.DataSource = dt;
 
-                // Format specific columns
+                // Format specific columns - handle the Description column specially
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                {
+                    if (dataGridView1.Columns[i].Name.Contains("Description"))
+                    {
+                        // Set a reasonable fixed width for Description column
+                        dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                        dataGridView1.Columns[i].Width = 150; // Adjust this value as needed
+                    }
+                }
                 if (dataGridView1.Columns["item_price"] != null)
                     dataGridView1.Columns["item_price"].DefaultCellStyle.Format = "C2";
                 if (dataGridView1.Columns["date_insert"] != null)
