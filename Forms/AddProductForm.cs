@@ -21,15 +21,18 @@ namespace OnlineShop
 
         private DBConn dbConn = new DBConn();
 
+        // Add this event
+        public event EventHandler DataChanged;
+
         //Items form
         public AddProductForm()
         {
             InitializeComponent();
             dbFunc = new DBFunc();
-            
+
             // Sync inventory data to items table
             dbFunc.SyncInventoryToItems();
-            
+
             // Load the data
             itemListData();
 
@@ -104,7 +107,7 @@ namespace OnlineShop
             }
         }
         AddItemData addItemData = new AddItemData();
-private List<AddItemData> listDatas;
+        private List<AddItemData> listDatas;
 
         // Add event to notify when product is added
         // Modify the event to include product information
@@ -131,11 +134,11 @@ private List<AddItemData> listDatas;
             string description = txtDescription.Text.Trim();
 
             // Check if any fields are empty or contain only whitespace
-            if (string.IsNullOrWhiteSpace(itemId) || 
-                string.IsNullOrWhiteSpace(itemName) || 
-                string.IsNullOrWhiteSpace(itemType) || 
-                string.IsNullOrWhiteSpace(itemStock) || 
-                string.IsNullOrWhiteSpace(itemPrice) || 
+            if (string.IsNullOrWhiteSpace(itemId) ||
+                string.IsNullOrWhiteSpace(itemName) ||
+                string.IsNullOrWhiteSpace(itemType) ||
+                string.IsNullOrWhiteSpace(itemStock) ||
+                string.IsNullOrWhiteSpace(itemPrice) ||
                 string.IsNullOrWhiteSpace(description))
             {
                 MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -147,25 +150,17 @@ private List<AddItemData> listDatas;
 
             if (isAdded)
             {
+                // After successful addition
                 MessageBox.Show("Product added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
-                // Create event args with product info - keep as strings
-                var args = new ProductEventArgs
-                {
-                    ItemId = itemId,
-                    ItemName = itemName,
-                    ItemStock = itemStock,
-                    ItemPrice = itemPrice
-                };
+                // Refresh both grids
+                itemListData();
+                DataChanged?.Invoke(this, EventArgs.Empty);
                 
-                // Notify subscribers that a product was added
-                ProductAdded?.Invoke(this, args);
-                
-                // Clear fields and refresh
+               // Clear fields and refresh
                 dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
                 txtDescription.Items.Clear();
                 txtDescription.Text = "";
-                itemListData();
             }
             else
             {
@@ -291,11 +286,11 @@ private List<AddItemData> listDatas;
             string description = txtDescription.Text.Trim();
 
             // Check if any fields are empty or contain only whitespace
-            if (string.IsNullOrWhiteSpace(itemId) || 
-                string.IsNullOrWhiteSpace(itemName) || 
-                string.IsNullOrWhiteSpace(itemType) || 
-                string.IsNullOrWhiteSpace(itemStock) || 
-                string.IsNullOrWhiteSpace(itemPrice) || 
+            if (string.IsNullOrWhiteSpace(itemId) ||
+                string.IsNullOrWhiteSpace(itemName) ||
+                string.IsNullOrWhiteSpace(itemType) ||
+                string.IsNullOrWhiteSpace(itemStock) ||
+                string.IsNullOrWhiteSpace(itemPrice) ||
                 string.IsNullOrWhiteSpace(description))
             {
                 MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -306,37 +301,72 @@ private List<AddItemData> listDatas;
             try
             {
                 connection.Open();
-                string updateData = @"UPDATE items 
-                            SET item_id = @item_id,
-                                item_name = @item_name, 
-                                item_type = @item_type, 
-                                item_stock = @item_stock,
-                                item_price = @item_price, 
-                                Description = @description, 
-                                date_update = @date_update
-                            WHERE id = @id";
+                using var transaction = connection.BeginTransaction();
 
-                using SqlCommand updateD = new SqlCommand(updateData, connection);
-                
-                // Add parameters with proper type checking
-                updateD.Parameters.AddWithValue("@item_id", txtItem_id.Text.Trim());
-                updateD.Parameters.AddWithValue("@item_name", txtItem_name.Text.Trim());
-                updateD.Parameters.AddWithValue("@item_type", txtItem_type.Text.Trim());
-                updateD.Parameters.AddWithValue("@item_stock", int.Parse(txtItem_stock.Text.Trim()));
-                updateD.Parameters.AddWithValue("@item_price", float.Parse(txtItem_price.Text.Trim()));
-                updateD.Parameters.AddWithValue("@description", txtDescription.Text.Trim());
-                updateD.Parameters.AddWithValue("@date_update", DateTime.Today);
-                updateD.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells["id"].Value);
+                try
+                {
+                    // Update items table
+                    string updateData = @"UPDATE items 
+                                SET item_id = @item_id,
+                                    item_name = @item_name, 
+                                    item_type = @item_type, 
+                                    item_stock = @item_stock,
+                                    item_price = @item_price, 
+                                    Description = @description, 
+                                    date_update = @date_update
+                                WHERE id = @id";
 
-                updateD.ExecuteNonQuery();
+                    using SqlCommand updateD = new SqlCommand(updateData, connection, transaction);
 
-                MessageBox.Show("Product ID: " + txtItem_id.Text.Trim() + " updated successfully!", "Update Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
-                itemListData();
+                    updateD.Parameters.AddWithValue("@item_id", txtItem_id.Text.Trim());
+                    updateD.Parameters.AddWithValue("@item_name", txtItem_name.Text.Trim());
+                    updateD.Parameters.AddWithValue("@item_type", txtItem_type.Text.Trim());
+                    updateD.Parameters.AddWithValue("@item_stock", int.Parse(txtItem_stock.Text.Trim()));
+                    updateD.Parameters.AddWithValue("@item_price", float.Parse(txtItem_price.Text.Trim()));
+                    updateD.Parameters.AddWithValue("@description", txtDescription.Text.Trim());
+                    updateD.Parameters.AddWithValue("@date_update", DateTime.Today);
+                    updateD.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells["id"].Value);
+
+                    updateD.ExecuteNonQuery();
+
+                    // Update inventory table
+                    string updateInventory = @"UPDATE Inventory 
+                                     SET InStock = @item_stock,
+                                         PurchasePrice = @item_price,
+                                         Status = CASE 
+                                                    WHEN @item_stock = 0 THEN 'Out of Stock'
+                                                    WHEN @item_stock <= 15 THEN 'Low Stock'
+                                                    ELSE 'Available'
+                                                 END
+                                     WHERE ProductName = @item_name";
+
+                    using SqlCommand updateInv = new SqlCommand(updateInventory, connection, transaction);
+                    updateInv.Parameters.AddWithValue("@item_stock", int.Parse(txtItem_stock.Text.Trim()));
+                    updateInv.Parameters.AddWithValue("@item_price", float.Parse(txtItem_price.Text.Trim()));
+                    updateInv.Parameters.AddWithValue("@item_name", txtItem_name.Text.Trim());
+
+                    updateInv.ExecuteNonQuery();
+
+                    transaction.Commit();
+
+                    MessageBox.Show("Product ID: " + txtItem_id.Text.Trim() + " updated successfully!", "Update Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    // Refresh both grids
+                    itemListData();
+                    DataChanged?.Invoke(this, EventArgs.Empty);
+                    
+                    // Clear the form
+                    dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Error updating product: " + ex.Message, "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Update Failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Connection Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -353,52 +383,90 @@ private List<AddItemData> listDatas;
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow != null)
+            if (string.IsNullOrWhiteSpace(txtItem_id.Text))
             {
-                string itemId = txtItem_id.Text.Trim();
+                MessageBox.Show("Please select an item to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                DialogResult result = MessageBox.Show(
-                    "Are you sure you want to delete this product?",
-                    "Confirm Delete",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
-
-                if (result == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to delete this item?", "Confirm Delete",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                using SqlConnection conn = dbConn.GetConnection();
+                try
                 {
-                    using (SqlConnection connection = dbConn.GetConnection())
+                    conn.Open();
+                    string deleteQuery = @"UPDATE items 
+                                    SET date_delete = GETDATE() 
+                                    WHERE item_id = @itemId AND date_delete IS NULL";
+
+                    using SqlCommand cmd = new SqlCommand(deleteQuery, conn);
+                    cmd.Parameters.AddWithValue("@itemId", txtItem_id.Text.Trim());
+
+                    int result = cmd.ExecuteNonQuery();
+
+                    if (result > 0)
                     {
-                        try
-                        {
-                            connection.Open();
-                            string deleteQuery = "DELETE FROM items WHERE item_id = @item_id";
+                        MessageBox.Show("Item deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            using (SqlCommand cmd = new SqlCommand(deleteQuery, connection))
-                            {
-                                cmd.Parameters.AddWithValue("@item_id", itemId);
-                                cmd.ExecuteNonQuery();
-                            }
-
-                            MessageBox.Show("Product deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
-                            itemListData();
-                        }
-                        catch (Exception ex)
+                        // Notify subscribers that a product was deleted
+                        var args = new ProductEventArgs
                         {
-                            MessageBox.Show("Error deleting product: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                            ItemId = txtItem_id.Text.Trim(),
+                            ItemName = txtItem_name.Text.Trim(),
+                            ItemStock = txtItem_stock.Text.Trim(),
+                            ItemPrice = txtItem_price.Text.Trim()
+                        };
+
+                        ProductDeleted?.Invoke(this, args);
+
+                        // Clear fields and refresh
+                        dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
+                        txtDescription.Items.Clear();
+                        txtDescription.Text = "";
+                        itemListData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item not found or already deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Please select a product to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting item: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1_CellClick(sender, e);
+        }
+
+        private void txtItem_stock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtItem_stock.KeyPress += txtItem_stock_KeyPress;
+            // Allow only digits and control characters
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtItem_price_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtItem_price.KeyPress += txtItem_price_KeyPress;
+            // Allow digits, decimal point, and control characters
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            // Allow only one decimal point
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

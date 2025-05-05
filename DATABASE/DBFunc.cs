@@ -79,12 +79,13 @@ public class DBFunc
             using SqlConnection conn = dbConn.GetConnection();
             conn.Open();
 
-            // Checking if the item ID already exists
-            string IDSelection = "SELECT * FROM items WHERE item_id = @item_ID";
+            // Check for duplicate item ID
+            string IDSelection = "SELECT * FROM items WHERE item_id = @item_ID OR item_name = @item_name";
 
             using (SqlCommand selectItemID = new SqlCommand(IDSelection, conn))
             {
                 selectItemID.Parameters.AddWithValue("@item_ID", txtItem_id.Trim());
+                selectItemID.Parameters.AddWithValue("@item_name", txtItem_name.Trim());
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(selectItemID))
                 {
@@ -93,22 +94,20 @@ public class DBFunc
 
                     if (dataTable.Rows.Count >= 1)
                     {
-                        MessageBox.Show($"Product ID: {txtItem_id.Trim()} already exists. Please use a unique ID.",
-                            "Duplicate ID Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false; // Exit early to prevent further processing
+                        string duplicateField = dataTable.Rows[0]["item_id"].ToString() == txtItem_id.Trim() ? "ID" : "name";
+                        MessageBox.Show($"Product {duplicateField}: {(duplicateField == "ID" ? txtItem_id.Trim() : txtItem_name.Trim())} already exists. Please use a unique {duplicateField.ToLower()}.",
+                            "Duplicate Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
                     }
-                    else
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
         }
         catch (Exception ex)
         {
+            MessageBox.Show("Error checking item: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
-
     }
 
     //FUNCTION FOR ADDING PRODUCT
@@ -137,121 +136,56 @@ public class DBFunc
         conn.Open();
 
         // Corrected query matching table columns
-
-        string insertData = "INSERT INTO items (item_id, item_name, item_type, Description, item_stock, item_price, item_image, date_insert) " +
-                           "VALUES (@itemID, @itemName, @itemType, @Description, @itemStock, @itemPrice, @itemImage, @dateInsert)";
-
-        DateTime today = DateTime.Now;
-
-        string directoryPath = @"D:\VS REPOSITORY\Item_Directory";
-        if (!Directory.Exists(directoryPath))
-        {
-            Directory.CreateDirectory(directoryPath);
-        }
-
-        string fileName = txtItem_id.Trim() + Path.GetExtension(AddProductForm_imageView);
-        string path = Path.Combine(directoryPath, fileName);
-
-        if (string.IsNullOrEmpty(AddProductForm_imageView))
-        {
-            MessageBox.Show("Please select an image for the product.", "Image Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
-        }
+        string insertData = "INSERT INTO items (item_id, item_name, item_type, Description, item_stock, item_price, date_insert) " +
+                           "VALUES (@itemID, @itemName, @itemType, @Description, @itemStock, @itemPrice, @dateInsert)";
 
         try
         {
-            if (File.Exists(AddProductForm_imageView))
-            {
-                File.Copy(AddProductForm_imageView, path, true);
-            }
-            else
-            {
-                MessageBox.Show("Source image file not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show("Error saving image: " + ex.Message, "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;
-        }
-
-        using (SqlCommand cmd = new SqlCommand(insertData, conn))
-        {
+            using SqlCommand cmd = new SqlCommand(insertData, conn);
             cmd.Parameters.AddWithValue("@itemID", txtItem_id.Trim());
             cmd.Parameters.AddWithValue("@itemName", txtItem_name.Trim());
             cmd.Parameters.AddWithValue("@itemType", txtItem_type.Trim());
             cmd.Parameters.AddWithValue("@Description", txtDescription.Trim());
-            cmd.Parameters.AddWithValue("@itemStock", itemStock); // Use parsed integer
-            cmd.Parameters.AddWithValue("@itemPrice", itemPrice); // Use parsed decimal
-            cmd.Parameters.AddWithValue("@itemImage", path);
-            cmd.Parameters.AddWithValue("@dateInsert", today);
+            cmd.Parameters.AddWithValue("@itemStock", itemStock);
+            cmd.Parameters.AddWithValue("@itemPrice", itemPrice);
+            cmd.Parameters.AddWithValue("@dateInsert", DateTime.Now);
 
-            try
-            {
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Product ID: " + txtItem_id.Trim() + " added successfully.", "Success Message",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Database error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            cmd.ExecuteNonQuery();
+            
+            // After successfully adding the product, sync the inventory
+            SyncInventoryToItems();
+            
+            return true;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error adding product: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
         }
     }
 
 
     //FUNCTION FOR 
-    public DataTable checkInvTable(string ProductID) //to be checked if working 
+    public DataTable checkInvTable(string ProductID)
+{
+    try
     {
-        try
-        {
-            using SqlConnection connection = dbConn.GetConnection();
-            connection.Open();
+        using SqlConnection connection = dbConn.GetConnection();
+        connection.Open();
 
-            // Test if table exists
-            string checkTable = "SELECT COUNT(*) FROM sys.tables WHERE name = 'inventory'";
-            using SqlCommand cmdTable = new SqlCommand(checkTable, connection);
+        string query = "SELECT * FROM Inventory";
+        using SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+        DataTable dt = new DataTable();
+        adapter.Fill(dt);
 
-            int tableExists = Convert.ToInt32(cmdTable.ExecuteScalar());
-
-            if (tableExists == 0)
-            {
-                MessageBox.Show("Inventory table does not exist!");
-                return new DataTable(); // Return an empty DataTable instead of null
-            }
-
-            // Test if data exists
-            string countQuery = "SELECT COUNT(*) FROM inventory";
-            using SqlCommand cmdData = new SqlCommand(countQuery, connection);
-
-            int rowCount = Convert.ToInt32(cmdData.ExecuteScalar());
-            Console.WriteLine($"Number of rows in Inventory: {rowCount}");
-
-            // Original data loading code
-            string query = "SELECT * FROM Inventory";
-            SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-
-            if (dt.Rows.Count > 0)
-            {
-                return dt;
-            }
-            else
-            {
-                MessageBox.Show("No data found in the Inventory table.");
-                return new DataTable(); // Return an empty DataTable if no rows exist
-            }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show("Connection Error: " + ex.Message + "\n\nStack Trace: " + ex.StackTrace, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return new DataTable(); // Return an empty DataTable in case of an exception
-        }
+        return dt; // Always return the DataTable, even if empty
     }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Connection Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return new DataTable();
+    }
+}
 
 
     //FUNCTION FOR ADDING STOCK ON ITEMS(SHOP) WITH BUTTON CONTROL
@@ -447,50 +381,70 @@ public class DBFunc
             using SqlConnection conn = dbConn.GetConnection();
             conn.Open();
             
-            // First, get all inventory items that aren't in the items table
-            string query = @"
-                SELECT i.* 
-                FROM Inventory i
-                LEFT JOIN items it ON i.ProductName = it.item_name
-                WHERE it.item_name IS NULL";
-                
-            SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
-            DataTable inventoryItems = new DataTable();
-            adapter.Fill(inventoryItems);
-            
-            if (inventoryItems.Rows.Count == 0)
+            using var transaction = conn.BeginTransaction();
+            try
             {
-                return true; // No items to sync
-            }
-            
-            // For each inventory item not in items table, add it
-            foreach (DataRow row in inventoryItems.Rows)
-            {
-                string insertQuery = @"
-                    INSERT INTO items (item_id, item_name, item_type, item_stock, item_price, Description, date_insert, date_update)
-                    VALUES (@itemId, @itemName, @itemType, @itemStock, @itemPrice, @description, @dateInsert, @dateInsert)";
+                // First, sync existing items
+                string updateQuery = @"
+                    UPDATE it
+                    SET item_stock = i.InStock,
+                        item_price = i.PurchasePrice,
+                        date_update = GETDATE()
+                    FROM items it
+                    INNER JOIN Inventory i ON i.ProductName = it.item_name
+                    WHERE it.date_delete IS NULL";
                     
-                using SqlCommand cmd = new SqlCommand(insertQuery, conn);
+                using (SqlCommand updateCmd = new SqlCommand(updateQuery, conn, transaction))
+                {
+                    updateCmd.ExecuteNonQuery();
+                }
                 
-                // Generate a unique item_id
-                string itemId = "ITM" + DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(100, 999);
+                // Get the current maximum item_id number
+                string getMaxIdQuery = @"
+                    SELECT ISNULL(MAX(CAST(SUBSTRING(item_id, 5, LEN(item_id) - 4) AS INT)), 0)
+                    FROM items 
+                    WHERE item_id LIKE 'ITM-%'";
                 
-                cmd.Parameters.AddWithValue("@itemId", itemId);
-                cmd.Parameters.AddWithValue("@itemName", row["ProductName"]);
-                cmd.Parameters.AddWithValue("@itemType", "Kitchen Item"); // Default value since inventory doesn't have item_type
-                cmd.Parameters.AddWithValue("@itemStock", row["InStock"]);
-                cmd.Parameters.AddWithValue("@itemPrice", row["PurchasePrice"]);
-                cmd.Parameters.AddWithValue("@description", row["Description"] ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@dateInsert", DateTime.Now);
+                int nextId;
+                using (SqlCommand maxIdCmd = new SqlCommand(getMaxIdQuery, conn, transaction))
+                {
+                    nextId = Convert.ToInt32(maxIdCmd.ExecuteScalar()) + 1;
+                }
                 
-                cmd.ExecuteNonQuery();
+                // Then, add new items that don't exist
+                string insertQuery = @"
+                    INSERT INTO items (item_id, item_name, item_type, item_stock, item_price, Description, date_insert)
+                    SELECT 
+                        'ITM-' + RIGHT('0000' + CAST(ROW_NUMBER() OVER (ORDER BY i.ProductName) + @nextId - 1 AS VARCHAR(4)), 4),
+                        i.ProductName,
+                        'General',
+                        i.InStock,
+                        i.PurchasePrice,
+                        ISNULL(i.Description, ''),
+                        GETDATE()
+                    FROM Inventory i
+                    LEFT JOIN items it ON i.ProductName = it.item_name
+                    WHERE it.item_name IS NULL";
+                    
+                using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn, transaction))
+                {
+                    insertCmd.Parameters.AddWithValue("@nextId", nextId);
+                    insertCmd.ExecuteNonQuery();
+                }
+                
+                transaction.Commit();
+                return true;
             }
-            
-            return true;
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                MessageBox.Show("Error syncing inventory: " + ex.Message);
+                return false;
+            }
         }
         catch (Exception ex)
         {
-            MessageBox.Show("Error syncing inventory to items: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Error syncing inventory: " + ex.Message);
             return false;
         }
     }

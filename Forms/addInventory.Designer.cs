@@ -28,8 +28,10 @@ namespace OnlineShop
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel4 = new Panel();
+            label1 = new Label();
+            cmbItemType = new ComboBox();
             cmbItemStatus = new ComboBox();
             btnClear = new Button();
             btnUpdate = new Button();
@@ -45,8 +47,6 @@ namespace OnlineShop
             prdctlbl = new Label();
             dataGridViewInventory = new DataGridView();
             panel1 = new Panel();
-            cmbItemType = new ComboBox();
-            label1 = new Label();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInventory).BeginInit();
             panel1.SuspendLayout();
@@ -74,6 +74,27 @@ namespace OnlineShop
             panel4.Name = "panel4";
             panel4.Size = new Size(900, 206);
             panel4.TabIndex = 3;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(97, 110);
+            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(51, 21);
+            label1.TabIndex = 26;
+            label1.Text = "Type:";
+            // 
+            // cmbItemType
+            // 
+            cmbItemType.FormattingEnabled = true;
+            cmbItemType.Items.AddRange(new object[] { "Available", "Unavailabe" });
+            cmbItemType.Location = new Point(178, 108);
+            cmbItemType.Name = "cmbItemType";
+            cmbItemType.Size = new Size(182, 23);
+            cmbItemType.TabIndex = 25;
             // 
             // cmbItemStatus
             // 
@@ -132,6 +153,7 @@ namespace OnlineShop
             txtItemPrice.Name = "txtItemPrice";
             txtItemPrice.Size = new Size(127, 23);
             txtItemPrice.TabIndex = 15;
+            txtItemPrice.KeyPress += txtItemPrice_KeyPress;
             // 
             // txtItemStock
             // 
@@ -139,6 +161,7 @@ namespace OnlineShop
             txtItemStock.Name = "txtItemStock";
             txtItemStock.Size = new Size(127, 23);
             txtItemStock.TabIndex = 14;
+            txtItemStock.KeyPress += txtItemStock_KeyPress;
             // 
             // txtItemName
             // 
@@ -223,51 +246,37 @@ namespace OnlineShop
             dataGridViewInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewInventory.BackgroundColor = Color.FromArgb(209, 207, 201);
             dataGridViewInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridViewInventory.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridViewInventory.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewInventory.Location = new Point(-1, 0);
             dataGridViewInventory.Margin = new Padding(3, 2, 3, 2);
             dataGridViewInventory.Name = "dataGridViewInventory";
             dataGridViewInventory.RowHeadersWidth = 51;
-            dataGridViewInventory.Size = new Size(900, 346);
-            dataGridViewInventory.TabIndex = 4;
-            dataGridViewInventory.CellContentClick += dataGridViewInventory_CellContentClick;
-            // 
-            // panel1
-            // 
+            // Configure panel1
             panel1.Controls.Add(dataGridViewInventory);
             panel1.Location = new Point(1, -1);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
             panel1.Size = new Size(900, 334);
             panel1.TabIndex = 5;
+            panel1.AutoScroll = true;
+            panel1.AutoScrollMinSize = new Size(0, panel1.Height + 1);
+
+            // Configure DataGridView
+            dataGridViewInventory.Size = new Size(900, 346);
+            dataGridViewInventory.TabIndex = 4;
+            dataGridViewInventory.Dock = DockStyle.Fill;
+            dataGridViewInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewInventory.CellContentClick += dataGridViewInventory_CellContentClick;
             // 
-            // cmbItemType
+            // panel1
             // 
-            cmbItemType.FormattingEnabled = true;
-            cmbItemType.Items.AddRange(new object[] { "Available", "Unavailabe" });
-            cmbItemType.Location = new Point(178, 108);
-            cmbItemType.Name = "cmbItemType";
-            cmbItemType.Size = new Size(182, 23);
-            cmbItemType.TabIndex = 25;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(97, 110);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(51, 21);
-            label1.TabIndex = 26;
-            label1.Text = "Type:";
             // 
             // addInventory
             // 

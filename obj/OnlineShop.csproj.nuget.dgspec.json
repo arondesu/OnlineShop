@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\VS REPOSITORY\\OnlineShop.csproj": {}
+    "D:\\VS REPOS\\OnlineShop.csproj": {}
   },
   "projects": {
-    "D:\\VS REPOSITORY\\OnlineShop.csproj": {
+    "D:\\VS REPOS\\OnlineShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\VS REPOSITORY\\OnlineShop.csproj",
+        "projectUniqueName": "D:\\VS REPOS\\OnlineShop.csproj",
         "projectName": "OnlineShop",
-        "projectPath": "D:\\VS REPOSITORY\\OnlineShop.csproj",
+        "projectPath": "D:\\VS REPOS\\OnlineShop.csproj",
         "packagesPath": "C:\\Users\\Nikke\\.nuget\\packages\\",
-        "outputPath": "D:\\VS REPOSITORY\\obj\\",
+        "outputPath": "D:\\VS REPOS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Visual Studio SDK\\NuGetPackages"

@@ -18,6 +18,8 @@ namespace OnlineShop
     {
         private DBFunc dbFunc = new DBFunc();
         private string imagePath = string.Empty;
+        // Add this event
+        public event EventHandler DataChanged;
         // Remove the txtQuantityReturned field declaration
 
         public addInventory()
@@ -106,14 +108,14 @@ namespace OnlineShop
                     dataGridViewInventory.Columns["PurchasePrice"].Visible = false;
                 }
                 for (int i = 0; i < dataGridViewInventory.Columns.Count; i++)
-                 {
-                if (dataGridViewInventory.Columns[i].Name.Contains("Description"))
                 {
-                    // Set a reasonable fixed width for Description column
-                    dataGridViewInventory.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                    dataGridViewInventory.Columns[i].Width = 150; // Adjust this value as needed
+                    if (dataGridViewInventory.Columns[i].Name.Contains("Description"))
+                    {
+                        // Set a reasonable fixed width for Description column
+                        dataGridViewInventory.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                        dataGridViewInventory.Columns[i].Width = 150; // Adjust this value as needed
+                    }
                 }
-             }
             }
             catch (Exception ex)
             {
@@ -151,9 +153,6 @@ namespace OnlineShop
             // This can be the same as CellClick or left empty if not needed
             dataGridViewInventory_CellClick(sender, e);
         }
-
-        // Add event to notify when inventory changes
-        public event EventHandler InventoryChanged;
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -229,34 +228,33 @@ namespace OnlineShop
                     }
 
                     // Now insert into items table using the same ID
+                    // In the btnAdd_Click method, modify the items table insertion part
                     string insertItemQuery = @"INSERT INTO items 
-                                        (item_name, item_type, Description, item_stock, item_price, date_insert) 
-                                        VALUES 
-                                        (@ItemName, @ItemType, @Description, @Stock, @Price, GETDATE())";
+                    (item_id, item_name, item_type, Description, item_stock, item_price, date_insert) 
+                    VALUES 
+                    (@ItemId, @ItemName, @ItemType, @Description, @Stock, @Price, GETDATE())";
 
                     using (SqlCommand itemCmd = new SqlCommand(insertItemQuery, conn))
                     {
-                        itemCmd.Parameters.AddWithValue("@ItemName", txtItemName.Text.Trim());  // Using ProductName as ItemName
+                        itemCmd.Parameters.AddWithValue("@ItemId", newInventoryId);  // Use the ID from Inventory table
+                        itemCmd.Parameters.AddWithValue("@ItemName", txtItemName.Text.Trim());
                         itemCmd.Parameters.AddWithValue("@ItemType", cmbItemType.Text.Trim());
-                        itemCmd.Parameters.AddWithValue("@Description", cmbItemType.Text.Trim());  // Using same Description
-                        itemCmd.Parameters.AddWithValue("@Stock", stock);  // Using InStock value
-                        itemCmd.Parameters.AddWithValue("@Price", price);  // Using PurchasePrice value
+                        itemCmd.Parameters.AddWithValue("@Description", cmbItemType.Text.Trim());
+                        itemCmd.Parameters.AddWithValue("@Stock", stock);
+                        itemCmd.Parameters.AddWithValue("@Price", price);
 
                         itemCmd.ExecuteNonQuery();
                     }
 
+                    // After successful addition
                     MessageBox.Show("Inventory item added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    // Refresh both grids
+                    LoadInventoryData();
+                    DataChanged?.Invoke(this, EventArgs.Empty);
                     // Update the ID textbox with the new ID
                     txtItemId.Text = newInventoryId.ToString();
-
-                    // Refresh the data grid
-                    LoadInventoryData();
-
-                    // Notify subscribers that inventory has changed
-                    InventoryChanged?.Invoke(this, EventArgs.Empty);
-
-                    // Clear the form
+                    // Clear the form fields
                     ClearForm();
                 }
             }
@@ -421,9 +419,6 @@ namespace OnlineShop
                         // Just refresh inventory data
                         LoadInventoryData();
 
-                        // Notify subscribers that inventory has changed
-                        InventoryChanged?.Invoke(this, EventArgs.Empty);
-
                         // Clear the form
                         ClearForm();
                     }
@@ -462,5 +457,30 @@ namespace OnlineShop
 
         }
 
+        private void txtItemPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtItemPrice.KeyPress += txtItemPrice_KeyPress;
+            // Allow digits, decimal point, and control characters
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            // Allow only one decimal point
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtItemStock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtItemStock.KeyPress += txtItemStock_KeyPress;
+            // Allow only digits and control characters
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

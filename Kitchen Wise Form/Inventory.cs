@@ -30,12 +30,6 @@ namespace OnlineShop.Kitchen_Wise_Form
             dbFunc = new DBFunc();
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            // Subscribe to inventory changes
-            if (addInventory1 != null)
-            {
-                addInventory1.InventoryChanged += OnInventoryChanged;
-            }
-
             // If itemDataGrid doesn't exist in the designer, create it programmatically
             if (itemDataGrid == null)
             {
@@ -476,7 +470,7 @@ namespace OnlineShop.Kitchen_Wise_Form
         {
 
         }
-
+        //dashboard
         private void label2_Click(object sender, EventArgs e)
         {
             adminDashboardForm1.BringToFront();
@@ -486,10 +480,11 @@ namespace OnlineShop.Kitchen_Wise_Form
             salesDataGrid.Visible = false;
             itemdatagrid.Visible = false;
         }
-
+        //inventory
         private void label2_Click_1(object sender, EventArgs e)
         {
             LoadInventoryData();
+            LoadItemData();
             addInventory1.BringToFront();
             inv_bg_pic.Visible = false;
             homeDataGrid.Visible = false;
@@ -497,17 +492,7 @@ namespace OnlineShop.Kitchen_Wise_Form
             itemdatagrid.Visible = false;
             addInventory1.Visible = true;
         }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-            LoadItemData();
-            addProductForm1.BringToFront();
-            adminDashboardForm1.Visible = false;
-            addProductForm1.Visible = true;
-            salesDataGrid.Visible = false;
-            itemdatagrid.Visible = false;
-        }
-
+        //sales
         private void label4_Click(object sender, EventArgs e)
         {
             LoadSalesData();
@@ -529,10 +514,11 @@ namespace OnlineShop.Kitchen_Wise_Form
             salesDataGrid.Visible = false;
             itemdatagrid.Visible = false;
         }
-
+        //items
         private void label4_Click_1(object sender, EventArgs e)
         {
             LoadItemData();
+            LoadInventoryData();
             addProductForm1.BringToFront();
             adminDashboardForm1.Visible = false;
             addProductForm1.Visible = true;
@@ -545,11 +531,11 @@ namespace OnlineShop.Kitchen_Wise_Form
 
         }
 
-        // Add handler for inventory changes
+        // Add this method to your InventoryForm class
         private void OnInventoryChanged(object sender, EventArgs e)
         {
-        // Refresh inventory data when changes occur
-        LoadInventoryData();
+            // Refresh the inventory data when changes occur
+            LoadInventoryData();
         }
     }
 }

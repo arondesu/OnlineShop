@@ -62,9 +62,6 @@ namespace OnlineShop
 
             //THEN sync and update button states
             dbFunc.SyncQuantityLabelsAndButtons(quantityLabels, addButtons);
-            
-            // Now load dynamic products AFTER initializing quantityLabels
-            LoadDynamicProducts();
 
             // Subscribe to AddProductForm events
             var addProductForm = Application.OpenForms.OfType<Form>()
@@ -99,9 +96,6 @@ namespace OnlineShop
         
                 // Update the static buttons and labels
                 dbFunc.SyncQuantityLabelsAndButtons(quantityLabels, addButtons);
-                
-                // Refresh the dynamic products display
-                LoadDynamicProducts();
             }
             catch (Exception ex)
             {
@@ -135,15 +129,71 @@ namespace OnlineShop
             this.Controls.Add(scrollablePanel);
         }
 
-        private void AddItemToCart(string itemName, double itemPrice)
+        private void AddItemToCart(string ProductName, double PurchasePrice)
         {
-            string quantityInput = Microsoft.VisualBasic.Interaction.InputBox($"Enter quantity for {itemName}:", "Quantity Input", "1");
-            if (!int.TryParse(quantityInput, out int quantity) || quantity <= 0)
+            // Get current stock level from inventory table
+            int currentStock = 0;
+            try
             {
-                return;
-            }
+                using (SqlConnection conn = dbConn.GetConnection())
+                {
+                    conn.Open();
+                    string stockQuery = "SELECT InStock FROM inventory WHERE ProductName = @ProductName";
+                    using (SqlCommand cmd = new SqlCommand(stockQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ProductName", ProductName);
+                        var result = cmd.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            currentStock = Convert.ToInt32(result);
+                        }
+                    }
+                }
 
-            AddToCart(itemName, quantity, itemPrice);
+                bool validInput = false;
+                while (!validInput)
+                {
+                    string quantityInput = Microsoft.VisualBasic.Interaction.InputBox(
+                        $"Enter quantity for {ProductName} (Available stock: {currentStock}):", 
+                        "Quantity Input", 
+                        "1");
+                    
+                    // If user clicks Cancel
+                    if (string.IsNullOrEmpty(quantityInput))
+                    {
+                        return;
+                    }
+
+                    // Validate that input contains only numbers
+                    if (!quantityInput.All(char.IsDigit))
+                    {
+                        MessageBox.Show("Please enter only numbers for quantity.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        continue;
+                    }
+
+                    if (!int.TryParse(quantityInput, out int quantity) || quantity <= 0)
+                    {
+                        MessageBox.Show("Please enter a valid positive number for quantity.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        continue;
+                    }
+
+                    // Check if requested quantity exceeds available stock
+                    if (quantity > currentStock)
+                    {
+                        MessageBox.Show($"Cannot add {quantity} items. Only {currentStock} items available in stock.", 
+                            "Insufficient Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        continue;
+                    }
+
+                    // If we get here, the input is valid
+                    validInput = true;
+                    AddToCart(ProductName, quantity, PurchasePrice);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking inventory: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void AddToCart(string itemName, int quantity, double itemPrice)
@@ -448,204 +498,7 @@ namespace OnlineShop
         {
             Application.Exit();
         }
-
-        // Add this new method to load products dynamically from the database
-        private void LoadDynamicProducts()
-        {
-            try
-            {
-                // Remove any existing dynamic product panels
-                var existingPanels = panel1.Controls.OfType<Panel>()
-                                    .Where(p => p.Tag?.ToString() == "DynamicProducts")
-                                    .ToList();
-                foreach (var panel in existingPanels)
-                {
-                    panel1.Controls.Remove(panel);
-                    panel.Dispose();
-                }
-
-                // Create a container panel for dynamic products
-                Panel containerPanel = new Panel
-                {
-                    Width = panel1.Width - 40,
-                    AutoSize = true,
-                    Tag = "DynamicProducts",
-                    BackColor = Color.Transparent
-                };
-
-                // Calculate the Y position after the last static product
-                int lastStaticY = 0;
-                foreach (Control control in panel1.Controls)
-                {
-                    if (control is Panel && control.Tag?.ToString() != "DynamicProducts")
-                    {
-                        lastStaticY = Math.Max(lastStaticY, control.Bottom);
-                    }
-                }
-
-                // Position the container below the last static product
-                containerPanel.Location = new Point(10, lastStaticY + 50);
-
-                // Create a FlowLayoutPanel inside the container
-                FlowLayoutPanel flowPanel = new FlowLayoutPanel
-                {
-                    Dock = DockStyle.Fill,
-                    AutoSize = true,
-                    FlowDirection = FlowDirection.LeftToRight,
-                    WrapContents = true,
-                    Padding = new Padding(10),
-                    BackColor = Color.Transparent
-                };
-
-                containerPanel.Controls.Add(flowPanel);
-
-                // Get data from the items table
-                DataTable dt = GetItemsForShop();
-                
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    Label titleLabel = new Label
-                    {
-                        Text = "New Products",
-                        Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                        ForeColor = Color.FromArgb(15, 26, 43),
-                        AutoSize = true,
-                        Margin = new Padding(10)
-                    };
-                    flowPanel.Controls.Add(titleLabel);
-            
-                    // Create a product card for each item
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        string itemName = row["item_name"].ToString();
-                        if (quantityLabels != null && quantityLabels.ContainsKey(itemName))
-                            continue;
-            
-                        // Create a panel for each product
-                        Panel productCard = new Panel
-                        {
-                            Width = 180,
-                            Height = 250,
-                            Margin = new Padding(10),
-                            BackColor = Color.White,
-                            BorderStyle = BorderStyle.FixedSingle
-                        };
-                        
-                        // Add product image
-                        PictureBox productImage = new PictureBox
-                        {
-                            Width = 160,
-                            Height = 120,
-                            Top = 10,
-                            Left = 10,
-                            SizeMode = PictureBoxSizeMode.Zoom,
-                            BorderStyle = BorderStyle.FixedSingle
-                        };
-                        
-                        string imagePath = row["item_image"]?.ToString();
-                        if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
-                        {
-                            try
-                            {
-                                productImage.Image = Image.FromFile(imagePath);
-                            }
-                            catch
-                            {
-                                productImage.Image = null;
-                            }
-                        }
-                        
-                        // Add product details
-                        Label nameLabel = new Label
-                        {
-                            Text = itemName,
-                            Width = 160,
-                            Top = productImage.Bottom + 5,
-                            Left = 10,
-                            Font = new Font("Segoe UI", 9, FontStyle.Bold),
-                            TextAlign = ContentAlignment.MiddleCenter
-                        };
-            
-                        Label priceLabel = new Label
-                        {
-                            Text = $"₱{Convert.ToDouble(row["item_price"]):F2}",
-                            Width = 160,
-                            Top = nameLabel.Bottom + 5,
-                            Left = 10,
-                            Font = new Font("Segoe UI", 9),
-                            TextAlign = ContentAlignment.MiddleCenter
-                        };
-            
-                        Button addButton = new Button
-                        {
-                            Text = "Add to Cart",
-                            Width = 160,
-                            Height = 30,
-                            Top = priceLabel.Bottom + 5,
-                            Left = 10,
-                            BackColor = Color.FromArgb(15, 26, 43),  // Match the dark blue color
-                            ForeColor = Color.White,                 // White text
-                            FlatStyle = FlatStyle.Flat,             // Flat style to match existing buttons
-                            Margin = new Padding(0),
-                            Font = new Font("Segoe UI", 9)          // Match the font
-                        };
-            
-                        // Remove the border to match the flat style
-                        addButton.FlatAppearance.BorderSize = 0;
-            
-                        // Add click handler for the button
-                        string finalItemName = itemName;
-                        double finalPrice = Convert.ToDouble(row["item_price"]);
-                        addButton.Click += (s, e) => AddItemToCart(finalItemName, finalPrice);
-            
-                        // Add all controls to the product card
-                        productCard.Controls.AddRange(new Control[] { productImage, nameLabel, priceLabel, addButton });
-                        panel1.Controls.Add(productCard);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading dynamic products: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void DynamicAddToCart_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            object[] productInfo = btn.Tag as object[];
-            string itemName = (string)productInfo[0];
-            double itemPrice = (double)productInfo[1];
-            
-            // Use the existing AddItemToCart method
-            AddItemToCart(itemName, itemPrice);
-        }
-
-        private DataTable GetItemsForShop()
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                using (SqlConnection conn = dbConn.GetConnection())
-                {
-                    conn.Open();
-                    string query = @"SELECT i.id, i.item_id, i.item_name, i.Description, 
-                                   i.item_type, i.item_stock, i.item_price, i.item_image 
-                                   FROM items i
-                                   WHERE i.date_delete IS NULL AND i.item_stock > 0
-                                   ORDER BY i.date_update DESC";
-                    
-                    using SqlCommand cmd = new SqlCommand(query, conn);
-                    using SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error getting items for shop: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return dt;
-        }
+       
     }
 }
 
