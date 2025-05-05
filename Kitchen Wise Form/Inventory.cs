@@ -173,6 +173,7 @@ namespace OnlineShop.Kitchen_Wise_Form
                         item_id,
                         item_name,
                         item_type,
+                        Description,
                         item_stock,
                         item_price,
                         item_image,

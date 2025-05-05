@@ -92,9 +92,19 @@ namespace OnlineShop
         public void LoadInventoryData()
         {
             try
-            {
+            {   //Hides the column of Description and PurchasePrice
                 DataTable dt = dbFunc.checkInvTable(string.Empty);
                 dataGridViewInventory.DataSource = dt;
+
+                // Hide the Description and PurchasePrice columns
+                if (dataGridViewInventory.Columns["Description"] != null)
+                {
+                    dataGridViewInventory.Columns["Description"].Visible = false;
+                }
+                if (dataGridViewInventory.Columns["PurchasePrice"] != null)
+                {
+                    dataGridViewInventory.Columns["PurchasePrice"].Visible = false;
+                }
             }
             catch (Exception ex)
             {
@@ -188,48 +198,57 @@ namespace OnlineShop
                 using (SqlConnection conn = dbFunc.dbConn.GetConnection())
                 {
                     conn.Open();
-                    string checkQuery = "SELECT COUNT(*) FROM Inventory WHERE ProductId = @ProductId";
-                    using (SqlCommand cmd = new SqlCommand(checkQuery, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@ProductId", txtItemId.Text.Trim());
-                        int count = (int)cmd.ExecuteScalar();
 
-                        if (count > 0)
-                        {
-                            MessageBox.Show("Product ID already exists. Please use a unique ID.", "Duplicate Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                    }
-
-                    // Insert new inventory item without QuantityReturned
+                    // Insert new inventory item without specifying ProductId
                     string insertQuery = @"INSERT INTO Inventory 
-                                        (ProductId, ProductName, Description, InStock, PurchasePrice, Status) 
-                                        VALUES 
-                                        (@ProductId, @ProductName, @Description, @InStock, @PurchasePrice, @Status)";
+                                    (ProductName, Description, InStock, PurchasePrice, Status) 
+                                    VALUES 
+                                    (@ProductName, @Description, @InStock, @PurchasePrice, @Status);
+                                    SELECT SCOPE_IDENTITY();";
 
+                    int newInventoryId;
                     using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
                     {
-                        cmd.Parameters.AddWithValue("@ProductId", txtItemId.Text.Trim());
                         cmd.Parameters.AddWithValue("@ProductName", txtItemName.Text.Trim());
                         cmd.Parameters.AddWithValue("@Description", cmbItemType.Text.Trim());
                         cmd.Parameters.AddWithValue("@InStock", stock);
                         cmd.Parameters.AddWithValue("@PurchasePrice", price);
-                        cmd.Parameters.AddWithValue("@Status", status); // Use the automatically determined status
-                        // Remove QuantityReturned parameter
+                        cmd.Parameters.AddWithValue("@Status", status);
 
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show("Inventory item added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        // Refresh the data grid
-                        LoadInventoryData();
-
-                        // Notify subscribers that inventory has changed
-                        InventoryChanged?.Invoke(this, EventArgs.Empty);
-
-                        // Clear the form
-                        ClearForm();
+                        // Get the newly generated ID
+                        newInventoryId = Convert.ToInt32(cmd.ExecuteScalar());
                     }
+
+                    // Now insert into items table using the same ID
+                    string insertItemQuery = @"INSERT INTO items 
+                                        (item_name, item_type, Description, item_stock, item_price, date_insert) 
+                                        VALUES 
+                                        (@ItemName, @ItemType, @Description, @Stock, @Price, GETDATE())";
+
+                    using (SqlCommand itemCmd = new SqlCommand(insertItemQuery, conn))
+                    {
+                        itemCmd.Parameters.AddWithValue("@ItemName", txtItemName.Text.Trim());
+                        itemCmd.Parameters.AddWithValue("@ItemType", cmbItemType.Text.Trim());
+                        itemCmd.Parameters.AddWithValue("@Description", cmbItemType.Text.Trim());
+                        itemCmd.Parameters.AddWithValue("@Stock", stock);
+                        itemCmd.Parameters.AddWithValue("@Price", price);
+
+                        itemCmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Inventory item added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Update the ID textbox with the new ID
+                    txtItemId.Text = newInventoryId.ToString();
+
+                    // Refresh the data grid
+                    LoadInventoryData();
+
+                    // Notify subscribers that inventory has changed
+                    InventoryChanged?.Invoke(this, EventArgs.Empty);
+
+                    // Clear the form
+                    ClearForm();
                 }
             }
             catch (Exception ex)
@@ -360,6 +379,27 @@ namespace OnlineShop
                         cmd.Parameters.AddWithValue("@Status", status);
 
                         cmd.ExecuteNonQuery();
+
+                        // Also update the items table to keep in sync
+                        string updateItemQuery = @"UPDATE items 
+                                               SET item_name = @ItemName,
+                                                   item_type = @ItemType,
+                                                   Description = @Description,
+                                                   item_stock = @Stock,
+                                                   item_price = @Price
+                                               WHERE item_id = @ItemId";
+
+                        using (SqlCommand itemCmd = new SqlCommand(updateItemQuery, conn))
+                        {
+                            itemCmd.Parameters.AddWithValue("@ItemId", txtItemId.Text.Trim());
+                            itemCmd.Parameters.AddWithValue("@ItemName", txtItemName.Text.Trim());
+                            itemCmd.Parameters.AddWithValue("@ItemType", cmbItemType.Text.Trim());
+                            itemCmd.Parameters.AddWithValue("@Description", cmbItemType.Text.Trim());
+                            itemCmd.Parameters.AddWithValue("@Stock", stock);
+                            itemCmd.Parameters.AddWithValue("@Price", price);
+
+                            itemCmd.ExecuteNonQuery();
+                        }
 
                         string message = quantityChange > 0 
                             ? $"Inventory item updated successfully!\nQuantity Added: {quantityChange}"

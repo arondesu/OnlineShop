@@ -1,4 +1,4 @@
-﻿SELECT * FROM Login
+SELECT * FROM Login
 
 SELECT * FROM inventory
 

@@ -45,6 +45,7 @@ public class DBFunc
             MessageBox.Show("Error: " + e.Message);
             return false;
         }
+        
     }
 
     //FUNCTION FOR CHECKING IF ITEM IS EMPTY
@@ -141,6 +142,7 @@ public class DBFunc
         conn.Open();
 
         // Corrected query matching table columns
+
         string insertData = "INSERT INTO items (item_id, item_name, item_type, Description, item_stock, item_price, item_image, date_insert) " +
                            "VALUES (@itemID, @itemName, @itemType, @Description, @itemStock, @itemPrice, @itemImage, @dateInsert)";
 
@@ -427,3 +429,7 @@ public class DBFunc
 
 
 }
+
+
+
+

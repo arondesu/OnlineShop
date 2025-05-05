@@ -93,7 +93,19 @@ namespace OnlineShop
 private List<AddItemData> listDatas;
 
         // Add event to notify when product is added
-        public event EventHandler ProductAdded;
+        // Modify the event to include product information
+        public class ProductEventArgs : EventArgs
+        {
+            public string ItemId { get; set; }
+            public string ItemName { get; set; }
+            public string ItemStock { get; set; }  // Changed back to string to match the form data type
+            public string ItemPrice { get; set; }  // Added price for complete data
+        }
+
+        // Keep the event declarations as string-based to match your existing code
+        public event EventHandler<ProductEventArgs> ProductAdded;
+        public event EventHandler<ProductEventArgs> ProductUpdated;
+        public event EventHandler<ProductEventArgs> ProductDeleted;
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -117,13 +129,24 @@ private List<AddItemData> listDatas;
             if (isAdded)
             {
                 MessageBox.Show("Product added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                // Create event args with product info - keep as strings
+                var args = new ProductEventArgs
+                {
+                    ItemId = itemId,
+                    ItemName = itemName,
+                    ItemStock = itemStock,
+                    ItemPrice = itemPrice
+                };
+                
+                // Notify subscribers that a product was added
+                ProductAdded?.Invoke(this, args);
+                
+                // Clear fields and refresh
                 dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
                 txtDescription.Items.Clear();
                 txtDescription.Text = "";
                 itemListData();
-
-                // Notify subscribers that a product was added
-                ProductAdded?.Invoke(this, EventArgs.Empty);
             }
             else
             {

@@ -58,8 +58,45 @@ namespace OnlineShop
 
             //THEN sync and update button states
             dbFunc.SyncQuantityLabelsAndButtons(quantityLabels, addButtons);
+
+            // Subscribe to AddProductForm events
+            var addProductForm = Application.OpenForms.OfType<Form>()
+                .SelectMany(f => f.Controls.OfType<AddProductForm>())
+                .FirstOrDefault();
+            
+            if (addProductForm != null)
+            {
+                addProductForm.ProductAdded += OnInventoryChanged;
+                addProductForm.ProductUpdated += OnInventoryChanged;
+                addProductForm.ProductDeleted += OnInventoryChanged;
+            }
         }
 
+        // Replace the conflicting OnProductChanged with this simpler event handler
+        private void OnInventoryChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Dictionary<string, Button> addButtons = new Dictionary<string, Button>
+                {
+                    {"Glass Food Storage", button1},
+                    {"Steel Mug Rack", button2},
+                    {"Mitts Potholders", button3},
+                    {"Steel Brazier Pot", button4},
+                    {"Descascador", button5},
+                    {"Cleaning Sponge", button6},
+                    {"Silverware Set", button7},
+                    {"Kitchen Scale", button8},
+                    {"Table Cloth", button9}
+                };
+        
+                dbFunc.SyncQuantityLabelsAndButtons(quantityLabels, addButtons);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating display: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void SetupScrollablePanel()
         {
