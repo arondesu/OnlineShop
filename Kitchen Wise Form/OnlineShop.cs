@@ -306,6 +306,23 @@ namespace OnlineShop
                 decimal discount = decimal.Parse(lblDiscount.Text.Split('₱')[1]);
                 decimal total = decimal.Parse(lblTotal.Text.Split('₱')[1]);
 
+                // Process the checkout and update stock quantities
+                using (SqlConnection conn = dbConn.GetConnection())
+                {
+                    conn.Open();
+                    
+                    for (int i = 0; i < itemNames.Count; i++)
+                    {
+                        string updateQuery = "UPDATE items SET item_stock = item_stock - @quantity WHERE item_name = @itemName";
+                        using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@quantity", quantities[i]);
+                            cmd.Parameters.AddWithValue("@itemName", itemNames[i]);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+
                 // Process the checkout
                 dbFunc.ProcessCheckout(subtotal, discount, total, itemNames, quantities);
 
@@ -318,7 +335,22 @@ namespace OnlineShop
                 prices.Clear();
 
                 UpdateOrderSummary();
-                RefreshQuantities(); // Refresh the quantity labels
+                
+                // Update the quantity labels and button states after successful checkout
+                Dictionary<string, Button> addButtons = new Dictionary<string, Button>
+                {
+                    {"Glass Food Storage", button1},
+                    {"Steel Mug Rack", button2},
+                    {"Mitts Potholders", button3},
+                    {"Steel Brazier Pot", button4},
+                    {"Descascador", button5},
+                    {"Cleaning Sponge", button6},
+                    {"Silverware Set", button7},
+                    {"Kitchen Scale", button8},
+                    {"Table Cloth", button9}
+                };
+                
+                dbFunc.SyncQuantityLabelsAndButtons(quantityLabels, addButtons);
             }
             catch (Exception ex)
             {
