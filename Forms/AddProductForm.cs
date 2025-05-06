@@ -349,13 +349,22 @@ namespace OnlineShop
 
                     transaction.Commit();
 
-                    MessageBox.Show("Product ID: " + txtItem_id.Text.Trim() + " updated successfully!", "Update Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Notify subscribers about the update
+                    var args = new ProductEventArgs
+                    {
+                        ItemId = txtItem_id.Text.Trim(),
+                        ItemName = txtItem_name.Text.Trim(),
+                        ItemStock = txtItem_stock.Text.Trim(),
+                        ItemPrice = txtItem_price.Text.Trim()
+                    };
+                    ProductUpdated?.Invoke(this, args);
+
+                    MessageBox.Show("Product updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     
-                    // Refresh both grids
+                    // Refresh the data grid
                     itemListData();
-                    DataChanged?.Invoke(this, EventArgs.Empty);
                     
-                    // Clear the form
+                    // Clear the fields
                     dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
                 }
                 catch (Exception ex)

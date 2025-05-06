@@ -94,10 +94,11 @@ namespace OnlineShop
         public void LoadInventoryData()
         {
             try
-            {   //Hides the column of Description and PurchasePrice
+            {
                 DataTable dt = dbFunc.checkInvTable(string.Empty);
-                dataGridViewInventory.DataSource = dt;
-
+                dataGridViewInventory.DataSource = null;  // Clear existing data
+                dataGridViewInventory.DataSource = dt;    // Set new data
+                
                 // Hide the Description and PurchasePrice columns
                 if (dataGridViewInventory.Columns["Description"] != null)
                 {
@@ -416,8 +417,9 @@ namespace OnlineShop
 
                         MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Just refresh inventory data
+                        // Refresh both grids and notify subscribers
                         LoadInventoryData();
+                        DataChanged?.Invoke(this, EventArgs.Empty);
 
                         // Clear the form
                         ClearForm();
