@@ -30,25 +30,31 @@ namespace OnlineShop
             InitializeComponent();
             dbFunc = new DBFunc();
 
-            // Sync inventory data to items table
-            dbFunc.SyncInventoryToItems();
+            // Subscribe to the DBFunc's DataChanged event
+            dbFunc.DataChanged += DbFunc_DataChanged;
 
-            // Load the data
+            // Initial data load
             itemListData();
+        }
 
-            // Update the ComboBox items directly since it's already created in Designer
-            txtDescription.Items.Clear();
-            txtDescription.Items.AddRange(new object[] {
-                "Durable and transparent container for food storage",
-                "A sturdy rack designed to neatly organize mugs",
-                "Heat-resistant mitts and potholders for kitchen safety",
-                "A versatile and durable pot for cooking",
-                "A handy peeler for effortless food preparation",
-                "A multi-purpose sponge for cleaning kitchen surfaces",
-                "A complete set of utensils for dining",
-                "A precise scale for measuring ingredients",
-                "A decorative and protective cover for tables"
-            });
+        private void DbFunc_DataChanged(object sender, EventArgs e)
+        {
+            // Ensure UI updates happen on the UI thread
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    itemListData();
+                    // Propagate the change to other forms
+                    DataChanged?.Invoke(this, EventArgs.Empty);
+                }));
+            }
+            else
+            {
+                itemListData();
+                // Propagate the change to other forms
+                DataChanged?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         public void itemListData()
@@ -58,7 +64,6 @@ namespace OnlineShop
                 using SqlConnection conn = dbConn.GetConnection();
                 conn.Open();
 
-                // Modified query to include inventory data
                 string query = @"SELECT i.id, i.item_id, i.item_name, i.item_type, i.Description, 
                                 i.item_stock, i.item_price, i.item_image, i.date_insert, i.date_update 
                                 FROM items i
@@ -70,6 +75,36 @@ namespace OnlineShop
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 
+                // Add a new column for displaying actual images
+                DataColumn imageCol = new DataColumn("item_image_display", typeof(Image));
+                dt.Columns.Add(imageCol);
+
+                // Loop through rows to convert path -> Thumbnail Image
+                foreach (DataRow row in dt.Rows)
+                {
+                    string path = row["item_image"].ToString();
+                    if (System.IO.File.Exists(path))
+                    {
+                        try
+                        {
+                            using (Image original = Image.FromFile(path))
+                            {
+                                // Create a thumbnail (e.g., 64x64 pixels)
+                                Image thumb = original.GetThumbnailImage(64, 64, () => false, IntPtr.Zero);
+                                row["item_image_display"] = thumb;
+                            }
+                        }
+                        catch
+                        {
+                            row["item_image_display"] = null;
+                        }
+                    }
+                    else
+                    {
+                        row["item_image_display"] = null;
+                    }
+                }
+
                 // Configure DataGridView properties
                 dataGridView1.AutoGenerateColumns = true;
                 dataGridView1.AllowUserToAddRows = false;
@@ -77,27 +112,61 @@ namespace OnlineShop
                 dataGridView1.ReadOnly = true;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dataGridView1.MultiSelect = false;
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
-                // After setting the DataSource, adjust the Description column if it exists
+                // Set only the display column as DataSource
                 dataGridView1.DataSource = dt;
 
-                // Format specific columns - handle the Description column specially
-                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                // Optional: hide the original file path column
+                if (dataGridView1.Columns.Contains("item_image"))
+                    dataGridView1.Columns["item_image"].Visible = false;
+
+                // Format the image column
+                if (dataGridView1.Columns.Contains("item_image_display"))
                 {
-                    if (dataGridView1.Columns[i].Name.Contains("Description"))
+                    DataGridViewImageColumn imgCol = (DataGridViewImageColumn)dataGridView1.Columns["item_image_display"];
+                    imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                    // Move the image column to the 7th position (index 6)
+                    imgCol.DisplayIndex = 6;
+                }
+
+                // Configure column properties after setting DataSource
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                {
+                    if (column == null || string.IsNullOrWhiteSpace(column.Name))
+                        continue;
+
+                    string colName = column.Name.ToLowerInvariant();
+
+                    switch (colName)
                     {
-                        // Set a reasonable fixed width for Description column
-                        dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                        dataGridView1.Columns[i].Width = 150; // Adjust this value as needed
+                        case "description":
+                            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                            break;
+
+                        case "item_stock":
+                            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                            column.DefaultCellStyle = new DataGridViewCellStyle
+                            {
+                                Alignment = DataGridViewContentAlignment.MiddleCenter
+                            };
+                            break;
+
+                        case "item_price":
+                            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                            column.DefaultCellStyle = new DataGridViewCellStyle
+                            {
+                                Format = "C2",
+                                Alignment = DataGridViewContentAlignment.MiddleRight
+                            };
+                            break;
+
+                        case "item_image":
+                            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                            break;
                     }
                 }
-                if (dataGridView1.Columns["item_price"] != null)
-                    dataGridView1.Columns["item_price"].DefaultCellStyle.Format = "C2";
-                if (dataGridView1.Columns["date_insert"] != null)
-                    dataGridView1.Columns["date_insert"].DefaultCellStyle.Format = "d";
-                if (dataGridView1.Columns["date_update"] != null)
-                    dataGridView1.Columns["date_update"].DefaultCellStyle.Format = "d";
+
+
 
                 dataGridView1.Refresh();
             }
@@ -115,8 +184,9 @@ namespace OnlineShop
         {
             public string ItemId { get; set; }
             public string ItemName { get; set; }
-            public string ItemStock { get; set; }  // Changed back to string to match the form data type
-            public string ItemPrice { get; set; }  // Added price for complete data
+            public string ItemStock { get; set; }
+            public string ItemPrice { get; set; }
+            public string ItemImage { get; set; }  // Add this property
         }
 
         // Keep the event declarations as string-based to match your existing code
@@ -152,12 +222,22 @@ namespace OnlineShop
             {
                 // After successful addition
                 MessageBox.Show("Product added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                // Refresh both grids
-                itemListData();
-                DataChanged?.Invoke(this, EventArgs.Empty);
-                
-               // Clear fields and refresh
+
+                // Notify subscribers about the new product
+                var args = new ProductEventArgs
+                {
+                    ItemId = itemId,
+                    ItemName = itemName,
+                    ItemStock = itemStock,
+                    ItemPrice = itemPrice,
+                    ItemImage = AddProductForm_imageView.ImageLocation
+                };
+                ProductAdded?.Invoke(this, args);
+
+                // Trigger the data changed event to update all forms
+                DbFunc_DataChanged(this, EventArgs.Empty);
+
+                // Clear fields
                 dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
                 txtDescription.Items.Clear();
                 txtDescription.Text = "";
@@ -197,9 +277,9 @@ namespace OnlineShop
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
+            if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 txtItem_id.Text = row.Cells["item_id"].Value?.ToString() ?? "";
                 txtItem_name.Text = row.Cells["item_name"].Value?.ToString() ?? "";
                 txtItem_type.Text = row.Cells["item_type"].Value?.ToString() ?? "";
@@ -207,71 +287,52 @@ namespace OnlineShop
                 txtItem_stock.Text = row.Cells["item_stock"].Value?.ToString() ?? "";
                 txtItem_price.Text = row.Cells["item_price"].Value?.ToString() ?? "";
 
-                string imagePath = row.Cells["item_image"].Value?.ToString() ?? "";
-                try
+                string imagePath = row.Cells["item_image"].Value?.ToString();
+                AddProductForm_imageView.Image = null;
+                AddProductForm_imageView.ImageLocation = null;
+
+                if (!string.IsNullOrWhiteSpace(imagePath))
                 {
-                    if (!string.IsNullOrEmpty(imagePath))
+                    string fileName = Path.GetFileName(imagePath);
+                    string newPath = Path.Combine(@"C:\Users\Woots\source\repos\OnlineShop\pictures items", fileName);
+
+                    string pathToUse = File.Exists(newPath) ? newPath :
+                                       (File.Exists(imagePath) ? imagePath : null);
+
+                    if (pathToUse != null)
                     {
-                        string fileName = Path.GetFileName(imagePath);
-                        string newPath = Path.Combine(@"D:\VS REPOSITORY\Item_Directory\", fileName);
-
-                        // Try the new path first
-                        if (File.Exists(newPath))
+                        try
                         {
-                            imagePath = newPath;
-                        }
-                        else if (!File.Exists(imagePath))
-                        {
-                            AddProductForm_imageView.Image = null;
-                            MessageBox.Show($"Image file not found at either:\n{imagePath}\nor\n{newPath}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-
-                        using (Image originalImage = Image.FromFile(imagePath))
-                        {
-                            // Create a resized version (adjust max dimensions as needed)
-                            int maxWidth = 300;  // Set your desired max width
-                            int maxHeight = 300; // Set your desired max height
-
-                            // Calculate new dimensions while preserving aspect ratio
-                            int newWidth, newHeight;
-                            double aspectRatio = (double)originalImage.Width / originalImage.Height;
-
-                            if (aspectRatio > 1) // Width > Height
+                            using (Image originalImage = Image.FromFile(pathToUse))
                             {
-                                newWidth = maxWidth;
-                                newHeight = (int)(maxWidth / aspectRatio);
-                            }
-                            else // Height >= Width
-                            {
-                                newHeight = maxHeight;
-                                newWidth = (int)(maxHeight * aspectRatio);
-                            }
+                                int maxWidth = 300, maxHeight = 300;
+                                double aspectRatio = (double)originalImage.Width / originalImage.Height;
+                                int newWidth = aspectRatio > 1 ? maxWidth : (int)(maxHeight * aspectRatio);
+                                int newHeight = aspectRatio > 1 ? (int)(maxWidth / aspectRatio) : maxHeight;
 
-                            // Create resized image
-                            Bitmap resizedImage = new Bitmap(originalImage, newWidth, newHeight);
-                            AddProductForm_imageView.Image = resizedImage;
-
-                            // Set SizeMode to keep the image properly displayed
-                            AddProductForm_imageView.SizeMode = PictureBoxSizeMode.Zoom;
+                                Bitmap resizedImage = new Bitmap(originalImage, newWidth, newHeight);
+                                AddProductForm_imageView.Image = resizedImage;
+                                AddProductForm_imageView.SizeMode = PictureBoxSizeMode.Zoom;
+                                AddProductForm_imageView.ImageLocation = pathToUse;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Image load error: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
                     {
-                        AddProductForm_imageView.Image = null;
+                        MessageBox.Show($"Image file not found at:\n{imagePath}\nor\n{newPath}",
+                                        "Image Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                }
-                catch (Exception ex)
-                {
-                    AddProductForm_imageView.Image = null;
-                    MessageBox.Show("Error loading image: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            // First check if a row is selected
             if (dataGridView1.CurrentRow == null)
             {
                 MessageBox.Show("Please select a product to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -285,7 +346,6 @@ namespace OnlineShop
             string itemPrice = txtItem_price.Text.Trim();
             string description = txtDescription.Text.Trim();
 
-            // Check if any fields are empty or contain only whitespace
             if (string.IsNullOrWhiteSpace(itemId) ||
                 string.IsNullOrWhiteSpace(itemName) ||
                 string.IsNullOrWhiteSpace(itemType) ||
@@ -312,18 +372,20 @@ namespace OnlineShop
                                     item_type = @item_type, 
                                     item_stock = @item_stock,
                                     item_price = @item_price, 
-                                    Description = @description, 
+                                    Description = @description,
+                                    item_image = @item_image,
                                     date_update = @date_update
                                 WHERE id = @id";
 
                     using SqlCommand updateD = new SqlCommand(updateData, connection, transaction);
 
-                    updateD.Parameters.AddWithValue("@item_id", txtItem_id.Text.Trim());
-                    updateD.Parameters.AddWithValue("@item_name", txtItem_name.Text.Trim());
-                    updateD.Parameters.AddWithValue("@item_type", txtItem_type.Text.Trim());
-                    updateD.Parameters.AddWithValue("@item_stock", int.Parse(txtItem_stock.Text.Trim()));
-                    updateD.Parameters.AddWithValue("@item_price", float.Parse(txtItem_price.Text.Trim()));
-                    updateD.Parameters.AddWithValue("@description", txtDescription.Text.Trim());
+                    updateD.Parameters.AddWithValue("@item_id", itemId);
+                    updateD.Parameters.AddWithValue("@item_name", itemName);
+                    updateD.Parameters.AddWithValue("@item_type", itemType);
+                    updateD.Parameters.AddWithValue("@item_stock", int.Parse(itemStock));
+                    updateD.Parameters.AddWithValue("@item_price", float.Parse(itemPrice));
+                    updateD.Parameters.AddWithValue("@description", description);
+                    updateD.Parameters.AddWithValue("@item_image", AddProductForm_imageView.ImageLocation);
                     updateD.Parameters.AddWithValue("@date_update", DateTime.Today);
                     updateD.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells["id"].Value);
 
@@ -331,19 +393,19 @@ namespace OnlineShop
 
                     // Update inventory table
                     string updateInventory = @"UPDATE Inventory 
-                                     SET InStock = @item_stock,
-                                         PurchasePrice = @item_price,
-                                         Status = CASE 
-                                                    WHEN @item_stock = 0 THEN 'Out of Stock'
-                                                    WHEN @item_stock <= 15 THEN 'Low Stock'
-                                                    ELSE 'Available'
-                                                 END
-                                     WHERE ProductName = @item_name";
+                    SET InStock = @item_stock,
+                        PurchasePrice = @item_price,
+                        Status = CASE 
+                                    WHEN @item_stock = 0 THEN 'Out of Stock'
+                                    WHEN @item_stock <= 15 THEN 'Low Stock'
+                                    ELSE 'Available'
+                                 END
+                    WHERE ProductName = @item_name";
 
                     using SqlCommand updateInv = new SqlCommand(updateInventory, connection, transaction);
-                    updateInv.Parameters.AddWithValue("@item_stock", int.Parse(txtItem_stock.Text.Trim()));
-                    updateInv.Parameters.AddWithValue("@item_price", float.Parse(txtItem_price.Text.Trim()));
-                    updateInv.Parameters.AddWithValue("@item_name", txtItem_name.Text.Trim());
+                    updateInv.Parameters.AddWithValue("@item_stock", int.Parse(itemStock));
+                    updateInv.Parameters.AddWithValue("@item_price", float.Parse(itemPrice));
+                    updateInv.Parameters.AddWithValue("@item_name", itemName);
 
                     updateInv.ExecuteNonQuery();
 
@@ -352,18 +414,19 @@ namespace OnlineShop
                     // Notify subscribers about the update
                     var args = new ProductEventArgs
                     {
-                        ItemId = txtItem_id.Text.Trim(),
-                        ItemName = txtItem_name.Text.Trim(),
-                        ItemStock = txtItem_stock.Text.Trim(),
-                        ItemPrice = txtItem_price.Text.Trim()
+                        ItemId = itemId,
+                        ItemName = itemName,
+                        ItemStock = itemStock,
+                        ItemPrice = itemPrice,
+                        ItemImage = AddProductForm_imageView.ImageLocation
                     };
                     ProductUpdated?.Invoke(this, args);
 
                     MessageBox.Show("Product updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+
                     // Refresh the data grid
                     itemListData();
-                    
+
                     // Clear the fields
                     dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
                 }
@@ -424,7 +487,8 @@ namespace OnlineShop
                             ItemId = txtItem_id.Text.Trim(),
                             ItemName = txtItem_name.Text.Trim(),
                             ItemStock = txtItem_stock.Text.Trim(),
-                            ItemPrice = txtItem_price.Text.Trim()
+                            ItemPrice = txtItem_price.Text.Trim(),
+                            ItemImage = AddProductForm_imageView.ImageLocation
                         };
 
                         ProductDeleted?.Invoke(this, args);
@@ -476,6 +540,29 @@ namespace OnlineShop
             {
                 e.Handled = true;
             }
+        }
+
+        private void RefreshBtn_Click(object sender, EventArgs e)
+        {
+            // Refresh the data grid
+            itemListData();
+            
+            // Clear all input fields
+            dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
+            
+            // Clear and reset the description dropdown
+            txtDescription.Items.Clear();
+            txtDescription.Text = "";
+            
+            // Reset the image if one is loaded
+            if (AddProductForm_imageView.Image != null)
+            {
+                AddProductForm_imageView.Image.Dispose();
+                AddProductForm_imageView.Image = null;
+            }
+            
+            // Notify subscribers that data has changed
+            DataChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

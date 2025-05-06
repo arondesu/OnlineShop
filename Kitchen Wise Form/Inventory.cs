@@ -30,6 +30,12 @@ namespace OnlineShop.Kitchen_Wise_Form
             dbFunc = new DBFunc();
             this.StartPosition = FormStartPosition.CenterScreen;
 
+            // Subscribe to AddProductForm's DataChanged event
+            if (addProductForm1 != null)
+            {
+                addProductForm1.DataChanged += OnInventoryChanged;
+            }
+
             // If itemDataGrid doesn't exist in the designer, create it programmatically
             if (itemDataGrid == null)
             {

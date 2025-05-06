@@ -155,6 +155,9 @@ public class DBFunc
             // After successfully adding the product, sync the inventory
             SyncInventoryToItems();
             
+            // Notify subscribers that data has changed
+            DataChanged?.Invoke(this, EventArgs.Empty);
+            
             return true;
         }
         catch (Exception ex)
@@ -166,29 +169,92 @@ public class DBFunc
 
 
     //FUNCTION FOR 
+    public event EventHandler DataChanged;
+
+    // Modify checkInvTable to support real-time updates
     public DataTable checkInvTable(string ProductID)
-{
-    try
     {
-        using SqlConnection connection = dbConn.GetConnection();
-        connection.Open();
+        try
+        {
+            using SqlConnection connection = dbConn.GetConnection();
+            connection.Open();
 
-        string query = "SELECT * FROM Inventory";
-        using SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-        DataTable dt = new DataTable();
-        adapter.Fill(dt);
+            string query = "SELECT * FROM Inventory";
+            using SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
 
-        return dt; // Always return the DataTable, even if empty
+            // Notify subscribers that data has changed
+            DataChanged?.Invoke(this, EventArgs.Empty);
+
+            return dt;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Connection Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return new DataTable();
+        }
     }
-    catch (Exception ex)
+
+    // Modify AddProduct to trigger refresh
+    public bool AddProductItem(string txtItem_id, string txtItem_name, string txtItem_type, string txtDescription, string txtItem_stock, string txtItem_price, string AddProductForm_imageView)
     {
-        MessageBox.Show("Connection Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        return new DataTable();
+        // Validate numeric fields
+        if (!int.TryParse(txtItem_stock, out int itemStock))
+        {
+            MessageBox.Show("Invalid stock value. Please enter a valid integer.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
+        if (!decimal.TryParse(txtItem_price, out decimal itemPrice))
+        {
+            MessageBox.Show("Invalid price value. Please enter a valid decimal number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
+        // Check if the item ID already exists
+        if (!checkItemID(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView))
+        {
+            return false; // Prevent adding duplicate product
+        }
+
+        using SqlConnection conn = dbConn.GetConnection();
+        conn.Open();
+
+        // Corrected query matching table columns
+        string insertData = "INSERT INTO items (item_id, item_name, item_type, Description, item_stock, item_price, date_insert) " +
+                           "VALUES (@itemID, @itemName, @itemType, @Description, @itemStock, @itemPrice, @dateInsert)";
+
+        try
+        {
+            using SqlCommand cmd = new SqlCommand(insertData, conn);
+            cmd.Parameters.AddWithValue("@itemID", txtItem_id.Trim());
+            cmd.Parameters.AddWithValue("@itemName", txtItem_name.Trim());
+            cmd.Parameters.AddWithValue("@itemType", txtItem_type.Trim());
+            cmd.Parameters.AddWithValue("@Description", txtDescription.Trim());
+            cmd.Parameters.AddWithValue("@itemStock", itemStock);
+            cmd.Parameters.AddWithValue("@itemPrice", itemPrice);
+            cmd.Parameters.AddWithValue("@dateInsert", DateTime.Now);
+
+            cmd.ExecuteNonQuery();
+            
+            // After successfully adding the product, sync the inventory
+            SyncInventoryToItems();
+            
+            // Notify subscribers that data has changed
+            DataChanged?.Invoke(this, EventArgs.Empty);
+            
+            return true;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error adding product: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
     }
-}
 
 
-    //FUNCTION FOR ADDING STOCK ON ITEMS(SHOP) WITH BUTTON CONTROL
+    //FUNCTION FOR 
     public void SyncQuantityLabelsAndButtons(Dictionary<string, Label> quantityLabels, Dictionary<string, Button> addButtons)
     {
         try

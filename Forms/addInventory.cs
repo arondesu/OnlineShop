@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.Data.SqlClient;
-
-using OnlineShop.DATABASE; // Make sure you have the correct namespace for DBFunc
+using OnlineShop.DATABASE;
 
 namespace OnlineShop
 {
@@ -98,7 +97,7 @@ namespace OnlineShop
                 DataTable dt = dbFunc.checkInvTable(string.Empty);
                 dataGridViewInventory.DataSource = null;  // Clear existing data
                 dataGridViewInventory.DataSource = dt;    // Set new data
-                
+
                 // Hide the Description and PurchasePrice columns
                 if (dataGridViewInventory.Columns["Description"] != null)
                 {
@@ -203,10 +202,22 @@ namespace OnlineShop
                 // Update the status ComboBox to show the calculated status
                 cmbItemStatus.Text = status;
 
-                // Check if product ID already exists
+                // Check for duplicate product name
                 using (SqlConnection conn = dbFunc.dbConn.GetConnection())
                 {
                     conn.Open();
+
+                    string checkNameQuery = "SELECT COUNT(*) FROM Inventory WHERE ProductName = @ProductName";
+                    using (SqlCommand cmd = new SqlCommand(checkNameQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ProductName", txtItemName.Text.Trim());
+                        int nameCount = (int)cmd.ExecuteScalar();
+                        if (nameCount > 0)
+                        {
+                            MessageBox.Show("A product with this name already exists. Please use a different name.", "Duplicate Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
 
                     // Insert new inventory item without specifying ProductId
                     string insertQuery = @"INSERT INTO Inventory 
@@ -432,6 +443,60 @@ namespace OnlineShop
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Validate that an item is selected
+                if (string.IsNullOrWhiteSpace(txtItemId.Text))
+                {
+                    MessageBox.Show("Please select an item to delete.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Ask for confirmation
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this item? This action cannot be undone.",
+                    "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    using (SqlConnection conn = dbFunc.dbConn.GetConnection())
+                    {
+                        conn.Open();
+
+                        // Delete from Inventory table
+                        string deleteInventoryQuery = "DELETE FROM Inventory WHERE ProductId = @ProductId";
+                        using (SqlCommand cmd = new SqlCommand(deleteInventoryQuery, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@ProductId", txtItemId.Text.Trim());
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // Delete from items table
+                        string deleteItemQuery = "DELETE FROM items WHERE item_id = @ItemId";
+                        using (SqlCommand cmd = new SqlCommand(deleteItemQuery, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@ItemId", txtItemId.Text.Trim());
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        MessageBox.Show("Item deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Refresh the data grid and notify subscribers
+                        LoadInventoryData();
+                        DataChanged?.Invoke(this, EventArgs.Empty);
+
+                        // Clear the form
+                        ClearForm();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting item: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnClear_Click_1(object sender, EventArgs e)
         {
             ClearForm();
@@ -483,6 +548,18 @@ namespace OnlineShop
             {
                 e.Handled = true;
             }
+        }
+
+        private void RefreshBtn_Click(object sender, EventArgs e)
+        {
+            // Refresh the inventory data grid
+            LoadInventoryData();
+            
+            // Clear all form fields
+            ClearForm();
+            
+            // Notify any subscribers that data has changed
+            DataChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

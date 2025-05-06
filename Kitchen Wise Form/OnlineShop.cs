@@ -9,7 +9,7 @@ namespace OnlineShop
 {
     public partial class MainShop : Form
     {
-        
+
         private const double DiscountRateLow = 0.10;
         private const double DiscountRateMid = 0.15;
         private const double DiscountRateHigh = 0.20;
@@ -67,7 +67,7 @@ namespace OnlineShop
             var addProductForm = Application.OpenForms.OfType<Form>()
                 .SelectMany(f => f.Controls.OfType<AddProductForm>())
                 .FirstOrDefault();
-            
+
             if (addProductForm != null)
             {
                 addProductForm.ProductAdded += OnInventoryChanged;
@@ -93,7 +93,7 @@ namespace OnlineShop
                     {"Kitchen Scale", button8},
                     {"Table Cloth", button9}
                 };
-        
+
                 // Update the static buttons and labels
                 dbFunc.SyncQuantityLabelsAndButtons(quantityLabels, addButtons);
             }
@@ -154,10 +154,10 @@ namespace OnlineShop
                 while (!validInput)
                 {
                     string quantityInput = Microsoft.VisualBasic.Interaction.InputBox(
-                        $"Enter quantity for {ProductName} (Available stock: {currentStock}):", 
-                        "Quantity Input", 
+                        $"Enter quantity for {ProductName} (Available stock: {currentStock}):",
+                        "Quantity Input",
                         "1");
-                    
+
                     // If user clicks Cancel
                     if (string.IsNullOrEmpty(quantityInput))
                     {
@@ -180,7 +180,7 @@ namespace OnlineShop
                     // Check if requested quantity exceeds available stock
                     if (quantity > currentStock)
                     {
-                        MessageBox.Show($"Cannot add {quantity} items. Only {currentStock} items available in stock.", 
+                        MessageBox.Show($"Cannot add {quantity} items. Only {currentStock} items available in stock.",
                             "Insufficient Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         continue;
                     }
@@ -364,7 +364,7 @@ namespace OnlineShop
                 using (SqlConnection conn = dbConn.GetConnection())
                 {
                     conn.Open();
-                    
+
                     for (int i = 0; i < itemNames.Count; i++)
                     {
                         string updateQuery = "UPDATE items SET item_stock = item_stock - @quantity WHERE item_name = @itemName";
@@ -389,7 +389,7 @@ namespace OnlineShop
                 prices.Clear();
 
                 UpdateOrderSummary();
-                
+
                 // Update the quantity labels and button states after successful checkout
                 Dictionary<string, Button> addButtons = new Dictionary<string, Button>
                 {
@@ -403,7 +403,7 @@ namespace OnlineShop
                     {"Kitchen Scale", button8},
                     {"Table Cloth", button9}
                 };
-                
+
                 dbFunc.SyncQuantityLabelsAndButtons(quantityLabels, addButtons);
             }
             catch (Exception ex)
@@ -498,7 +498,11 @@ namespace OnlineShop
         {
             Application.Exit();
         }
-       
+
+        private void sponge_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
