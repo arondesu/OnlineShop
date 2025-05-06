@@ -141,8 +141,6 @@ namespace OnlineShop.Kitchen_Wise_Form
             {
                 using SqlConnection connection = dbConn.GetConnection();
                 connection.Open();
-                Console.WriteLine("Database connected successfully!");
-
                 string query = "SELECT * FROM inventory";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable dt = new DataTable();
@@ -150,6 +148,15 @@ namespace OnlineShop.Kitchen_Wise_Form
 
                 itemdatagrid.DataSource = dt;
                 itemdatagrid.AutoGenerateColumns = true;
+
+                // Format columns
+                if (itemdatagrid.Columns["PurchasePrice"] != null)
+                    itemdatagrid.Columns["PurchasePrice"].DefaultCellStyle.Format = "C2";
+                if (itemdatagrid.Columns["InStock"] != null)
+                    itemdatagrid.Columns["InStock"].DefaultCellStyle.Format = "N0";
+                if (itemdatagrid.Columns["DateAdded"] != null)
+                    itemdatagrid.Columns["DateAdded"].DefaultCellStyle.Format = "g";
+
                 itemdatagrid.Visible = true;
                 itemdatagrid.Refresh();
             }
@@ -166,7 +173,6 @@ namespace OnlineShop.Kitchen_Wise_Form
                 using SqlConnection conn = dbConn.GetConnection();
                 conn.Open();
 
-                // Only select needed columns and format the query for better readability
                 string selectItem = @"
                     SELECT 
                         id,
@@ -208,6 +214,8 @@ namespace OnlineShop.Kitchen_Wise_Form
                         itemDataGrid.Columns["date_update"].DefaultCellStyle.Format = "g";
                     if (itemDataGrid.Columns["item_price"] != null)
                         itemDataGrid.Columns["item_price"].DefaultCellStyle.Format = "C2";
+                    if (itemDataGrid.Columns["item_stock"] != null)
+                        itemDataGrid.Columns["item_stock"].DefaultCellStyle.Format = "N0"; // <-- This line formats stock as a number with separators
 
                     itemDataGrid.Visible = true;
                     itemDataGrid.Refresh();

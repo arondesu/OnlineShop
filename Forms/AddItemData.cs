@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +13,16 @@ namespace OnlineShop.Forms
     {
         private DBConn dbConn = new DBConn(); //calling DBConn class
 
-        public int ID { get; set; } //index 0
-        public string? ItemID { get; set; } // Nullable to avoid CS8618
-        public string? ItemName { get; set; } // Nullable to avoid CS8618
-        public string? Type { get; set; } // Nullable to avoid CS8618
-        public string? Stock { get; set; } // Nullable to avoid CS8618
-        public string? Price { get; set; } // Nullable to avoid CS8618
-        public string? Status { get; set; } // Nullable to avoid CS8618
-        public string? Image { get; set; } // Nullable to avoid CS8618
-        public string? DateInsert { get; set; } // Nullable to avoid CS8618
-        public string? DateUpdate { get; set; } // Nullable to avoid CS8618
+        public int ID { get; set; }
+        public int? ItemID { get; set; }
+        public string? ItemName { get; set; }
+        public string? Type { get; set; }
+        public int? Stock { get; set; }
+        public decimal? Price { get; set; }
+        public string? Status { get; set; }
+        public string? Image { get; set; }
+        public DateTime? DateInsert { get; set; }
+        public DateTime? DateUpdate { get; set; }
 
         public List<AddItemData> itemListData()
         {
@@ -39,7 +39,7 @@ namespace OnlineShop.Forms
                                     inv.Description as inv_description, 
                                     inv.PurchasePrice as inv_price 
                                     FROM items i 
-                                    LEFT JOIN Inventory inv ON i.item_name = inv.ProductName 
+                                    INNER JOIN Inventory inv ON i.item_name = inv.ProductName 
                                     WHERE i.date_delete IS NULL";
 
                 using (SqlCommand cmd = new SqlCommand(SelectItem, conn))
@@ -50,17 +50,17 @@ namespace OnlineShop.Forms
                     {
                         AddItemData aid = new AddItemData();
 
-                        aid.ID = reader["id"] != DBNull.Value ? (int)reader["id"] : 0;
-                        aid.ItemID = reader["item_id"]?.ToString();
+                        aid.ID = reader["id"] != DBNull.Value ? Convert.ToInt32(reader["id"]) : 0;
+                        aid.ItemID = reader["item_id"] != DBNull.Value ? Convert.ToInt32(reader["item_id"]) : (int?)null;
                         aid.ItemName = reader["item_name"]?.ToString();
                         aid.Type = reader["item_type"]?.ToString();
-                        aid.Stock = reader["item_stock"]?.ToString();
-                        // Use PurchasePrice from Inventory if available, otherwise fallback to items price
-                        aid.Price = reader["inv_price"]?.ToString() ?? reader["item_price"]?.ToString();
+                        aid.Stock = reader["item_stock"] != DBNull.Value ? Convert.ToInt32(reader["item_stock"]) : (int?)null;
+                        aid.Price = reader["inv_price"] != DBNull.Value ? Convert.ToDecimal(reader["inv_price"]) :
+                                    (reader["item_price"] != DBNull.Value ? Convert.ToDecimal(reader["item_price"]) : (decimal?)null);
                         aid.Status = reader["item_status"]?.ToString();
                         aid.Image = reader["item_image"]?.ToString();
-                        aid.DateInsert = reader["date_insert"]?.ToString();
-                        aid.DateUpdate = reader["date_update"]?.ToString();
+                        aid.DateInsert = reader["date_insert"] != DBNull.Value ? Convert.ToDateTime(reader["date_insert"]) : (DateTime?)null;
+                        aid.DateUpdate = reader["date_update"] != DBNull.Value ? Convert.ToDateTime(reader["date_update"]) : (DateTime?)null;
 
                         listDatas.Add(aid);
                     }

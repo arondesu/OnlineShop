@@ -25,51 +25,25 @@ namespace OnlineShop
         {
             InitializeComponent();
 
-            // Create ComboBox controls programmatically if they don't exist
-            if (cmbItemType == null)
-            {
-                cmbItemType = new ComboBox();
-                cmbItemType.Name = "cmbItemType";
-                cmbItemType.Location = new Point(200, 100); // Adjust as needed
-                cmbItemType.Size = new Size(200, 25); // Adjust as needed
-                this.Controls.Add(cmbItemType);
-            }
-
-            if (cmbItemStatus == null)
-            {
-                cmbItemStatus = new ComboBox();
-                cmbItemStatus.Name = "cmbItemStatus";
-                cmbItemStatus.Location = new Point(200, 150); // Adjust as needed
-                cmbItemStatus.Size = new Size(200, 25); // Adjust as needed
-                this.Controls.Add(cmbItemStatus);
-            }
-
-            // Remove QuantityReturned TextBox and Label creation
+            // These controls should already be defined in the designer, so no need to create them programmatically.
+            // Removed redundant ComboBox creation.
 
             // Set fixed size for DataGridView
-            dataGridViewInventory.Width = 900;  // Set your desired width
-            dataGridViewInventory.Height = 400; // Set your desired height
-
-            // Remove Dock property if you want to keep the size fixed
+            dataGridViewInventory.Width = 900;
+            dataGridViewInventory.Height = 400;
             dataGridViewInventory.Dock = DockStyle.None;
 
-            // If you use a panel for inputs, dock it to the bottom or set its size as needed
-            // panelInputs.Dock = DockStyle.Bottom; // Optional, if you want the panel to stay at the bottom
-
             LoadInventoryData();
-
-            // Initialize the combo boxes
             InitializeComboBoxes();
 
-            // Add event handler for cell click
             dataGridViewInventory.CellClick += dataGridViewInventory_CellClick;
         }
 
         private void InitializeComboBoxes()
         {
-            // Initialize item type combo box with actual descriptions
             cmbItemType.Items.Clear();
-            cmbItemType.Items.AddRange(new string[] {
+            cmbItemType.Items.AddRange(new[]
+            {
                 "Durable and transparent container for food storage",
                 "A sturdy rack designed to neatly organize mugs",
                 "Heat-resistant mitts and potholders for kitchen safety",
@@ -81,13 +55,36 @@ namespace OnlineShop
                 "A decorative and protective cover for tables"
             });
 
-            // Initialize item status combo box
             cmbItemStatus.Items.Clear();
-            cmbItemStatus.Items.AddRange(new string[] {
+            cmbItemStatus.Items.AddRange(new[]
+            {
                 "Available",
                 "Low Stock",
                 "Out of Stock"
             });
+        }
+
+        private void dataGridViewInventory_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var row = dataGridViewInventory.Rows[e.RowIndex];
+
+            txtItemId.Text = row.Cells.Count > 0 && row.Cells[0].Value != null ? row.Cells[0].Value.ToString() : "";
+            txtItemName.Text = row.Cells.Count > 1 && row.Cells[1].Value != null ? row.Cells[1].Value.ToString() : "";
+            cmbItemType.Text = row.Cells.Count > 2 && row.Cells[2].Value != null ? row.Cells[2].Value.ToString() : "";
+
+            if (row.Cells.Count > 3 && decimal.TryParse(row.Cells[3].Value?.ToString(), out var price))
+                txtItemPrice.Text = price.ToString("F2");
+            else
+                txtItemPrice.Text = "";
+
+            if (row.Cells.Count > 4 && int.TryParse(row.Cells[4].Value?.ToString(), out var stock))
+                txtItemStock.Text = stock.ToString();
+            else
+                txtItemStock.Text = "";
+
+            cmbItemStatus.Text = row.Cells.Count > 5 && row.Cells[5].Value != null ? row.Cells[5].Value.ToString() : "Available";
         }
 
         public void LoadInventoryData()
@@ -120,31 +117,6 @@ namespace OnlineShop
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading inventory data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void dataGridViewInventory_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                DataGridViewRow row = this.dataGridViewInventory.Rows[e.RowIndex];
-
-                // Debug: Print the number of columns
-                int columnCount = dataGridViewInventory.Columns.Count;
-
-                // Safely access cells based on available columns
-                if (columnCount > 0) txtItemId.Text = row.Cells[0].Value?.ToString() ?? "";
-                if (columnCount > 1) txtItemName.Text = row.Cells[1].Value?.ToString() ?? "";
-                if (columnCount > 2) cmbItemType.Text = row.Cells[2].Value?.ToString() ?? "";
-
-                // Fix the swapped indexes - PurchasePrice is at index 3, InStock is at index 4
-                if (columnCount > 3) txtItemPrice.Text = row.Cells[3].Value?.ToString() ?? "";
-                if (columnCount > 4) txtItemStock.Text = row.Cells[4].Value?.ToString() ?? "";
-
-                // Get status from the row (assuming it's at index 5)
-                if (columnCount > 5) cmbItemStatus.Text = row.Cells[5].Value?.ToString() ?? "Available";
-
-                // Remove QuantityReturned code
             }
         }
 

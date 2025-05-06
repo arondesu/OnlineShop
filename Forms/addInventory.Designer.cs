@@ -1,3 +1,4 @@
+
 namespace OnlineShop
 {
     partial class addInventory
@@ -28,9 +29,9 @@ namespace OnlineShop
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel4 = new Panel();
-            btnDelete = new Button();
+            RefreshBtn = new Button();
             label1 = new Label();
             cmbItemType = new ComboBox();
             cmbItemStatus = new ComboBox();
@@ -48,7 +49,6 @@ namespace OnlineShop
             prdctlbl = new Label();
             dataGridViewInventory = new DataGridView();
             panel1 = new Panel();
-            RefreshBtn = new Button();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInventory).BeginInit();
             panel1.SuspendLayout();
@@ -58,7 +58,6 @@ namespace OnlineShop
             // 
             panel4.BackColor = Color.FromArgb(15, 26, 43);
             panel4.Controls.Add(RefreshBtn);
-            panel4.Controls.Add(btnDelete);
             panel4.Controls.Add(label1);
             panel4.Controls.Add(cmbItemType);
             panel4.Controls.Add(cmbItemStatus);
@@ -80,19 +79,19 @@ namespace OnlineShop
             panel4.Size = new Size(1029, 275);
             panel4.TabIndex = 3;
             // 
-            // btnDelete
+            // RefreshBtn
             // 
-            btnDelete.BackColor = Color.FromArgb(189, 196, 212);
-            btnDelete.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.ForeColor = Color.FromArgb(15, 26, 43);
-            btnDelete.Location = new Point(854, 192);
-            btnDelete.Margin = new Padding(2, 3, 2, 3);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(73, 64);
-            btnDelete.TabIndex = 27;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
+            RefreshBtn.BackColor = Color.FromArgb(189, 196, 212);
+            RefreshBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RefreshBtn.ForeColor = Color.FromArgb(15, 26, 43);
+            RefreshBtn.Location = new Point(667, 211);
+            RefreshBtn.Margin = new Padding(2, 3, 2, 3);
+            RefreshBtn.Name = "RefreshBtn";
+            RefreshBtn.Size = new Size(132, 45);
+            RefreshBtn.TabIndex = 29;
+            RefreshBtn.Text = "Refresh";
+            RefreshBtn.UseVisualStyleBackColor = false;
+            RefreshBtn.Click += RefreshBtn_Click;
             // 
             // label1
             // 
@@ -271,14 +270,14 @@ namespace OnlineShop
             dataGridViewInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewInventory.BackgroundColor = Color.FromArgb(209, 207, 201);
             dataGridViewInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewInventory.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridViewInventory.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewInventory.Dock = DockStyle.Fill;
             dataGridViewInventory.Location = new Point(0, 0);
             dataGridViewInventory.Name = "dataGridViewInventory";
@@ -296,20 +295,6 @@ namespace OnlineShop
             panel1.Name = "panel1";
             panel1.Size = new Size(1029, 445);
             panel1.TabIndex = 5;
-            // 
-            // RefreshBtn
-            // 
-            RefreshBtn.BackColor = Color.FromArgb(189, 196, 212);
-            RefreshBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RefreshBtn.ForeColor = Color.FromArgb(15, 26, 43);
-            RefreshBtn.Location = new Point(667, 211);
-            RefreshBtn.Margin = new Padding(2, 3, 2, 3);
-            RefreshBtn.Name = "RefreshBtn";
-            RefreshBtn.Size = new Size(132, 45);
-            RefreshBtn.TabIndex = 29;
-            RefreshBtn.Text = "Refresh";
-            RefreshBtn.UseVisualStyleBackColor = false;
-            RefreshBtn.Click += RefreshBtn_Click;
             // 
             // addInventory
             // 
@@ -346,7 +331,6 @@ namespace OnlineShop
         private Panel panel1;
         private ComboBox cmbItemType;
         private Label label1;
-        private Button btnDelete;
         private Button RefreshBtn;
     }
 }

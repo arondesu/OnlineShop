@@ -203,6 +203,24 @@ namespace OnlineShop
             string itemPrice = txtItem_price.Text.Trim();
             string description = txtDescription.Text.Trim();
 
+            // Allowed item names
+            string[] allowedNames = {
+                "Steel Mug Rack",
+                "Mitts Potholders",
+                "Steel Brazier Pot",
+                "Descascador",
+                "Cleaning Sponge",
+                "Silverware Set",
+                "Kitchen Scale",
+                "Table Cloth"
+            };
+
+            if (!allowedNames.Contains(itemName))
+            {
+                MessageBox.Show("You can only add items from the allowed list.", "Invalid Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             // Check if any fields are empty or contain only whitespace
             if (string.IsNullOrWhiteSpace(itemId) ||
                 string.IsNullOrWhiteSpace(itemName) ||
@@ -461,53 +479,35 @@ namespace OnlineShop
                 return;
             }
 
-            if (MessageBox.Show("Are you sure you want to delete this item?", "Confirm Delete",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to delete this item?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 using SqlConnection conn = dbConn.GetConnection();
-                try
+                conn.Open();
+
+                // Delete from Inventory table
+                string deleteInventoryQuery = "DELETE FROM Inventory WHERE ProductId = @ProductId";
+                using (SqlCommand cmd = new SqlCommand(deleteInventoryQuery, conn))
                 {
-                    conn.Open();
-                    string deleteQuery = @"UPDATE items 
-                                    SET date_delete = GETDATE() 
-                                    WHERE item_id = @itemId AND date_delete IS NULL";
-
-                    using SqlCommand cmd = new SqlCommand(deleteQuery, conn);
-                    cmd.Parameters.AddWithValue("@itemId", txtItem_id.Text.Trim());
-
-                    int result = cmd.ExecuteNonQuery();
-
-                    if (result > 0)
-                    {
-                        MessageBox.Show("Item deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        // Notify subscribers that a product was deleted
-                        var args = new ProductEventArgs
-                        {
-                            ItemId = txtItem_id.Text.Trim(),
-                            ItemName = txtItem_name.Text.Trim(),
-                            ItemStock = txtItem_stock.Text.Trim(),
-                            ItemPrice = txtItem_price.Text.Trim(),
-                            ItemImage = AddProductForm_imageView.ImageLocation
-                        };
-
-                        ProductDeleted?.Invoke(this, args);
-
-                        // Clear fields and refresh
-                        dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
-                        txtDescription.Items.Clear();
-                        txtDescription.Text = "";
-                        itemListData();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Item not found or already deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    cmd.Parameters.AddWithValue("@ProductId", txtItem_id.Text.Trim());
+                    cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+
+                // Delete from items table
+                string deleteItemQuery = "DELETE FROM items WHERE item_id = @ItemId";
+                using (SqlCommand cmd = new SqlCommand(deleteItemQuery, conn))
                 {
-                    MessageBox.Show("Error deleting item: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cmd.Parameters.AddWithValue("@ItemId", txtItem_id.Text.Trim());
+                    cmd.ExecuteNonQuery();
                 }
+
+                MessageBox.Show("Product deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Refresh data in the grid
+                itemListData();
+                DataChanged?.Invoke(this, EventArgs.Empty);
+
+                // Optionally clear the fields
+                dbFunc.clearField(txtItem_id, txtItem_name, txtItem_type, txtItem_stock, txtItem_price, txtDescription, AddProductForm_imageView);
             }
         }
 
